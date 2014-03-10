@@ -1,0 +1,1381 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		D30098491656FB7E009D25D8 /* TDStatusBarPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30098471656FB7E009D25D8 /* TDStatusBarPopUpView.m */; };
+		D300984B1656FC77009D25D8 /* TDStatusBarPopUpView.h in Headers */ = {isa = PBXBuildFile; fileRef = D300984A1656FC77009D25D8 /* TDStatusBarPopUpView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D30121C816324AEA002E2EAB /* TDViewControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30121C716324AEA002E2EAB /* TDViewControllerView.m */; };
+		D30121CE16324BA9002E2EAB /* TDView.h in Headers */ = {isa = PBXBuildFile; fileRef = D30121CD16324BA8002E2EAB /* TDView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D30121D016324BB1002E2EAB /* TDView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30121CF16324BB1002E2EAB /* TDView.m */; };
+		D30713A317594AD5000B5C0F /* TDSemaphore.h in Headers */ = {isa = PBXBuildFile; fileRef = D30713A217594AD5000B5C0F /* TDSemaphore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D30713A517594ADE000B5C0F /* TDSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = D30713A417594ADE000B5C0F /* TDSemaphore.m */; };
+		D30FD7F611C1B5E3005A2437 /* TDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* TDAppKit.framework */; };
+		D3106ECE126F41AC00F9E37D /* TDFlippedColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3106ECC126F41AC00F9E37D /* TDFlippedColorView.m */; };
+		D3106ED0126F421B00F9E37D /* TDFlippedColorView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3106ECF126F421B00F9E37D /* TDFlippedColorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D318A05010F8570E00B6AA21 /* TDGutterView.h in Headers */ = {isa = PBXBuildFile; fileRef = D318A04C10F8570E00B6AA21 /* TDGutterView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D318A05110F8570E00B6AA21 /* TDGutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D318A04D10F8570E00B6AA21 /* TDGutterView.m */; };
+		D318A05210F8570E00B6AA21 /* TDSourceCodeTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = D318A04E10F8570E00B6AA21 /* TDSourceCodeTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D318A05310F8570E00B6AA21 /* TDSourceCodeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D318A04F10F8570E00B6AA21 /* TDSourceCodeTextView.m */; };
+		D31CBFB010EFB7010013347D /* TDListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D31CBFAA10EFB7010013347D /* TDListItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31CBFB110EFB7010013347D /* TDListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CBFAB10EFB7010013347D /* TDListItem.m */; };
+		D31CBFB310EFB7010013347D /* TDListItemQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CBFAD10EFB7010013347D /* TDListItemQueue.m */; };
+		D31CBFB410EFB7010013347D /* TDListView.h in Headers */ = {isa = PBXBuildFile; fileRef = D31CBFAE10EFB7010013347D /* TDListView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31CBFB510EFB7010013347D /* TDListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CBFAF10EFB7010013347D /* TDListView.m */; };
+		D31CBFCA10EFB8180013347D /* TDUberView.h in Headers */ = {isa = PBXBuildFile; fileRef = D31CBFC810EFB8180013347D /* TDUberView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31CBFCE10EFB8260013347D /* TDUberView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CBFCC10EFB8260013347D /* TDUberView.m */; };
+		D31CBFF410EFBA3C0013347D /* ListViewDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CBFF310EFBA3C0013347D /* ListViewDemoAppDelegate.m */; };
+		D31CBFFA10EFBD360013347D /* DemoListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CBFF910EFBD360013347D /* DemoListItemView.m */; };
+		D31CC01810EFC64E0013347D /* TDAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* TDAppKit.framework */; };
+		D31CC02410EFC6BB0013347D /* TDAppKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D31CC02310EFC6BB0013347D /* TDAppKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31CC05E10EFC80B0013347D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CC05D10EFC80B0013347D /* main.m */; };
+		D31CC0B010EFC9750013347D /* ListViewDemoMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31CC0AF10EFC9750013347D /* ListViewDemoMainMenu.xib */; };
+		D32F3D9A166020AD00EF8284 /* TDStatusBarButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D32F3D98166020AD00EF8284 /* TDStatusBarButtonCell.m */; };
+		D33767D01833DA290054E464 /* TDTabListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D33767CF1833DA290054E464 /* TDTabListItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D33B19F111168A3300F754AD /* TDScroller.h in Headers */ = {isa = PBXBuildFile; fileRef = D33B19EF11168A3300F754AD /* TDScroller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D33B19F211168A3300F754AD /* TDScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D33B19F011168A3300F754AD /* TDScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D33B19F511168A3A00F754AD /* TDScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B19F311168A3A00F754AD /* TDScroller.m */; };
+		D33B19F611168A3A00F754AD /* TDScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D33B19F411168A3A00F754AD /* TDScrollView.m */; };
+		D34A54D3120BBF590059D145 /* NSDate+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D34A54D1120BBF590059D145 /* NSDate+TDAdditions.m */; };
+		D34A54D5120BBFD10059D145 /* NSDate+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D34A54D4120BBFD10059D145 /* NSDate+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D366C1B71128FF2400547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.h in Headers */ = {isa = PBXBuildFile; fileRef = D366C1B51128FF2400547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D366C1B81128FF2400547FD6 /* NSAppleEventDescriptor+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D366C1B61128FF2400547FD6 /* NSAppleEventDescriptor+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D366C1BA1128FF3800547FD6 /* NSAppleEventDescriptor+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D366C1B91128FF3800547FD6 /* NSAppleEventDescriptor+TDAdditions.m */; };
+		D366C1EC112902DC00547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D366C1EB112902DC00547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.m */; };
+		D366C1EF112902E500547FD6 /* NSURL+NDCarbonUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D366C1ED112902E400547FD6 /* NSURL+NDCarbonUtilities.h */; };
+		D366C1F0112902E500547FD6 /* NSURL+NDCarbonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D366C1EE112902E500547FD6 /* NSURL+NDCarbonUtilities.m */; };
+		D36713AA136C57AC0043A644 /* TDRegisterWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D36713A8136C57AC0043A644 /* TDRegisterWindow.m */; };
+		D36713AB136C57AC0043A644 /* TDRegisterWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36713A9136C57AC0043A644 /* TDRegisterWindowController.m */; };
+		D36713AF136C57BD0043A644 /* TDRegisterWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = D36713AD136C57BD0043A644 /* TDRegisterWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D36713B6136C57E70043A644 /* TDRegisterWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = D36713B5136C57E70043A644 /* TDRegisterWindow.h */; };
+		D36714EA136C670F0043A644 /* register_drop.png in Resources */ = {isa = PBXBuildFile; fileRef = D36714E9136C670F0043A644 /* register_drop.png */; };
+		D367159A136C6E000043A644 /* TDDragDestinationImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3671598136C6E000043A644 /* TDDragDestinationImageView.h */; };
+		D367159B136C6E000043A644 /* TDDragDestinationImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3671599136C6E000043A644 /* TDDragDestinationImageView.m */; };
+		D36A3613128B246B00AB56C9 /* TDTabbedDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A3611128B246B00AB56C9 /* TDTabbedDocumentController.m */; };
+		D36A3619128B249100AB56C9 /* TDTabbedDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = D36A3618128B249100AB56C9 /* TDTabbedDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D36A361B128B24AB00AB56C9 /* TDTabbedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A361A128B24AB00AB56C9 /* TDTabbedDocument.m */; };
+		D36A361D128B24BD00AB56C9 /* TDTabbedDocumentController.h in Headers */ = {isa = PBXBuildFile; fileRef = D36A361C128B24BD00AB56C9 /* TDTabbedDocumentController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D36A3625128B24F200AB56C9 /* TDTabModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A3623128B24F200AB56C9 /* TDTabModel.m */; };
+		D36A3631128B260200AB56C9 /* TDTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A362F128B260200AB56C9 /* TDTabViewController.m */; };
+		D36A3633128B260F00AB56C9 /* TDTabViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D36A3632128B260F00AB56C9 /* TDTabViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D36A3635128B261D00AB56C9 /* TDTabModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D36A3634128B261D00AB56C9 /* TDTabModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D36A3652128B27CA00AB56C9 /* TDTabbedWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A3650128B27CA00AB56C9 /* TDTabbedWindowController.m */; };
+		D36A3662128B27DC00AB56C9 /* TDTabbedWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = D36A3661128B27DC00AB56C9 /* TDTabbedWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D36E1EA111702E5500110DBA /* TDComboField.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E1E9F11702E5500110DBA /* TDComboField.m */; };
+		D36E1EAC11702E6A00110DBA /* TDComboField.h in Headers */ = {isa = PBXBuildFile; fileRef = D36E1EAB11702E6A00110DBA /* TDComboField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D36E1ED911703A1000110DBA /* TDComboFieldListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D36E1ED711703A1000110DBA /* TDComboFieldListItem.h */; };
+		D36E1EDA11703A1000110DBA /* TDComboFieldListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E1ED811703A1000110DBA /* TDComboFieldListItem.m */; };
+		D36E1F6E11703EAD00110DBA /* ComboFieldDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E1F2411703D9D00110DBA /* ComboFieldDemoAppDelegate.m */; };
+		D36E1F6F11703EB500110DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E1F2911703DCB00110DBA /* main.m */; };
+		D36E1F7111703EBD00110DBA /* ComboFieldDemoMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36E1F2611703DB700110DBA /* ComboFieldDemoMainMenu.xib */; };
+		D36E20931170D0BF00110DBA /* TDFlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E20911170D0BF00110DBA /* TDFlippedView.m */; };
+		D36E20951170D0D400110DBA /* TDFlippedView.h in Headers */ = {isa = PBXBuildFile; fileRef = D36E20941170D0D400110DBA /* TDFlippedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D36E20C01170D26E00110DBA /* TDComboFieldListView.h in Headers */ = {isa = PBXBuildFile; fileRef = D36E20BE1170D26E00110DBA /* TDComboFieldListView.h */; };
+		D36E20C11170D26E00110DBA /* TDComboFieldListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E20BF1170D26E00110DBA /* TDComboFieldListView.m */; };
+		D36E21C71170DA0700110DBA /* TDComboFieldTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = D36E21C51170DA0700110DBA /* TDComboFieldTextView.h */; };
+		D36E21C81170DA0700110DBA /* TDComboFieldTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E21C61170DA0700110DBA /* TDComboFieldTextView.m */; };
+		D36E2FB511BDB247001CCE30 /* ComboFieldDemoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D36E2FB411BDB247001CCE30 /* ComboFieldDemoWindow.m */; };
+		D371244710F0520300D7107B /* TDUberViewSplitView.h in Headers */ = {isa = PBXBuildFile; fileRef = D371244610F0520300D7107B /* TDUberViewSplitView.h */; };
+		D371244810F0520800D7107B /* TDBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D371244210F051E800D7107B /* TDBar.m */; };
+		D371244910F0520D00D7107B /* TDLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D371244310F051E800D7107B /* TDLine.m */; };
+		D371245410F0522700D7107B /* TDBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D371245210F0522700D7107B /* TDBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D371245510F0522700D7107B /* TDLine.h in Headers */ = {isa = PBXBuildFile; fileRef = D371245310F0522700D7107B /* TDLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D371246110F0526B00D7107B /* TDUberViewSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CBFC910EFB8180013347D /* TDUberViewSplitView.m */; };
+		D371DB7211C19F8C00D5434C /* favicon.png in Resources */ = {isa = PBXBuildFile; fileRef = D371DB7111C19F8C00D5434C /* favicon.png */; };
+		D3740A081553544A0057FBEF /* TDTabListItemStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = D3740A061553544A0057FBEF /* TDTabListItemStyle.h */; };
+		D3740A091553544A0057FBEF /* TDTabListItemStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D3740A071553544A0057FBEF /* TDTabListItemStyle.m */; };
+		D3740A0E155355DF0057FBEF /* TDTabListItemStyleBrowser.h in Headers */ = {isa = PBXBuildFile; fileRef = D3740A0C155355DF0057FBEF /* TDTabListItemStyleBrowser.h */; };
+		D3740A0F155355DF0057FBEF /* TDTabListItemStyleBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = D3740A0D155355DF0057FBEF /* TDTabListItemStyleBrowser.m */; };
+		D37E6C8717821F13001BBF05 /* TDStatusBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D37E6C8517821F13001BBF05 /* TDStatusBarButton.m */; };
+		D37E6C8917821F21001BBF05 /* TDStatusBarButton.h in Headers */ = {isa = PBXBuildFile; fileRef = D37E6C8817821F21001BBF05 /* TDStatusBarButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D37E6C8B17821F37001BBF05 /* TDStatusBarButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D37E6C8A17821F37001BBF05 /* TDStatusBarButtonCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D38984D3124E53DB00EBEFBA /* NSArray+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D38984D2124E53DB00EBEFBA /* NSArray+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D38984D8124E543E00EBEFBA /* NSArray+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D38984D7124E543E00EBEFBA /* NSArray+TDAdditions.m */; };
+		D38ED9DA15583D8E0004F9AE /* TDTabsListView.h in Headers */ = {isa = PBXBuildFile; fileRef = D38ED9D815583D8E0004F9AE /* TDTabsListView.h */; };
+		D38ED9DB15583D8E0004F9AE /* TDTabsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D38ED9D915583D8E0004F9AE /* TDTabsListView.m */; };
+		D38F3D25128B8B9F00DC5FDB /* TDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D38F3D23128B8B9F00DC5FDB /* TDViewController.m */; };
+		D38F3D27128B8BD300DC5FDB /* TDViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D38F3D26128B8BD300DC5FDB /* TDViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D38F4A15128CDAF800DC5FDB /* TDHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = D38F4A13128CDAF800DC5FDB /* TDHintView.m */; };
+		D38F4A17128CDB0800DC5FDB /* TDHintView.h in Headers */ = {isa = PBXBuildFile; fileRef = D38F4A16128CDB0800DC5FDB /* TDHintView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D392B08C1179594400823791 /* TDShadowView.h in Headers */ = {isa = PBXBuildFile; fileRef = D392B08A1179594400823791 /* TDShadowView.h */; };
+		D392B08D1179594400823791 /* TDShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = D392B08B1179594400823791 /* TDShadowView.m */; };
+		D3A356BA11DFFB2A00EFEE29 /* TDClipView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A356B811DFFB2A00EFEE29 /* TDClipView.h */; };
+		D3A356BB11DFFB2A00EFEE29 /* TDClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A356B911DFFB2A00EFEE29 /* TDClipView.m */; };
+		D3B10F0817B03C8900B9AAF1 /* TDBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B10EFC17B03C8900B9AAF1 /* TDBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3B10F0A17B03C8900B9AAF1 /* TDTabBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B10EFE17B03C8900B9AAF1 /* TDTabBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3B10F0C17B03C8900B9AAF1 /* TDTabBarController.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B10F0017B03C8900B9AAF1 /* TDTabBarController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3B10F0E17B03C8900B9AAF1 /* TDTabBarItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B10F0217B03C8900B9AAF1 /* TDTabBarItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3B10F1C17B03D4500B9AAF1 /* TDBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B10F1417B03D4400B9AAF1 /* TDBarItem.m */; };
+		D3B10F1D17B03D4500B9AAF1 /* TDTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B10F1517B03D4500B9AAF1 /* TDTabBar.m */; };
+		D3B10F1E17B03D4500B9AAF1 /* TDTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B10F1617B03D4500B9AAF1 /* TDTabBarController.m */; };
+		D3B10F1F17B03D4500B9AAF1 /* TDTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B10F1717B03D4500B9AAF1 /* TDTabBarItem.m */; };
+		D3B10F2A17B0449D00B9AAF1 /* TDTabBarControllerView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B10F2817B0449D00B9AAF1 /* TDTabBarControllerView.h */; };
+		D3B10F2B17B0449D00B9AAF1 /* TDTabBarControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B10F2917B0449D00B9AAF1 /* TDTabBarControllerView.m */; };
+		D3C9140111BD9742002A95CF /* TDComboFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C913FF11BD9742002A95CF /* TDComboFieldCell.h */; };
+		D3C9140211BD9742002A95CF /* TDComboFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C9140011BD9742002A95CF /* TDComboFieldCell.m */; };
+		D3D8023E111E2D810025650C /* NSURLRequest+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D8023C111E2D810025650C /* NSURLRequest+TDAdditions.m */; };
+		D3D80241111E2E890025650C /* NSURLRequest+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3D80240111E2E890025650C /* NSURLRequest+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3D804FD111F484D0025650C /* TDDraggableBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D3D804FC111F484D0025650C /* TDDraggableBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3D804FF111F485D0025650C /* TDDraggableBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D804FE111F485D0025650C /* TDDraggableBar.m */; };
+		D3E1320A110403D5007FE89E /* TDColorView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3E13208110403D5007FE89E /* TDColorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3E1320B110403D5007FE89E /* TDColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E13209110403D5007FE89E /* TDColorView.m */; };
+		D3EAAFD8128B4137006EDFF7 /* TDTabsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EAAFD6128B4137006EDFF7 /* TDTabsListViewController.m */; };
+		D3EAAFE4128B42B3006EDFF7 /* TDTabListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EAAFE2128B42B3006EDFF7 /* TDTabListItem.m */; };
+		D3EAB088128B5352006EDFF7 /* TDTabsListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D3EAB087128B5352006EDFF7 /* TDTabsListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3EB212A11013C4E00633715 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EB212911013C4E00633715 /* QuartzCore.framework */; };
+		D3EB212D11013C5300633715 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EB212911013C4E00633715 /* QuartzCore.framework */; };
+		D3EB233E1101632B00633715 /* NSImage+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3EB233C1101632B00633715 /* NSImage+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3EB233F1101632B00633715 /* NSImage+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EB233D1101632B00633715 /* NSImage+TDAdditions.m */; };
+		D3EB2343110163F700633715 /* TDUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D3EB2341110163F700633715 /* TDUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3EB2344110163F700633715 /* TDUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EB2342110163F700633715 /* TDUtils.m */; };
+		D3EB23C61101686900633715 /* NSBezierPath+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EB23C41101686900633715 /* NSBezierPath+TDAdditions.m */; };
+		D3EB23CC110168AD00633715 /* NSBezierPath+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3EB23CB110168AD00633715 /* NSBezierPath+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3F0B7821241155B0081838C /* DOMNode+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F0B7811241155B0081838C /* DOMNode+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3F0B784124115680081838C /* DOMNode+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F0B783124115680081838C /* DOMNode+TDAdditions.m */; };
+		D3F0B97F124273980081838C /* WebScriptObject+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F0B97D124273980081838C /* WebScriptObject+TDAdditions.m */; };
+		D3F0B982124273BC0081838C /* WebScriptObject+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F0B981124273BC0081838C /* WebScriptObject+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3F0C84011EAADB1002E2BA9 /* NSString+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F0C83E11EAADB1002E2BA9 /* NSString+TDAdditions.m */; };
+		D3F0C84211EAADC2002E2BA9 /* NSString+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F0C84111EAADC2002E2BA9 /* NSString+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3F677D0128E57E900FB4EB5 /* TDTabbedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D3F677CE128E57E900FB4EB5 /* TDTabbedWindow.m */; };
+		D3F677D2128E580300FB4EB5 /* TDTabbedWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F677D1128E580300FB4EB5 /* TDTabbedWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3F68AD21290E56F00FB4EB5 /* TDViewControllerView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3F68AD11290E56F00FB4EB5 /* TDViewControllerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3FD53E911E28174009CFDA3 /* NSEvent+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FD53E811E28174009CFDA3 /* NSEvent+TDAdditions.m */; };
+		D3FD53EB11E2817E009CFDA3 /* NSEvent+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3FD53EA11E2817E009CFDA3 /* NSEvent+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3FFC3981204B3B6008E4948 /* DOMElement+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FFC3961204B3B6008E4948 /* DOMElement+TDAdditions.m */; };
+		D3FFC39E1204B3D7008E4948 /* DOMElement+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3FFC39D1204B3D7008E4948 /* DOMElement+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3FFC3A21204B3E7008E4948 /* DOMNodeList+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FFC3A01204B3E7008E4948 /* DOMNodeList+TDAdditions.m */; };
+		D3FFC3A41204B3F6008E4948 /* DOMNodeList+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3FFC3A31204B3F6008E4948 /* DOMNodeList+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3FFC3A81204B401008E4948 /* DOMHTMLCollection+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FFC3A61204B401008E4948 /* DOMHTMLCollection+TDAdditions.m */; };
+		D3FFC3AA1204B40E008E4948 /* DOMHTMLCollection+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3FFC3A91204B40E008E4948 /* DOMHTMLCollection+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3FFC3AE1204B43B008E4948 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FFC3AD1204B43B008E4948 /* WebKit.framework */; };
+		D3FFC3B41204B444008E4948 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FFC3AD1204B43B008E4948 /* WebKit.framework */; };
+		D3FFC48E1204B697008E4948 /* DOMHTMLOptionsCollection+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FFC48C1204B697008E4948 /* DOMHTMLOptionsCollection+TDAdditions.m */; };
+		D3FFC4901204B6CA008E4948 /* DOMHTMLOptionsCollection+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3FFC48F1204B6CA008E4948 /* DOMHTMLOptionsCollection+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3FFC4BA1204B8C1008E4948 /* WebView+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FFC4B81204B8C1008E4948 /* WebView+TDAdditions.m */; };
+		D3FFC4C61204B902008E4948 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FFC4C51204B902008E4948 /* JavaScriptCore.framework */; };
+		D3FFC4CE1204B92C008E4948 /* WebView+TDAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D3FFC4CD1204B92C008E4948 /* WebView+TDAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3FFC4D81204B9C8008E4948 /* TDJSUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = D3FFC4D71204B9C8008E4948 /* TDJSUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3FFC4DA1204B9CF008E4948 /* TDJSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D3FFC4D91204B9CF008E4948 /* TDJSUtils.m */; };
+		D3FFC4F01204BA58008E4948 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3FFC4C51204B902008E4948 /* JavaScriptCore.framework */; };
+		D7E07517183FC19C00B21413 /* TDTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7E07515183FC19C00B21413 /* TDTabView.xib */; };
+		D7E0751C183FC1A200B21413 /* TDRegisterWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7E07518183FC1A200B21413 /* TDRegisterWindow.xib */; };
+		D7E0751D183FC1A200B21413 /* TDTabsListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7E0751A183FC1A200B21413 /* TDTabsListView.xib */; };
+		D7E07520183FC1A800B21413 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7E0751E183FC1A800B21413 /* InfoPlist.strings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D31CC01610EFC6490013347D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = TDAppKit;
+		};
+		D36E1F6111703E8F00110DBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = TDAppKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		32DBCF5E0370ADEE00C91783 /* TDAppKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDAppKit_Prefix.pch; path = src/TDAppKit_Prefix.pch; sourceTree = "<group>"; };
+		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = res/conf/Info.plist; sourceTree = "<group>"; };
+		8DC2EF5B0486A6940098B216 /* TDAppKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TDAppKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D30098471656FB7E009D25D8 /* TDStatusBarPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDStatusBarPopUpView.m; path = src/TDStatusBarPopUpView.m; sourceTree = "<group>"; };
+		D300984A1656FC77009D25D8 /* TDStatusBarPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDStatusBarPopUpView.h; path = include/TDAppKit/TDStatusBarPopUpView.h; sourceTree = "<group>"; };
+		D30121C716324AEA002E2EAB /* TDViewControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDViewControllerView.m; path = src/TDViewControllerView.m; sourceTree = "<group>"; };
+		D30121CD16324BA8002E2EAB /* TDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDView.h; path = include/TDAppKit/TDView.h; sourceTree = "<group>"; };
+		D30121CF16324BB1002E2EAB /* TDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDView.m; path = src/TDView.m; sourceTree = "<group>"; };
+		D30713A217594AD5000B5C0F /* TDSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDSemaphore.h; path = include/TDAppKit/TDSemaphore.h; sourceTree = "<group>"; };
+		D30713A417594ADE000B5C0F /* TDSemaphore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDSemaphore.m; path = src/TDSemaphore.m; sourceTree = "<group>"; };
+		D3106ECC126F41AC00F9E37D /* TDFlippedColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDFlippedColorView.m; path = src/TDFlippedColorView.m; sourceTree = "<group>"; };
+		D3106ECF126F421B00F9E37D /* TDFlippedColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDFlippedColorView.h; path = include/TDAppKit/TDFlippedColorView.h; sourceTree = "<group>"; };
+		D318A04C10F8570E00B6AA21 /* TDGutterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDGutterView.h; path = include/TDAppKit/TDGutterView.h; sourceTree = "<group>"; };
+		D318A04D10F8570E00B6AA21 /* TDGutterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDGutterView.m; path = src/TDGutterView.m; sourceTree = "<group>"; };
+		D318A04E10F8570E00B6AA21 /* TDSourceCodeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDSourceCodeTextView.h; path = include/TDAppKit/TDSourceCodeTextView.h; sourceTree = "<group>"; };
+		D318A04F10F8570E00B6AA21 /* TDSourceCodeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDSourceCodeTextView.m; path = src/TDSourceCodeTextView.m; sourceTree = "<group>"; };
+		D31CBFAA10EFB7010013347D /* TDListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDListItem.h; path = include/TDAppKit/TDListItem.h; sourceTree = "<group>"; };
+		D31CBFAB10EFB7010013347D /* TDListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDListItem.m; path = src/TDListItem.m; sourceTree = "<group>"; };
+		D31CBFAC10EFB7010013347D /* TDListItemQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDListItemQueue.h; path = src/TDListItemQueue.h; sourceTree = "<group>"; };
+		D31CBFAD10EFB7010013347D /* TDListItemQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDListItemQueue.m; path = src/TDListItemQueue.m; sourceTree = "<group>"; };
+		D31CBFAE10EFB7010013347D /* TDListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDListView.h; path = include/TDAppKit/TDListView.h; sourceTree = "<group>"; };
+		D31CBFAF10EFB7010013347D /* TDListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDListView.m; path = src/TDListView.m; sourceTree = "<group>"; };
+		D31CBFC810EFB8180013347D /* TDUberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDUberView.h; path = include/TDAppKit/TDUberView.h; sourceTree = "<group>"; };
+		D31CBFC910EFB8180013347D /* TDUberViewSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDUberViewSplitView.m; path = src/TDUberViewSplitView.m; sourceTree = "<group>"; };
+		D31CBFCC10EFB8260013347D /* TDUberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDUberView.m; path = src/TDUberView.m; sourceTree = "<group>"; };
+		D31CBFE910EFB9630013347D /* ListViewDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListViewDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D31CBFEB10EFB9630013347D /* ListViewDemoApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ListViewDemoApp-Info.plist"; path = "demo/listview/ListViewDemoApp-Info.plist"; sourceTree = "<group>"; };
+		D31CBFF210EFBA3C0013347D /* ListViewDemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewDemoAppDelegate.h; path = demo/listview/ListViewDemoAppDelegate.h; sourceTree = "<group>"; };
+		D31CBFF310EFBA3C0013347D /* ListViewDemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewDemoAppDelegate.m; path = demo/listview/ListViewDemoAppDelegate.m; sourceTree = "<group>"; };
+		D31CBFF810EFBD360013347D /* DemoListItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoListItemView.h; path = demo/listview/DemoListItemView.h; sourceTree = "<group>"; };
+		D31CBFF910EFBD360013347D /* DemoListItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoListItemView.m; path = demo/listview/DemoListItemView.m; sourceTree = "<group>"; };
+		D31CC02310EFC6BB0013347D /* TDAppKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDAppKit.h; path = include/TDAppKit/TDAppKit.h; sourceTree = "<group>"; };
+		D31CC05D10EFC80B0013347D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = demo/listview/main.m; sourceTree = "<group>"; };
+		D31CC0AF10EFC9750013347D /* ListViewDemoMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListViewDemoMainMenu.xib; path = demo/listview/ListViewDemoMainMenu.xib; sourceTree = "<group>"; };
+		D32F3D98166020AD00EF8284 /* TDStatusBarButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDStatusBarButtonCell.m; path = src/TDStatusBarButtonCell.m; sourceTree = "<group>"; };
+		D33767CF1833DA290054E464 /* TDTabListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabListItem.h; path = include/TDAppKit/TDTabListItem.h; sourceTree = "<group>"; };
+		D33B19EF11168A3300F754AD /* TDScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDScroller.h; path = include/TDAppKit/TDScroller.h; sourceTree = "<group>"; };
+		D33B19F011168A3300F754AD /* TDScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDScrollView.h; path = include/TDAppKit/TDScrollView.h; sourceTree = "<group>"; };
+		D33B19F311168A3A00F754AD /* TDScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDScroller.m; path = src/TDScroller.m; sourceTree = "<group>"; };
+		D33B19F411168A3A00F754AD /* TDScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDScrollView.m; path = src/TDScrollView.m; sourceTree = "<group>"; };
+		D34A54D1120BBF590059D145 /* NSDate+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+TDAdditions.m"; path = "src/NSDate+TDAdditions.m"; sourceTree = "<group>"; };
+		D34A54D4120BBFD10059D145 /* NSDate+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+TDAdditions.h"; path = "include/TDAppKit/NSDate+TDAdditions.h"; sourceTree = "<group>"; };
+		D366C1B51128FF2400547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAppleEventDescriptor+NDAppleScriptObject.h"; path = "include/TDAppKit/NSAppleEventDescriptor+NDAppleScriptObject.h"; sourceTree = "<group>"; };
+		D366C1B61128FF2400547FD6 /* NSAppleEventDescriptor+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAppleEventDescriptor+TDAdditions.h"; path = "include/TDAppKit/NSAppleEventDescriptor+TDAdditions.h"; sourceTree = "<group>"; };
+		D366C1B91128FF3800547FD6 /* NSAppleEventDescriptor+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAppleEventDescriptor+TDAdditions.m"; path = "src/NSAppleEventDescriptor+TDAdditions.m"; sourceTree = "<group>"; };
+		D366C1EB112902DC00547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAppleEventDescriptor+NDAppleScriptObject.m"; path = "src/NSAppleEventDescriptor+NDAppleScriptObject.m"; sourceTree = "<group>"; };
+		D366C1ED112902E400547FD6 /* NSURL+NDCarbonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+NDCarbonUtilities.h"; path = "src/NSURL+NDCarbonUtilities.h"; sourceTree = "<group>"; };
+		D366C1EE112902E500547FD6 /* NSURL+NDCarbonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+NDCarbonUtilities.m"; path = "src/NSURL+NDCarbonUtilities.m"; sourceTree = "<group>"; };
+		D36713A8136C57AC0043A644 /* TDRegisterWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDRegisterWindow.m; path = src/TDRegisterWindow.m; sourceTree = "<group>"; };
+		D36713A9136C57AC0043A644 /* TDRegisterWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDRegisterWindowController.m; path = src/TDRegisterWindowController.m; sourceTree = "<group>"; };
+		D36713AD136C57BD0043A644 /* TDRegisterWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDRegisterWindowController.h; path = include/TDAppKit/TDRegisterWindowController.h; sourceTree = "<group>"; };
+		D36713B5136C57E70043A644 /* TDRegisterWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDRegisterWindow.h; path = src/TDRegisterWindow.h; sourceTree = "<group>"; };
+		D36714E9136C670F0043A644 /* register_drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = register_drop.png; path = res/img/register_drop.png; sourceTree = "<group>"; };
+		D3671598136C6E000043A644 /* TDDragDestinationImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDDragDestinationImageView.h; path = src/TDDragDestinationImageView.h; sourceTree = "<group>"; };
+		D3671599136C6E000043A644 /* TDDragDestinationImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDDragDestinationImageView.m; path = src/TDDragDestinationImageView.m; sourceTree = "<group>"; };
+		D36A3611128B246B00AB56C9 /* TDTabbedDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabbedDocumentController.m; path = src/TDTabbedDocumentController.m; sourceTree = "<group>"; };
+		D36A3618128B249100AB56C9 /* TDTabbedDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabbedDocument.h; path = include/TDAppKit/TDTabbedDocument.h; sourceTree = "<group>"; };
+		D36A361A128B24AB00AB56C9 /* TDTabbedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabbedDocument.m; path = src/TDTabbedDocument.m; sourceTree = "<group>"; };
+		D36A361C128B24BD00AB56C9 /* TDTabbedDocumentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabbedDocumentController.h; path = include/TDAppKit/TDTabbedDocumentController.h; sourceTree = "<group>"; };
+		D36A3623128B24F200AB56C9 /* TDTabModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabModel.m; path = src/TDTabModel.m; sourceTree = "<group>"; };
+		D36A362F128B260200AB56C9 /* TDTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabViewController.m; path = src/TDTabViewController.m; sourceTree = "<group>"; };
+		D36A3632128B260F00AB56C9 /* TDTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabViewController.h; path = include/TDAppKit/TDTabViewController.h; sourceTree = "<group>"; };
+		D36A3634128B261D00AB56C9 /* TDTabModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabModel.h; path = include/TDAppKit/TDTabModel.h; sourceTree = "<group>"; };
+		D36A3650128B27CA00AB56C9 /* TDTabbedWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabbedWindowController.m; path = src/TDTabbedWindowController.m; sourceTree = "<group>"; };
+		D36A3661128B27DC00AB56C9 /* TDTabbedWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabbedWindowController.h; path = include/TDAppKit/TDTabbedWindowController.h; sourceTree = "<group>"; };
+		D36E1E9F11702E5500110DBA /* TDComboField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDComboField.m; path = src/TDComboField.m; sourceTree = "<group>"; };
+		D36E1EAB11702E6A00110DBA /* TDComboField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDComboField.h; path = include/TDAppKit/TDComboField.h; sourceTree = "<group>"; };
+		D36E1ED711703A1000110DBA /* TDComboFieldListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDComboFieldListItem.h; path = src/TDComboFieldListItem.h; sourceTree = "<group>"; };
+		D36E1ED811703A1000110DBA /* TDComboFieldListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDComboFieldListItem.m; path = src/TDComboFieldListItem.m; sourceTree = "<group>"; };
+		D36E1F2311703D9D00110DBA /* ComboFieldDemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComboFieldDemoAppDelegate.h; path = demo/combofield/ComboFieldDemoAppDelegate.h; sourceTree = "<group>"; };
+		D36E1F2411703D9D00110DBA /* ComboFieldDemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComboFieldDemoAppDelegate.m; path = demo/combofield/ComboFieldDemoAppDelegate.m; sourceTree = "<group>"; };
+		D36E1F2611703DB700110DBA /* ComboFieldDemoMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ComboFieldDemoMainMenu.xib; path = demo/combofield/ComboFieldDemoMainMenu.xib; sourceTree = "<group>"; };
+		D36E1F2911703DCB00110DBA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = demo/combofield/main.m; sourceTree = "<group>"; };
+		D36E1F5B11703E8300110DBA /* FooBarDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FooBarDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D36E1F5D11703E8300110DBA /* ComboFieldDemoApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ComboFieldDemoApp-Info.plist"; path = "demo/combofield/ComboFieldDemoApp-Info.plist"; sourceTree = "<group>"; };
+		D36E20911170D0BF00110DBA /* TDFlippedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDFlippedView.m; path = src/TDFlippedView.m; sourceTree = "<group>"; };
+		D36E20941170D0D400110DBA /* TDFlippedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDFlippedView.h; path = include/TDAppKit/TDFlippedView.h; sourceTree = "<group>"; };
+		D36E20BE1170D26E00110DBA /* TDComboFieldListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDComboFieldListView.h; path = src/TDComboFieldListView.h; sourceTree = "<group>"; };
+		D36E20BF1170D26E00110DBA /* TDComboFieldListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDComboFieldListView.m; path = src/TDComboFieldListView.m; sourceTree = "<group>"; };
+		D36E21C51170DA0700110DBA /* TDComboFieldTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDComboFieldTextView.h; path = src/TDComboFieldTextView.h; sourceTree = "<group>"; };
+		D36E21C61170DA0700110DBA /* TDComboFieldTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDComboFieldTextView.m; path = src/TDComboFieldTextView.m; sourceTree = "<group>"; };
+		D36E2FB311BDB247001CCE30 /* ComboFieldDemoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComboFieldDemoWindow.h; path = demo/combofield/ComboFieldDemoWindow.h; sourceTree = "<group>"; };
+		D36E2FB411BDB247001CCE30 /* ComboFieldDemoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComboFieldDemoWindow.m; path = demo/combofield/ComboFieldDemoWindow.m; sourceTree = "<group>"; };
+		D371244210F051E800D7107B /* TDBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDBar.m; path = src/TDBar.m; sourceTree = "<group>"; };
+		D371244310F051E800D7107B /* TDLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDLine.m; path = src/TDLine.m; sourceTree = "<group>"; };
+		D371244610F0520300D7107B /* TDUberViewSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDUberViewSplitView.h; path = src/TDUberViewSplitView.h; sourceTree = "<group>"; };
+		D371245210F0522700D7107B /* TDBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDBar.h; path = include/TDAppKit/TDBar.h; sourceTree = "<group>"; };
+		D371245310F0522700D7107B /* TDLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDLine.h; path = include/TDAppKit/TDLine.h; sourceTree = "<group>"; };
+		D371DB7111C19F8C00D5434C /* favicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favicon.png; path = demo/combofield/favicon.png; sourceTree = "<group>"; };
+		D3740A061553544A0057FBEF /* TDTabListItemStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabListItemStyle.h; path = src/TDTabListItemStyle.h; sourceTree = "<group>"; };
+		D3740A071553544A0057FBEF /* TDTabListItemStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabListItemStyle.m; path = src/TDTabListItemStyle.m; sourceTree = "<group>"; };
+		D3740A0C155355DF0057FBEF /* TDTabListItemStyleBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabListItemStyleBrowser.h; path = src/TDTabListItemStyleBrowser.h; sourceTree = "<group>"; };
+		D3740A0D155355DF0057FBEF /* TDTabListItemStyleBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabListItemStyleBrowser.m; path = src/TDTabListItemStyleBrowser.m; sourceTree = "<group>"; };
+		D37E6C8517821F13001BBF05 /* TDStatusBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDStatusBarButton.m; path = src/TDStatusBarButton.m; sourceTree = "<group>"; };
+		D37E6C8817821F21001BBF05 /* TDStatusBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDStatusBarButton.h; path = include/TDAppKit/TDStatusBarButton.h; sourceTree = "<group>"; };
+		D37E6C8A17821F37001BBF05 /* TDStatusBarButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDStatusBarButtonCell.h; path = include/TDAppKit/TDStatusBarButtonCell.h; sourceTree = "<group>"; };
+		D38984D2124E53DB00EBEFBA /* NSArray+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+TDAdditions.h"; path = "include/TDAppKit/NSArray+TDAdditions.h"; sourceTree = "<group>"; };
+		D38984D7124E543E00EBEFBA /* NSArray+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+TDAdditions.m"; path = "src/NSArray+TDAdditions.m"; sourceTree = "<group>"; };
+		D38ED9D815583D8E0004F9AE /* TDTabsListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabsListView.h; path = src/TDTabsListView.h; sourceTree = "<group>"; };
+		D38ED9D915583D8E0004F9AE /* TDTabsListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabsListView.m; path = src/TDTabsListView.m; sourceTree = "<group>"; };
+		D38F3D23128B8B9F00DC5FDB /* TDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDViewController.m; path = src/TDViewController.m; sourceTree = "<group>"; };
+		D38F3D26128B8BD300DC5FDB /* TDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDViewController.h; path = include/TDAppKit/TDViewController.h; sourceTree = "<group>"; };
+		D38F3E8E128B9D8300DC5FDB /* close_button_hover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = close_button_hover.tif; path = res/img/close_button_hover.tif; sourceTree = "<group>"; };
+		D38F3E8F128B9D8300DC5FDB /* close_button_pressed.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = close_button_pressed.tif; path = res/img/close_button_pressed.tif; sourceTree = "<group>"; };
+		D38F3E90128B9D8300DC5FDB /* close_button.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = close_button.tif; path = res/img/close_button.tif; sourceTree = "<group>"; };
+		D38F3E91128B9D8300DC5FDB /* combo_field_progress_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = combo_field_progress_indicator.png; path = res/img/combo_field_progress_indicator.png; sourceTree = "<group>"; };
+		D38F3E92128B9D8300DC5FDB /* progress_indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = progress_indicator.png; path = res/img/progress_indicator.png; sourceTree = "<group>"; };
+		D38F4A13128CDAF800DC5FDB /* TDHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDHintView.m; path = src/TDHintView.m; sourceTree = "<group>"; };
+		D38F4A16128CDB0800DC5FDB /* TDHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDHintView.h; path = include/TDAppKit/TDHintView.h; sourceTree = "<group>"; };
+		D392B08A1179594400823791 /* TDShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDShadowView.h; path = src/TDShadowView.h; sourceTree = "<group>"; };
+		D392B08B1179594400823791 /* TDShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDShadowView.m; path = src/TDShadowView.m; sourceTree = "<group>"; };
+		D3A356B811DFFB2A00EFEE29 /* TDClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDClipView.h; path = src/TDClipView.h; sourceTree = "<group>"; };
+		D3A356B911DFFB2A00EFEE29 /* TDClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDClipView.m; path = src/TDClipView.m; sourceTree = "<group>"; };
+		D3AB30BA16FA26D000AB7404 /* combo_field_progress_indicator_rounded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = combo_field_progress_indicator_rounded.png; path = res/img/combo_field_progress_indicator_rounded.png; sourceTree = "<group>"; };
+		D3B10EFC17B03C8900B9AAF1 /* TDBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDBarItem.h; path = include/TDAppKit/TDBarItem.h; sourceTree = "<group>"; };
+		D3B10EFE17B03C8900B9AAF1 /* TDTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabBar.h; path = include/TDAppKit/TDTabBar.h; sourceTree = "<group>"; };
+		D3B10F0017B03C8900B9AAF1 /* TDTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabBarController.h; path = include/TDAppKit/TDTabBarController.h; sourceTree = "<group>"; };
+		D3B10F0217B03C8900B9AAF1 /* TDTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabBarItem.h; path = include/TDAppKit/TDTabBarItem.h; sourceTree = "<group>"; };
+		D3B10F1417B03D4400B9AAF1 /* TDBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDBarItem.m; path = src/TDBarItem.m; sourceTree = "<group>"; };
+		D3B10F1517B03D4500B9AAF1 /* TDTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabBar.m; path = src/TDTabBar.m; sourceTree = "<group>"; };
+		D3B10F1617B03D4500B9AAF1 /* TDTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabBarController.m; path = src/TDTabBarController.m; sourceTree = "<group>"; };
+		D3B10F1717B03D4500B9AAF1 /* TDTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabBarItem.m; path = src/TDTabBarItem.m; sourceTree = "<group>"; };
+		D3B10F2817B0449D00B9AAF1 /* TDTabBarControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabBarControllerView.h; path = src/TDTabBarControllerView.h; sourceTree = "<group>"; };
+		D3B10F2917B0449D00B9AAF1 /* TDTabBarControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabBarControllerView.m; path = src/TDTabBarControllerView.m; sourceTree = "<group>"; };
+		D3C913FF11BD9742002A95CF /* TDComboFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDComboFieldCell.h; path = src/TDComboFieldCell.h; sourceTree = "<group>"; };
+		D3C9140011BD9742002A95CF /* TDComboFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDComboFieldCell.m; path = src/TDComboFieldCell.m; sourceTree = "<group>"; };
+		D3D8023C111E2D810025650C /* NSURLRequest+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+TDAdditions.m"; path = "src/NSURLRequest+TDAdditions.m"; sourceTree = "<group>"; };
+		D3D80240111E2E890025650C /* NSURLRequest+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURLRequest+TDAdditions.h"; path = "include/TDAppKit/NSURLRequest+TDAdditions.h"; sourceTree = "<group>"; };
+		D3D804FC111F484D0025650C /* TDDraggableBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDDraggableBar.h; path = include/TDAppKit/TDDraggableBar.h; sourceTree = "<group>"; };
+		D3D804FE111F485D0025650C /* TDDraggableBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDDraggableBar.m; path = src/TDDraggableBar.m; sourceTree = "<group>"; };
+		D3E13208110403D5007FE89E /* TDColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDColorView.h; path = include/TDAppKit/TDColorView.h; sourceTree = "<group>"; };
+		D3E13209110403D5007FE89E /* TDColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDColorView.m; path = src/TDColorView.m; sourceTree = "<group>"; };
+		D3EAAFD6128B4137006EDFF7 /* TDTabsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabsListViewController.m; path = src/TDTabsListViewController.m; sourceTree = "<group>"; };
+		D3EAAFE2128B42B3006EDFF7 /* TDTabListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabListItem.m; path = src/TDTabListItem.m; sourceTree = "<group>"; };
+		D3EAB087128B5352006EDFF7 /* TDTabsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabsListViewController.h; path = include/TDAppKit/TDTabsListViewController.h; sourceTree = "<group>"; };
+		D3EB212911013C4E00633715 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D3EB233C1101632B00633715 /* NSImage+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+TDAdditions.h"; path = "include/TDAppKit/NSImage+TDAdditions.h"; sourceTree = "<group>"; };
+		D3EB233D1101632B00633715 /* NSImage+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+TDAdditions.m"; path = "src/NSImage+TDAdditions.m"; sourceTree = "<group>"; };
+		D3EB2341110163F700633715 /* TDUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDUtils.h; path = include/TDAppKit/TDUtils.h; sourceTree = "<group>"; };
+		D3EB2342110163F700633715 /* TDUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDUtils.m; path = src/TDUtils.m; sourceTree = "<group>"; };
+		D3EB23C41101686900633715 /* NSBezierPath+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBezierPath+TDAdditions.m"; path = "src/NSBezierPath+TDAdditions.m"; sourceTree = "<group>"; };
+		D3EB23CB110168AD00633715 /* NSBezierPath+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+TDAdditions.h"; path = "include/TDAppKit/NSBezierPath+TDAdditions.h"; sourceTree = "<group>"; };
+		D3F0B7811241155B0081838C /* DOMNode+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DOMNode+TDAdditions.h"; path = "include/TDAppKit/DOMNode+TDAdditions.h"; sourceTree = "<group>"; };
+		D3F0B783124115680081838C /* DOMNode+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DOMNode+TDAdditions.m"; path = "src/DOMNode+TDAdditions.m"; sourceTree = "<group>"; };
+		D3F0B97D124273980081838C /* WebScriptObject+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WebScriptObject+TDAdditions.m"; path = "src/WebScriptObject+TDAdditions.m"; sourceTree = "<group>"; };
+		D3F0B981124273BC0081838C /* WebScriptObject+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WebScriptObject+TDAdditions.h"; path = "include/TDAppKit/WebScriptObject+TDAdditions.h"; sourceTree = "<group>"; };
+		D3F0C83E11EAADB1002E2BA9 /* NSString+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+TDAdditions.m"; path = "src/NSString+TDAdditions.m"; sourceTree = "<group>"; };
+		D3F0C84111EAADC2002E2BA9 /* NSString+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+TDAdditions.h"; path = "include/TDAppKit/NSString+TDAdditions.h"; sourceTree = "<group>"; };
+		D3F677CE128E57E900FB4EB5 /* TDTabbedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabbedWindow.m; path = src/TDTabbedWindow.m; sourceTree = "<group>"; };
+		D3F677D1128E580300FB4EB5 /* TDTabbedWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabbedWindow.h; path = include/TDAppKit/TDTabbedWindow.h; sourceTree = "<group>"; };
+		D3F68AD11290E56F00FB4EB5 /* TDViewControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDViewControllerView.h; path = include/TDAppKit/TDViewControllerView.h; sourceTree = "<group>"; };
+		D3FD53E811E28174009CFDA3 /* NSEvent+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSEvent+TDAdditions.m"; path = "src/NSEvent+TDAdditions.m"; sourceTree = "<group>"; };
+		D3FD53EA11E2817E009CFDA3 /* NSEvent+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSEvent+TDAdditions.h"; path = "include/TDAppKit/NSEvent+TDAdditions.h"; sourceTree = "<group>"; };
+		D3FFC3961204B3B6008E4948 /* DOMElement+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DOMElement+TDAdditions.m"; path = "src/DOMElement+TDAdditions.m"; sourceTree = "<group>"; };
+		D3FFC39D1204B3D7008E4948 /* DOMElement+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DOMElement+TDAdditions.h"; path = "include/TDAppKit/DOMElement+TDAdditions.h"; sourceTree = "<group>"; };
+		D3FFC3A01204B3E7008E4948 /* DOMNodeList+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DOMNodeList+TDAdditions.m"; path = "src/DOMNodeList+TDAdditions.m"; sourceTree = "<group>"; };
+		D3FFC3A31204B3F6008E4948 /* DOMNodeList+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DOMNodeList+TDAdditions.h"; path = "include/TDAppKit/DOMNodeList+TDAdditions.h"; sourceTree = "<group>"; };
+		D3FFC3A61204B401008E4948 /* DOMHTMLCollection+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DOMHTMLCollection+TDAdditions.m"; path = "src/DOMHTMLCollection+TDAdditions.m"; sourceTree = "<group>"; };
+		D3FFC3A91204B40E008E4948 /* DOMHTMLCollection+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DOMHTMLCollection+TDAdditions.h"; path = "include/TDAppKit/DOMHTMLCollection+TDAdditions.h"; sourceTree = "<group>"; };
+		D3FFC3AD1204B43B008E4948 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		D3FFC48C1204B697008E4948 /* DOMHTMLOptionsCollection+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DOMHTMLOptionsCollection+TDAdditions.m"; path = "src/DOMHTMLOptionsCollection+TDAdditions.m"; sourceTree = "<group>"; };
+		D3FFC48F1204B6CA008E4948 /* DOMHTMLOptionsCollection+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DOMHTMLOptionsCollection+TDAdditions.h"; path = "include/TDAppKit/DOMHTMLOptionsCollection+TDAdditions.h"; sourceTree = "<group>"; };
+		D3FFC4B81204B8C1008E4948 /* WebView+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WebView+TDAdditions.m"; path = "src/WebView+TDAdditions.m"; sourceTree = "<group>"; };
+		D3FFC4C51204B902008E4948 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		D3FFC4CD1204B92C008E4948 /* WebView+TDAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WebView+TDAdditions.h"; path = "include/TDAppKit/WebView+TDAdditions.h"; sourceTree = "<group>"; };
+		D3FFC4D71204B9C8008E4948 /* TDJSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDJSUtils.h; path = include/TDAppKit/TDJSUtils.h; sourceTree = "<group>"; };
+		D3FFC4D91204B9CF008E4948 /* TDJSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDJSUtils.m; path = src/TDJSUtils.m; sourceTree = "<group>"; };
+		D7E07516183FC19C00B21413 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TDTabView.xib; sourceTree = "<group>"; };
+		D7E07519183FC1A200B21413 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TDRegisterWindow.xib; sourceTree = "<group>"; };
+		D7E0751B183FC1A200B21413 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TDTabsListView.xib; sourceTree = "<group>"; };
+		D7E0751F183FC1A800B21413 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DC2EF560486A6940098B216 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3FFC3B41204B444008E4948 /* WebKit.framework in Frameworks */,
+				D3EB212D11013C5300633715 /* QuartzCore.framework in Frameworks */,
+				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
+				D3FFC4F01204BA58008E4948 /* JavaScriptCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D31CBFE710EFB9630013347D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D31CC01810EFC64E0013347D /* TDAppKit.framework in Frameworks */,
+				D3EB212A11013C4E00633715 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D36E1F5911703E8300110DBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D30FD7F611C1B5E3005A2437 /* TDAppKit.framework in Frameworks */,
+				D3FFC3AE1204B43B008E4948 /* WebKit.framework in Frameworks */,
+				D3FFC4C61204B902008E4948 /* JavaScriptCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2EF5B0486A6940098B216 /* TDAppKit.framework */,
+				D31CBFE910EFB9630013347D /* ListViewDemoApp.app */,
+				D36E1F5B11703E8300110DBA /* FooBarDemoApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* TDAppKit */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AEFE84172EC02AAC07 /* TDAppKit Framework */,
+				D36E1F1E11703D5500110DBA /* ComboField Demo App */,
+				D31CBFF010EFB9710013347D /* ListView Demo App */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				089C1665FE841158C02AAC07 /* Resources */,
+				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = TDAppKit;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
+				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C1665FE841158C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3EAB01A128B459B006EDFF7 /* strings */,
+				D3EAB019128B4593006EDFF7 /* conf */,
+				D3EAB018128B4589006EDFF7 /* img */,
+				D3EAB017128B4582006EDFF7 /* nib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* TDAppKit Framework */ = {
+			isa = PBXGroup;
+			children = (
+				D31CC02310EFC6BB0013347D /* TDAppKit.h */,
+				D3EB2341110163F700633715 /* TDUtils.h */,
+				D3EB2342110163F700633715 /* TDUtils.m */,
+				D323C7D5180DDF000075FA56 /* MultiProcess */,
+				D3B10EFB17B03C7E00B9AAF1 /* TabBar */,
+				D38F3D21128B8B9400DC5FDB /* ViewController */,
+				D36A360F128B245200AB56C9 /* TabbedDocumentApp */,
+				D36E1E8C11702E2700110DBA /* ComboField */,
+				D366C1AD1128FEE900547FD6 /* AppleEvents */,
+				D3EB233A1101631300633715 /* AppKit Categories */,
+				D3FFC3941204B392008E4948 /* WebKit Categories */,
+				D318A04A10F856FA00B6AA21 /* SourceCodeTextView */,
+				D31CBFBA10EFB7E90013347D /* UberView */,
+				D31CBFA810EFB6F80013347D /* ListView */,
+				D36713A0136C577B0043A644 /* RegisterWindow */,
+				D33B19ED11168A2600F754AD /* ScrollView */,
+				D371244010F051D600D7107B /* Misc Views */,
+			);
+			name = "TDAppKit Framework";
+			sourceTree = "<group>";
+		};
+		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3EB212911013C4E00633715 /* QuartzCore.framework */,
+				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
+				D3FFC3AD1204B43B008E4948 /* WebKit.framework */,
+				D3FFC4C51204B902008E4948 /* JavaScriptCore.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0867D6A5FE840307C02AAC07 /* AppKit.framework */,
+				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCF5E0370ADEE00C91783 /* TDAppKit_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		D318A04A10F856FA00B6AA21 /* SourceCodeTextView */ = {
+			isa = PBXGroup;
+			children = (
+				D318A04C10F8570E00B6AA21 /* TDGutterView.h */,
+				D318A04D10F8570E00B6AA21 /* TDGutterView.m */,
+				D318A04E10F8570E00B6AA21 /* TDSourceCodeTextView.h */,
+				D318A04F10F8570E00B6AA21 /* TDSourceCodeTextView.m */,
+			);
+			name = SourceCodeTextView;
+			sourceTree = "<group>";
+		};
+		D31CBFA810EFB6F80013347D /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				D31CBFAE10EFB7010013347D /* TDListView.h */,
+				D31CBFAF10EFB7010013347D /* TDListView.m */,
+				D31CBFAA10EFB7010013347D /* TDListItem.h */,
+				D31CBFAB10EFB7010013347D /* TDListItem.m */,
+				D31CBFAC10EFB7010013347D /* TDListItemQueue.h */,
+				D31CBFAD10EFB7010013347D /* TDListItemQueue.m */,
+			);
+			name = ListView;
+			sourceTree = "<group>";
+		};
+		D31CBFBA10EFB7E90013347D /* UberView */ = {
+			isa = PBXGroup;
+			children = (
+				D31CBFC810EFB8180013347D /* TDUberView.h */,
+				D31CBFCC10EFB8260013347D /* TDUberView.m */,
+				D371244610F0520300D7107B /* TDUberViewSplitView.h */,
+				D31CBFC910EFB8180013347D /* TDUberViewSplitView.m */,
+			);
+			name = UberView;
+			sourceTree = "<group>";
+		};
+		D31CBFF010EFB9710013347D /* ListView Demo App */ = {
+			isa = PBXGroup;
+			children = (
+				D31CBFF210EFBA3C0013347D /* ListViewDemoAppDelegate.h */,
+				D31CBFF310EFBA3C0013347D /* ListViewDemoAppDelegate.m */,
+				D31CBFF810EFBD360013347D /* DemoListItemView.h */,
+				D31CBFF910EFBD360013347D /* DemoListItemView.m */,
+				D31CC05D10EFC80B0013347D /* main.m */,
+				D31CBFEB10EFB9630013347D /* ListViewDemoApp-Info.plist */,
+				D31CC0AF10EFC9750013347D /* ListViewDemoMainMenu.xib */,
+			);
+			name = "ListView Demo App";
+			sourceTree = "<group>";
+		};
+		D323C7D5180DDF000075FA56 /* MultiProcess */ = {
+			isa = PBXGroup;
+			children = (
+				D30713A217594AD5000B5C0F /* TDSemaphore.h */,
+				D30713A417594ADE000B5C0F /* TDSemaphore.m */,
+			);
+			name = MultiProcess;
+			sourceTree = "<group>";
+		};
+		D33B19ED11168A2600F754AD /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				D33B19F011168A3300F754AD /* TDScrollView.h */,
+				D33B19F411168A3A00F754AD /* TDScrollView.m */,
+				D33B19EF11168A3300F754AD /* TDScroller.h */,
+				D33B19F311168A3A00F754AD /* TDScroller.m */,
+				D3A356B811DFFB2A00EFEE29 /* TDClipView.h */,
+				D3A356B911DFFB2A00EFEE29 /* TDClipView.m */,
+			);
+			name = ScrollView;
+			sourceTree = "<group>";
+		};
+		D366C1AD1128FEE900547FD6 /* AppleEvents */ = {
+			isa = PBXGroup;
+			children = (
+				D366C1B51128FF2400547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.h */,
+				D366C1EB112902DC00547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.m */,
+				D366C1B61128FF2400547FD6 /* NSAppleEventDescriptor+TDAdditions.h */,
+				D366C1B91128FF3800547FD6 /* NSAppleEventDescriptor+TDAdditions.m */,
+				D366C1ED112902E400547FD6 /* NSURL+NDCarbonUtilities.h */,
+				D366C1EE112902E500547FD6 /* NSURL+NDCarbonUtilities.m */,
+			);
+			name = AppleEvents;
+			sourceTree = "<group>";
+		};
+		D36713A0136C577B0043A644 /* RegisterWindow */ = {
+			isa = PBXGroup;
+			children = (
+				D36713AD136C57BD0043A644 /* TDRegisterWindowController.h */,
+				D36713A9136C57AC0043A644 /* TDRegisterWindowController.m */,
+				D36713B5136C57E70043A644 /* TDRegisterWindow.h */,
+				D36713A8136C57AC0043A644 /* TDRegisterWindow.m */,
+				D3671598136C6E000043A644 /* TDDragDestinationImageView.h */,
+				D3671599136C6E000043A644 /* TDDragDestinationImageView.m */,
+			);
+			name = RegisterWindow;
+			sourceTree = "<group>";
+		};
+		D36A360F128B245200AB56C9 /* TabbedDocumentApp */ = {
+			isa = PBXGroup;
+			children = (
+				D36A361C128B24BD00AB56C9 /* TDTabbedDocumentController.h */,
+				D36A3611128B246B00AB56C9 /* TDTabbedDocumentController.m */,
+				D36A3618128B249100AB56C9 /* TDTabbedDocument.h */,
+				D36A361A128B24AB00AB56C9 /* TDTabbedDocument.m */,
+				D3F677D1128E580300FB4EB5 /* TDTabbedWindow.h */,
+				D3F677CE128E57E900FB4EB5 /* TDTabbedWindow.m */,
+				D36A3661128B27DC00AB56C9 /* TDTabbedWindowController.h */,
+				D36A3650128B27CA00AB56C9 /* TDTabbedWindowController.m */,
+				D36A3634128B261D00AB56C9 /* TDTabModel.h */,
+				D36A3623128B24F200AB56C9 /* TDTabModel.m */,
+				D36A3632128B260F00AB56C9 /* TDTabViewController.h */,
+				D36A362F128B260200AB56C9 /* TDTabViewController.m */,
+				D3EAB087128B5352006EDFF7 /* TDTabsListViewController.h */,
+				D3EAAFD6128B4137006EDFF7 /* TDTabsListViewController.m */,
+				D38ED9D815583D8E0004F9AE /* TDTabsListView.h */,
+				D38ED9D915583D8E0004F9AE /* TDTabsListView.m */,
+				D33767CF1833DA290054E464 /* TDTabListItem.h */,
+				D3EAAFE2128B42B3006EDFF7 /* TDTabListItem.m */,
+				D3740A0B155354500057FBEF /* Styles */,
+			);
+			name = TabbedDocumentApp;
+			sourceTree = "<group>";
+		};
+		D36E1E8C11702E2700110DBA /* ComboField */ = {
+			isa = PBXGroup;
+			children = (
+				D36E1EAB11702E6A00110DBA /* TDComboField.h */,
+				D36E1E9F11702E5500110DBA /* TDComboField.m */,
+				D3C913FF11BD9742002A95CF /* TDComboFieldCell.h */,
+				D3C9140011BD9742002A95CF /* TDComboFieldCell.m */,
+				D36E21C51170DA0700110DBA /* TDComboFieldTextView.h */,
+				D36E21C61170DA0700110DBA /* TDComboFieldTextView.m */,
+				D36E20BE1170D26E00110DBA /* TDComboFieldListView.h */,
+				D36E20BF1170D26E00110DBA /* TDComboFieldListView.m */,
+				D36E1ED711703A1000110DBA /* TDComboFieldListItem.h */,
+				D36E1ED811703A1000110DBA /* TDComboFieldListItem.m */,
+			);
+			name = ComboField;
+			sourceTree = "<group>";
+		};
+		D36E1F1E11703D5500110DBA /* ComboField Demo App */ = {
+			isa = PBXGroup;
+			children = (
+				D36E1F2311703D9D00110DBA /* ComboFieldDemoAppDelegate.h */,
+				D36E1F2411703D9D00110DBA /* ComboFieldDemoAppDelegate.m */,
+				D36E2FB311BDB247001CCE30 /* ComboFieldDemoWindow.h */,
+				D36E2FB411BDB247001CCE30 /* ComboFieldDemoWindow.m */,
+				D36E1F2911703DCB00110DBA /* main.m */,
+				D36E1F5D11703E8300110DBA /* ComboFieldDemoApp-Info.plist */,
+				D36E1F2611703DB700110DBA /* ComboFieldDemoMainMenu.xib */,
+				D371DB7111C19F8C00D5434C /* favicon.png */,
+			);
+			name = "ComboField Demo App";
+			sourceTree = "<group>";
+		};
+		D371244010F051D600D7107B /* Misc Views */ = {
+			isa = PBXGroup;
+			children = (
+				D30121CD16324BA8002E2EAB /* TDView.h */,
+				D30121CF16324BB1002E2EAB /* TDView.m */,
+				D371245210F0522700D7107B /* TDBar.h */,
+				D371244210F051E800D7107B /* TDBar.m */,
+				D3D804FC111F484D0025650C /* TDDraggableBar.h */,
+				D3D804FE111F485D0025650C /* TDDraggableBar.m */,
+				D371245310F0522700D7107B /* TDLine.h */,
+				D371244310F051E800D7107B /* TDLine.m */,
+				D3E13208110403D5007FE89E /* TDColorView.h */,
+				D3E13209110403D5007FE89E /* TDColorView.m */,
+				D36E20941170D0D400110DBA /* TDFlippedView.h */,
+				D36E20911170D0BF00110DBA /* TDFlippedView.m */,
+				D3106ECF126F421B00F9E37D /* TDFlippedColorView.h */,
+				D3106ECC126F41AC00F9E37D /* TDFlippedColorView.m */,
+				D392B08A1179594400823791 /* TDShadowView.h */,
+				D392B08B1179594400823791 /* TDShadowView.m */,
+				D38F4A16128CDB0800DC5FDB /* TDHintView.h */,
+				D38F4A13128CDAF800DC5FDB /* TDHintView.m */,
+				D300984A1656FC77009D25D8 /* TDStatusBarPopUpView.h */,
+				D30098471656FB7E009D25D8 /* TDStatusBarPopUpView.m */,
+				D37E6C8817821F21001BBF05 /* TDStatusBarButton.h */,
+				D37E6C8517821F13001BBF05 /* TDStatusBarButton.m */,
+				D37E6C8A17821F37001BBF05 /* TDStatusBarButtonCell.h */,
+				D32F3D98166020AD00EF8284 /* TDStatusBarButtonCell.m */,
+			);
+			name = "Misc Views";
+			sourceTree = "<group>";
+		};
+		D3740A0B155354500057FBEF /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D3740A061553544A0057FBEF /* TDTabListItemStyle.h */,
+				D3740A071553544A0057FBEF /* TDTabListItemStyle.m */,
+				D3740A0C155355DF0057FBEF /* TDTabListItemStyleBrowser.h */,
+				D3740A0D155355DF0057FBEF /* TDTabListItemStyleBrowser.m */,
+			);
+			name = Styles;
+			sourceTree = "<group>";
+		};
+		D38F3D21128B8B9400DC5FDB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D38F3D26128B8BD300DC5FDB /* TDViewController.h */,
+				D38F3D23128B8B9F00DC5FDB /* TDViewController.m */,
+				D3F68AD11290E56F00FB4EB5 /* TDViewControllerView.h */,
+				D30121C716324AEA002E2EAB /* TDViewControllerView.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		D3B10EFB17B03C7E00B9AAF1 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D3B10F0017B03C8900B9AAF1 /* TDTabBarController.h */,
+				D3B10F1617B03D4500B9AAF1 /* TDTabBarController.m */,
+				D3B10F2817B0449D00B9AAF1 /* TDTabBarControllerView.h */,
+				D3B10F2917B0449D00B9AAF1 /* TDTabBarControllerView.m */,
+				D3B10EFE17B03C8900B9AAF1 /* TDTabBar.h */,
+				D3B10F1517B03D4500B9AAF1 /* TDTabBar.m */,
+				D3B10EFC17B03C8900B9AAF1 /* TDBarItem.h */,
+				D3B10F1417B03D4400B9AAF1 /* TDBarItem.m */,
+				D3B10F0217B03C8900B9AAF1 /* TDTabBarItem.h */,
+				D3B10F1717B03D4500B9AAF1 /* TDTabBarItem.m */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
+		D3EAB017128B4582006EDFF7 /* nib */ = {
+			isa = PBXGroup;
+			children = (
+				D7E07518183FC1A200B21413 /* TDRegisterWindow.xib */,
+				D7E0751A183FC1A200B21413 /* TDTabsListView.xib */,
+				D7E07515183FC19C00B21413 /* TDTabView.xib */,
+			);
+			name = nib;
+			sourceTree = "<group>";
+		};
+		D3EAB018128B4589006EDFF7 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				D36714E9136C670F0043A644 /* register_drop.png */,
+				D38F3E8E128B9D8300DC5FDB /* close_button_hover.tif */,
+				D38F3E8F128B9D8300DC5FDB /* close_button_pressed.tif */,
+				D38F3E90128B9D8300DC5FDB /* close_button.tif */,
+				D38F3E91128B9D8300DC5FDB /* combo_field_progress_indicator.png */,
+				D3AB30BA16FA26D000AB7404 /* combo_field_progress_indicator_rounded.png */,
+				D38F3E92128B9D8300DC5FDB /* progress_indicator.png */,
+			);
+			name = img;
+			sourceTree = "<group>";
+		};
+		D3EAB019128B4593006EDFF7 /* conf */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2EF5A0486A6940098B216 /* Info.plist */,
+			);
+			name = conf;
+			sourceTree = "<group>";
+		};
+		D3EAB01A128B459B006EDFF7 /* strings */ = {
+			isa = PBXGroup;
+			children = (
+				D7E0751E183FC1A800B21413 /* InfoPlist.strings */,
+			);
+			name = strings;
+			sourceTree = "<group>";
+		};
+		D3EB233A1101631300633715 /* AppKit Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D3EB233C1101632B00633715 /* NSImage+TDAdditions.h */,
+				D3EB233D1101632B00633715 /* NSImage+TDAdditions.m */,
+				D3EB23CB110168AD00633715 /* NSBezierPath+TDAdditions.h */,
+				D3EB23C41101686900633715 /* NSBezierPath+TDAdditions.m */,
+				D3D80240111E2E890025650C /* NSURLRequest+TDAdditions.h */,
+				D3D8023C111E2D810025650C /* NSURLRequest+TDAdditions.m */,
+				D3FD53EA11E2817E009CFDA3 /* NSEvent+TDAdditions.h */,
+				D3FD53E811E28174009CFDA3 /* NSEvent+TDAdditions.m */,
+				D3F0C84111EAADC2002E2BA9 /* NSString+TDAdditions.h */,
+				D3F0C83E11EAADB1002E2BA9 /* NSString+TDAdditions.m */,
+				D38984D2124E53DB00EBEFBA /* NSArray+TDAdditions.h */,
+				D38984D7124E543E00EBEFBA /* NSArray+TDAdditions.m */,
+				D34A54D4120BBFD10059D145 /* NSDate+TDAdditions.h */,
+				D34A54D1120BBF590059D145 /* NSDate+TDAdditions.m */,
+			);
+			name = "AppKit Categories";
+			sourceTree = "<group>";
+		};
+		D3FFC3941204B392008E4948 /* WebKit Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D3FFC4D71204B9C8008E4948 /* TDJSUtils.h */,
+				D3FFC4D91204B9CF008E4948 /* TDJSUtils.m */,
+				D3F0B7811241155B0081838C /* DOMNode+TDAdditions.h */,
+				D3F0B783124115680081838C /* DOMNode+TDAdditions.m */,
+				D3FFC39D1204B3D7008E4948 /* DOMElement+TDAdditions.h */,
+				D3FFC3961204B3B6008E4948 /* DOMElement+TDAdditions.m */,
+				D3FFC3A31204B3F6008E4948 /* DOMNodeList+TDAdditions.h */,
+				D3FFC3A01204B3E7008E4948 /* DOMNodeList+TDAdditions.m */,
+				D3FFC3A91204B40E008E4948 /* DOMHTMLCollection+TDAdditions.h */,
+				D3FFC3A61204B401008E4948 /* DOMHTMLCollection+TDAdditions.m */,
+				D3FFC48F1204B6CA008E4948 /* DOMHTMLOptionsCollection+TDAdditions.h */,
+				D3FFC48C1204B697008E4948 /* DOMHTMLOptionsCollection+TDAdditions.m */,
+				D3FFC4CD1204B92C008E4948 /* WebView+TDAdditions.h */,
+				D3FFC4B81204B8C1008E4948 /* WebView+TDAdditions.m */,
+				D3F0B981124273BC0081838C /* WebScriptObject+TDAdditions.h */,
+				D3F0B97D124273980081838C /* WebScriptObject+TDAdditions.m */,
+			);
+			name = "WebKit Categories";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8DC2EF500486A6940098B216 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D31CC02410EFC6BB0013347D /* TDAppKit.h in Headers */,
+				D31CBFCA10EFB8180013347D /* TDUberView.h in Headers */,
+				D31CBFB410EFB7010013347D /* TDListView.h in Headers */,
+				D31CBFB010EFB7010013347D /* TDListItem.h in Headers */,
+				D371244710F0520300D7107B /* TDUberViewSplitView.h in Headers */,
+				D371245410F0522700D7107B /* TDBar.h in Headers */,
+				D371245510F0522700D7107B /* TDLine.h in Headers */,
+				D318A05010F8570E00B6AA21 /* TDGutterView.h in Headers */,
+				D318A05210F8570E00B6AA21 /* TDSourceCodeTextView.h in Headers */,
+				D3EB233E1101632B00633715 /* NSImage+TDAdditions.h in Headers */,
+				D3EB2343110163F700633715 /* TDUtils.h in Headers */,
+				D3EB23CC110168AD00633715 /* NSBezierPath+TDAdditions.h in Headers */,
+				D3E1320A110403D5007FE89E /* TDColorView.h in Headers */,
+				D33B19F111168A3300F754AD /* TDScroller.h in Headers */,
+				D33B19F211168A3300F754AD /* TDScrollView.h in Headers */,
+				D3D80241111E2E890025650C /* NSURLRequest+TDAdditions.h in Headers */,
+				D3D804FD111F484D0025650C /* TDDraggableBar.h in Headers */,
+				D366C1B71128FF2400547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.h in Headers */,
+				D366C1B81128FF2400547FD6 /* NSAppleEventDescriptor+TDAdditions.h in Headers */,
+				D366C1EF112902E500547FD6 /* NSURL+NDCarbonUtilities.h in Headers */,
+				D33767D01833DA290054E464 /* TDTabListItem.h in Headers */,
+				D36E1EAC11702E6A00110DBA /* TDComboField.h in Headers */,
+				D36E1ED911703A1000110DBA /* TDComboFieldListItem.h in Headers */,
+				D36E20951170D0D400110DBA /* TDFlippedView.h in Headers */,
+				D36E20C01170D26E00110DBA /* TDComboFieldListView.h in Headers */,
+				D36E21C71170DA0700110DBA /* TDComboFieldTextView.h in Headers */,
+				D392B08C1179594400823791 /* TDShadowView.h in Headers */,
+				D3C9140111BD9742002A95CF /* TDComboFieldCell.h in Headers */,
+				D3A356BA11DFFB2A00EFEE29 /* TDClipView.h in Headers */,
+				D3FD53EB11E2817E009CFDA3 /* NSEvent+TDAdditions.h in Headers */,
+				D3F0C84211EAADC2002E2BA9 /* NSString+TDAdditions.h in Headers */,
+				D3FFC39E1204B3D7008E4948 /* DOMElement+TDAdditions.h in Headers */,
+				D3FFC3A41204B3F6008E4948 /* DOMNodeList+TDAdditions.h in Headers */,
+				D3FFC3AA1204B40E008E4948 /* DOMHTMLCollection+TDAdditions.h in Headers */,
+				D3FFC4901204B6CA008E4948 /* DOMHTMLOptionsCollection+TDAdditions.h in Headers */,
+				D3FFC4CE1204B92C008E4948 /* WebView+TDAdditions.h in Headers */,
+				D3FFC4D81204B9C8008E4948 /* TDJSUtils.h in Headers */,
+				D34A54D5120BBFD10059D145 /* NSDate+TDAdditions.h in Headers */,
+				D3F0B7821241155B0081838C /* DOMNode+TDAdditions.h in Headers */,
+				D3F0B982124273BC0081838C /* WebScriptObject+TDAdditions.h in Headers */,
+				D38984D3124E53DB00EBEFBA /* NSArray+TDAdditions.h in Headers */,
+				D3106ED0126F421B00F9E37D /* TDFlippedColorView.h in Headers */,
+				D36A3619128B249100AB56C9 /* TDTabbedDocument.h in Headers */,
+				D36A361D128B24BD00AB56C9 /* TDTabbedDocumentController.h in Headers */,
+				D36A3633128B260F00AB56C9 /* TDTabViewController.h in Headers */,
+				D36A3635128B261D00AB56C9 /* TDTabModel.h in Headers */,
+				D36A3662128B27DC00AB56C9 /* TDTabbedWindowController.h in Headers */,
+				D3EAB088128B5352006EDFF7 /* TDTabsListViewController.h in Headers */,
+				D38F3D27128B8BD300DC5FDB /* TDViewController.h in Headers */,
+				D38F4A17128CDB0800DC5FDB /* TDHintView.h in Headers */,
+				D3F677D2128E580300FB4EB5 /* TDTabbedWindow.h in Headers */,
+				D3F68AD21290E56F00FB4EB5 /* TDViewControllerView.h in Headers */,
+				D36713AF136C57BD0043A644 /* TDRegisterWindowController.h in Headers */,
+				D36713B6136C57E70043A644 /* TDRegisterWindow.h in Headers */,
+				D367159A136C6E000043A644 /* TDDragDestinationImageView.h in Headers */,
+				D3740A081553544A0057FBEF /* TDTabListItemStyle.h in Headers */,
+				D3740A0E155355DF0057FBEF /* TDTabListItemStyleBrowser.h in Headers */,
+				D38ED9DA15583D8E0004F9AE /* TDTabsListView.h in Headers */,
+				D30121CE16324BA9002E2EAB /* TDView.h in Headers */,
+				D300984B1656FC77009D25D8 /* TDStatusBarPopUpView.h in Headers */,
+				D30713A317594AD5000B5C0F /* TDSemaphore.h in Headers */,
+				D37E6C8917821F21001BBF05 /* TDStatusBarButton.h in Headers */,
+				D37E6C8B17821F37001BBF05 /* TDStatusBarButtonCell.h in Headers */,
+				D3B10F0817B03C8900B9AAF1 /* TDBarItem.h in Headers */,
+				D3B10F0A17B03C8900B9AAF1 /* TDTabBar.h in Headers */,
+				D3B10F0C17B03C8900B9AAF1 /* TDTabBarController.h in Headers */,
+				D3B10F0E17B03C8900B9AAF1 /* TDTabBarItem.h in Headers */,
+				D3B10F2A17B0449D00B9AAF1 /* TDTabBarControllerView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8DC2EF4F0486A6940098B216 /* TDAppKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "TDAppKit" */;
+			buildPhases = (
+				8DC2EF500486A6940098B216 /* Headers */,
+				8DC2EF520486A6940098B216 /* Resources */,
+				8DC2EF540486A6940098B216 /* Sources */,
+				8DC2EF560486A6940098B216 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TDAppKit;
+			productInstallPath = "$(HOME)/Library/Frameworks";
+			productName = TDAppKit;
+			productReference = 8DC2EF5B0486A6940098B216 /* TDAppKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D31CBFE810EFB9630013347D /* ListViewDemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D31CBFEE10EFB9640013347D /* Build configuration list for PBXNativeTarget "ListViewDemoApp" */;
+			buildPhases = (
+				D31CBFE510EFB9630013347D /* Resources */,
+				D31CBFE610EFB9630013347D /* Sources */,
+				D31CBFE710EFB9630013347D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D31CC01710EFC6490013347D /* PBXTargetDependency */,
+			);
+			name = ListViewDemoApp;
+			productName = ListViewDemoApp;
+			productReference = D31CBFE910EFB9630013347D /* ListViewDemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D36E1F5A11703E8300110DBA /* ComboFieldDemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D36E1F6011703E8400110DBA /* Build configuration list for PBXNativeTarget "ComboFieldDemoApp" */;
+			buildPhases = (
+				D36E1F5811703E8300110DBA /* Sources */,
+				D36E1F5911703E8300110DBA /* Frameworks */,
+				D36E1F5711703E8300110DBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D36E1F6211703E8F00110DBA /* PBXTargetDependency */,
+			);
+			name = ComboFieldDemoApp;
+			productName = FooBarDemoApp;
+			productReference = D36E1F5B11703E8300110DBA /* FooBarDemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TD;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Todd Ditchendorf";
+				TargetAttributes = {
+					8DC2EF4F0486A6940098B216 = {
+						DevelopmentTeam = 9867TNT66D;
+					};
+				};
+			};
+			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "TDAppKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* TDAppKit */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DC2EF4F0486A6940098B216 /* TDAppKit */,
+				D31CBFE810EFB9630013347D /* ListViewDemoApp */,
+				D36E1F5A11703E8300110DBA /* ComboFieldDemoApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DC2EF520486A6940098B216 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7E07520183FC1A800B21413 /* InfoPlist.strings in Resources */,
+				D7E0751D183FC1A200B21413 /* TDTabsListView.xib in Resources */,
+				D7E07517183FC19C00B21413 /* TDTabView.xib in Resources */,
+				D7E0751C183FC1A200B21413 /* TDRegisterWindow.xib in Resources */,
+				D36714EA136C670F0043A644 /* register_drop.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D31CBFE510EFB9630013347D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D31CC0B010EFC9750013347D /* ListViewDemoMainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D36E1F5711703E8300110DBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D36E1F7111703EBD00110DBA /* ComboFieldDemoMainMenu.xib in Resources */,
+				D371DB7211C19F8C00D5434C /* favicon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DC2EF540486A6940098B216 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D31CBFCE10EFB8260013347D /* TDUberView.m in Sources */,
+				D31CBFB510EFB7010013347D /* TDListView.m in Sources */,
+				D31CBFB110EFB7010013347D /* TDListItem.m in Sources */,
+				D31CBFB310EFB7010013347D /* TDListItemQueue.m in Sources */,
+				D371244810F0520800D7107B /* TDBar.m in Sources */,
+				D371244910F0520D00D7107B /* TDLine.m in Sources */,
+				D371246110F0526B00D7107B /* TDUberViewSplitView.m in Sources */,
+				D318A05110F8570E00B6AA21 /* TDGutterView.m in Sources */,
+				D318A05310F8570E00B6AA21 /* TDSourceCodeTextView.m in Sources */,
+				D3EB233F1101632B00633715 /* NSImage+TDAdditions.m in Sources */,
+				D3EB2344110163F700633715 /* TDUtils.m in Sources */,
+				D3EB23C61101686900633715 /* NSBezierPath+TDAdditions.m in Sources */,
+				D3E1320B110403D5007FE89E /* TDColorView.m in Sources */,
+				D33B19F511168A3A00F754AD /* TDScroller.m in Sources */,
+				D33B19F611168A3A00F754AD /* TDScrollView.m in Sources */,
+				D3D8023E111E2D810025650C /* NSURLRequest+TDAdditions.m in Sources */,
+				D3D804FF111F485D0025650C /* TDDraggableBar.m in Sources */,
+				D366C1BA1128FF3800547FD6 /* NSAppleEventDescriptor+TDAdditions.m in Sources */,
+				D366C1EC112902DC00547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.m in Sources */,
+				D366C1F0112902E500547FD6 /* NSURL+NDCarbonUtilities.m in Sources */,
+				D36E1EA111702E5500110DBA /* TDComboField.m in Sources */,
+				D36E1EDA11703A1000110DBA /* TDComboFieldListItem.m in Sources */,
+				D36E20931170D0BF00110DBA /* TDFlippedView.m in Sources */,
+				D36E20C11170D26E00110DBA /* TDComboFieldListView.m in Sources */,
+				D36E21C81170DA0700110DBA /* TDComboFieldTextView.m in Sources */,
+				D392B08D1179594400823791 /* TDShadowView.m in Sources */,
+				D3C9140211BD9742002A95CF /* TDComboFieldCell.m in Sources */,
+				D3A356BB11DFFB2A00EFEE29 /* TDClipView.m in Sources */,
+				D3FD53E911E28174009CFDA3 /* NSEvent+TDAdditions.m in Sources */,
+				D3F0C84011EAADB1002E2BA9 /* NSString+TDAdditions.m in Sources */,
+				D3FFC3981204B3B6008E4948 /* DOMElement+TDAdditions.m in Sources */,
+				D3FFC3A21204B3E7008E4948 /* DOMNodeList+TDAdditions.m in Sources */,
+				D3FFC3A81204B401008E4948 /* DOMHTMLCollection+TDAdditions.m in Sources */,
+				D3FFC48E1204B697008E4948 /* DOMHTMLOptionsCollection+TDAdditions.m in Sources */,
+				D3FFC4BA1204B8C1008E4948 /* WebView+TDAdditions.m in Sources */,
+				D3FFC4DA1204B9CF008E4948 /* TDJSUtils.m in Sources */,
+				D34A54D3120BBF590059D145 /* NSDate+TDAdditions.m in Sources */,
+				D3F0B784124115680081838C /* DOMNode+TDAdditions.m in Sources */,
+				D3F0B97F124273980081838C /* WebScriptObject+TDAdditions.m in Sources */,
+				D38984D8124E543E00EBEFBA /* NSArray+TDAdditions.m in Sources */,
+				D3106ECE126F41AC00F9E37D /* TDFlippedColorView.m in Sources */,
+				D36A3613128B246B00AB56C9 /* TDTabbedDocumentController.m in Sources */,
+				D36A361B128B24AB00AB56C9 /* TDTabbedDocument.m in Sources */,
+				D36A3625128B24F200AB56C9 /* TDTabModel.m in Sources */,
+				D36A3631128B260200AB56C9 /* TDTabViewController.m in Sources */,
+				D36A3652128B27CA00AB56C9 /* TDTabbedWindowController.m in Sources */,
+				D3EAAFD8128B4137006EDFF7 /* TDTabsListViewController.m in Sources */,
+				D3EAAFE4128B42B3006EDFF7 /* TDTabListItem.m in Sources */,
+				D38F3D25128B8B9F00DC5FDB /* TDViewController.m in Sources */,
+				D38F4A15128CDAF800DC5FDB /* TDHintView.m in Sources */,
+				D3F677D0128E57E900FB4EB5 /* TDTabbedWindow.m in Sources */,
+				D36713AA136C57AC0043A644 /* TDRegisterWindow.m in Sources */,
+				D36713AB136C57AC0043A644 /* TDRegisterWindowController.m in Sources */,
+				D367159B136C6E000043A644 /* TDDragDestinationImageView.m in Sources */,
+				D3740A091553544A0057FBEF /* TDTabListItemStyle.m in Sources */,
+				D3740A0F155355DF0057FBEF /* TDTabListItemStyleBrowser.m in Sources */,
+				D38ED9DB15583D8E0004F9AE /* TDTabsListView.m in Sources */,
+				D30121C816324AEA002E2EAB /* TDViewControllerView.m in Sources */,
+				D30121D016324BB1002E2EAB /* TDView.m in Sources */,
+				D30098491656FB7E009D25D8 /* TDStatusBarPopUpView.m in Sources */,
+				D32F3D9A166020AD00EF8284 /* TDStatusBarButtonCell.m in Sources */,
+				D30713A517594ADE000B5C0F /* TDSemaphore.m in Sources */,
+				D37E6C8717821F13001BBF05 /* TDStatusBarButton.m in Sources */,
+				D3B10F1C17B03D4500B9AAF1 /* TDBarItem.m in Sources */,
+				D3B10F1D17B03D4500B9AAF1 /* TDTabBar.m in Sources */,
+				D3B10F1E17B03D4500B9AAF1 /* TDTabBarController.m in Sources */,
+				D3B10F1F17B03D4500B9AAF1 /* TDTabBarItem.m in Sources */,
+				D3B10F2B17B0449D00B9AAF1 /* TDTabBarControllerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D31CBFE610EFB9630013347D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D31CBFF410EFBA3C0013347D /* ListViewDemoAppDelegate.m in Sources */,
+				D31CBFFA10EFBD360013347D /* DemoListItemView.m in Sources */,
+				D31CC05E10EFC80B0013347D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D36E1F5811703E8300110DBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D36E1F6E11703EAD00110DBA /* ComboFieldDemoAppDelegate.m in Sources */,
+				D36E1F6F11703EB500110DBA /* main.m in Sources */,
+				D36E2FB511BDB247001CCE30 /* ComboFieldDemoWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D31CC01710EFC6490013347D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* TDAppKit */;
+			targetProxy = D31CC01610EFC6490013347D /* PBXContainerItemProxy */;
+		};
+		D36E1F6211703E8F00110DBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* TDAppKit */;
+			targetProxy = D36E1F6111703E8F00110DBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D7E07515183FC19C00B21413 /* TDTabView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7E07516183FC19C00B21413 /* en */,
+			);
+			name = TDTabView.xib;
+			sourceTree = "<group>";
+		};
+		D7E07518183FC1A200B21413 /* TDRegisterWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7E07519183FC1A200B21413 /* en */,
+			);
+			name = TDRegisterWindow.xib;
+			sourceTree = "<group>";
+		};
+		D7E0751A183FC1A200B21413 /* TDTabsListView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7E0751B183FC1A200B21413 /* en */,
+			);
+			name = TDTabsListView.xib;
+			sourceTree = "<group>";
+		};
+		D7E0751E183FC1A800B21413 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7E0751F183FC1A800B21413 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB91AE08733DA50010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath/";
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/TDAppKit_Prefix.pch;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				INFOPLIST_FILE = res/conf/Info.plist;
+				INSTALL_PATH = "build/$(CONFIGURATION)";
+				PRODUCT_NAME = TDAppKit;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		1DEB91AF08733DA50010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath/";
+				FRAMEWORK_VERSION = A;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = src/TDAppKit_Prefix.pch;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				INFOPLIST_FILE = res/conf/Info.plist;
+				INSTALL_PATH = "build/$(CONFIGURATION)";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = TDAppKit;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		1DEB91B208733DA50010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = TDDEBUG;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1DEB91B308733DA50010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NS_BUILD_32_LIKE_64,
+					NS_BLOCK_ASSERTIONS,
+					NDEBUG,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D31CBFEC10EFB9640013347D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/include";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				INFOPLIST_FILE = "demo/listview/ListViewDemoApp-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = ListViewDemoApp;
+			};
+			name = Debug;
+		};
+		D31CBFED10EFB9640013347D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/include";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				INFOPLIST_FILE = "demo/listview/ListViewDemoApp-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = ListViewDemoApp;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		D36E1F5E11703E8400110DBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "demo/combofield/ComboFieldDemoApp-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = FooBarDemoApp;
+			};
+			name = Debug;
+		};
+		D36E1F5F11703E8400110DBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INFOPLIST_FILE = "demo/combofield/ComboFieldDemoApp-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = FooBarDemoApp;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "TDAppKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91AE08733DA50010E9CD /* Debug */,
+				1DEB91AF08733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "TDAppKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91B208733DA50010E9CD /* Debug */,
+				1DEB91B308733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D31CBFEE10EFB9640013347D /* Build configuration list for PBXNativeTarget "ListViewDemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D31CBFEC10EFB9640013347D /* Debug */,
+				D31CBFED10EFB9640013347D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D36E1F6011703E8400110DBA /* Build configuration list for PBXNativeTarget "ComboFieldDemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D36E1F5E11703E8400110DBA /* Debug */,
+				D36E1F5F11703E8400110DBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
