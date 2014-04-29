@@ -58,7 +58,7 @@ static NSDictionary *sHintAttrs = nil;
 
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<%@ %p '%@'>", [self class], self, hintText];
+    return [NSString stringWithFormat:@"<%@ %p '%@'>", [self class], self, _hintText];
 }
 
 
@@ -66,12 +66,12 @@ static NSDictionary *sHintAttrs = nil;
     CGFloat w = bounds.size.width - HINT_MARGIN_X * 2 - HINT_PADDING_X * 2;
     w = w < HINT_MIN_WIDTH ? HINT_MIN_WIDTH : w;
     
-    NSRect strRect = [hintText boundingRectWithSize:NSMakeSize(w, TD_BIG_FLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:sHintAttrs];
+    NSRect strRect = [_hintText boundingRectWithSize:NSMakeSize(w, TD_BIG_FLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:sHintAttrs];
 
     CGFloat h = strRect.size.height;
     CGFloat x = HINT_MARGIN_X + HINT_PADDING_X;
     CGFloat y = bounds.size.height / 2 - strRect.size.height / 2 + HINT_VERT_FUDGE;
-    y += hintTextOffsetY;
+    y += _hintTextOffsetY;
 
     NSRect r = NSMakeRect(x, y, w, h);
     return r;
@@ -84,7 +84,7 @@ static NSDictionary *sHintAttrs = nil;
     [self.color setFill];
     NSRectFill(bounds);
     
-    BOOL showHint = ([hintText length]);
+    BOOL showHint = ([_hintText length]);
     if (showHint) {
         NSRect hintTextRect = [self hintTextRectForBounds:bounds];
         
@@ -109,10 +109,8 @@ static NSDictionary *sHintAttrs = nil;
         CGContextFillPath(ctx);
         
         [[NSColor whiteColor] set];
-        [hintText drawInRect:hintTextRect withAttributes:sHintAttrs];
+        [_hintText drawInRect:hintTextRect withAttributes:sHintAttrs];
     }
 }
 
-@synthesize hintText;
-@synthesize hintTextOffsetY;
 @end

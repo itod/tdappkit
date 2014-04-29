@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TDDragDestinationImageView : NSImageView {
-
-}
+@interface TDDragDestinationImageView : NSImageView
 
 @end

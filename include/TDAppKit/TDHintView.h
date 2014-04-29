@@ -8,10 +8,7 @@
 
 #import <TDAppKit/TDColorView.h>
 
-@interface TDHintView : TDColorView {
-    NSString *hintText;
-    CGFloat hintTextOffsetY;
-}
+@interface TDHintView : TDColorView
 
 - (NSRect)hintTextRectForBounds:(NSRect)bounds;
 

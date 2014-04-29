@@ -10,12 +10,7 @@
 
 @class TDHintView;
 
-@interface TDRegisterWindowController : NSWindowController {
-    TDHintView *hintView;
-    NSImageView *imageView;
-    NSString *appName;
-    NSArray *licenseFileExtensions;
-}
+@interface TDRegisterWindowController : NSWindowController
 
 - (id)initWithAppName:(NSString *)s licenseFileExtension:(NSString *)ext;
 

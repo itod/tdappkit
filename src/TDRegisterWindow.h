@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TDRegisterWindow : NSWindow {
-
-}
+@interface TDRegisterWindow : NSWindow
 
 @end
