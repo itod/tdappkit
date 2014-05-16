@@ -30,19 +30,19 @@ static NSDictionary *sHintAttrs = nil;
         //[[NSColor colorWithDeviceWhite:.87 alpha:1] set];
         //[[NSColor colorWithDeviceRed:230.0/255.0 green:236.0/255.0 blue:242.0/255.0 alpha:1] set];
         
-        sHintBgColor = [[NSColor colorWithDeviceWhite:.68 alpha:1] retain];
+        sHintBgColor = [[NSColor colorWithDeviceWhite:0.68 alpha:1.0] retain];
         
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
         [paraStyle setAlignment:NSCenterTextAlignment];
         [paraStyle setLineBreakMode:NSLineBreakByWordWrapping];
         
         NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
-        [shadow setShadowColor:[NSColor colorWithDeviceWhite:0 alpha:.2]];
-        [shadow setShadowOffset:NSMakeSize(0, -1)];
+        [shadow setShadowColor:[NSColor colorWithDeviceWhite:0.0 alpha:0.2]];
+        [shadow setShadowOffset:NSMakeSize(0.0, -1.0)];
         [shadow setShadowBlurRadius:1];
         
         sHintAttrs = [[NSDictionary alloc] initWithObjectsAndKeys:
-                      [NSFont boldSystemFontOfSize:12], NSFontAttributeName,
+                      [NSFont boldSystemFontOfSize:12.0], NSFontAttributeName,
                       [NSColor whiteColor], NSForegroundColorAttributeName,
                       shadow, NSShadowAttributeName,
                       paraStyle, NSParagraphStyleAttributeName,
