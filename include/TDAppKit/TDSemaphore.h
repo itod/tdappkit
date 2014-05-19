@@ -15,6 +15,7 @@
 
 @interface TDSemaphore : NSObject <TDLocking>
 
++ (instancetype)semaphoreWithValue:(NSInteger)value;
 - (instancetype)initWithValue:(NSInteger)value;
 
 - (BOOL)attempt; // returns success immediately

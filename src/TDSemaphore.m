@@ -26,6 +26,11 @@
 
 @implementation TDSemaphore
 
++ (instancetype)semaphoreWithValue:(NSInteger)value {
+    return [[[self alloc] init] autorelease];
+}
+
+
 - (instancetype)initWithValue:(NSInteger)value {
     self = [super init];
     if (self) {
