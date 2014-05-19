@@ -27,7 +27,7 @@
 @implementation TDSemaphore
 
 + (instancetype)semaphoreWithValue:(NSInteger)value {
-    return [[[self alloc] init] autorelease];
+    return [[[self alloc] initWithValue:value] autorelease];
 }
 
 
