@@ -39,7 +39,7 @@ static NSDictionary *sHintAttrs = nil;
         NSShadow *shadow = [[[NSShadow alloc] init] autorelease];
         [shadow setShadowColor:[NSColor colorWithDeviceWhite:0.0 alpha:0.2]];
         [shadow setShadowOffset:NSMakeSize(0.0, -1.0)];
-        [shadow setShadowBlurRadius:1];
+        [shadow setShadowBlurRadius:1.0];
         
         sHintAttrs = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [NSFont boldSystemFontOfSize:12.0], NSFontAttributeName,
