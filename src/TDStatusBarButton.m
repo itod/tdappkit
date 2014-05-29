@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Todd Ditchendorf. All rights reserved.
 //
 
-#import "TDStatusBarButton.h"
+#import <TDAppKit/TDStatusBarButton.h>
 #import <TDAppKit/TDStatusBarPopUpView.h>
 #import <TDAppKit/TDUtils.h>
 
