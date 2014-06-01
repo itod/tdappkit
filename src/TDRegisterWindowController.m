@@ -8,6 +8,7 @@
 
 #import <TDAppKit/TDRegisterWindowController.h>
 #import <TDAppKit/TDHintButton.h>
+#import <TDAppKit/TDUtils.h>
 
 @interface NSObject ()
 - (BOOL)registerWithLicenseAtPath:(NSString *)path;
@@ -16,7 +17,7 @@
 @interface TDRegisterWindowController ()
 - (void)setUpTitle;
 - (void)setUpHint;
-- (void)handleDroppedFilenames:(NSArray *)filenames;
+- (void)handleDroppedFilePaths:(NSArray *)filePaths;
 @end
 
 @implementation TDRegisterWindowController
@@ -60,18 +61,42 @@
 
 
 #pragma mark -
+#pragma mark
+
+- (IBAction)browse:(id)sender {
+    TDAssertMainThread();
+    TDAssert([_licenseFileExtensions count]);
+    
+	NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
+    [panel setAllowedFileTypes:_licenseFileExtensions];
+    [panel setCanChooseDirectories:NO];
+    [panel setCanChooseFiles:YES];
+    [panel setAllowsMultipleSelection:NO];
+    
+    [panel beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result) {
+        if (NSOKButton == result) {
+            NSString *filePath = [[panel URL] relativePath];
+            
+            [self handleDroppedFilePaths:@[filePath]];
+        }
+    }];
+}
+
+
+#pragma mark -
 #pragma mark NSDragginDestination
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)dragInfo {
-    TDAssert(_licenseFileExtensions);
+    TDAssert([_licenseFileExtensions count]);
     
     NSPasteboard *pboard = [dragInfo draggingPasteboard];
     NSDragOperation mask = [dragInfo draggingSourceOperationMask];
     
     if ([[pboard types] containsObject:NSFilenamesPboardType]) {
         if (mask & NSDragOperationGeneric) {
-            NSArray *filenames = [pboard propertyListForType:NSFilenamesPboardType];
-            if ([filenames count] && [_licenseFileExtensions containsObject:[[filenames objectAtIndex:0] pathExtension]]) {
+            NSArray *filePaths = [pboard propertyListForType:NSFilenamesPboardType];
+            if ([filePaths count] && [_licenseFileExtensions containsObject:[filePaths[0] pathExtension]]) {
                 return NSDragOperationCopy;
             }
         }
@@ -85,8 +110,8 @@
     NSPasteboard *pboard = [dragInfo draggingPasteboard];
     
     if ([[pboard types] containsObject:NSFilenamesPboardType]) {
-        NSArray *filenames = [pboard propertyListForType:NSFilenamesPboardType];
-        [self performSelector:@selector(handleDroppedFilenames:) withObject:filenames afterDelay:0.0];
+        NSArray *filePaths = [pboard propertyListForType:NSFilenamesPboardType];
+        [self handleDroppedFilePaths:filePaths];
         return YES;
     } else {
         return NO;
@@ -114,16 +139,20 @@
 }
 
 
-- (void)handleDroppedFilenames:(NSArray *)filenames {
-    if ([filenames count]) {
-        NSString *filename = [filenames objectAtIndex:0];
+- (void)handleDroppedFilePaths:(NSArray *)filePaths {
+    if (![filePaths count]) return;
+        
+    TDPerformOnMainThreadAfterDelay(0.0, ^{
+        NSString *filename = filePaths[0];
         if ([_licenseFileExtensions containsObject:[filename pathExtension]]) {
             id appDelegate = [NSApp delegate];
             if (appDelegate && [appDelegate respondsToSelector:@selector(registerWithLicenseAtPath:)]) {
                 [appDelegate registerWithLicenseAtPath:filename];
+            } else {
+                TDAssert(0);
             }
         }
-    }
+    });
 }
 
 @end

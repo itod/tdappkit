@@ -29,6 +29,9 @@
                             <customView id="4" customClass="TDHintButton">
                                 <rect key="frame" x="60" y="41" width="220" height="217"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <action selector="browse:" target="-2" id="XRt-Y6-lX1"/>
+                                </connections>
                             </customView>
                         </subviews>
                     </customView>

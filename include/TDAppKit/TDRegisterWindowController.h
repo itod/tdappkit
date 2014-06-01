@@ -14,6 +14,8 @@
 
 - (id)initWithAppName:(NSString *)s licenseFileExtension:(NSString *)ext;
 
+- (IBAction)browse:(id)sender;
+
 @property (nonatomic, retain) IBOutlet TDHintButton *hintButton;
 @property (nonatomic, retain) IBOutlet NSImageView *imageView;
 
