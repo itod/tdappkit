@@ -116,6 +116,10 @@
 		D3B10F1F17B03D4500B9AAF1 /* TDTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B10F1717B03D4500B9AAF1 /* TDTabBarItem.m */; };
 		D3B10F2A17B0449D00B9AAF1 /* TDTabBarControllerView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B10F2817B0449D00B9AAF1 /* TDTabBarControllerView.h */; };
 		D3B10F2B17B0449D00B9AAF1 /* TDTabBarControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B10F2917B0449D00B9AAF1 /* TDTabBarControllerView.m */; };
+		D3C2213A193BB45E005EF4B2 /* TDDropTargetView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C22138193BB45E005EF4B2 /* TDDropTargetView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3C2213B193BB45E005EF4B2 /* TDHintButton.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C22139193BB45E005EF4B2 /* TDHintButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D3C2213D193BB479005EF4B2 /* TDDropTargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C2213C193BB479005EF4B2 /* TDDropTargetView.m */; };
+		D3C2213F193BB47F005EF4B2 /* TDHintButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C2213E193BB47F005EF4B2 /* TDHintButton.m */; };
 		D3C9140111BD9742002A95CF /* TDComboFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = D3C913FF11BD9742002A95CF /* TDComboFieldCell.h */; };
 		D3C9140211BD9742002A95CF /* TDComboFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C9140011BD9742002A95CF /* TDComboFieldCell.m */; };
 		D3D8023E111E2D810025650C /* NSURLRequest+TDAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D8023C111E2D810025650C /* NSURLRequest+TDAdditions.m */; };
@@ -313,6 +317,10 @@
 		D3B10F1717B03D4500B9AAF1 /* TDTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabBarItem.m; path = src/TDTabBarItem.m; sourceTree = "<group>"; };
 		D3B10F2817B0449D00B9AAF1 /* TDTabBarControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabBarControllerView.h; path = src/TDTabBarControllerView.h; sourceTree = "<group>"; };
 		D3B10F2917B0449D00B9AAF1 /* TDTabBarControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabBarControllerView.m; path = src/TDTabBarControllerView.m; sourceTree = "<group>"; };
+		D3C22138193BB45E005EF4B2 /* TDDropTargetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDDropTargetView.h; path = include/TDAppKit/TDDropTargetView.h; sourceTree = "<group>"; };
+		D3C22139193BB45E005EF4B2 /* TDHintButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDHintButton.h; path = include/TDAppKit/TDHintButton.h; sourceTree = "<group>"; };
+		D3C2213C193BB479005EF4B2 /* TDDropTargetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDDropTargetView.m; path = src/TDDropTargetView.m; sourceTree = "<group>"; };
+		D3C2213E193BB47F005EF4B2 /* TDHintButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDHintButton.m; path = src/TDHintButton.m; sourceTree = "<group>"; };
 		D3C913FF11BD9742002A95CF /* TDComboFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDComboFieldCell.h; path = src/TDComboFieldCell.h; sourceTree = "<group>"; };
 		D3C9140011BD9742002A95CF /* TDComboFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDComboFieldCell.m; path = src/TDComboFieldCell.m; sourceTree = "<group>"; };
 		D3D8023C111E2D810025650C /* NSURLRequest+TDAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+TDAdditions.m"; path = "src/NSURLRequest+TDAdditions.m"; sourceTree = "<group>"; };
@@ -585,6 +593,10 @@
 				D36713A8136C57AC0043A644 /* TDRegisterWindow.m */,
 				D3671598136C6E000043A644 /* TDDragDestinationImageView.h */,
 				D3671599136C6E000043A644 /* TDDragDestinationImageView.m */,
+				D3C22138193BB45E005EF4B2 /* TDDropTargetView.h */,
+				D3C2213C193BB479005EF4B2 /* TDDropTargetView.m */,
+				D3C22139193BB45E005EF4B2 /* TDHintButton.h */,
+				D3C2213E193BB47F005EF4B2 /* TDHintButton.m */,
 			);
 			name = RegisterWindow;
 			sourceTree = "<group>";
@@ -835,6 +847,7 @@
 				D36E20C01170D26E00110DBA /* TDComboFieldListView.h in Headers */,
 				D36E21C71170DA0700110DBA /* TDComboFieldTextView.h in Headers */,
 				D392B08C1179594400823791 /* TDShadowView.h in Headers */,
+				D3C2213B193BB45E005EF4B2 /* TDHintButton.h in Headers */,
 				D3C9140111BD9742002A95CF /* TDComboFieldCell.h in Headers */,
 				D3A356BA11DFFB2A00EFEE29 /* TDClipView.h in Headers */,
 				D3FD53EB11E2817E009CFDA3 /* NSEvent+TDAdditions.h in Headers */,
@@ -872,6 +885,7 @@
 				D37E6C8917821F21001BBF05 /* TDStatusBarButton.h in Headers */,
 				D37E6C8B17821F37001BBF05 /* TDStatusBarButtonCell.h in Headers */,
 				D3B10F0817B03C8900B9AAF1 /* TDBarItem.h in Headers */,
+				D3C2213A193BB45E005EF4B2 /* TDDropTargetView.h in Headers */,
 				D3B10F0A17B03C8900B9AAF1 /* TDTabBar.h in Headers */,
 				D3B10F0C17B03C8900B9AAF1 /* TDTabBarController.h in Headers */,
 				D3B10F0E17B03C8900B9AAF1 /* TDTabBarItem.h in Headers */,
@@ -1064,6 +1078,7 @@
 				D38F4A15128CDAF800DC5FDB /* TDHintView.m in Sources */,
 				D3F677D0128E57E900FB4EB5 /* TDTabbedWindow.m in Sources */,
 				D36713AA136C57AC0043A644 /* TDRegisterWindow.m in Sources */,
+				D3C2213F193BB47F005EF4B2 /* TDHintButton.m in Sources */,
 				D36713AB136C57AC0043A644 /* TDRegisterWindowController.m in Sources */,
 				D367159B136C6E000043A644 /* TDDragDestinationImageView.m in Sources */,
 				D3740A091553544A0057FBEF /* TDTabListItemStyle.m in Sources */,
@@ -1077,6 +1092,7 @@
 				D37E6C8717821F13001BBF05 /* TDStatusBarButton.m in Sources */,
 				D3B10F1C17B03D4500B9AAF1 /* TDBarItem.m in Sources */,
 				D3B10F1D17B03D4500B9AAF1 /* TDTabBar.m in Sources */,
+				D3C2213D193BB479005EF4B2 /* TDDropTargetView.m in Sources */,
 				D3B10F1E17B03D4500B9AAF1 /* TDTabBarController.m in Sources */,
 				D3B10F1F17B03D4500B9AAF1 /* TDTabBarItem.m in Sources */,
 				D3B10F2B17B0449D00B9AAF1 /* TDTabBarControllerView.m in Sources */,
