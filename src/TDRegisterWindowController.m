@@ -7,7 +7,7 @@
 //
 
 #import <TDAppKit/TDRegisterWindowController.h>
-#import <TDAppKit/TDHintView.h>
+#import <TDAppKit/TDHintButton.h>
 
 @interface NSObject ()
 - (BOOL)registerWithLicenseAtPath:(NSString *)path;
@@ -36,7 +36,7 @@
 
 
 - (void)dealloc {
-    self.hintView = nil;
+    self.hintButton = nil;
     self.imageView = nil;
     self.appName = nil;
     self.licenseFileExtensions = nil;
@@ -105,14 +105,12 @@
 
 
 - (void)setUpHint {
-    TDAssert(_hintView);
-    _hintView.color = [NSColor windowBackgroundColor];
-    _hintView.hintTextOffsetY = 72.0;
+    TDAssert(_hintButton);
     
     NSString *hint = [NSString stringWithFormat:NSLocalizedString(@"Drag your\n%@ license file here.", @""), _appName];
-    _hintView.hintText = hint;
+    _hintButton.hintText = hint;
     
-    [_hintView setNeedsDisplay:YES];
+    [_hintButton setNeedsDisplay:YES];
 }
 
 

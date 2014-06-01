@@ -8,13 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class TDHintView;
+@class TDHintButton;
 
 @interface TDRegisterWindowController : NSWindowController
 
 - (id)initWithAppName:(NSString *)s licenseFileExtension:(NSString *)ext;
 
-@property (nonatomic, retain) IBOutlet TDHintView *hintView;
+@property (nonatomic, retain) IBOutlet TDHintButton *hintButton;
 @property (nonatomic, retain) IBOutlet NSImageView *imageView;
 
 @property (nonatomic, copy) NSString *appName;
