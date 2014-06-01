@@ -107,7 +107,7 @@
 - (void)setUpHint {
     TDAssert(_hintButton);
     
-    NSString *hint = [NSString stringWithFormat:NSLocalizedString(@"Drag your\n%@ license file here.", @""), _appName];
+    NSString *hint = [NSString stringWithFormat:NSLocalizedString(@"Drag your %@ license file here.", @""), _appName];
     _hintButton.hintText = hint;
     
     [_hintButton setNeedsDisplay:YES];

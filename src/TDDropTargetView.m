@@ -49,14 +49,14 @@
 #pragma mark NSDraggingDestination
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)dragInfo {
-    TDAssert([[[self window] windowController] document]);
-    return [[[[self window] windowController] document] draggingEntered:dragInfo];
+    TDAssert([[self window] windowController]);
+    return [[[self window] windowController] draggingEntered:dragInfo];
 }
 
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)dragInfo {
-    TDAssert([[[self window] windowController] document]);
-    BOOL success = [[[[self window] windowController] document] performDragOperation:dragInfo];
+    TDAssert([[self window] windowController]);
+    BOOL success = [[[self window] windowController] performDragOperation:dragInfo];
     return success;
 }
 
@@ -83,8 +83,9 @@
     [[NSColor windowBackgroundColor] setFill];
     NSRectFill(bounds);
     
-    CGFloat margin = MARGIN;
-    CGRect r = CGRectInset(bounds, margin, margin);
+    CGFloat marginX = bounds.size.width * 0.1;
+    CGFloat marginY = bounds.size.height * 0.1;
+    CGRect r = CGRectInset(bounds, marginX, marginY);
     
     CGContextSetLineWidth(ctx, 4.0);
     CGContextSetGrayStrokeColor(ctx, 0.67, 1.0);
@@ -102,8 +103,8 @@
 //    CGFloat yNumSegs = round(height/IDEAL_DASH_LEN);
 //    CGFloat xNumSegs = round(width/IDEAL_DASH_LEN);
 
-    CGFloat yNumSegs = 18.0;
-    CGFloat xNumSegs = 10.0;
+    CGFloat yNumSegs = bounds.size.height/50.0;
+    CGFloat xNumSegs = bounds.size.width/50.0;
 
     CGFloat ySegLen = height/yNumSegs;
     CGFloat yDashLen = ySegLen - SPACE_LEN;
