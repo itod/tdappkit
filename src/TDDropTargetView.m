@@ -49,15 +49,24 @@
 #pragma mark NSDraggingDestination
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)dragInfo {
-    TDAssert([[self window] windowController]);
-    return [[[self window] windowController] draggingEntered:dragInfo];
+    NSWindowController *wc = [[self window] windowController];
+    TDAssert(wc);
+    if ([wc respondsToSelector:@selector(draggingEntered:)]) {
+        return [(id)wc draggingEntered:dragInfo];
+    } else {
+        return [[wc document] draggingEntered:dragInfo];
+    }
 }
 
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)dragInfo {
-    TDAssert([[self window] windowController]);
-    BOOL success = [[[self window] windowController] performDragOperation:dragInfo];
-    return success;
+    NSWindowController *wc = [[self window] windowController];
+    TDAssert(wc);
+    if ([wc respondsToSelector:@selector(draggingEntered:)]) {
+        return [(id)wc performDragOperation:dragInfo];
+    } else {
+        return [[wc document] performDragOperation:dragInfo];
+    }
 }
 
 

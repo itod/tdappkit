@@ -38,7 +38,7 @@
 
 - (void)dealloc {
     self.hintButton = nil;
-    self.imageView = nil;
+    self.dropTargetView = nil;
     self.appName = nil;
     self.licenseFileExtensions = nil;
     [super dealloc];
@@ -49,11 +49,11 @@
 #pragma mark NSWindowController
 
 - (void)awakeFromNib {
+    TDAssert(_dropTargetView);
     [[self window] center];
     
     NSArray *types = [NSArray arrayWithObject:NSFilenamesPboardType];
-    [[self window] registerForDraggedTypes:types];
-    [[self imageView] registerForDraggedTypes:types];
+    [_dropTargetView registerForDraggedTypes:types];
     
     [self setUpTitle];
     [self setUpHint];

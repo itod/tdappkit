@@ -17,7 +17,7 @@
 - (IBAction)browse:(id)sender;
 
 @property (nonatomic, retain) IBOutlet TDHintButton *hintButton;
-@property (nonatomic, retain) IBOutlet NSImageView *imageView;
+@property (nonatomic, retain) IBOutlet NSView *dropTargetView;
 
 @property (nonatomic, copy) NSString *appName;
 @property (nonatomic, copy) NSArray *licenseFileExtensions;
