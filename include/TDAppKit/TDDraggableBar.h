@@ -14,8 +14,6 @@
 
 #import <TDAppKit/TDBar.h>
 
-@interface TDDraggableBar : TDBar {
-
-}
+@interface TDDraggableBar : TDBar
 
 @end
