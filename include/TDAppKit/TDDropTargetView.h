@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Todd Ditchendorf. All rights reserved.
 //
 
-#import <TDAppKit/TDView.h>
+#import <TDAppKit/TDColorView.h>
 
 @class TDHintButton;
 
-@interface TDDropTargetView : TDView
+@interface TDDropTargetView : TDColorView
 
 @property (nonatomic, assign) TDHintButton *hintButton;
 @end

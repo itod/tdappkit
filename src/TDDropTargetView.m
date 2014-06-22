@@ -89,8 +89,11 @@
     CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
     
     CGRect bounds = [self bounds];
-    [[NSColor windowBackgroundColor] setFill];
-    NSRectFill(bounds);
+
+    if (self.color) {
+        [self.color setFill];
+        NSRectFill(bounds);
+    }
     
     CGFloat marginX = bounds.size.width * 0.1;
     CGFloat marginY = bounds.size.height * 0.1;
