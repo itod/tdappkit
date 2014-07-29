@@ -49,13 +49,9 @@
 		D366C1EC112902DC00547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D366C1EB112902DC00547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.m */; };
 		D366C1EF112902E500547FD6 /* NSURL+NDCarbonUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = D366C1ED112902E400547FD6 /* NSURL+NDCarbonUtilities.h */; };
 		D366C1F0112902E500547FD6 /* NSURL+NDCarbonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D366C1EE112902E500547FD6 /* NSURL+NDCarbonUtilities.m */; };
-		D36713AA136C57AC0043A644 /* TDRegisterWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D36713A8136C57AC0043A644 /* TDRegisterWindow.m */; };
 		D36713AB136C57AC0043A644 /* TDRegisterWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36713A9136C57AC0043A644 /* TDRegisterWindowController.m */; };
 		D36713AF136C57BD0043A644 /* TDRegisterWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = D36713AD136C57BD0043A644 /* TDRegisterWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D36713B6136C57E70043A644 /* TDRegisterWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = D36713B5136C57E70043A644 /* TDRegisterWindow.h */; };
 		D36714EA136C670F0043A644 /* register_drop.png in Resources */ = {isa = PBXBuildFile; fileRef = D36714E9136C670F0043A644 /* register_drop.png */; };
-		D367159A136C6E000043A644 /* TDDragDestinationImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = D3671598136C6E000043A644 /* TDDragDestinationImageView.h */; };
-		D367159B136C6E000043A644 /* TDDragDestinationImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3671599136C6E000043A644 /* TDDragDestinationImageView.m */; };
 		D36A3613128B246B00AB56C9 /* TDTabbedDocumentController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A3611128B246B00AB56C9 /* TDTabbedDocumentController.m */; };
 		D36A3619128B249100AB56C9 /* TDTabbedDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = D36A3618128B249100AB56C9 /* TDTabbedDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D36A361B128B24AB00AB56C9 /* TDTabbedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A361A128B24AB00AB56C9 /* TDTabbedDocument.m */; };
@@ -241,13 +237,9 @@
 		D366C1EB112902DC00547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAppleEventDescriptor+NDAppleScriptObject.m"; path = "src/NSAppleEventDescriptor+NDAppleScriptObject.m"; sourceTree = "<group>"; };
 		D366C1ED112902E400547FD6 /* NSURL+NDCarbonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+NDCarbonUtilities.h"; path = "src/NSURL+NDCarbonUtilities.h"; sourceTree = "<group>"; };
 		D366C1EE112902E500547FD6 /* NSURL+NDCarbonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+NDCarbonUtilities.m"; path = "src/NSURL+NDCarbonUtilities.m"; sourceTree = "<group>"; };
-		D36713A8136C57AC0043A644 /* TDRegisterWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDRegisterWindow.m; path = src/TDRegisterWindow.m; sourceTree = "<group>"; };
 		D36713A9136C57AC0043A644 /* TDRegisterWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDRegisterWindowController.m; path = src/TDRegisterWindowController.m; sourceTree = "<group>"; };
 		D36713AD136C57BD0043A644 /* TDRegisterWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDRegisterWindowController.h; path = include/TDAppKit/TDRegisterWindowController.h; sourceTree = "<group>"; };
-		D36713B5136C57E70043A644 /* TDRegisterWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDRegisterWindow.h; path = src/TDRegisterWindow.h; sourceTree = "<group>"; };
 		D36714E9136C670F0043A644 /* register_drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = register_drop.png; path = res/img/register_drop.png; sourceTree = "<group>"; };
-		D3671598136C6E000043A644 /* TDDragDestinationImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDDragDestinationImageView.h; path = src/TDDragDestinationImageView.h; sourceTree = "<group>"; };
-		D3671599136C6E000043A644 /* TDDragDestinationImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDDragDestinationImageView.m; path = src/TDDragDestinationImageView.m; sourceTree = "<group>"; };
 		D36A3611128B246B00AB56C9 /* TDTabbedDocumentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabbedDocumentController.m; path = src/TDTabbedDocumentController.m; sourceTree = "<group>"; };
 		D36A3618128B249100AB56C9 /* TDTabbedDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabbedDocument.h; path = include/TDAppKit/TDTabbedDocument.h; sourceTree = "<group>"; };
 		D36A361A128B24AB00AB56C9 /* TDTabbedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDTabbedDocument.m; path = src/TDTabbedDocument.m; sourceTree = "<group>"; };
@@ -589,10 +581,6 @@
 			children = (
 				D36713AD136C57BD0043A644 /* TDRegisterWindowController.h */,
 				D36713A9136C57AC0043A644 /* TDRegisterWindowController.m */,
-				D36713B5136C57E70043A644 /* TDRegisterWindow.h */,
-				D36713A8136C57AC0043A644 /* TDRegisterWindow.m */,
-				D3671598136C6E000043A644 /* TDDragDestinationImageView.h */,
-				D3671599136C6E000043A644 /* TDDragDestinationImageView.m */,
 				D3C22138193BB45E005EF4B2 /* TDDropTargetView.h */,
 				D3C2213C193BB479005EF4B2 /* TDDropTargetView.m */,
 				D3C22139193BB45E005EF4B2 /* TDHintButton.h */,
@@ -874,8 +862,6 @@
 				D3F677D2128E580300FB4EB5 /* TDTabbedWindow.h in Headers */,
 				D3F68AD21290E56F00FB4EB5 /* TDViewControllerView.h in Headers */,
 				D36713AF136C57BD0043A644 /* TDRegisterWindowController.h in Headers */,
-				D36713B6136C57E70043A644 /* TDRegisterWindow.h in Headers */,
-				D367159A136C6E000043A644 /* TDDragDestinationImageView.h in Headers */,
 				D3740A081553544A0057FBEF /* TDTabListItemStyle.h in Headers */,
 				D3740A0E155355DF0057FBEF /* TDTabListItemStyleBrowser.h in Headers */,
 				D38ED9DA15583D8E0004F9AE /* TDTabsListView.h in Headers */,
@@ -1077,10 +1063,8 @@
 				D38F3D25128B8B9F00DC5FDB /* TDViewController.m in Sources */,
 				D38F4A15128CDAF800DC5FDB /* TDHintView.m in Sources */,
 				D3F677D0128E57E900FB4EB5 /* TDTabbedWindow.m in Sources */,
-				D36713AA136C57AC0043A644 /* TDRegisterWindow.m in Sources */,
 				D3C2213F193BB47F005EF4B2 /* TDHintButton.m in Sources */,
 				D36713AB136C57AC0043A644 /* TDRegisterWindowController.m in Sources */,
-				D367159B136C6E000043A644 /* TDDragDestinationImageView.m in Sources */,
 				D3740A091553544A0057FBEF /* TDTabListItemStyle.m in Sources */,
 				D3740A0F155355DF0057FBEF /* TDTabListItemStyleBrowser.m in Sources */,
 				D38ED9DB15583D8E0004F9AE /* TDTabsListView.m in Sources */,
