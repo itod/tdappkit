@@ -1010,8 +1010,11 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     
     [items removeAllObjects];
     
-    NSRect viewportRect = [self visibleRect];
     NSRect bounds = [self bounds];
+    NSRect viewportRect = [self visibleRect];
+    if (NSIsEmptyRect(viewportRect)) {
+        viewportRect = bounds;
+    }
     BOOL isPortrait = self.isPortrait;
     
     CGFloat x = itemMargin;

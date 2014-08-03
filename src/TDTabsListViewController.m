@@ -444,16 +444,16 @@ static NSMutableDictionary *sClassNameForListItemStyleDict = nil;
 //    if (1 == [objs count]) {
 //        isEditingText = [[objs objectAtIndex:0] isEditingText];
 //    }
-//    [coder encodeBool:isEditingText forKey:@"JotTabViewControllerIsEditingText"];
-//    [coder encodeInteger:_editingIndex forKey:@"JotTabViewControllerEditingIndex"];
+//    [coder encodeBool:isEditingText forKey:@"TDTabViewControllerIsEditingText"];
+//    [coder encodeInteger:_editingIndex forKey:@"TDTabViewControllerEditingIndex"];
 //}
 //
 //
 //- (void)restoreStateWithCoder:(NSCoder *)coder {
 //    [super restoreStateWithCoder:coder];
 //    
-//    BOOL isEditingText = [coder decodeBoolForKey:@"JotSelectedObjectIsEditingText"];
-//    self.editingIndex = [coder decodeIntegerForKey:@"JotSelectedObjectEditingIndex"];
+//    BOOL isEditingText = [coder decodeBoolForKey:@"TDSelectedObjectIsEditingText"];
+//    self.editingIndex = [coder decodeIntegerForKey:@"TDSelectedObjectEditingIndex"];
 //    
 //}
 
