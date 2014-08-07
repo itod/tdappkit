@@ -95,23 +95,31 @@
     CGFloat x;
     CGFloat y;
     CGFloat w;
+    CGFloat h;
+    CGFloat clipWidth;
     if (TDIsYozOrLater()) {
         x = bounds.origin.x;
-        y = bounds.origin.y + 1.0;
+        y = bounds.origin.y;
         w = size.width * progress;
+        h = size.height - 1.0;
+        clipWidth = size.width;
     } else if (TDIsLionOrLater()) {
         x = bounds.origin.x + 1.0;
         y = bounds.origin.y;
         w = size.width * progress - 2.0;
+        h = size.height - (isRounded ? 2.0 : 1.0);
+        clipWidth = size.width - 2.0;
     } else {
         x = bounds.origin.x + 1.0;
         y = bounds.origin.y + 2.0;
         w = size.width * progress - 2.0;
+        h = size.height - (isRounded ? 2.0 : 1.0);
+        clipWidth = size.width - 2.0;
     }
     
     if (progress > 0.1) {
-        NSSize pSize = NSMakeSize(w, size.height);
-        NSRect pRect = NSMakeRect(x, y, pSize.width, pSize.height - (isRounded ? 2.0 : 1.0));
+        NSSize pSize = NSMakeSize(w, h);
+        NSRect pRect = NSMakeRect(x, y, pSize.width, pSize.height);
         
         NSRect imageRect = NSZeroRect;
         imageRect.size = [progressImage size];
@@ -121,7 +129,8 @@
         
         CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
         
-        TDAddRoundRect(ctx, pRect, 4.0);
+        CGRect clipRect = CGRectMake(x, y, clipWidth, h);
+        TDAddRoundRect(ctx, clipRect, 4.0);
         CGContextClip(ctx);
         CGContextSaveGState(ctx);
 
