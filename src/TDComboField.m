@@ -92,25 +92,39 @@
     NSRect bounds = [self bounds];
     NSSize size = bounds.size;
     
+    CGFloat x;
     CGFloat y;
-    if (TDIsLionOrLater()) {
+    CGFloat w;
+    if (TDIsYozOrLater()) {
+        x = bounds.origin.x;
+        y = bounds.origin.y + 1.0;
+        w = size.width * progress;
+    } else if (TDIsLionOrLater()) {
+        x = bounds.origin.x + 1.0;
         y = bounds.origin.y;
+        w = size.width * progress - 2.0;
     } else {
+        x = bounds.origin.x + 1.0;
         y = bounds.origin.y + 2.0;
+        w = size.width * progress - 2.0;
     }
     
     if (progress > 0.1) {
-        NSSize pSize = NSMakeSize(size.width * progress, size.height);
-        NSRect pRect = NSMakeRect(bounds.origin.x + 1.0,
-                                  y,
-                                  pSize.width - 2.0,
-                                  pSize.height - (isRounded ? 2.0 : 1.0));
+        NSSize pSize = NSMakeSize(w, size.height);
+        NSRect pRect = NSMakeRect(x, y, pSize.width, pSize.height - (isRounded ? 2.0 : 1.0));
         
         NSRect imageRect = NSZeroRect;
         imageRect.size = [progressImage size];
         imageRect.origin = NSZeroPoint;
         
         TDAssert(progressImage);
+        
+        CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+        
+        TDAddRoundRect(ctx, pRect, 4.0);
+        CGContextClip(ctx);
+        CGContextSaveGState(ctx);
+
         [progressImage drawStretchableInRect:pRect
                                   edgeInsets:TDEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
                                    operation:NSCompositePlusDarker
@@ -120,6 +134,7 @@
         //                     fromRect:imageRect
         //                    operation:NSCompositePlusDarker
         //                     fraction:1.0];
+        CGContextSaveGState(ctx);
     }
     
     NSRect cellRect = [[self cell] drawingRectForBounds:bounds];
