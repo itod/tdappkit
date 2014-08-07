@@ -54,7 +54,7 @@
 }
 
 
-- (NSAutoresizingMaskOptions)autoresizingMask {
+- (NSUInteger)autoresizingMask {
     return NSViewHeightSizable;
 }
 

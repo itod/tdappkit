@@ -255,6 +255,13 @@ NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle) {
 }
 
 
+BOOL TDIsYozOrLater() {
+    NSUInteger major, minor, bugfix;
+    TDGetSystemVersion(&major, &minor, &bugfix);
+    return minor > 9;
+}
+
+
 BOOL TDIsMtnLionOrLater() {
     NSUInteger major, minor, bugfix;
     TDGetSystemVersion(&major, &minor, &bugfix);
@@ -275,6 +282,15 @@ BOOL TDIsSnowLeopardOrLater() {
     return minor > 5;
 }
 
+typedef struct {
+    NSInteger majorVersion;
+    NSInteger minorVersion;
+    NSInteger patchVersion;
+} NSOperatingSystemVersion;
+
+@interface NSProcessInfo ()
+- (NSOperatingSystemVersion)operatingSystemVersion;
+@end
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -306,29 +322,35 @@ void TDGetSystemVersion(NSUInteger *major, NSUInteger *minor, NSUInteger *bugfix
 //    }
 //
 //    return;
-
-    OSErr err;
-    SInt32 systemVersion, versionMajor, versionMinor, versionBugFix;
-    if ((err = Gestalt(gestaltSystemVersion, &systemVersion)) != noErr) goto fail;
-    if (systemVersion < 0x1040) {
-        if (major) *major = ((systemVersion & 0xF000) >> 12) * 10 + ((systemVersion & 0x0F00) >> 8);
-        if (minor) *minor = (systemVersion & 0x00F0) >> 4;
-        if (bugfix) *bugfix = (systemVersion & 0x000F);
-    } else {
-        if ((err = Gestalt(gestaltSystemVersionMajor, &versionMajor)) != noErr) goto fail;
-        if ((err = Gestalt(gestaltSystemVersionMinor, &versionMinor)) != noErr) goto fail;
-        if ((err = Gestalt(gestaltSystemVersionBugFix, &versionBugFix)) != noErr) goto fail;
-        if (major) *major = versionMajor;
-        if (minor) *minor = versionMinor;
-        if (bugfix) *bugfix = versionBugFix;
-    }
     
+    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion)]) {
+        NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+        if (major) *major = version.majorVersion;
+        if (minor) *minor = version.minorVersion;
+        if (bugfix) *bugfix = version.patchVersion;
+    } else {
+        OSErr err;
+        SInt32 systemVersion, versionMajor, versionMinor, versionBugFix;
+        if ((err = Gestalt(gestaltSystemVersion, &systemVersion)) != noErr) goto fail;
+        if (systemVersion < 0x1040) {
+            if (major) *major = ((systemVersion & 0xF000) >> 12) * 10 + ((systemVersion & 0x0F00) >> 8);
+            if (minor) *minor = (systemVersion & 0x00F0) >> 4;
+            if (bugfix) *bugfix = (systemVersion & 0x000F);
+        } else {
+            if ((err = Gestalt(gestaltSystemVersionMajor, &versionMajor)) != noErr) goto fail;
+            if ((err = Gestalt(gestaltSystemVersionMinor, &versionMinor)) != noErr) goto fail;
+            if ((err = Gestalt(gestaltSystemVersionBugFix, &versionBugFix)) != noErr) goto fail;
+            if (major) *major = versionMajor;
+            if (minor) *minor = versionMinor;
+            if (bugfix) *bugfix = versionBugFix;
+        }
+    }
     return;
     
 fail:
     //NSLog(@"Unable to obtain system version: %ld", (long)err);
     if (major) *major = 10;
-    if (minor) *minor = 0;
+    if (minor) *minor = 10;
     if (bugfix) *bugfix = 0;
 }
 #pragma clang diagnostic pop
