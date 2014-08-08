@@ -106,13 +106,13 @@ void TDPerformOnBackgroundThreadAfterDelay(double delay, void (^block)(void)) {
 }
 
 
-CGRect TDRectOutset(CGRect r, CGFloat dx, CGFloat dy) {
-    r.origin.x -= dx;
-    r.origin.y -= dy;
-    r.size.width += dx * 2.0;
-    r.size.height += dy * 2.0;
-    return r;
-}
+//CGRect TDRectOutset(CGRect r, CGFloat dx, CGFloat dy) {
+//    r.origin.x -= dx;
+//    r.origin.y -= dy;
+//    r.size.width += dx * 2.0;
+//    r.size.height += dy * 2.0;
+//    return r;
+//}
 
 
 NSRect TDNSRectOutset(NSRect r, CGFloat dx, CGFloat dy) {
@@ -125,7 +125,8 @@ NSRect TDNSRectOutset(NSRect r, CGFloat dx, CGFloat dy) {
 
 
 NSBezierPath *TDGetRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth) {
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:r radius:radius];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:r xRadius:radius yRadius:radius];
+    //NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:r radius:radius];
     [path setLineWidth:lineWidth];
     return path;
     

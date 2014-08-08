@@ -33,7 +33,7 @@ void TDPerformOnBackgroundThread(void (^block)(void));
 void TDPerformOnMainThreadAfterDelay(double delay, void (^block)(void));
 void TDPerformOnBackgroundThreadAfterDelay(double delay, void (^block)(void));
 
-CGRect TDRectOutset(CGRect r, CGFloat dx, CGFloat dy);
+//CGRect TDRectOutset(CGRect r, CGFloat dx, CGFloat dy);
 NSRect TDNSRectOutset(NSRect r, CGFloat dx, CGFloat dy);
 NSBezierPath *TDGetRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth);
 NSBezierPath *TDDrawRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth, NSGradient *fillGradient, NSColor *strokeColor);
