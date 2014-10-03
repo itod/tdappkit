@@ -43,8 +43,7 @@
         [path curveToPoint:topMid controlPoint1:midLef controlPoint2:topLef];
     } else {
         [path moveToPoint:midLef];
-        NSPoint cornerPoint = NSMakePoint(NSMinX(r), NSMinY(r));
-        [path appendBezierPathWithPoints:&cornerPoint count:1];
+        [path lineToPoint:topLef];
     }
     
     if (corners & TDCornerTopRight) {
@@ -54,19 +53,17 @@
         [path lineToPoint:topMid];
         [path curveToPoint:midRit controlPoint1:topMid controlPoint2:topRit];
     } else {
-        NSPoint cornerPoint = NSMakePoint(NSMaxX(r), NSMinY(r));
-        [path appendBezierPathWithPoints:&cornerPoint count:1];
+        [path lineToPoint:topRit];
     }
     
     if (corners & TDCornerBottomRight) {
-        midRit = CGPointMake(NSMaxX(r), NSMinY(r)+yRadius);
+        midRit = CGPointMake(NSMaxX(r), NSMaxY(r)-yRadius);
         botMid = CGPointMake(NSMaxX(r)-xRadius, NSMaxY(r));
         
         [path lineToPoint:midRit];
         [path curveToPoint:botMid controlPoint1:midRit controlPoint2:botRit];
     } else {
-        NSPoint cornerPoint = NSMakePoint(NSMaxX(r), NSMaxY(r));
-        [path appendBezierPathWithPoints:&cornerPoint count:1];
+        [path lineToPoint:botRit];
     }
     
     if (corners & TDCornerBottomLeft) {
@@ -76,8 +73,7 @@
         [path lineToPoint:botMid];
         [path curveToPoint:midLef controlPoint1:botMid controlPoint2:botLef];
     } else {
-        NSPoint cornerPoint = NSMakePoint(NSMinX(r), NSMaxY(r));
-        [path appendBezierPathWithPoints:&cornerPoint count:1];
+        [path lineToPoint:botLef];
     }
     
     [path closePath];
