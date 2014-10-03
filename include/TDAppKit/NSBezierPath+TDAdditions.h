@@ -11,23 +11,19 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-
 //
-//  NSBezierPath+PXRoundedRectangleAdditions.h
-//  Pixen
-//
-//  Created by Andy Matuschak on 7/3/05.
-//  Copyright 2005 Open Sword Group. All rights reserved.
+//  NSBezierPath+TDAdditions.h
+//  TDAppKit
 //
 
 #import <Cocoa/Cocoa.h>
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, TDCorner) {
     TDCornerTopLeft = 1,
     TDCornerBottomLeft = 2,
     TDCornerTopRight = 4,
     TDCornerBottomRight = 8
-} TDCorner;
+};
 
 #define TDCornersAll TDCornerTopLeft|TDCornerTopRight|TDCornerBottomLeft|TDCornerBottomRight
 #define TDCornersLeft TDCornerTopLeft|TDCornerBottomLeft

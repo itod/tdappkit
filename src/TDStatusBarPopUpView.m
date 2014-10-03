@@ -11,8 +11,6 @@
 
 #define D2R(d) (M_PI * (d) / 180.0)
 
-#define DEBUG_DRAW 0
-
 #define LABEL_MARGIN_X 8.0
 #define VALUE_MARGIN_X 3.0
 #define POPUP_MARGIN_X 3.0

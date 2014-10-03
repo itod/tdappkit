@@ -11,13 +11,9 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-
 //
-//  NSBezierPath+PXRoundedRectangleAdditions.h
-//  Pixen
-//
-//  Created by Andy Matuschak on 7/3/05.
-//  Copyright 2005 Open Sword Group. All rights reserved.
+//  NSBezierPath+TDAdditions.h
+//  TDAppKit
 //
 
 #import <TDAppKit/NSBezierPath+TDAdditions.h>
@@ -26,32 +22,59 @@
 
 + (NSBezierPath *)bezierPathWithRoundRect:(NSRect)r radius:(CGFloat)radius corners:(TDCorner)corners {
     NSBezierPath *path = [self bezierPath];
-    radius = MIN(radius, 0.5f * MIN(NSWidth(r), NSHeight(r)));
-    NSRect rect = NSInsetRect(r, radius, radius);
+    
+    CGFloat xRadius = MIN(radius, NSWidth(r)*0.5);
+    CGFloat yRadius = MIN(radius, NSHeight(r)*0.5);
+    
+    CGPoint midLef = CGPointMake(NSMinX(r), NSMidY(r));
+    CGPoint topLef = CGPointMake(NSMinX(r), NSMinY(r));
+    CGPoint topMid = CGPointMake(NSMidX(r), NSMinY(r));
+    CGPoint topRit = CGPointMake(NSMaxX(r), NSMinY(r));
+    CGPoint midRit = CGPointMake(NSMaxX(r), NSMidY(r));
+    CGPoint botRit = CGPointMake(NSMaxX(r), NSMaxY(r));
+    CGPoint botMid = CGPointMake(NSMidX(r), NSMaxY(r));
+    CGPoint botLef = CGPointMake(NSMinX(r), NSMaxY(r));
     
     if (corners & TDCornerTopLeft) {
-        [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(rect), NSMinY(rect)) radius:radius startAngle:180.0 endAngle:270.0];
+        midLef = CGPointMake(NSMinX(r), NSMinY(r)+yRadius);
+        topMid = CGPointMake(NSMinX(r)+xRadius, NSMinY(r));
+
+        [path moveToPoint:midLef];
+        [path curveToPoint:topMid controlPoint1:midLef controlPoint2:topLef];
     } else {
+        [path moveToPoint:midLef];
         NSPoint cornerPoint = NSMakePoint(NSMinX(r), NSMinY(r));
         [path appendBezierPathWithPoints:&cornerPoint count:1];
     }
     
     if (corners & TDCornerTopRight) {
-        [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(rect), NSMinY(rect)) radius:radius startAngle:270.0 endAngle:360.0];
+        topMid = CGPointMake(NSMaxX(r)-xRadius, NSMinY(r));
+        midRit = CGPointMake(NSMaxX(r), NSMinY(r)+yRadius);
+        
+        [path lineToPoint:topMid];
+        [path curveToPoint:midRit controlPoint1:topMid controlPoint2:topRit];
     } else {
         NSPoint cornerPoint = NSMakePoint(NSMaxX(r), NSMinY(r));
         [path appendBezierPathWithPoints:&cornerPoint count:1];
     }
     
     if (corners & TDCornerBottomRight) {
-        [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMaxX(rect), NSMaxY(rect)) radius:radius startAngle:0.0 endAngle:90.0];
+        midRit = CGPointMake(NSMaxX(r), NSMinY(r)+yRadius);
+        botMid = CGPointMake(NSMaxX(r)-xRadius, NSMaxY(r));
+        
+        [path lineToPoint:midRit];
+        [path curveToPoint:botMid controlPoint1:midRit controlPoint2:botRit];
     } else {
         NSPoint cornerPoint = NSMakePoint(NSMaxX(r), NSMaxY(r));
         [path appendBezierPathWithPoints:&cornerPoint count:1];
     }
     
     if (corners & TDCornerBottomLeft) {
-        [path appendBezierPathWithArcWithCenter:NSMakePoint(NSMinX(rect), NSMaxY(rect)) radius:radius startAngle:90.0 endAngle:180.0];
+        botMid = CGPointMake(NSMinX(r)+xRadius, NSMaxY(r));
+        midLef = CGPointMake(NSMinX(r), NSMaxY(r)-yRadius);
+        
+        [path lineToPoint:botMid];
+        [path curveToPoint:midLef controlPoint1:botMid controlPoint2:botLef];
     } else {
         NSPoint cornerPoint = NSMakePoint(NSMinX(r), NSMaxY(r));
         [path appendBezierPathWithPoints:&cornerPoint count:1];

@@ -316,8 +316,6 @@
     [rep drawInRect:dst_b1r2 fromRect:src_b1r2 operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
     [rep drawInRect:dst_b1r1 fromRect:src_b1r1 operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
     
-#define DEBUG_DRAW 0
-    
 #if DEBUG_DRAW
     [[NSColor whiteColor] setStroke];
     [NSBezierPath strokeRect:dst_ml1];

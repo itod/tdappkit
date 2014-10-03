@@ -74,6 +74,37 @@ NSString *TDHexStringFromColor(NSColor *c) {
 }
 
 
+NSString *TDStringFromColor(NSColor *c) {
+    if (!c) return @"";
+
+    NSColor *export = [c colorUsingColorSpace:[NSColorSpace deviceRGBColorSpace]];
+    
+    return [NSString stringWithFormat:@"%lf:%lf:%lf:%lf",
+            export.redComponent,
+            export.greenComponent,
+            export.blueComponent,
+            export.alphaComponent];
+}
+
+
+NSColor *TDColorFromString(NSString *s) {
+    NSArray *chunks = [s componentsSeparatedByString:@":"];
+    
+    if ([chunks count] != 4) {
+        return nil;
+    } else {
+        CGFloat components[4];
+        for (NSUInteger i = 0; i < 4; i++) {
+            components[i] = [[chunks objectAtIndex:i] floatValue];
+        }
+        return [NSColor colorWithDeviceRed:components[0]
+                                     green:components[1]
+                                      blue:components[2]
+                                     alpha:components[3]];
+    }
+}
+
+
 void TDPerformOnMainThread(void (^block)(void)) {
     //assert(block);
     dispatch_async(dispatch_get_main_queue(), block);
@@ -161,7 +192,6 @@ NSBezierPath *TDDrawRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth, NSGra
     
     NSBezierPath *path = TDGetRoundRect(r, radius, lineWidth);
     [fillGradient drawInBezierPath:path angle:90.0];
-    
     [strokeColor setStroke];
     [path stroke];
     
@@ -283,14 +313,14 @@ BOOL TDIsSnowLeopardOrLater() {
     return minor > 5;
 }
 
-typedef struct {
-    NSInteger majorVersion;
-    NSInteger minorVersion;
-    NSInteger patchVersion;
-} NSOperatingSystemVersion;
+//typedef struct {
+//    NSInteger majorVersion;
+//    NSInteger minorVersion;
+//    NSInteger patchVersion;
+//} NSOperatingSystemVersion;
 
 @interface NSProcessInfo ()
-- (NSOperatingSystemVersion)operatingSystemVersion;
+//- (NSOperatingSystemVersion)operatingSystemVersion;
 @end
 
 #pragma clang diagnostic push
@@ -324,12 +354,13 @@ void TDGetSystemVersion(NSUInteger *major, NSUInteger *minor, NSUInteger *bugfix
 //
 //    return;
     
-    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion)]) {
-        NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-        if (major) *major = version.majorVersion;
-        if (minor) *minor = version.minorVersion;
-        if (bugfix) *bugfix = version.patchVersion;
-    } else {
+//    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion)]) {
+//        NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+//        if (major) *major = version.majorVersion;
+//        if (minor) *minor = version.minorVersion;
+//        if (bugfix) *bugfix = version.patchVersion;
+//    } else
+    {
         OSErr err;
         SInt32 systemVersion, versionMajor, versionMinor, versionBugFix;
         if ((err = Gestalt(gestaltSystemVersion, &systemVersion)) != noErr) goto fail;
