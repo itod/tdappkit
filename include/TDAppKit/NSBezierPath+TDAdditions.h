@@ -32,6 +32,5 @@ typedef NS_ENUM(NSUInteger, TDCorner) {
 #define TDCornersBottom TDCornerBottomLeft|TDCornerBottomRight
 
 @interface NSBezierPath (TDAdditions)
-+ (NSBezierPath *)bezierPathWithRoundRect:(NSRect)r radius:(CGFloat)radius;
-+ (NSBezierPath *)bezierPathWithRoundRect:(NSRect)r radius:(CGFloat)radius corners:(TDCorner)corners;
++ (NSBezierPath *)bezierPathWithRoundRect:(NSRect)r xRadius:(CGFloat)xRadius yRadius:(CGFloat)yRadius corners:(TDCorner)corners;
 @end

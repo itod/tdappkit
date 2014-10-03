@@ -20,11 +20,11 @@
 
 @implementation NSBezierPath (TDAdditions)
 
-+ (NSBezierPath *)bezierPathWithRoundRect:(NSRect)r radius:(CGFloat)radius corners:(TDCorner)corners {
++ (NSBezierPath *)bezierPathWithRoundRect:(NSRect)r xRadius:(CGFloat)xRadius yRadius:(CGFloat)yRadius corners:(TDCorner)corners {
     NSBezierPath *path = [self bezierPath];
     
-    CGFloat xRadius = MIN(radius, NSWidth(r)*0.5);
-    CGFloat yRadius = MIN(radius, NSHeight(r)*0.5);
+    xRadius = MIN(xRadius, NSWidth(r)*0.5);
+    yRadius = MIN(yRadius, NSHeight(r)*0.5);
     
     CGPoint midLef = CGPointMake(NSMinX(r), NSMidY(r));
     CGPoint topLef = CGPointMake(NSMinX(r), NSMinY(r));
@@ -78,11 +78,6 @@
     
     [path closePath];
     return path;    
-}
-
-
-+ (NSBezierPath *)bezierPathWithRoundRect:(NSRect)r radius:(CGFloat)radius {
-    return [NSBezierPath bezierPathWithRoundRect:r radius:radius corners:TDCornersAll];
 }
 
 @end
