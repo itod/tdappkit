@@ -99,6 +99,7 @@ extern NSString *const TDListItemPboardType;
 @property (nonatomic, assign) TDListViewOrientation orientation;
 @property (nonatomic, assign) BOOL displaysClippedItems; // default=YES
 @property (nonatomic, assign) BOOL allowsMultipleSelection; // default=NO
+@property (nonatomic, retain) NSIndexSet *draggingIndexes;
 
 // convenience
 @property (nonatomic, readonly, getter=isPortrait) BOOL portrait;

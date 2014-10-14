@@ -56,7 +56,6 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 @property (nonatomic, retain) NSEvent *lastMouseDownEvent;
 @property (nonatomic, retain) NSMutableArray *itemFrames;
 
-@property (nonatomic, retain) NSIndexSet *draggingIndexes;
 @property (nonatomic, retain) NSIndexSet *draggingVisibleIndexes;
 @property (nonatomic, assign) NSPoint dragOffset;
 @end
@@ -712,23 +711,14 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 #pragma mark NSPasteboardWriting
 
 - (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard {
-    return @[@"public.data"];
+    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
+    return nil;
 }
 
 
 - (id)pasteboardPropertyListForType:(NSString *)type {
-    TDAssert([type isEqualToString:@"public.data"]);
-    
-    id plist = nil;
-    
-    if (delegate && [delegate respondsToSelector:@selector(listView:pasteboardPropertyListForItemsAtIndexes:)]) {
-        plist = [delegate listView:self pasteboardPropertyListForItemsAtIndexes:self.draggingIndexes];
-    } else {
-        TDAssert(0);
-    }
-    
-    TDAssert([plist count]);
-    return plist;
+    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
+    return nil;
 }
 
 
