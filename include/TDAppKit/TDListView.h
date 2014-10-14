@@ -31,7 +31,7 @@ typedef enum {
 
 extern NSString *const TDListItemPboardType;
 
-@interface TDListView : NSView {
+@interface TDListView : NSView <NSDraggingSource, NSPasteboardWriting> {
     NSScrollView *scrollView;
     id <TDListViewDataSource>dataSource;
     id <TDListViewDelegate>delegate;
@@ -58,8 +58,6 @@ extern NSString *const TDListItemPboardType;
     NSIndexSet *draggingIndexes;
     NSIndexSet *draggingVisibleIndexes;
     NSPoint dragOffset;
-    NSDragOperation localDragOperationMask;
-    NSDragOperation nonLocalDragOperationMask;
     NSUInteger dropIndex;
     NSUInteger dropVisibleIndex;
     TDListViewDropOperation dropOp;
@@ -77,14 +75,6 @@ extern NSString *const TDListItemPboardType;
 
 /* Drag and drop support */
 
-/* Configures the value returned from -draggingSourceOperationMaskForLocal:. 
-    An isLocal value of YES indicates that 'dragOperationMask' applies when the destination object is in the same application. 
- By default, NSDragOperationEvery will be returned. An isLocal value of NO indicates that 'dragOperationMask' applies when the destination object 
- is in an application outside the receiver's application. By default, NSDragOperationNone is returned. 
- NSCollectionView will save the values you set for each isLocal setting. You typically will invoke this method, and not override it.
- */
-- (void)setDraggingSourceOperationMask:(NSDragOperation)mask forLocal:(BOOL)localDestination;
-
 /* This method computes and returns an image to use for dragging. You can override this to return a custom drag image, 
  or call it from the delegate method to get the default drag image. 'index' contains the index of the item being dragged. 
  'event' is a reference to the mouse down event that began the drag. 'dragImageOffset' is an in/out parameter. 
@@ -94,8 +84,6 @@ extern NSString *const TDListItemPboardType;
  If the delegate implements the equivalent delegate method, it will be preferred over this method.
  */
 - (NSImage *)draggingImageForItemsAtIndexes:(NSIndexSet *)set withEvent:(NSEvent *)evt offset:(NSPointPointer)dragImageOffset;
-
-- (BOOL)ignoreModifierKeysWhileDragging;
 
 @property (nonatomic, assign) IBOutlet NSScrollView *scrollView;
 @property (nonatomic, assign) IBOutlet id <TDListViewDataSource>dataSource;
@@ -149,7 +137,7 @@ extern NSString *const TDListItemPboardType;
  The drag image and other drag related information will be set up and provided by the view once this call returns YES. 
  You need to implement this method for your list view to be a drag source.
  */
-- (BOOL)listView:(TDListView *)lv writeItemsAtIndexes:(NSIndexSet *)set toPasteboard:(NSPasteboard *)pboard;
+- (id)listView:(TDListView *)lv pasteboardPropertyListForItemsAtIndexes:(NSIndexSet *)set;
 
 /* The delegate can support file promise drags by adding NSFilesPromisePboardType to the pasteboard in -collectionView:writeItemsAtIndexes:toPasteboard:. 
  NSCollectionView implements -namesOfPromisedFilesDroppedAtDestination: to return the results of this delegate method. 

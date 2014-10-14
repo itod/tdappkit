@@ -126,9 +126,6 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     self.queue = [[[TDListItemQueue alloc] init] autorelease];
     
     self.displaysClippedItems = YES;
-    
-    [self setDraggingSourceOperationMask:NSDragOperationEvery forLocal:YES];
-    [self setDraggingSourceOperationMask:NSDragOperationNone forLocal:NO];
 }
 
 
@@ -414,7 +411,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
         return;
     }
     
-    BOOL isCopy = [evt isOptionKeyPressed] && (NSDragOperationCopy & [self draggingSourceOperationMaskForLocal:YES]);
+    //BOOL isCopy = [evt isOptionKeyPressed] && (NSDragOperationCopy & [self draggingSourceOperationMaskForLocal:YES]);
     self.lastMouseDownEvent = evt;
     
     BOOL hasUpdatedSelection = NO;
@@ -453,7 +450,8 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
                     }
                 }
                 
-                self.draggingVisibleIndexes = isCopy ? nil : visSet; //[NSIndexSet indexSetWithIndex:visibleIndex];
+                //self.draggingVisibleIndexes = isCopy ? nil : visSet; //[NSIndexSet indexSetWithIndex:visibleIndex];
+                self.draggingVisibleIndexes = visSet; //[NSIndexSet indexSetWithIndex:visibleIndex];
                 isDragSource = YES;
                 [self draggingSourceDragDidBegin];
                 [self mouseDragged:evt];
@@ -687,48 +685,73 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     }
     if (!canDrag) return;
     
-    NSPasteboard *pboard = [NSPasteboard pasteboardWithName:NSDragPboard];
-    [pboard declareTypes:[NSArray arrayWithObject:TDListItemPboardType] owner:self];
+    CGPoint locInWin = [evt locationInWindow];
+    CGPoint locInView = [self convertPoint:locInWin fromView:nil];
     
-    canDrag = NO;
-    if (/*NSNotFound != draggingVisibleIndex && */delegate && [delegate respondsToSelector:@selector(listView:writeItemsAtIndexes:toPasteboard:)]) {
-        canDrag = [delegate listView:self writeItemsAtIndexes:draggingIndexes toPasteboard:pboard];
-    }
-    if (!canDrag) return;
+//    dragOffset.x = dragOffset.x - (locInWin.x - [lastMouseDownEvent locationInWindow].x);
+//    dragOffset.y = dragOffset.y - (locInWin.y - [lastMouseDownEvent locationInWindow].y);
     
-    self.selectionIndexes = nil;
+    dragOffset.x = dragImg.size.width*0.5;
+    dragOffset.y = dragImg.size.height*0.5;
+
+    locInView.x -= dragOffset.x;
+    locInView.y -= dragOffset.y;
+
+    TDAssert(dragImg);
+    TDAssert(!CGSizeEqualToSize([dragImg size], CGSizeZero));
+    NSDraggingItem *dragItem = [[[NSDraggingItem alloc] initWithPasteboardWriter:self] autorelease];
+
+    CGRect dragFrame = CGRectMake(locInView.x, locInView.y, dragImg.size.width, dragImg.size.height);
+    [dragItem setDraggingFrame:dragFrame contents:dragImg];
     
-    NSPoint p = [self convertPoint:[evt locationInWindow] fromView:nil];
-    
-    dragOffset.x = dragOffset.x - ([evt locationInWindow].x - [lastMouseDownEvent locationInWindow].x);
-    dragOffset.y = dragOffset.y + ([evt locationInWindow].y - [lastMouseDownEvent locationInWindow].y);
-    
-    p.x -= dragOffset.x;
-    p.y -= dragOffset.y;
-    
-    NSSize ignored = NSZeroSize;
-    [self dragImage:dragImg at:p offset:ignored event:evt pasteboard:pboard source:self slideBack:slideBack];
+    [self beginDraggingSessionWithItems:@[dragItem] event:evt source:self];
 }
 
 
 #pragma mark -
-#pragma mark DraggingSource
+#pragma mark NSPasteboardWriting
 
-- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal {
-    return isLocal ? localDragOperationMask : nonLocalDragOperationMask;
+- (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard {
+    return @[@"public.data"];
 }
 
 
-- (void)setDraggingSourceOperationMask:(NSDragOperation)mask forLocal:(BOOL)localDestination {
-    if (localDestination) {
-        localDragOperationMask = mask;
+- (id)pasteboardPropertyListForType:(NSString *)type {
+    TDAssert([type isEqualToString:@"public.data"]);
+    
+    id plist = nil;
+    
+    if (delegate && [delegate respondsToSelector:@selector(listView:pasteboardPropertyListForItemsAtIndexes:)]) {
+        plist = [delegate listView:self pasteboardPropertyListForItemsAtIndexes:self.draggingIndexes];
     } else {
-        nonLocalDragOperationMask = mask;
+        TDAssert(0);
     }
+    
+    TDAssert([plist count]);
+    return plist;
 }
 
 
-- (BOOL)ignoreModifierKeysWhileDragging {
+#pragma mark -
+#pragma mark NSDraggingSource
+
+- (NSDragOperation)draggingSession:(NSDraggingSession *)session sourceOperationMaskForDraggingContext:(NSDraggingContext)ctx {
+    NSDragOperation op = NSDragOperationNone;
+    switch (ctx) {
+        case NSDraggingContextOutsideApplication:
+            op = NSDragOperationNone;
+            break;
+        case NSDraggingContextWithinApplication:
+            op = NSDragOperationMove;
+            break;
+        default:
+            break;
+    }
+    return op;
+}
+
+
+- (BOOL)ignoreModifierKeysForDraggingSession:(NSDraggingSession *)session {
     return YES;
 }
 
@@ -746,7 +769,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     NSUInteger i = [set firstIndex];
     while (NSNotFound != i) {
         item = [self itemAtIndex:i];
-        NSRect itemFrame = [item frame];
+        CGRect itemFrame = [item frame];
         width = itemFrame.size.width;
         height += itemFrame.size.height;
         id image = [item draggingImage];
@@ -763,36 +786,38 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     
     NSImage *result = [[[NSImage alloc] initWithSize:NSMakeSize(width, height)] autorelease];
     [result lockFocus];
+    
     NSGraphicsContext *currentContext = [NSGraphicsContext currentContext];
-    NSImageInterpolation savedInterpolation = [currentContext imageInterpolation];
+    [currentContext saveGraphicsState];
     [currentContext setImageInterpolation:NSImageInterpolationHigh];
 
     CGFloat y = 0;
     for (NSImage *img in [images reverseObjectEnumerator]) {
-        NSSize imgSize = [img size];
-        [img drawInRect:NSMakeRect(0, y, imgSize.width, imgSize.height) fromRect:NSMakeRect(0, 0, imgSize.width, imgSize.height) operation:NSCompositeSourceOver fraction:.5];
+        CGSize imgSize = [img size];
+        [img drawInRect:NSMakeRect(0.0, y, imgSize.width, imgSize.height) fromRect:CGRectMake(0.0, 0.0, imgSize.width, imgSize.height) operation:NSCompositeSourceOver fraction:0.5];
         y += imgSize.height;
     }
     
-    [currentContext setImageInterpolation:savedInterpolation];
+    [currentContext restoreGraphicsState];
     [result unlockFocus];
     
     return result;
 }
 
 
-- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)endPointInScreen operation:(NSDragOperation)op {
+//- (void)draggedImage:(NSImage *)image endedAt:(NSPoint)endPointInScreen operation:(NSDragOperation)op {
+- (void)draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)endPointInScreen operation:(NSDragOperation)op {
     // screen origin is lower left
     endPointInScreen.x += dragOffset.x;
     endPointInScreen.y -= dragOffset.y;
 
     // window origin is lower left
-    NSPoint endPointInWin = [[self window] convertScreenToBase:endPointInScreen];
+    CGPoint endPointInWin = [[self window] convertRectFromScreen:CGRectMake(endPointInScreen.x, endPointInScreen.y, 0.0, 0.0)].origin;
 
     // get frame of visible portion of list view in window coords
-    NSRect dropZone = [self convertRect:[self visibleRect] toView:nil];
+    CGRect dropRectInWin = [self convertRect:[self visibleRect] toView:nil];
 
-    if (!NSPointInRect(endPointInWin, dropZone)) {
+    if (!CGRectContainsPoint(dropRectInWin, endPointInWin)) {
         if (delegate && [delegate respondsToSelector:@selector(listView:shouldRunPoofAt:forRemovedItemsAtIndexes:)]) {
             if ([delegate listView:self shouldRunPoofAt:endPointInScreen forRemovedItemsAtIndexes:draggingIndexes]) {
                 [NSToolbarPoofAnimator runPoofAtPoint:endPointInScreen];
@@ -807,7 +832,6 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     if (delegate && [delegate respondsToSelector:@selector(listView:draggingSession:endedAtPoint:operation:)]) {
         [delegate listView:self draggingSession:nil endedAtPoint:endPointInScreen operation:op];
     }
-    
 }
 
 
@@ -1081,8 +1105,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     [unusedItems removeAllObjects];
     //[queue clear];
     
-    NSDragOperation mask = [self draggingSourceOperationMaskForLocal:YES];
-    CGFloat fudge = (mask == NSDragOperationNone) ? 0 : [self scrollFudgeExtent];
+    CGFloat fudge = [self scrollFudgeExtent];
     
     NSRect frame = [self frame];
     NSRect vizRect = self.scrollView ? [self.scrollView documentVisibleRect] : viewportRect;
