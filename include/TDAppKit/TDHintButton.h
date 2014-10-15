@@ -1,5 +1,5 @@
 //
-//  TDHintView.h
+//  TDHintButton.h
 //  TDAppKit
 //
 //  Created by Todd Ditchendorf on 11/11/10.
