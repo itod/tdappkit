@@ -47,10 +47,10 @@
 
 
 - (void)awakeFromNib {
-    NSColor *topColor = nil;
-    NSColor *botColor = nil;
     NSColor *topBorderColor = nil;
     NSColor *topBevelColor = nil;
+    NSColor *topColor = nil;
+    NSColor *botColor = nil;
     
     // MAIN
     {
@@ -93,6 +93,8 @@
         if (TDIsYozOrLater()) {
             topBorderColor = TDHexColor(0xBBBBBB);
             topBevelColor = nil;
+            topColor = TDHexColor(0xF4F4F4);
+            botColor = TDHexColor(0xF4F4F4);
         } else {
             topBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
             topBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
