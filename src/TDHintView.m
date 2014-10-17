@@ -30,7 +30,11 @@ static NSDictionary *sHintAttrs = nil;
         //[[NSColor colorWithDeviceWhite:.87 alpha:1] set];
         //[[NSColor colorWithDeviceRed:230.0/255.0 green:236.0/255.0 blue:242.0/255.0 alpha:1] set];
         
-        sHintBgColor = [[NSColor colorWithDeviceWhite:0.68 alpha:1.0] retain];
+        if (TDIsYozOrLater()) {
+            sHintBgColor = [[NSColor colorWithDeviceWhite:0.75 alpha:1.0] retain];
+        } else {
+            sHintBgColor = [[NSColor colorWithDeviceWhite:0.68 alpha:1.0] retain];
+        }
         
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
         [paraStyle setAlignment:NSCenterTextAlignment];
