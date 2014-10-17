@@ -49,41 +49,62 @@
 - (void)awakeFromNib {
     NSColor *topColor = nil;
     NSColor *botColor = nil;
+    NSColor *topBorderColor = nil;
     NSColor *topBevelColor = nil;
     
-    if (TDIsYozOrLater()) {
-        topColor = TDHexColor(0xe0e0e0);
-        botColor = TDHexColor(0xd0d0d0);
-    } else {
-        topColor = TDHexColor(0xcfcfcf);
-        botColor = TDHexColor(0x9f9f9f);
+    // MAIN
+    {
+        if (TDIsYozOrLater()) {
+            topBorderColor = TDHexColor(0x9E9E9E);
+            topBevelColor = nil;
+            topColor = TDHexColor(0xdddddd);
+            botColor = TDHexColor(0xbbbbbb);
+        } else {
+            topBorderColor = [NSColor colorWithDeviceWhite:0.53 alpha:1.0];
+            topBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
+            topColor = TDHexColor(0xcfcfcf);
+            botColor = TDHexColor(0x9f9f9f);
+        }
+        
+        self.mainTopBorderColor = topBorderColor;
+        self.mainTopBevelColor = topBevelColor;
+        self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
+        self.mainBottomBevelColor = nil;
     }
 
-    topBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
-    self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
-    self.mainTopBevelColor = topBevelColor;
-    self.mainTopBorderColor = [NSColor colorWithDeviceWhite:0.53 alpha:1.0];
-    
-    if (TDIsYozOrLater()) {
-        topColor = TDHexColor(0xd0d0d0);
-        botColor = TDHexColor(0xc0c0c0);
-    } else {
-        topColor = [NSColor colorWithDeviceWhite:0.75 alpha:1.0];
-        botColor = [NSColor colorWithDeviceWhite:0.55 alpha:1.0];
+    // HI
+    {
+        if (TDIsYozOrLater()) {
+            topBevelColor = nil;
+            topColor = TDHexColor(0xd0d0d0);
+            botColor = TDHexColor(0xb0b0b0);
+        } else {
+            topBevelColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
+            topColor = [NSColor colorWithDeviceWhite:0.75 alpha:1.0];
+            botColor = [NSColor colorWithDeviceWhite:0.55 alpha:1.0];
+        }
+        
+        self.hiTopBevelColor = topBevelColor;
+        self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
     }
-    topBevelColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
-    self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
-    self.hiTopBevelColor = topBevelColor;
     
-    topColor = [NSColor colorWithDeviceWhite:0.95 alpha:1.0];
-    botColor = [NSColor colorWithDeviceWhite:0.85 alpha:1.0];
-    self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
-    self.nonMainTopBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
-    self.nonMainTopBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
-    
-    self.mainBottomBevelColor = nil;
-    self.nonMainBottomBevelColor = nil;
-
+    // NON MAIN
+    {
+        if (TDIsYozOrLater()) {
+            topBorderColor = TDHexColor(0xBBBBBB);
+            topBevelColor = nil;
+        } else {
+            topBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
+            topBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
+            topColor = [NSColor colorWithDeviceWhite:0.95 alpha:1.0];
+            botColor = [NSColor colorWithDeviceWhite:0.85 alpha:1.0];
+        }
+        
+        self.nonMainTopBorderColor = topBorderColor;
+        self.nonMainTopBevelColor = topBevelColor;
+        self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
+        self.nonMainBottomBevelColor = nil;
+    }
 }
 
 
