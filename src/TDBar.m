@@ -35,20 +35,24 @@
 
 - (void)awakeFromNib {
     if (TDIsYozOrLater()) {
-        NSColor *bgColor = [NSColor colorWithDeviceWhite:0.77 alpha:1.0];
-        self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
+        NSColor *topColor = TDHexColor(0xE1DFDF);
+        NSColor *botColor = TDHexColor(0xC2C1C2);
+        self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
         
-        bgColor = [NSColor colorWithDeviceWhite:0.93 alpha:1.0];
-        self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
+        topColor = TDHexColor(0xF4F4F4);
+        botColor = TDHexColor(0xF4F4F4);
+        self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
         
         self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceWhite:0.75 alpha:1.0] endingColor:[NSColor colorWithDeviceWhite:0.55 alpha:1.0]] autorelease];
         
-        self.mainTopBorderColor = [NSColor colorWithDeviceWhite:0.53 alpha:1.0];
-        self.nonMainTopBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
-        self.mainTopBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
-        self.nonMainTopBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
-        self.mainBottomBevelColor = [NSColor lightGrayColor];
-        self.nonMainBottomBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
+        self.mainTopBorderColor = TDHexColor(0x9E9E9E);
+        self.nonMainTopBorderColor = TDHexColor(0xBBBBBB);
+        
+        self.mainTopBevelColor = nil;
+        self.nonMainTopBevelColor = nil;
+        
+        self.mainBottomBevelColor = nil;
+        self.nonMainBottomBevelColor = nil;
     } else {
         NSColor *bgColor = [NSColor colorWithDeviceWhite:0.77 alpha:1.0];
         self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
