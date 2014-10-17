@@ -13,6 +13,7 @@
 //  limitations under the License.
 
 #import "TDBar.h"
+#import "TDUtils.h"
 
 @implementation TDBar
 
@@ -33,20 +34,37 @@
 
 
 - (void)awakeFromNib {
-    NSColor *bgColor = [NSColor colorWithDeviceWhite:0.77 alpha:1.0];
-    self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
-    
-    bgColor = [NSColor colorWithDeviceWhite:0.93 alpha:1.0];
-    self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
-
-    self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceWhite:0.75 alpha:1.0] endingColor:[NSColor colorWithDeviceWhite:0.55 alpha:1.0]] autorelease];
-
-    self.mainTopBorderColor = [NSColor colorWithDeviceWhite:0.53 alpha:1.0];
-    self.nonMainTopBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
-    self.mainTopBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
-    self.nonMainTopBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
-    self.mainBottomBevelColor = [NSColor lightGrayColor];
-    self.nonMainBottomBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
+    if (TDIsYozOrLater()) {
+        NSColor *bgColor = [NSColor colorWithDeviceWhite:0.77 alpha:1.0];
+        self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
+        
+        bgColor = [NSColor colorWithDeviceWhite:0.93 alpha:1.0];
+        self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
+        
+        self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceWhite:0.75 alpha:1.0] endingColor:[NSColor colorWithDeviceWhite:0.55 alpha:1.0]] autorelease];
+        
+        self.mainTopBorderColor = [NSColor colorWithDeviceWhite:0.53 alpha:1.0];
+        self.nonMainTopBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
+        self.mainTopBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
+        self.nonMainTopBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
+        self.mainBottomBevelColor = [NSColor lightGrayColor];
+        self.nonMainBottomBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
+    } else {
+        NSColor *bgColor = [NSColor colorWithDeviceWhite:0.77 alpha:1.0];
+        self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
+        
+        bgColor = [NSColor colorWithDeviceWhite:0.93 alpha:1.0];
+        self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
+        
+        self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceWhite:0.75 alpha:1.0] endingColor:[NSColor colorWithDeviceWhite:0.55 alpha:1.0]] autorelease];
+        
+        self.mainTopBorderColor = [NSColor colorWithDeviceWhite:0.53 alpha:1.0];
+        self.nonMainTopBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
+        self.mainTopBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
+        self.nonMainTopBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
+        self.mainBottomBevelColor = [NSColor lightGrayColor];
+        self.nonMainBottomBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
+    }
 }
 
 
@@ -72,8 +90,8 @@
 }
 
 
-- (void)drawRect:(NSRect)dirtyRect {
-    NSRect bounds = [self bounds];
+- (void)drawRect:(CGRect)dirtyRect {
+    CGRect bounds = [self bounds];
     BOOL isMain = [[self window] isMainWindow];
     BOOL isHi = [self isHighlighted];
     
@@ -84,18 +102,18 @@
     
     if (isMain) {
         if (isHi) {
-            bgGradient = hiBgGradient;
+            bgGradient = _hiBgGradient;
         } else {
-            bgGradient = mainBgGradient;
+            bgGradient = _mainBgGradient;
         }
-        topBorderColor = mainTopBorderColor;
-        topBevelColor = mainTopBevelColor;
-        bottomBevelColor = mainBottomBevelColor;
+        topBorderColor = _mainTopBorderColor;
+        topBevelColor = _mainTopBevelColor;
+        bottomBevelColor = _mainBottomBevelColor;
     } else {
-        bgGradient = nonMainBgGradient;
-        topBorderColor = nonMainTopBorderColor;
-        topBevelColor = nonMainTopBevelColor;
-        bottomBevelColor = nonMainBottomBevelColor;
+        bgGradient = _nonMainBgGradient;
+        topBorderColor = _nonMainTopBorderColor;
+        topBevelColor = _nonMainTopBevelColor;
+        bottomBevelColor = _nonMainBottomBevelColor;
     }
 
     // background
@@ -104,8 +122,8 @@
     }
     
     CGFloat y = NSMaxY(bounds) - 1.5;
-    NSPoint p1 = NSMakePoint(0.0, y);
-    NSPoint p2 = NSMakePoint(NSWidth(bounds), y);
+    CGPoint p1 = CGPointMake(0.0, y);
+    CGPoint p2 = CGPointMake(NSWidth(bounds), y);
 
     NSBezierPath *path = [NSBezierPath bezierPath];
     [path setLineWidth:1.0];
@@ -134,8 +152,8 @@
     // bottom bevel
     if (bottomBevelColor) {
         [bottomBevelColor set];
-        p1 = NSMakePoint(0.0, 0.5);
-        p2 = NSMakePoint(NSWidth(bounds), 0.5);
+        p1 = CGPointMake(0.0, 0.5);
+        p2 = CGPointMake(NSWidth(bounds), 0.5);
         [path removeAllPoints];
         [path moveToPoint:p1];
         [path lineToPoint:p2];
@@ -148,13 +166,4 @@
     return NO;
 }
 
-@synthesize mainBgGradient;
-@synthesize nonMainBgGradient;
-@synthesize hiBgGradient;
-@synthesize mainTopBorderColor;
-@synthesize nonMainTopBorderColor;
-@synthesize mainTopBevelColor;
-@synthesize nonMainTopBevelColor;
-@synthesize mainBottomBevelColor;
-@synthesize nonMainBottomBevelColor;
 @end

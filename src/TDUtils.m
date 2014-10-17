@@ -287,30 +287,70 @@ NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle) {
 
 
 BOOL TDIsYozOrLater() {
-    NSUInteger major, minor, bugfix;
-    TDGetSystemVersion(&major, &minor, &bugfix);
-    return minor > 9;
+    assert([[NSThread currentThread] isMainThread]);
+    static BOOL sHasChecked = NO;
+    static BOOL sResult = NO;
+    
+    if (!sHasChecked) {
+        sHasChecked = YES;
+        
+        NSUInteger major, minor, bugfix;
+        TDGetSystemVersion(&major, &minor, &bugfix);
+        sResult = minor > 9;
+    }
+    
+    return sResult;
 }
 
 
 BOOL TDIsMtnLionOrLater() {
-    NSUInteger major, minor, bugfix;
-    TDGetSystemVersion(&major, &minor, &bugfix);
-    return minor > 7;
+    assert([[NSThread currentThread] isMainThread]);
+    static BOOL sHasChecked = NO;
+    static BOOL sResult = NO;
+    
+    if (!sHasChecked) {
+        sHasChecked = YES;
+        
+        NSUInteger major, minor, bugfix;
+        TDGetSystemVersion(&major, &minor, &bugfix);
+        sResult = minor > 7;
+    }
+    
+    return sResult;
 }
 
 
 BOOL TDIsLionOrLater() {
-    NSUInteger major, minor, bugfix;
-    TDGetSystemVersion(&major, &minor, &bugfix);
-    return minor > 6;
+    assert([[NSThread currentThread] isMainThread]);
+    static BOOL sHasChecked = NO;
+    static BOOL sResult = NO;
+    
+    if (!sHasChecked) {
+        sHasChecked = YES;
+        
+        NSUInteger major, minor, bugfix;
+        TDGetSystemVersion(&major, &minor, &bugfix);
+        sResult = minor > 6;
+    }
+    
+    return sResult;
 }
 
 
 BOOL TDIsSnowLeopardOrLater() {
-    NSUInteger major, minor, bugfix;
-    TDGetSystemVersion(&major, &minor, &bugfix);
-    return minor > 5;
+    assert([[NSThread currentThread] isMainThread]);
+    static BOOL sHasChecked = NO;
+    static BOOL sResult = NO;
+    
+    if (!sHasChecked) {
+        sHasChecked = YES;
+        
+        NSUInteger major, minor, bugfix;
+        TDGetSystemVersion(&major, &minor, &bugfix);
+        sResult = minor > 5;
+    }
+    
+    return sResult;
 }
 
 //typedef struct {
