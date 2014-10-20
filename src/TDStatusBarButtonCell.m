@@ -94,13 +94,7 @@
     }
     
     // right border
-    NSColor *strokeColor = nil;
-    if (isMain) {
-        strokeColor = [NSColor colorWithDeviceWhite:0.2 alpha:1.0];
-    } else {
-        strokeColor = [NSColor colorWithDeviceWhite:0.5 alpha:1.0];
-    }
-    [strokeColor setStroke];
+    [topBorderColor setStroke];
     
     CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextBeginPath(ctx);
@@ -109,8 +103,8 @@
     CGContextStrokePath(ctx);
     
     CGContextBeginPath(ctx);
-    CGContextMoveToPoint(ctx, NSMaxX(cellFrame), NSMinY(cellFrame));
-    CGContextAddLineToPoint(ctx, NSMaxX(cellFrame), NSMaxY(cellFrame));
+    CGContextMoveToPoint(ctx, round(NSMaxX(cellFrame))-0.5, NSMinY(cellFrame));
+    CGContextAddLineToPoint(ctx, round(NSMaxX(cellFrame))-0.5, NSMaxY(cellFrame));
     CGContextStrokePath(ctx);
 
 }

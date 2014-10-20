@@ -8,16 +8,7 @@
 
 #import <TDAppKit/TDBar.h>
 
-@interface TDStatusBarPopUpView : TDBar <NSMenuDelegate>  {
-    NSString *labelText;
-    NSString *valueText;
-    NSButton *checkbox;
-    NSPopUpButton *popUpButton;
-
-    NSSize labelTextSize;
-    NSSize valueTextSize;
-    BOOL menuVisible;
-}
+@interface TDStatusBarPopUpView : TDBar <NSMenuDelegate>
 
 + (NSDictionary *)defaultLabelTextAttributes;
 + (NSDictionary *)defaultValueTextAttributes;
