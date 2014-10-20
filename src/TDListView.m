@@ -711,7 +711,6 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 #pragma mark NSPasteboardWriting
 
 - (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard {
-    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
     return nil;
 }
 
