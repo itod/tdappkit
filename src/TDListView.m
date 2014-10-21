@@ -682,7 +682,10 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     if (delegate && [delegate respondsToSelector:@selector(listView:canDragItemsAtIndexes:withEvent:slideBack:)]) {
         canDrag = [delegate listView:self canDragItemsAtIndexes:draggingIndexes withEvent:evt slideBack:&slideBack];
     }
-    if (!canDrag) return;
+    if (!canDrag) {
+        self.draggingIndexes = nil;
+        return;
+    }
     
     CGPoint locInWin = [evt locationInWindow];
     CGPoint locInView = [self convertPoint:locInWin fromView:nil];
