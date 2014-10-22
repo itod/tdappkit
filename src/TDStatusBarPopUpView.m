@@ -172,7 +172,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
         CGRect labelRect = [self labelTextRectForBounds:bounds];
 #if DEBUG_DRAW
         [[NSColor redColor] setFill];
-        CGRectFill(labelRect);
+        NSRectFill(labelRect);
 #endif
         NSDictionary *labelAttrs = isMain ? [TDStatusBarPopUpView defaultLabelTextAttributes] : [TDStatusBarPopUpView defaultNonMainLabelTextAttributes];
         [_labelText drawInRect:labelRect withAttributes:labelAttrs];
@@ -182,7 +182,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
         CGRect valueRect = [self valueTextRectForBounds:bounds];
 #if DEBUG_DRAW
         [[NSColor greenColor] setFill];
-        CGRectFill(valueRect);
+        NSRectFill(valueRect);
 #endif
         NSDictionary *valAttrs = isMain ? [TDStatusBarPopUpView defaultValueTextAttributes] : [TDStatusBarPopUpView defaultNonMainValueTextAttributes];
         [_valueText drawInRect:valueRect withAttributes:valAttrs];
@@ -190,7 +190,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
         CGRect arrowsRect = [self arrowsRectForBounds:bounds];
 #if DEBUG_DRAW
         [[NSColor whiteColor] setFill];
-        CGRectFill(arrowsRect);
+        NSRectFill(arrowsRect);
 #endif
         [self drawArrowsInRect:arrowsRect dirtyRect:dirtyRect];
     }

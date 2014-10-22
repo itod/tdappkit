@@ -127,7 +127,7 @@
     TDAssertMainThread();
     static NSDictionary *sImageHints = nil;
     if (!sImageHints) {
-        sImageHints = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:NSImageInterpolationHigh], NSImageHintInterpolation, nil];
+        sImageHints = [[NSDictionary alloc] initWithObjectsAndKeys:@(NSImageInterpolationHigh), NSImageHintInterpolation, nil];
     }
     
     BOOL flipped = YES;
@@ -265,7 +265,7 @@
     TDAssertMainThread();
     static NSDictionary *sImageHints = nil;
     if (!sImageHints) {
-        sImageHints = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInteger:NSImageInterpolationHigh], NSImageHintInterpolation, nil];
+        sImageHints = [[NSDictionary alloc] initWithObjectsAndKeys:@(NSImageInterpolationHigh), NSImageHintInterpolation, nil];
     }
     
     BOOL flipped = YES;
