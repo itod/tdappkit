@@ -109,6 +109,8 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     self.labelText = nil;
     self.valueText = nil;
     self.checkbox = nil;
