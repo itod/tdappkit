@@ -682,7 +682,10 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     if (delegate && [delegate respondsToSelector:@selector(listView:canDragItemsAtIndexes:withEvent:slideBack:)]) {
         canDrag = [delegate listView:self canDragItemsAtIndexes:draggingIndexes withEvent:evt slideBack:&slideBack];
     }
-    if (!canDrag) return;
+    if (!canDrag) {
+        self.draggingIndexes = nil;
+        return;
+    }
     
     CGPoint locInWin = [evt locationInWindow];
     CGPoint locInView = [self convertPoint:locInWin fromView:nil];
@@ -711,7 +714,6 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 #pragma mark NSPasteboardWriting
 
 - (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard {
-    NSAssert2(0, @"%s is an abstract method and must be implemented in %@", __PRETTY_FUNCTION__, [self class]);
     return nil;
 }
 
