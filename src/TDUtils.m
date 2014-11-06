@@ -360,7 +360,7 @@ BOOL TDIsSnowLeopardOrLater() {
 //} NSOperatingSystemVersion;
 
 @interface NSProcessInfo ()
-//- (NSOperatingSystemVersion)operatingSystemVersion;
+- (NSOperatingSystemVersion)operatingSystemVersion;
 @end
 
 #pragma clang diagnostic push
@@ -394,13 +394,12 @@ void TDGetSystemVersion(NSUInteger *major, NSUInteger *minor, NSUInteger *bugfix
 //
 //    return;
     
-//    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion)]) {
-//        NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-//        if (major) *major = version.majorVersion;
-//        if (minor) *minor = version.minorVersion;
-//        if (bugfix) *bugfix = version.patchVersion;
-//    } else
-    {
+    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion)]) {
+        NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+        if (major) *major = version.majorVersion;
+        if (minor) *minor = version.minorVersion;
+        if (bugfix) *bugfix = version.patchVersion;
+    } else {
         OSErr err;
         SInt32 systemVersion, versionMajor, versionMinor, versionBugFix;
         if ((err = Gestalt(gestaltSystemVersion, &systemVersion)) != noErr) goto fail;
