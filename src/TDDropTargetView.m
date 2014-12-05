@@ -32,7 +32,7 @@
         CGRect r = [self hintButtonRectForBounds:[self bounds]];
         self.hintButton = [[[TDHintButton alloc] initWithFrame:r] autorelease];
         [_hintButton setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-        [_hintButton setHintText:NSLocalizedString(@"Add an XML document.", @"")];
+        [_hintButton setHintText:NSLocalizedString(@"Feed Me", @"")];
         [self addSubview:_hintButton];
     }
     return self;

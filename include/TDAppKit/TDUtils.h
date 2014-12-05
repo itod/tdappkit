@@ -53,6 +53,7 @@ CGPoint TDDeviceFloorAlign(CGContextRef ctx, CGPoint p);
 NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle);
 
 BOOL TDIsYozOrLater();
+BOOL TDIsMavsOrLater();
 BOOL TDIsMtnLionOrLater();
 BOOL TDIsLionOrLater();
 BOOL TDIsSnowLeopardOrLater();

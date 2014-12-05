@@ -303,6 +303,23 @@ BOOL TDIsYozOrLater() {
 }
 
 
+BOOL TDIsMavsOrLater() {
+    assert([[NSThread currentThread] isMainThread]);
+    static BOOL sHasChecked = NO;
+    static BOOL sResult = NO;
+    
+    if (!sHasChecked) {
+        sHasChecked = YES;
+        
+        NSUInteger major, minor, bugfix;
+        TDGetSystemVersion(&major, &minor, &bugfix);
+        sResult = minor > 8;
+    }
+    
+    return sResult;
+}
+
+
 BOOL TDIsMtnLionOrLater() {
     assert([[NSThread currentThread] isMainThread]);
     static BOOL sHasChecked = NO;
