@@ -13,4 +13,6 @@
 @interface TDDropTargetView : TDColorView
 
 @property (nonatomic, assign) TDHintButton *hintButton;
+@property (nonatomic, assign) CGSize borderMarginSize;
+@property (nonatomic, assign) CGSize buttonMarginSize;
 @end

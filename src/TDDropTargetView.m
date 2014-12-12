@@ -34,6 +34,9 @@
         [_hintButton setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
         [_hintButton setHintText:NSLocalizedString(@"Feed Me", @"")];
         [self addSubview:_hintButton];
+        
+        self.borderMarginSize = CGSizeMake(MARGIN, MARGIN);
+        self.buttonMarginSize = CGSizeMake(HINT_MARGIN_X, 0.0);
     }
     return self;
 }
@@ -95,8 +98,8 @@
         NSRectFill(bounds);
     }
     
-    CGFloat marginX = bounds.size.width * 0.1;
-    CGFloat marginY = bounds.size.height * 0.1;
+    CGFloat marginX = _borderMarginSize.width;
+    CGFloat marginY = _borderMarginSize.height;
     CGRect r = CGRectInset(bounds, marginX, marginY);
     
     CGContextSetLineWidth(ctx, 4.0);
@@ -157,7 +160,7 @@
 
 
 - (CGRect)hintButtonRectForBounds:(CGRect)bounds {
-    CGFloat w = round(CGRectGetWidth(bounds) - HINT_MARGIN_X*2.0);
+    CGFloat w = round(CGRectGetWidth(bounds) - _buttonMarginSize.width*2.0);
     w = MAX(HINT_MIN_WIDTH, w);
     CGFloat h = HINT_HEIGHT;
 
