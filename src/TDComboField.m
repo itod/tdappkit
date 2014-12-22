@@ -621,7 +621,9 @@
         [scrollView setAutohidesScrollers:NO];
         
         [scrollView setDocumentView:self.listView];
-        NSSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size hasHorizontalScroller:NO hasVerticalScroller:YES borderType:NSNoBorder];
+        //NSSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size hasHorizontalScroller:NO hasVerticalScroller:YES borderType:NSNoBorder];
+        NSSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size horizontalScrollerClass:Nil verticalScrollerClass:[NSScroller class] borderType:NSNoBorder controlSize:NSRegularControlSize scrollerStyle:NSScrollerStyleOverlay];
+
         [self.listView setFrame:NSMakeRect(0, 0, s.width, s.height)]; //[[scrollView contentView] frame]];
     
     }

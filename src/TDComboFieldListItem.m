@@ -94,11 +94,11 @@ static NSDictionary *sHighlightedLabelAttributes = nil;
 
     NSBezierPath *path = nil;
     if (first && last) {
-        path = [NSBezierPath bezierPathWithRoundRect:bounds radius:RADIUS];
+        path = [NSBezierPath bezierPathWithRoundRect:bounds xRadius:RADIUS yRadius:RADIUS corners:TDCornersAll];
     } else if (first) {
-        path = [NSBezierPath bezierPathWithRoundRect:bounds radius:RADIUS corners:TDCornersTop];
+        path = [NSBezierPath bezierPathWithRoundRect:bounds xRadius:RADIUS yRadius:RADIUS corners:TDCornersTop];
     } else if (last) {
-        path = [NSBezierPath bezierPathWithRoundRect:bounds radius:RADIUS corners:TDCornersBottom];
+        path = [NSBezierPath bezierPathWithRoundRect:bounds xRadius:RADIUS yRadius:RADIUS corners:TDCornersBottom];
     } else {
         path = [NSBezierPath bezierPathWithRect:bounds];
     }
