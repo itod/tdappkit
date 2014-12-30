@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class TDHintButton;
+@class TDDropTargetView;
 
 @interface TDRegisterWindowController : NSWindowController
 
@@ -16,8 +16,7 @@
 
 - (IBAction)browse:(id)sender;
 
-@property (nonatomic, retain) IBOutlet TDHintButton *hintButton;
-@property (nonatomic, retain) IBOutlet NSView *dropTargetView;
+@property (nonatomic, retain) IBOutlet TDDropTargetView *dropTargetView;
 
 @property (nonatomic, copy) NSString *appName;
 @property (nonatomic, copy) NSArray *licenseFileExtensions;

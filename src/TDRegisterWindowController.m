@@ -7,6 +7,7 @@
 //
 
 #import <TDAppKit/TDRegisterWindowController.h>
+#import <TDAppKit/TDDropTargetView.h>
 #import <TDAppKit/TDHintButton.h>
 #import <TDAppKit/TDUtils.h>
 
@@ -37,7 +38,6 @@
 
 
 - (void)dealloc {
-    self.hintButton = nil;
     self.dropTargetView = nil;
     self.appName = nil;
     self.licenseFileExtensions = nil;
@@ -54,6 +54,9 @@
     
     NSArray *types = [NSArray arrayWithObject:NSFilenamesPboardType];
     [_dropTargetView registerForDraggedTypes:types];
+    
+    _dropTargetView.borderMarginSize = CGSizeMake(30.0, 30.0);
+    _dropTargetView.buttonMarginSize = CGSizeMake(60.0, 60.0);
     
     [self setUpTitle];
     [self setUpHint];
@@ -130,12 +133,16 @@
 
 
 - (void)setUpHint {
-    TDAssert(_hintButton);
+    TDHintButton *hintButton = _dropTargetView.hintButton;
+    TDAssert(hintButton);
     
     NSString *hint = [NSString stringWithFormat:NSLocalizedString(@"Drag your %@ license file here.", @""), _appName];
-    _hintButton.hintText = hint;
+    hintButton.hintText = hint;
+    [hintButton setTarget:self];
+    [hintButton setAction:@selector(browse:)];
+    [hintButton setNeedsDisplay:YES];
     
-    [_hintButton setNeedsDisplay:YES];
+    [_dropTargetView layoutSubviews]; // yes, directly
 }
 
 
