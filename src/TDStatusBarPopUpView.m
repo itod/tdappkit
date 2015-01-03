@@ -356,7 +356,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
             topColor = TDHexColor(0xd0d0d0);
             botColor = TDHexColor(0xb0b0b0);
         } else {
-            topBevelColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
+            topBevelColor = nil;
             topColor = [NSColor colorWithDeviceWhite:0.75 alpha:1.0];
             botColor = [NSColor colorWithDeviceWhite:0.55 alpha:1.0];
         }
