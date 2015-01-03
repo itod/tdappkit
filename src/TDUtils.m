@@ -55,7 +55,7 @@ id TDCGHexaColor(NSUInteger x) {
 
 
 NSString *TDHexStringFromColor(NSColor *c) {
-    assert([c isKindOfClass:[NSColor class]]);
+    TDCAssert([c isKindOfClass:[NSColor class]]);
     
     NSString *result = nil;
     
@@ -106,20 +106,20 @@ NSColor *TDColorFromString(NSString *s) {
 
 
 void TDPerformOnMainThread(void (^block)(void)) {
-    //assert(block);
+    //TDCAssert(block);
     dispatch_async(dispatch_get_main_queue(), block);
 }
 
 
 void TDPerformOnBackgroundThread(void (^block)(void)) {
-    //assert(block);
+    //TDCAssert(block);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block);
 }
 
 
 void TDPerformOnMainThreadAfterDelay(double delay, void (^block)(void)) {
-    //assert(block);
-    //assert(delay >= 0.0);
+    //TDCAssert(block);
+    //TDCAssert(delay >= 0.0);
 
     double delayInSeconds = delay;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -128,8 +128,8 @@ void TDPerformOnMainThreadAfterDelay(double delay, void (^block)(void)) {
 
 
 void TDPerformOnBackgroundThreadAfterDelay(double delay, void (^block)(void)) {
-    //assert(block);
-    //assert(delay >= 0.0);
+    //TDCAssert(block);
+    //TDCAssert(delay >= 0.0);
 
     double delayInSeconds = delay;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
@@ -287,7 +287,7 @@ NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle) {
 
 
 BOOL TDIsYozOrLater() {
-    assert([[NSThread currentThread] isMainThread]);
+    TDCAssert([[NSThread currentThread] isMainThread]);
     static BOOL sHasChecked = NO;
     static BOOL sResult = NO;
     
@@ -304,7 +304,7 @@ BOOL TDIsYozOrLater() {
 
 
 BOOL TDIsMavsOrLater() {
-    assert([[NSThread currentThread] isMainThread]);
+    TDCAssert([[NSThread currentThread] isMainThread]);
     static BOOL sHasChecked = NO;
     static BOOL sResult = NO;
     
@@ -321,7 +321,7 @@ BOOL TDIsMavsOrLater() {
 
 
 BOOL TDIsMtnLionOrLater() {
-    assert([[NSThread currentThread] isMainThread]);
+    TDCAssert([[NSThread currentThread] isMainThread]);
     static BOOL sHasChecked = NO;
     static BOOL sResult = NO;
     
@@ -338,7 +338,7 @@ BOOL TDIsMtnLionOrLater() {
 
 
 BOOL TDIsLionOrLater() {
-    assert([[NSThread currentThread] isMainThread]);
+    TDCAssert([[NSThread currentThread] isMainThread]);
     static BOOL sHasChecked = NO;
     static BOOL sResult = NO;
     
@@ -355,7 +355,7 @@ BOOL TDIsLionOrLater() {
 
 
 BOOL TDIsSnowLeopardOrLater() {
-    assert([[NSThread currentThread] isMainThread]);
+    TDCAssert([[NSThread currentThread] isMainThread]);
     static BOOL sHasChecked = NO;
     static BOOL sResult = NO;
     

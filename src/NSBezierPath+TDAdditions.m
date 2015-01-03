@@ -28,16 +28,13 @@
     
     CGPoint midLef = CGPointMake(NSMinX(r), NSMidY(r));
     CGPoint topLef = CGPointMake(NSMinX(r), NSMinY(r));
-    CGPoint topMid = CGPointMake(NSMidX(r), NSMinY(r));
     CGPoint topRit = CGPointMake(NSMaxX(r), NSMinY(r));
-    CGPoint midRit = CGPointMake(NSMaxX(r), NSMidY(r));
     CGPoint botRit = CGPointMake(NSMaxX(r), NSMaxY(r));
-    CGPoint botMid = CGPointMake(NSMidX(r), NSMaxY(r));
     CGPoint botLef = CGPointMake(NSMinX(r), NSMaxY(r));
     
     if (corners & TDCornerTopLeft) {
         midLef = CGPointMake(NSMinX(r), NSMinY(r)+yRadius);
-        topMid = CGPointMake(NSMinX(r)+xRadius, NSMinY(r));
+        CGPoint topMid = CGPointMake(NSMinX(r)+xRadius, NSMinY(r));
 
         [path moveToPoint:midLef];
         [path curveToPoint:topMid controlPoint1:midLef controlPoint2:topLef];
@@ -47,8 +44,8 @@
     }
     
     if (corners & TDCornerTopRight) {
-        topMid = CGPointMake(NSMaxX(r)-xRadius, NSMinY(r));
-        midRit = CGPointMake(NSMaxX(r), NSMinY(r)+yRadius);
+        CGPoint topMid = CGPointMake(NSMaxX(r)-xRadius, NSMinY(r));
+        CGPoint midRit = CGPointMake(NSMaxX(r), NSMinY(r)+yRadius);
         
         [path lineToPoint:topMid];
         [path curveToPoint:midRit controlPoint1:topMid controlPoint2:topRit];
@@ -57,8 +54,8 @@
     }
     
     if (corners & TDCornerBottomRight) {
-        midRit = CGPointMake(NSMaxX(r), NSMaxY(r)-yRadius);
-        botMid = CGPointMake(NSMaxX(r)-xRadius, NSMaxY(r));
+        CGPoint midRit = CGPointMake(NSMaxX(r), NSMaxY(r)-yRadius);
+        CGPoint botMid = CGPointMake(NSMaxX(r)-xRadius, NSMaxY(r));
         
         [path lineToPoint:midRit];
         [path curveToPoint:botMid controlPoint1:midRit controlPoint2:botRit];
@@ -67,7 +64,7 @@
     }
     
     if (corners & TDCornerBottomLeft) {
-        botMid = CGPointMake(NSMinX(r)+xRadius, NSMaxY(r));
+        CGPoint botMid = CGPointMake(NSMinX(r)+xRadius, NSMaxY(r));
         midLef = CGPointMake(NSMinX(r), NSMaxY(r)-yRadius);
         
         [path lineToPoint:botMid];
