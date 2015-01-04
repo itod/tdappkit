@@ -586,18 +586,25 @@
     }
     
     // Get drag image
-    NSImage *img = [[self cell] imageForDraggingWithFrame:[self bounds] inView:self]; 
-    if (!img) {
+    NSImage *dragImg = [[self cell] imageForDraggingWithFrame:[self bounds] inView:self]; 
+    if (!dragImg) {
         return;
     }
     
     // Start dragging
-    NSPoint p = NSZeroPoint;
+    CGPoint locInView = CGPointZero;
     if ([self isFlipped]) {
-        p.y = [self bounds].size.height;
+        locInView.y = NSHeight([self bounds]);
     }
 
-    [self dragImage:img at:p offset:NSZeroSize event:evt pasteboard:pboard source:self slideBack:YES];
+    [self dragImage:dragImg at:locInView offset:NSZeroSize event:evt pasteboard:pboard source:self slideBack:YES];
+
+//    NSDraggingItem *dragItem = [[[NSDraggingItem alloc] initWithPasteboardWriter:self] autorelease];
+//    
+//    CGRect dragFrame = CGRectMake(locInView.x, locInView.y, dragImg.size.width, dragImg.size.height);
+//    [dragItem setDraggingFrame:dragFrame contents:dragImg];
+//    
+//    [self beginDraggingSessionWithItems:@[dragItem] event:evt source:self];
 }
 
 
