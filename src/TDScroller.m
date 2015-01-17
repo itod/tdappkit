@@ -181,7 +181,7 @@ static float minKnobWidth;
         slotRect = NSInsetRect(slotRect, 4, 1);
     }
 	
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:slotRect radius:6];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:slotRect xRadius:6.0 yRadius:6.0 corners:TDCornersAll];
     [sSlotGradient drawInBezierPath:path angle:isVertical ? 0 : 90];
     [sSlotStrokeColor setStroke];
     [path stroke];
@@ -202,7 +202,7 @@ static float minKnobWidth;
         knobRect = NSInsetRect(knobRect, 4, 1);
     }
 
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:knobRect radius:6];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:knobRect xRadius:6.0 yRadius:6.0 corners:TDCornersAll];
     [sKnobGradient drawInBezierPath:path angle:isVertical ? 0 : 90];
     //[sKnobStrokeColor setStroke];
     //[path stroke];

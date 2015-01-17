@@ -159,7 +159,7 @@ static NSGradient *sDivotGradient = nil;
     //    NSLog(@"divRect %@", NSStringFromRect(divRect));
     //    NSLog(@"divotRect %@", NSStringFromRect(divotRect));
     
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:divotRect radius:DIVOT_SIDE / 2.0];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:divotRect xRadius:DIVOT_SIDE*0.5 yRadius:DIVOT_SIDE*0.5 corners:TDCornersAll];
     [sDivotGradient drawInBezierPath:path angle:70.0];
 }
 
@@ -173,7 +173,7 @@ static NSGradient *sDivotGradient = nil;
     //    NSLog(@"divRect %@", NSStringFromRect(divRect));
     //    NSLog(@"divotRect %@", NSStringFromRect(divotRect));
     
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:divotRect radius:DIVOT_SIDE / 2.0];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:divotRect xRadius:DIVOT_SIDE*0.5 yRadius:DIVOT_SIDE*0.5 corners:TDCornersAll];
     [sDivotGradient drawInBezierPath:path angle:70.0];
 }
 

@@ -94,11 +94,11 @@ static NSDictionary *sHighlightedLabelAttributes = nil;
 
     NSBezierPath *path = nil;
     if (first && last) {
-        path = [NSBezierPath bezierPathWithRoundRect:bounds radius:RADIUS];
+        path = [NSBezierPath bezierPathWithRoundRect:bounds xRadius:RADIUS yRadius:RADIUS corners:TDCornersAll];
     } else if (first) {
-        path = [NSBezierPath bezierPathWithRoundRect:bounds radius:RADIUS corners:TDCornersTop];
+        path = [NSBezierPath bezierPathWithRoundRect:bounds xRadius:RADIUS yRadius:RADIUS corners:TDCornersTop];
     } else if (last) {
-        path = [NSBezierPath bezierPathWithRoundRect:bounds radius:RADIUS corners:TDCornersBottom];
+        path = [NSBezierPath bezierPathWithRoundRect:bounds xRadius:RADIUS yRadius:RADIUS corners:TDCornersBottom];
     } else {
         path = [NSBezierPath bezierPathWithRect:bounds];
     }
@@ -109,7 +109,7 @@ static NSDictionary *sHighlightedLabelAttributes = nil;
 
 
 - (NSRect)labelRectForBounds:(NSRect)bounds {
-    return NSMakeRect(LABEL_MARGIN_X + labelMarginLeft, LABEL_MARGIN_Y, bounds.size.width - (LABEL_MARGIN_X * 2) - labelMarginLeft, 16.0);
+    return NSMakeRect(LABEL_MARGIN_X + labelMarginLeft, LABEL_MARGIN_Y, bounds.size.width - (LABEL_MARGIN_X * 2.0) - labelMarginLeft, 16.0);
 }
 
 @synthesize labelText;

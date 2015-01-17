@@ -38,8 +38,8 @@
     [[NSColor clearColor] setFill];
     NSRectFill(bounds);
     
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:bounds radius:RADIUS];
-    [[NSColor colorWithDeviceWhite:1 alpha:.8] setFill];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:bounds xRadius:RADIUS yRadius:RADIUS corners:TDCornersAll];
+    [[NSColor colorWithDeviceWhite:1.0 alpha:0.8] setFill];
     [path fill];
 }
 

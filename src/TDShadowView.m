@@ -58,7 +58,7 @@ static NSShadow *sShadow = nil;
     r.size.height -= SHADOW_RADIUS * 2;
     //r = NSInsetRect(r, 20, 20);
     
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:r radius:RADIUS];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:r xRadius:RADIUS yRadius:RADIUS corners:TDCornersAll];
     [path fill];
 }
 
