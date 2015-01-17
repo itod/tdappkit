@@ -221,7 +221,7 @@ static NSDictionary *sHints = nil;
     NSImage *scaledImg = tabModel.scaledImage;
     if (!scaledImg || !NSEqualSizes(scaledImgSize, imgSize)) {
         
-        [img setFlipped:[item isFlipped]];
+        //[img setFlipped:[item isFlipped]];
         
         scaledImg = [img scaledImageOfSize:scaledImgSize alpha:1.0 hiRez:YES cornerRadius:NORMAL_RADIUS];
         tabModel.scaledImage = scaledImg;
@@ -245,7 +245,7 @@ static NSDictionary *sHints = nil;
     NSRect destRect = thumbRect;
     
 //    [img drawInRect:destRect fromRect:srcRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:NO hints:sHints];
-    [scaledImg drawInRect:destRect fromRect:scaledSrcRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:NO hints:sHints];
+    [scaledImg drawInRect:destRect fromRect:scaledSrcRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:sHints];
     
     // stroke again over image
     TDDrawRoundRect(thumbRect, NORMAL_RADIUS, 1.0, nil, strokeColor);

@@ -268,7 +268,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
         }
         
         // reload
-        [self reloadData];
+        //[self reloadData];
         
         if (selectionIndexes && delegate && [delegate respondsToSelector:@selector(listView:didSelectItemsAtIndexes:)]) {
             [delegate listView:self didSelectItemsAtIndexes:set];
