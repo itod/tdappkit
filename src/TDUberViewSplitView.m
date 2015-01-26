@@ -15,10 +15,13 @@
 #import "TDUberViewSplitView.h"
 #import "TDUberView.h"
 #import <TDAppKit/NSBezierPath+TDAdditions.h>
+#import <TDAppKit/TDUtils.h>
 
 #define DIVOT_SIDE 4.5
 
 static NSGradient *sDivotGradient = nil;
+static NSColor *sMainBorderColor = nil;
+static NSColor *sNonMainBorderColor = nil;
 
 @interface TDUberView ()
 @property (nonatomic, retain) NSView *midSuperview;
@@ -40,6 +43,14 @@ static NSGradient *sDivotGradient = nil;
         NSColor *gray = [NSColor colorWithDeviceWhite:.85 alpha:1];
         NSColor *white = [NSColor colorWithDeviceWhite:1 alpha:1];
         sDivotGradient = [[NSGradient alloc] initWithColors:[NSArray arrayWithObjects:black, gray, white, nil]];
+
+        if (TDIsYozOrLater()) {
+            sMainBorderColor = [TDHexColor(0x9E9E9E) retain];
+            sNonMainBorderColor = [TDHexColor(0xBBBBBB) retain];
+        } else {
+            sMainBorderColor = [[NSColor colorWithDeviceWhite:0.48 alpha:1.0] retain];
+            sNonMainBorderColor = [[NSColor colorWithDeviceWhite:0.7 alpha:1.0] retain];
+        }
     }
 }
 
@@ -81,7 +92,8 @@ static NSGradient *sDivotGradient = nil;
 
 - (void)drawDividerInRect:(NSRect)divRect {
     if (NSSplitViewDividerStyleThin == [uberView splitViewDividerStyle]) {
-        [[[self window] isMainWindow] ? [NSColor darkGrayColor] : [NSColor grayColor] set];
+        NSColor *c = [[self window] isMainWindow] ? sMainBorderColor : sNonMainBorderColor;
+        [c setFill];
         NSRectFill(divRect);
         return;
     }
