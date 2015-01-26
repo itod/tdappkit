@@ -11,6 +11,12 @@
 
 @implementation TDView
 
+- (void)dealloc {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(layoutSubviews) object:nil];
+    [super dealloc];
+}
+
+
 #pragma mark -
 #pragma mark NSView
 
@@ -27,9 +33,7 @@
 #pragma mark Public
 
 - (void)setNeedsLayout {
-    TDPerformOnMainThreadAfterDelay(0.0, ^{
-        [self layoutSubviews];
-    });
+    [self performSelector:@selector(layoutSubviews) withObject:nil afterDelay:0.0];
 }
 
 
