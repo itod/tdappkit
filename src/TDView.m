@@ -7,7 +7,6 @@
 //
 
 #import <TDAppKit/TDView.h>
-#import <TDAppKit/TDUtils.h>
 
 @implementation TDView
 
