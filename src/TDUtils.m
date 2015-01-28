@@ -437,3 +437,28 @@ void TDDumpAppleEvent(NSAppleEventDescriptor *aevt) {
     NSLog(@"target %@", target);
 
 }
+
+BOOL TDRectIsZero(CGRect r) {
+    return CGRectEqualToRect(r, CGRectZero);
+}
+
+
+CGRect TDCombineRects(CGRect r1, CGRect r2) {
+    CGRect result = CGRectZero;
+    
+    BOOL is1Zero = TDRectIsZero(r1);
+    BOOL is2Zero = TDRectIsZero(r2);
+    
+    if (is1Zero && is2Zero) {
+        // result = CGRectZero;
+    } else if (is1Zero) {
+        result = r2;
+    } else if (is2Zero) {
+        result = r1;
+    } else {
+        result = CGRectUnion(r1, r2);
+    }
+    
+    return result;
+}
+
