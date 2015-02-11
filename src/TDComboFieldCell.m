@@ -267,8 +267,6 @@
     // Draw cell
     [result lockFocus];
     [result drawAtPoint:NSZeroPoint fromRect:cellFrame operation:NSCompositeSourceOver fraction:1.0];
-//    [result dissolveToPoint:NSZeroPoint fraction:alpha];
-    
     NSImage *favicon = self.image;
     NSSize faviconSize = favicon.size;
     NSRect srcRect = NSMakeRect(0.0, 0.0, faviconSize.width, faviconSize.height);
