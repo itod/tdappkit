@@ -117,6 +117,10 @@
   
     // Source rects
     NSRect srcRect = (NSRect){NSZeroPoint, self.size};
+    if (NSWidth(srcRect) <= 0.0 || NSHeight(srcRect) <= 0.0) {
+        return;
+    }
+    
     NSRect srcTopL, srcTopC, srcTopR, srcMidL, srcMidC, srcMidR, srcBotL, srcBotC, srcBotR;
     makeAreas(srcRect, &srcTopL, &srcTopC, &srcTopR, &srcMidL, &srcMidC, &srcMidR, &srcBotL, &srcBotC, &srcBotR);
 
@@ -136,17 +140,29 @@
     NSImageRep *rep = [self bestRepresentationForRect:srcRect context:[NSGraphicsContext currentContext] hints:sImageHints];
 
     // Draw
-    [rep drawInRect:dstTopL fromRect:srcTopL operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
-    [rep drawInRect:dstTopC fromRect:srcTopC operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
-    [rep drawInRect:dstTopR fromRect:srcTopR operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+//    [rep drawInRect:dstTopL fromRect:srcTopL operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+//    [rep drawInRect:dstTopC fromRect:srcTopC operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+//    [rep drawInRect:dstTopR fromRect:srcTopR operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+//    
+//    [rep drawInRect:dstMidL fromRect:srcMidL operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+//    [rep drawInRect:dstMidC fromRect:srcMidC operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+//    [rep drawInRect:dstMidR fromRect:srcMidR operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+//    
+//    [rep drawInRect:dstBotL fromRect:srcBotL operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+//    [rep drawInRect:dstBotC fromRect:srcBotC operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+//    [rep drawInRect:dstBotR fromRect:srcBotR operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
 
-    [rep drawInRect:dstMidL fromRect:srcMidL operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
-    [rep drawInRect:dstMidC fromRect:srcMidC operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
-    [rep drawInRect:dstMidR fromRect:srcMidR operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
-
-    [rep drawInRect:dstBotL fromRect:srcBotL operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
-    [rep drawInRect:dstBotC fromRect:srcBotC operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
-    [rep drawInRect:dstBotR fromRect:srcBotR operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+    if (NSWidth(dstTopL) > 0.0 && NSHeight(dstTopL) > 0.0 && NSWidth(srcTopL) > 0.0 && NSHeight(srcTopL) > 0.0) [rep drawInRect:dstTopL fromRect:srcTopL operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+    if (NSWidth(dstTopC) > 0.0 && NSHeight(dstTopC) > 0.0 && NSWidth(srcTopC) > 0.0 && NSHeight(srcTopC) > 0.0) [rep drawInRect:dstTopC fromRect:srcTopC operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+    if (NSWidth(dstTopR) > 0.0 && NSHeight(dstTopR) > 0.0 && NSWidth(srcTopR) > 0.0 && NSHeight(srcTopR) > 0.0) [rep drawInRect:dstTopR fromRect:srcTopR operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+    
+    if (NSWidth(dstMidL) > 0.0 && NSHeight(dstMidL) > 0.0 && NSWidth(srcMidL) > 0.0 && NSHeight(srcMidL) > 0.0) [rep drawInRect:dstMidL fromRect:srcMidL operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+    if (NSWidth(dstMidC) > 0.0 && NSHeight(dstMidC) > 0.0 && NSWidth(srcMidC) > 0.0 && NSHeight(srcMidC) > 0.0) [rep drawInRect:dstMidC fromRect:srcMidC operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+    if (NSWidth(dstMidR) > 0.0 && NSHeight(dstMidR) > 0.0 && NSWidth(srcMidR) > 0.0 && NSHeight(srcMidR) > 0.0) [rep drawInRect:dstMidR fromRect:srcMidR operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+    
+    if (NSWidth(dstBotL) > 0.0 && NSHeight(dstBotL) > 0.0 && NSWidth(srcBotL) > 0.0 && NSHeight(srcBotL) > 0.0) [rep drawInRect:dstBotL fromRect:srcBotL operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+    if (NSWidth(dstBotC) > 0.0 && NSHeight(dstBotC) > 0.0 && NSWidth(srcBotC) > 0.0 && NSHeight(srcBotC) > 0.0) [rep drawInRect:dstBotC fromRect:srcBotC operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
+    if (NSWidth(dstBotR) > 0.0 && NSHeight(dstBotR) > 0.0 && NSWidth(srcBotR) > 0.0 && NSHeight(srcBotR) > 0.0) [rep drawInRect:dstBotR fromRect:srcBotR operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
 }
 
 
@@ -316,7 +332,7 @@
     [rep drawInRect:dst_b1r2 fromRect:src_b1r2 operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
     [rep drawInRect:dst_b1r1 fromRect:src_b1r1 operation:op fraction:delta respectFlipped:flipped hints:sImageHints];
     
-#if DEBUG_DRAW
+#if DEBUG_PATCH
     [[NSColor whiteColor] setStroke];
     [NSBezierPath strokeRect:dst_ml1];
     [NSBezierPath strokeRect:dst_ml2];

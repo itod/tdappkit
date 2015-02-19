@@ -30,7 +30,7 @@ NSColor *TDHexColor(NSUInteger x) {
     NSUInteger green = (0x00FF00 & x) >>  8;
     NSUInteger blue  = (0x0000FF & x) >>  0;
     
-    return [NSColor colorWithDeviceRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
+    return [NSColor colorWithCalibratedRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0];
 }
 
 
@@ -40,7 +40,7 @@ NSColor *TDHexaColor(NSUInteger x) {
     NSUInteger blue  = (0x0000FF00 & x) >>  8;
     NSUInteger alpha = (0x000000FF & x) >>  0;
     
-    return [NSColor colorWithDeviceRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha/255.0];
+    return [NSColor colorWithCalibratedRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha/255.0];
 }
 
 
@@ -59,7 +59,7 @@ NSString *TDHexStringFromColor(NSColor *c) {
     
     NSString *result = nil;
     
-    NSColor *convertedColor = [c colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+    NSColor *convertedColor = [c colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
     
     if (convertedColor) {
         result = [NSString stringWithFormat:@"%02X%02X%02X%02X",
@@ -77,7 +77,7 @@ NSString *TDHexStringFromColor(NSColor *c) {
 NSString *TDStringFromColor(NSColor *c) {
     if (!c) return @"";
 
-    NSColor *export = [c colorUsingColorSpace:[NSColorSpace deviceRGBColorSpace]];
+    NSColor *export = [c colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
     
     return [NSString stringWithFormat:@"%lf:%lf:%lf:%lf",
             export.redComponent,
@@ -97,10 +97,10 @@ NSColor *TDColorFromString(NSString *s) {
         for (NSUInteger i = 0; i < 4; i++) {
             components[i] = [[chunks objectAtIndex:i] floatValue];
         }
-        return [NSColor colorWithDeviceRed:components[0]
-                                     green:components[1]
-                                      blue:components[2]
-                                     alpha:components[3]];
+        return [NSColor colorWithCalibratedRed:components[0]
+                                         green:components[1]
+                                          blue:components[2]
+                                         alpha:components[3]];
     }
 }
 
@@ -461,6 +461,11 @@ TDEdgeInsets TDEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat
     e.bottom = bottom;
     e.right = right;
     return e;
+}
+
+
+BOOL TDEdgeInsetsIsEmpty(TDEdgeInsets e) {
+    return e.top == 0.0 && e.left == 0.0 && e.bottom == 0.0 && e.right == 0.0;
 }
 
 

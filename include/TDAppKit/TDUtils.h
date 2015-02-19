@@ -69,6 +69,11 @@ typedef struct {
     CGFloat right;
 } TDEdgeInsets;
 
+#define TDEgdeInsetsZero (TDEdgeInsetsMake(0.0, 0.0, 0.0, 0.0))
+
+#define TDEqualsWithAccuracy(x, y, acc) (fabs((x) - (y)) < (acc))
+
 TDEdgeInsets TDEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right);
+BOOL TDEdgeInsetsIsEmpty(TDEdgeInsets e);
 
 void TDDumpAppleEvent(NSAppleEventDescriptor *aevtDesc);

@@ -77,4 +77,51 @@
     return path;    
 }
 
+
+- (CGMutablePathRef)newQuartzPath {
+    // Need to begin a path here.
+    CGMutablePathRef path = NULL;
+    
+    // Then draw the path elements.
+    NSInteger numElements = [self elementCount];
+
+    if (numElements > 0) {
+        path = CGPathCreateMutable(); // +1
+        NSPoint points[3];
+        BOOL didClosePath = YES;
+        
+        for (NSInteger i = 0; i < numElements; i++) {
+            switch ([self elementAtIndex:i associatedPoints:points]) {
+                case NSMoveToBezierPathElement:
+                    CGPathMoveToPoint(path, NULL, points[0].x, points[0].y);
+                    break;
+                    
+                case NSLineToBezierPathElement:
+                    CGPathAddLineToPoint(path, NULL, points[0].x, points[0].y);
+                    didClosePath = NO;
+                    break;
+                    
+                case NSCurveToBezierPathElement:
+                    CGPathAddCurveToPoint(path, NULL, points[0].x, points[0].y,
+                                          points[1].x, points[1].y,
+                                          points[2].x, points[2].y);
+                    didClosePath = NO;
+                    break;
+                    
+                case NSClosePathBezierPathElement:
+                    CGPathCloseSubpath(path);
+                    didClosePath = YES;
+                    break;
+            }
+        }
+        
+        // Be sure the path is closed or Quartz may not do valid hit detection.
+        if (!didClosePath) {
+            CGPathCloseSubpath(path);
+        }
+    }
+    
+    return path;
+}
+
 @end
