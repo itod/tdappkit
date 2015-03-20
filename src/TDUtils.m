@@ -62,6 +62,25 @@ NSString *TDHexStringFromColor(NSColor *c) {
     NSColor *convertedColor = [c colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
     
     if (convertedColor) {
+        result = [NSString stringWithFormat:@"%02X%02X%02X",
+                  (int) ([convertedColor redComponent] * 0xFF),
+                  (int) ([convertedColor greenComponent] * 0xFF),
+                  (int) ([convertedColor blueComponent] * 0xFF)
+                  ];
+    }
+    
+    return result;
+}
+
+
+NSString *TDHexaStringFromColor(NSColor *c) {
+    NSCAssert([c isKindOfClass:[NSColor class]], @"");
+    
+    NSString *result = nil;
+    
+    NSColor *convertedColor = [c colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
+    
+    if (convertedColor) {
         result = [NSString stringWithFormat:@"%02X%02X%02X%02X",
                   (int) ([convertedColor redComponent] * 0xFF),
                   (int) ([convertedColor greenComponent] * 0xFF),
