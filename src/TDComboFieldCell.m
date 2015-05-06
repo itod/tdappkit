@@ -66,15 +66,6 @@
 #pragma mark -- Working with image --
 //--------------------------------------------------------------//
 
-- (void)setImage:(NSImage *)img {
-    if (image != img) {
-        [image autorelease];
-        image = [img retain];
-        
-        [[self controlView] setNeedsDisplay:YES];
-    }
-}
-
 
 - (NSRect)imageFrameForCellFrame:(NSRect)cellFrame {
     if (image) {

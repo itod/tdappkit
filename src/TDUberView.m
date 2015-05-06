@@ -511,11 +511,11 @@ static NSComparisonResult TDHSplitViewSubviewComparatorFunc(id viewA, id viewB, 
 
     CGFloat leftWidth, rightWidth;
     if (wasCollapsed) {
-        leftWidth = abs(leftFrame.size.width);
-        rightWidth = abs(rightFrame.size.width);
+        leftWidth = fabs(leftFrame.size.width);
+        rightWidth = fabs(rightFrame.size.width);
     } else {
-        leftWidth = abs([self storedLeftSplitPosition]);
-        rightWidth = abs([self storedRightSplitPosition]);
+        leftWidth = fabs([self storedLeftSplitPosition]);
+        rightWidth = fabs([self storedRightSplitPosition]);
         leftFrame.size.width = leftWidth;
         rightFrame.size.width = rightWidth;
     }
@@ -627,11 +627,11 @@ static NSComparisonResult TDHSplitViewSubviewComparatorFunc(id viewA, id viewB, 
     
     CGFloat topHeight, bottomHeight;
     if (wasCollapsed) {
-        topHeight = abs(topFrame.size.height);
-        bottomHeight = abs(bottomFrame.size.height);
+        topHeight = fabs(topFrame.size.height);
+        bottomHeight = fabs(bottomFrame.size.height);
     } else {
-        topHeight = abs([self storedTopSplitPosition]);
-        bottomHeight = abs([self storedBottomSplitPosition]);
+        topHeight = fabs([self storedTopSplitPosition]);
+        bottomHeight = fabs([self storedBottomSplitPosition]);
         topFrame.size.height = topHeight;
         bottomFrame.size.height = bottomHeight;
     }
@@ -783,7 +783,7 @@ static NSComparisonResult TDHSplitViewSubviewComparatorFunc(id viewA, id viewB, 
 
 - (void)storeLeftSplitPosition {
     if (leftViewOpen) {
-        CGFloat leftViewWidth = abs(NSWidth([leftSuperview frame]));
+        CGFloat leftViewWidth = fabs(NSWidth([leftSuperview frame]));
         leftViewWidth = (leftViewWidth < 1) ? 1 : leftViewWidth;
         
         if (currentLeftIdentifier) {
@@ -797,7 +797,7 @@ static NSComparisonResult TDHSplitViewSubviewComparatorFunc(id viewA, id viewB, 
 
 - (void)storeRightSplitPosition {
     if (rightViewOpen) {
-        CGFloat rightViewWidth = abs(NSWidth([rightSuperview frame]));
+        CGFloat rightViewWidth = fabs(NSWidth([rightSuperview frame]));
 
         if (currentRightIdentifier) {
             [self setExtent:rightViewWidth forIdentifier:currentRightIdentifier inDictionaryForKey:kTDUberViewRightViewWidthDictionaryKey];
@@ -810,7 +810,7 @@ static NSComparisonResult TDHSplitViewSubviewComparatorFunc(id viewA, id viewB, 
 
 - (void)storeTopSplitPosition {
     if (topViewOpen) {
-        CGFloat topViewHeight = abs(NSHeight([topSuperview frame]));
+        CGFloat topViewHeight = fabs(NSHeight([topSuperview frame]));
         topViewHeight = (topViewHeight < 1) ? 1 : topViewHeight;
 
         if (currentTopIdentifier) {
@@ -824,7 +824,7 @@ static NSComparisonResult TDHSplitViewSubviewComparatorFunc(id viewA, id viewB, 
 
 - (void)storeBottomSplitPosition {
     if (bottomViewOpen) {
-        CGFloat bottomViewHeight = abs(NSHeight([bottomView frame]));
+        CGFloat bottomViewHeight = fabs(NSHeight([bottomView frame]));
 
         if (currentBottomIdentifier) {
             [self setExtent:bottomViewHeight forIdentifier:currentBottomIdentifier inDictionaryForKey:kTDUberViewBottomViewHeightDictionaryKey];
@@ -1003,7 +1003,7 @@ static NSComparisonResult TDHSplitViewSubviewComparatorFunc(id viewA, id viewB, 
     CGFloat bottomViewHeight = [self storedBottomSplitPosition];
     CGFloat dividerThickness = [horizontalSplitView dividerThickness];
     NSRect midFrame = [midSuperview frame];
-    midFrame.size.height = NSHeight([horizontalSplitView frame]) - abs(NSHeight([topSuperview frame])) - bottomViewHeight - dividerThickness;
+    midFrame.size.height = NSHeight([horizontalSplitView frame]) - fabs(NSHeight([topSuperview frame])) - bottomViewHeight - dividerThickness;
     [midSuperview setFrame:midFrame];
     
     NSRect bottomFrame = [bottomSuperview frame];
