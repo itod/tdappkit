@@ -134,31 +134,31 @@ enum {
 /*
  * + aliasListDescriptorWithArray:
  */
-+ (NSAppleEventDescriptor *)aliasListDescriptorWithArray:(NSArray *)anArray
-{
-        NSAppleEventDescriptor  * theEventList = nil;
-        unsigned int                            theIndex,
-                                                                        theNumOfParam;
-
-        theNumOfParam = [anArray count];
-
-        if( theNumOfParam > 0)
-        {
-                theEventList = [self listDescriptor];
-
-                for( theIndex = 0; theIndex < theNumOfParam; theIndex++ )
-                {
-                        NSAppleEventDescriptor  * theAliasDesc;
-                        theAliasDesc = [self aliasDescriptorWithFile:[anArray objectAtIndex:theIndex]];
-
-                        NSAssert1( theAliasDesc != nil, @"Could not get an alias NSAppleEventDescriptor for %@", [anArray objectAtIndex:theIndex] );
-
-                        [theEventList insertDescriptor:theAliasDesc atIndex:theIndex+1];
-                }
-        }
-
-        return theEventList;
-}
+//+ (NSAppleEventDescriptor *)aliasListDescriptorWithArray:(NSArray *)anArray
+//{
+//        NSAppleEventDescriptor  * theEventList = nil;
+//        NSUInteger                            theIndex,
+//                                                                        theNumOfParam;
+//
+//        theNumOfParam = [anArray count];
+//
+//        if( theNumOfParam > 0)
+//        {
+//                theEventList = [self listDescriptor];
+//
+//                for( theIndex = 0; theIndex < theNumOfParam; theIndex++ )
+//                {
+//                        NSAppleEventDescriptor  * theAliasDesc;
+//                        theAliasDesc = [self aliasDescriptorWithFile:[anArray objectAtIndex:theIndex]];
+//
+//                        NSAssert1( theAliasDesc != nil, @"Could not get an alias NSAppleEventDescriptor for %@", [anArray objectAtIndex:theIndex] );
+//
+//                        [theEventList insertDescriptor:theAliasDesc atIndex:theIndex+1];
+//                }
+//        }
+//
+//        return theEventList;
+//}
 
 /*
  * + descriptorWithURL:
@@ -173,32 +173,32 @@ enum {
 /*
  * + aliasDescriptorWithURL:
  */
-+ (NSAppleEventDescriptor *)aliasDescriptorWithURL:(NSURL *)aURL
-{
-        return [self aliasDescriptorWithFile:aURL];
-}
+//+ (NSAppleEventDescriptor *)aliasDescriptorWithURL:(NSURL *)aURL
+//{
+//        return [self aliasDescriptorWithFile:aURL];
+//}
+//
+//+ (NSAppleEventDescriptor *)aliasDescriptorWithString:(NSString *)aPath
+//{
+//        return [self aliasDescriptorWithFile:aPath];
+//}
 
-+ (NSAppleEventDescriptor *)aliasDescriptorWithString:(NSString *)aPath
-{
-        return [self aliasDescriptorWithFile:aPath];
-}
-
-+ (NSAppleEventDescriptor *)aliasDescriptorWithFile:(id)aFile
-{
-        AliasHandle                                             theAliasHandle;
-        FSRef                                                           theReference;
-        NSAppleEventDescriptor          * theAppleEventDescriptor = nil;
-
-        if( [aFile getFSRef:&theReference] == YES && FSNewAliasMinimal( &theReference, &theAliasHandle ) == noErr )
-        {
-                HLock((Handle)theAliasHandle);
-                theAppleEventDescriptor = [self descriptorWithDescriptorType:typeAlias data:[NSData dataWithBytes:*theAliasHandle length:GetHandleSize((Handle) theAliasHandle)]];
-                HUnlock((Handle)theAliasHandle);
-                DisposeHandle((Handle)theAliasHandle);
-        }
-
-        return theAppleEventDescriptor;
-}
+//+ (NSAppleEventDescriptor *)aliasDescriptorWithFile:(id)aFile
+//{
+//        AliasHandle                                             theAliasHandle;
+//        FSRef                                                           theReference;
+//        NSAppleEventDescriptor          * theAppleEventDescriptor = nil;
+//
+//        if( [aFile getFSRef:&theReference] == YES && FSNewAliasMinimal( &theReference, &theAliasHandle ) == noErr )
+//        {
+//                HLock((Handle)theAliasHandle);
+//                theAppleEventDescriptor = [self descriptorWithDescriptorType:typeAlias data:[NSData dataWithBytes:*theAliasHandle length:GetHandleSize((Handle) theAliasHandle)]];
+//                HUnlock((Handle)theAliasHandle);
+//                DisposeHandle((Handle)theAliasHandle);
+//        }
+//
+//        return theAppleEventDescriptor;
+//}
 
 // typeTrue
 /*
@@ -383,10 +383,10 @@ enum {
         {
                 theDescriptor = [self descriptorWithDictionary:anObject];
         }
-        else if( [anObject isKindOfClass:[NSURL class]] )
-        {
-                theDescriptor = [self aliasDescriptorWithURL:anObject];
-        }
+//        else if( [anObject isKindOfClass:[NSURL class]] )
+//        {
+//                theDescriptor = [self aliasDescriptorWithURL:anObject];
+//        }
         else if( [anObject isKindOfClass:[NSAppleEventDescriptor class]] )
         {
                 theDescriptor = anObject;
@@ -405,7 +405,7 @@ enum {
 + (id)descriptorWithArray:(NSArray *)anArray
 {
         NSAppleEventDescriptor  * theEventList = nil;
-        unsigned int                            theIndex,
+        NSUInteger                            theIndex,
                                                                         theNumOfParam;
 
         theNumOfParam = [anArray count];
@@ -603,7 +603,7 @@ enum {
  */
 - (NSArray *)arrayValue
 {
-        SInt32                                          theNumOfItems,
+        NSInteger                                          theNumOfItems,
                                                                         theIndex;
         NSAppleEventDescriptor  * theDescriptor;
         NSMutableArray                          * theArray;
@@ -628,7 +628,7 @@ enum {
  */
 -(NSDictionary *)dictionaryValueFromRecordDescriptor
 {
-        unsigned int                            theIndex,
+        NSUInteger                            theIndex,
                                                                         theNumOfItems = [self numberOfItems];
         NSMutableDictionary             *theDictionary = [NSMutableDictionary dictionaryWithCapacity:theNumOfItems];
 
@@ -651,7 +651,7 @@ enum {
 - (NSDictionary *)dictionaryValue
 {
         NSAppleEventDescriptor  * theUserRecordFields = [self descriptorForKeyword:keyASUserRecordFields];
-        unsigned int                            theIndex,
+        NSUInteger                            theIndex,
                                                                         theNumOfItems = [theUserRecordFields numberOfItems];
         NSMutableDictionary             * theDictionary = theNumOfItems
                                                                         ? [NSMutableDictionary dictionaryWithCapacity:theNumOfItems/2]
@@ -668,50 +668,50 @@ enum {
 /*
  * - urlValue:
  */
-- (NSURL *)urlValue
-{
-        id                                      theURL = nil;
-        OSAError                        theError;
-        unsigned int    theSize;
-
-        switch([self descriptorType])
-        {
-                case typeAlias:                                                 //      alias record
-                {
-                        Handle                  theAliasHandle;
-                        FSRef                           theTarget;
-                        Boolean                 theWasChanged;
-
-                        theSize = (unsigned int)AEGetDescDataSize([self aeDesc]);
-                        theAliasHandle = NewHandle( theSize );
-                        HLock(theAliasHandle);
-                        theError = AEGetDescData([self aeDesc], *theAliasHandle, theSize);
-                        HUnlock(theAliasHandle);
-                        if( theError == noErr  && FSResolveAlias( NULL, (AliasHandle)theAliasHandle, &theTarget, &theWasChanged ) == noErr )
-                        {
-                                theURL = [NSURL URLWithFSRef:&theTarget];
-                        }
-
-                        DisposeHandle(theAliasHandle);
-                        break;
-                }
-                case typeFileURL:                                       // ???          NOT IMPLEMENTED YET
-                        //NSLog(@"NOT IMPLEMENTED YET: Attempt to create a NSURL from 'typeFileURL' AEDesc" );
-            {
-                void *theBytes;
-                theError = AEGetDescData([self aeDesc], &theBytes, theSize);
-                if (theSize) {
-                    NSString *str = [[[NSString alloc] initWithBytes:theBytes length:theSize encoding:NSUTF8StringEncoding] autorelease];
-                    if (str) {
-                        theURL = [NSURL URLWithString:str];
-                    }
-                    break;
-                }
-            }
-        }
-
-        return theURL;
-}
+//- (NSURL *)urlValue
+//{
+//        id                                      theURL = nil;
+//        OSAError                        theError;
+//        unsigned int    theSize;
+//
+//        switch([self descriptorType])
+//        {
+//                case typeAlias:                                                 //      alias record
+//                {
+//                        Handle                  theAliasHandle;
+//                        FSRef                           theTarget;
+//                        Boolean                 theWasChanged;
+//
+//                        theSize = (unsigned int)AEGetDescDataSize([self aeDesc]);
+//                        theAliasHandle = NewHandle( theSize );
+//                        HLock(theAliasHandle);
+//                        theError = AEGetDescData([self aeDesc], *theAliasHandle, theSize);
+//                        HUnlock(theAliasHandle);
+//                        if( theError == noErr  && FSResolveAlias( NULL, (AliasHandle)theAliasHandle, &theTarget, &theWasChanged ) == noErr )
+//                        {
+//                                theURL = [NSURL URLWithFSRef:&theTarget];
+//                        }
+//
+//                        DisposeHandle(theAliasHandle);
+//                        break;
+//                }
+//                case typeFileURL:                                       // ???          NOT IMPLEMENTED YET
+//                        //NSLog(@"NOT IMPLEMENTED YET: Attempt to create a NSURL from 'typeFileURL' AEDesc" );
+//            {
+//                void *theBytes;
+//                theError = AEGetDescData([self aeDesc], &theBytes, theSize);
+//                if (theSize) {
+//                    NSString *str = [[[NSString alloc] initWithBytes:theBytes length:theSize encoding:NSUTF8StringEncoding] autorelease];
+//                    if (str) {
+//                        theURL = [NSURL URLWithString:str];
+//                    }
+//                    break;
+//                }
+//            }
+//        }
+//
+//        return theURL;
+//}
 
 /*
  * -unsignedIntValue
@@ -906,9 +906,9 @@ enum {
                         theResult = [self numberOfItems] == 1 && [self keywordForDescriptorAtIndex:1] == keyASUserRecordFields ? [self dictionaryValue] : [self dictionaryValueFromRecordDescriptor];
                         break;
                 case typeAlias:                                         //      alias record
-                case typeFileURL:
-                        theResult = [self urlValue];
-                        break;
+//                case typeFileURL:
+//                        theResult = [self urlValue];
+//                        break;
 //              case typeEnumerated:                                    //      enumerated data
 //                      break;
                 case cScript:                                                   // script data
@@ -955,24 +955,24 @@ enum {
 /*
  * -openEventDescriptorWithTargetDescriptor:array:
  */
-+ (NSAppleEventDescriptor *)openEventDescriptorWithTargetDescriptor:(NSAppleEventDescriptor *)aTargetDescriptor array:(NSArray *)anArray
-{
-        NSAppleEventDescriptor  * theEvent = nil,
-                                                                        * theEventList = nil;
-
-        if( aTargetDescriptor != nil)
-        {
-                theEventList = [NSAppleEventDescriptor aliasListDescriptorWithArray:anArray];
-
-                if( theEventList )
-                {
-                        theEvent = [self appleEventWithEventClass:kCoreEventClass eventID:kAEOpenDocuments targetDescriptor:aTargetDescriptor returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID];
-                        [theEvent setParamDescriptor:theEventList forKeyword:keyDirectObject];
-                }
-        }
-
-        return theEvent;
-}
+//+ (NSAppleEventDescriptor *)openEventDescriptorWithTargetDescriptor:(NSAppleEventDescriptor *)aTargetDescriptor array:(NSArray *)anArray
+//{
+//        NSAppleEventDescriptor  * theEvent = nil,
+//                                                                        * theEventList = nil;
+//
+//        if( aTargetDescriptor != nil)
+//        {
+//                theEventList = [NSAppleEventDescriptor aliasListDescriptorWithArray:anArray];
+//
+//                if( theEventList )
+//                {
+//                        theEvent = [self appleEventWithEventClass:kCoreEventClass eventID:kAEOpenDocuments targetDescriptor:aTargetDescriptor returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID];
+//                        [theEvent setParamDescriptor:theEventList forKeyword:keyDirectObject];
+//                }
+//        }
+//
+//        return theEvent;
+//}
 
 /*
  * -quitEventDescriptorWithTargetDescriptor:

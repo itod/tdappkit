@@ -209,7 +209,7 @@
         @param array A <tt>NSArray</tt> of file url <tt>NSURL</tt>s and/or path <tt>NSString</tt>s.
         @result A <tt>NSAppleEventDescriptor</tt> containing a list descriptor of alias descriptors.
  */
-+ (NSAppleEventDescriptor *)aliasListDescriptorWithArray:(NSArray *)array;
+//+ (NSAppleEventDescriptor *)aliasListDescriptorWithArray:(NSArray *)array;
 
 /*!
         @method descriptorWithURL:
@@ -227,7 +227,7 @@
         @param URL A file url <tt>NSURL</tt> object.
         @result A <tt>NSAppleEventDescriptor</tt> containing a alias descriptor.
  */
-+ (NSAppleEventDescriptor *)aliasDescriptorWithURL:(NSURL *)URL;
+//+ (NSAppleEventDescriptor *)aliasDescriptorWithURL:(NSURL *)URL;
 
 /*!
         @method aliasDescriptorWithString:
@@ -236,7 +236,7 @@
         @param path A file path.
         @result A <tt>NSAppleEventDescriptor</tt> containing a alias descriptor.
  */
-+ (NSAppleEventDescriptor *)aliasDescriptorWithString:(NSString *)path;
+//+ (NSAppleEventDescriptor *)aliasDescriptorWithString:(NSString *)path;
 
 /*!
         @method aliasDescriptorWithFile:
@@ -245,7 +245,7 @@
         @param aFile A file object of type <tt>NSString</tt> or <tt>NSURL</tt>.
         @result A <tt>NSAppleEventDescriptor</tt> containing a alias descriptor.
  */
-+ (NSAppleEventDescriptor *)aliasDescriptorWithFile:(id)aFile;
+//+ (NSAppleEventDescriptor *)aliasDescriptorWithFile:(id)aFile;
 
 /*!
         @method descriptorWithTrueBoolean
@@ -612,7 +612,7 @@
         @discussion Returns a file url <tt>NSURL</tt> for an alias descriptor. If the recevier does not contain an alias descriptor the <tt>nil</tt> is returned. Currently url descriptors are not handled.
         @result A <tt>NSURL</tt>.
  */
-- (NSURL *)urlValue;
+//- (NSURL *)urlValue;
 
 /*!
         @method unsignedIntValue
@@ -745,7 +745,7 @@
         @param array A <tt>NSArray</tt> of file url <tt>NSURL</tt>s and/or path <tt>NSString</tt>s.
         @result A <tt>NSAppleEventDescriptor</tt> containing an open application event or an open documents event descriptor.
  */
-+ (NSAppleEventDescriptor *)openEventDescriptorWithTargetDescriptor:(NSAppleEventDescriptor *)targetDescriptor array:(NSArray *)array;
+//+ (NSAppleEventDescriptor *)openEventDescriptorWithTargetDescriptor:(NSAppleEventDescriptor *)targetDescriptor array:(NSArray *)array;
 /*!
         @method quitEventDescriptorWithTargetDescriptor:
         @abstract Get a <tt>NSAppleEventDescriptor</tt> for a quit event.
