@@ -28,4 +28,5 @@
 
 @property (nonatomic, copy) NSString *reuseIdentifier;
 @property (nonatomic, assign) BOOL drawingDragImage;
+@property (nonatomic, assign) NSUInteger index;
 @end

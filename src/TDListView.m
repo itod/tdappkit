@@ -29,10 +29,6 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 + (void)runPoofAtPoint:(NSPoint)p;
 @end
 
-@interface TDListItem ()
-@property (nonatomic, assign) NSUInteger index;
-@end
-
 @interface TDListView ()
 - (void)setUp;
 - (void)layoutItems;
