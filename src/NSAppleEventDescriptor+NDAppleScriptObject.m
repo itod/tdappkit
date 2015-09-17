@@ -125,7 +125,7 @@ enum {
 /*
  * currentProcessDescriptor
  */
-+ (NSAppleEventDescriptor *)currentProcessDescriptor
++ (NSAppleEventDescriptor *)myCurrentProcessDescriptor
 {
         ProcessSerialNumber     theCurrentProcess = { 0, kCurrentProcess };
         return [NSAppleEventDescriptor descriptorWithDescriptorType:typeProcessSerialNumber bytes:(void*)&theCurrentProcess length:sizeof(theCurrentProcess)];
@@ -1054,7 +1054,7 @@ enum {
 - (id)initWithSubroutineName:(NSString *)aRoutineName argumentsListDescriptor:(NSAppleEventDescriptor *)aParam
 {
         if( self = [self initWithEventClass:kASAppleScriptSuite eventID:kASSubroutineEvent
-                                                                         targetDescriptor:[NSAppleEventDescriptor currentProcessDescriptor] returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID] )
+                                                                         targetDescriptor:[NSAppleEventDescriptor myCurrentProcessDescriptor] returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID] )
         {
                 [self setParamDescriptor:[NSAppleEventDescriptor descriptorWithCString:[[aRoutineName lowercaseString] UTF8String]] forKeyword:keyASSubroutineName];
                 [self setParamDescriptor:aParam ? aParam : [NSAppleEventDescriptor listDescriptor] forKeyword:keyDirectObject];
@@ -1069,7 +1069,7 @@ enum {
 - (id)initWithSubroutineName:(NSString *)aRoutineName labels:(AEKeyword*)aLabels arguments:(id *)anObjects count:(unsigned int)aCount
 {
         if( self = [self initWithEventClass:kASAppleScriptSuite eventID:kASPrepositionalSubroutine
-                                                                                                                 targetDescriptor:[NSAppleEventDescriptor currentProcessDescriptor] returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID] )
+                                                                                                                 targetDescriptor:[NSAppleEventDescriptor myCurrentProcessDescriptor] returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID] )
         {
                 unsigned int            theIndex;
                 [self setParamDescriptor:[NSAppleEventDescriptor descriptorWithCString:[[aRoutineName lowercaseString] UTF8String]] forKeyword:keyASSubroutineName];
@@ -1101,7 +1101,7 @@ enum {
 - (id)initWithSubroutineName:(NSString *)aRoutineName labels:(AEKeyword*)aLabels argumentDescriptors:(NSAppleEventDescriptor **)aParam count:(unsigned int)aCount
 {
         if( self = [self initWithEventClass:kASAppleScriptSuite eventID:kASPrepositionalSubroutine
-                                                                                                  targetDescriptor:[NSAppleEventDescriptor currentProcessDescriptor] returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID] )
+                                                                                                  targetDescriptor:[NSAppleEventDescriptor myCurrentProcessDescriptor] returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID] )
         {
                 unsigned int            theIndex;
                 [self setParamDescriptor:[NSAppleEventDescriptor descriptorWithCString:[[aRoutineName lowercaseString] UTF8String]] forKeyword:keyASSubroutineName];
@@ -1117,7 +1117,7 @@ enum {
  */
 - (id)initWithSubroutineName:(NSString *)aRoutineName labelsAndArguments:(AEKeyword)aKeyWord arguments:(va_list)anArgList
 {
-        if( self = [self initWithEventClass:kASAppleScriptSuite eventID:kASPrepositionalSubroutine targetDescriptor:[NSAppleEventDescriptor currentProcessDescriptor] returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID] )
+        if( self = [self initWithEventClass:kASAppleScriptSuite eventID:kASPrepositionalSubroutine targetDescriptor:[NSAppleEventDescriptor myCurrentProcessDescriptor] returnID:kAutoGenerateReturnID transactionID:kAnyTransactionID] )
         {
                 [self setParamDescriptor:[NSAppleEventDescriptor descriptorWithCString:[[aRoutineName lowercaseString] UTF8String]] forKeyword:keyASSubroutineName];
                 do

@@ -179,12 +179,12 @@
 @interface NSAppleEventDescriptor (NDConversion)
 
 /*!
-        @method currentProcessDescriptor
+        @method myCurrentProcessDescriptor
         @abstract Returns a <tt>NSAppleEventDescriptor</tt> for the current process.
         @discussion Returns a AppleEvent descriptor for the current process, ProcessSerialNumber { 0, kCurrentProcess }
         @result A <tt>NSAppleEventDescriptor</tt>.
  */
-+ (NSAppleEventDescriptor *)currentProcessDescriptor;
++ (NSAppleEventDescriptor *)myCurrentProcessDescriptor;
 
 /*!
         @method targetProcessSerialNumber
