@@ -944,7 +944,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TD;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Todd Ditchendorf";
 				TargetAttributes = {
 					8DC2EF4F0486A6940098B216 = {
@@ -1174,6 +1174,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				INFOPLIST_FILE = res/conf/Info.plist;
 				INSTALL_PATH = "build/$(CONFIGURATION)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.celestiateapot.${PRODUCT_NAME:rfc1034Identifier}";
 				PRODUCT_NAME = TDAppKit;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -1199,6 +1200,7 @@
 				INFOPLIST_FILE = res/conf/Info.plist;
 				INSTALL_PATH = "build/$(CONFIGURATION)";
 				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.celestiateapot.${PRODUCT_NAME:rfc1034Identifier}";
 				PRODUCT_NAME = TDAppKit;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -1208,6 +1210,7 @@
 		1DEB91B208733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = TDDEBUG;
@@ -1260,6 +1263,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ListViewDemoApp;
 			};
 			name = Debug;
@@ -1285,6 +1289,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = ListViewDemoApp;
 				ZERO_LINK = NO;
 			};
@@ -1309,6 +1314,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = FooBarDemoApp;
 			};
 			name = Debug;
@@ -1331,6 +1337,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = FooBarDemoApp;
 				ZERO_LINK = NO;
 			};
