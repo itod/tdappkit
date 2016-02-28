@@ -92,6 +92,7 @@
     NSRect bounds = [self bounds];
     NSSize size = bounds.size;
     
+    // progress rect
     CGFloat x;
     CGFloat y;
     CGFloat w;

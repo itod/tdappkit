@@ -9,6 +9,7 @@
 #import "TDComboFieldCell.h"
 #import "TDComboFieldTextView.h"
 #import <TDAppKit/TDComboField.h>
+#import <TDAppKit/TDUtils.h>
 
 #define IMAGE_MARGIN 2.0
 
@@ -101,6 +102,10 @@
         textFrame.origin.y += 1.0;
     }
 
+    if (TDIsElCapOrLater()) {
+        textFrame.origin.y -= 1.0;
+    }
+    
     [super selectWithFrame:textFrame
                     inView:controlView 
                     editor:textObj 
@@ -174,6 +179,10 @@
     // Draw text
     if (![(TDComboField *)controlView isRounded]) {
         cellFrame.origin.y += 1.0;
+    }
+
+    if (TDIsElCapOrLater()) {
+        cellFrame.origin.y -= 1.0;
     }
     [super drawInteriorWithFrame:cellFrame inView:controlView];
 }
