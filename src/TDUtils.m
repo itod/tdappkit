@@ -286,6 +286,13 @@ NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle) {
 }
 
 
+BOOL TDIsElCapOrLater() {
+    NSUInteger major, minor, bugfix;
+    TDGetSystemVersion(&major, &minor, &bugfix);
+    return minor > 10;
+}
+
+
 BOOL TDIsYozOrLater() {
     NSUInteger major, minor, bugfix;
     TDGetSystemVersion(&major, &minor, &bugfix);
