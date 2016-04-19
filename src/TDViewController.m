@@ -26,7 +26,7 @@ NSString * const TDViewControllerViewDidMoveToWindowNotification = @"TDViewContr
     NSLog(@"%s %@", __PRETTY_FUNCTION__, self);
 #endif
     
-    self.tabBarItem = nil;
+    [_tabBarItem release], _tabBarItem = nil;
     [super dealloc];
 }
 

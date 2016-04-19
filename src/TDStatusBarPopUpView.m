@@ -111,10 +111,10 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    self.labelText = nil;
-    self.valueText = nil;
-    self.checkbox = nil;
-    self.popUpButton = nil;
+    [_labelText release], _labelText = nil;
+    [_valueText release], _valueText = nil;
+    [_checkbox release], _checkbox = nil;
+    [_popUpButton release], _popUpButton = nil;
     [super dealloc];
 }
 
@@ -452,7 +452,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 
 - (void)setLabelText:(NSString *)s {
     if (s != _labelText) {
-        [_labelText release];
+        [_labelText release], _labelText = nil;
         _labelText = [s retain];
         
         self.labelTextSize = [_labelText sizeWithAttributes:[[self class] defaultLabelTextAttributes]];
@@ -464,7 +464,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 
 - (void)setValueText:(NSString *)s {
     if (s != _valueText) {
-        [_valueText release];
+        [_valueText release], _valueText = nil;
         _valueText = [s retain];
         
         self.valueTextSize = [self.valueText sizeWithAttributes:[[self class] defaultValueTextAttributes]];

@@ -43,7 +43,7 @@
 
 
 - (void)dealloc {
-    self.hintButton = nil;
+    [_hintButton release], _hintButton = nil;
     [super dealloc];
 }
 

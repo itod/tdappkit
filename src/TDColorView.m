@@ -17,7 +17,7 @@
 @implementation TDColorView
 
 - (void)dealloc {
-    self.color = nil;
+    [_color release], _color = nil;
     [super dealloc];
 }
 

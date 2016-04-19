@@ -124,4 +124,51 @@
     return path;
 }
 
+
+static void CGPathCallback(void *info, const CGPathElement *element)
+{
+    NSBezierPath *path = info;
+    CGPoint *points = element->points;
+    
+    switch (element->type) {
+        case kCGPathElementMoveToPoint:
+        {
+            [path moveToPoint:NSMakePoint(points[0].x, points[0].y)];
+            break;
+        }
+        case kCGPathElementAddLineToPoint:
+        {
+            [path lineToPoint:NSMakePoint(points[0].x, points[0].y)];
+            break;
+        }
+        case kCGPathElementAddQuadCurveToPoint:
+        {
+            // NOTE: This is untested.
+            NSPoint currentPoint = [path currentPoint];
+            NSPoint interpolatedPoint = NSMakePoint((currentPoint.x + 2*points[0].x) / 3, (currentPoint.y + 2*points[0].y) / 3);
+            [path curveToPoint:NSMakePoint(points[1].x, points[1].y) controlPoint1:interpolatedPoint controlPoint2:interpolatedPoint];
+            break;
+        }
+        case kCGPathElementAddCurveToPoint:
+        {
+            [path curveToPoint:NSMakePoint(points[2].x, points[2].y) controlPoint1:NSMakePoint(points[0].x, points[0].y) controlPoint2:NSMakePoint(points[1].x, points[1].y)];
+            break;
+        }
+        case kCGPathElementCloseSubpath:
+        {
+            [path closePath];
+            break;
+        }
+    }
+}
+
+
++ (NSBezierPath *)bezierPathWithCGPath:(CGPathRef)cgPath {
+    TDAssert(cgPath);
+    NSBezierPath *bp = [NSBezierPath bezierPath];
+    CGPathApply(cgPath, bp, CGPathCallback);
+    TDAssert(bp);
+    return bp;
+}
+
 @end
