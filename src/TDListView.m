@@ -80,6 +80,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 
 
 - (void)dealloc {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     self.scrollView = nil;

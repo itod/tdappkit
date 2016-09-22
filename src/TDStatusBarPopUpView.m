@@ -96,7 +96,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 }
 
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.labelTextSize = CGSizeZero;

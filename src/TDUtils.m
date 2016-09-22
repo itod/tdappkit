@@ -114,7 +114,7 @@ NSColor *TDColorFromString(NSString *s) {
     } else {
         CGFloat components[4];
         for (NSUInteger i = 0; i < 4; i++) {
-            components[i] = [[chunks objectAtIndex:i] floatValue];
+            components[i] = [chunks[i] doubleValue];
         }
         return [NSColor colorWithCalibratedRed:components[0]
                                          green:components[1]
@@ -302,6 +302,23 @@ NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle) {
         return nil;
     }
     return nib;
+}
+
+
+BOOL TDIsElCapOrLater() {
+    NSCAssert([[NSThread currentThread] isMainThread], @"");
+    static BOOL sHasChecked = NO;
+    static BOOL sResult = NO;
+    
+    if (!sHasChecked) {
+        sHasChecked = YES;
+        
+        NSUInteger major, minor, bugfix;
+        TDGetSystemVersion(&major, &minor, &bugfix);
+        sResult = minor > 10;
+    }
+    
+    return sResult;
 }
 
 
