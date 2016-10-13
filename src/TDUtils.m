@@ -124,6 +124,12 @@ NSColor *TDColorFromString(NSString *s) {
 }
 
 
+void TDPerformNow(void (^block)(void)) {
+    //NSCAssert(block);
+    block();
+}
+
+
 void TDPerformOnMainThread(void (^block)(void)) {
     //NSCAssert(block);
     dispatch_async(dispatch_get_main_queue(), block);
