@@ -286,6 +286,13 @@ NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle) {
 }
 
 
+BOOL TDIsSierraOrLater() {
+    NSUInteger major, minor, bugfix;
+    TDGetSystemVersion(&major, &minor, &bugfix);
+    return minor > 11;
+}
+
+
 BOOL TDIsElCapOrLater() {
     NSUInteger major, minor, bugfix;
     TDGetSystemVersion(&major, &minor, &bugfix);
@@ -361,12 +368,12 @@ void TDGetSystemVersion(NSUInteger *major, NSUInteger *minor, NSUInteger *bugfix
 //
 //    return;
     
-//    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion)]) {
-//        NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-//        if (major) *major = version.majorVersion;
-//        if (minor) *minor = version.minorVersion;
-//        if (bugfix) *bugfix = version.patchVersion;
-//    } else
+    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion)]) {
+        NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+        if (major) *major = version.majorVersion;
+        if (minor) *minor = version.minorVersion;
+        if (bugfix) *bugfix = version.patchVersion;
+    } else
     {
         OSErr err;
         SInt32 systemVersion, versionMajor, versionMinor, versionBugFix;
