@@ -39,7 +39,7 @@
 
 
 - (id)initTextCell:(NSString *)s {
-    if (self = [super init]) {
+    if (self = [super initTextCell:s]) {
         
     }
     return self;
