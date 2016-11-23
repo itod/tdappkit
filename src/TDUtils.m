@@ -311,6 +311,23 @@ NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle) {
 }
 
 
+BOOL TDIsSierraOrLater() {
+    NSCAssert([[NSThread currentThread] isMainThread], @"");
+    static BOOL sHasChecked = NO;
+    static BOOL sResult = NO;
+    
+    if (!sHasChecked) {
+        sHasChecked = YES;
+        
+        NSUInteger major, minor, bugfix;
+        TDGetSystemVersion(&major, &minor, &bugfix);
+        sResult = minor > 11;
+    }
+    
+    return sResult;
+}
+
+
 BOOL TDIsElCapOrLater() {
     NSCAssert([[NSThread currentThread] isMainThread], @"");
     static BOOL sHasChecked = NO;
