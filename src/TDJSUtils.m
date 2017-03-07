@@ -76,7 +76,7 @@ JSObjectRef TDCFArrayToJSObject(JSContextRef ctx, CFArrayRef cfArray, JSValueRef
     for ( ; i < len; i++) {
         CFTypeRef value = CFArrayGetValueAtIndex(cfArray, i);
         JSValueRef propVal = TDCFTypeToJSValue(ctx, value, ex);
-        JSObjectSetPropertyAtIndex(ctx, obj, i, propVal, NULL);
+        JSObjectSetPropertyAtIndex(ctx, obj, (unsigned int)i, propVal, NULL);
     }
     
     return obj;
@@ -168,7 +168,7 @@ CFArrayRef TDJSObjectCopyCFArray(JSContextRef ctx, JSObjectRef obj, JSValueRef *
     
     CFIndex i = 0;
     for ( ; i < len; i++) {
-        JSValueRef val = JSObjectGetPropertyAtIndex(ctx, obj, i, NULL);
+        JSValueRef val = JSObjectGetPropertyAtIndex(ctx, obj, (unsigned int)i, NULL);
         CFTypeRef cfType = TDJSValueCopyCFType(ctx, val, ex);
         CFArraySetValueAtIndex(cfArray, i, cfType);
         

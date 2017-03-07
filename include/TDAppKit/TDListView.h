@@ -137,6 +137,8 @@ extern NSString *const TDListItemPboardType;
 - (NSMenu *)listView:(TDListView *)lv contextMenuForItemsAtIndexes:(NSIndexSet *)set;
 /* Drag and drop support */
 
+- (id)listView:(TDListView *)lv pasteboardPropertyListForItemsAtIndexes:(NSIndexSet *)set;
+
 /* The return value indicates whether the list view can attempt to initiate a drag for the given event and items. 
  If the delegate does not implement this method, the list view will act as if it returned YES.
  */

@@ -20,7 +20,7 @@
     NSUInteger count = [self length];
     NSMutableArray *result = [NSMutableArray arrayWithCapacity:count];
     
-    NSUInteger i = 0;
+    unsigned int i = 0;
     for ( ; i < count; i++) {
         [result addObject:[self item:i]];
     }
