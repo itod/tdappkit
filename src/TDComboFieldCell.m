@@ -29,20 +29,20 @@
 #pragma mark -- Initialize --
 //--------------------------------------------------------------//
 
-- (id)initImageCell:(NSImage *)img {
-    if (self = [super init]) {
-        
-    }
-    return self;
-}
-
-
-- (id)initTextCell:(NSString *)s {
-    if (self = [super init]) {
-        
-    }
-    return self;
-}
+//- (id)initImageCell:(NSImage *)img {
+//    if (self = [super init]) {
+//        
+//    }
+//    return self;
+//}
+//
+//
+//- (id)initTextCell:(NSString *)s {
+//    if (self = [super init]) {
+//        
+//    }
+//    return self;
+//}
 
 
 - (void)dealloc {
