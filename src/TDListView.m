@@ -709,7 +709,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 #pragma mark NSPasteboardWriting
 
 - (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard {
-    return nil;
+    return @[];
 }
 
 
