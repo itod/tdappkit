@@ -35,4 +35,5 @@ typedef NS_ENUM(NSUInteger, TDCorner) {
 + (NSBezierPath *)bezierPathWithRoundRect:(NSRect)r xRadius:(CGFloat)xRadius yRadius:(CGFloat)yRadius corners:(TDCorner)corners;
 + (NSBezierPath *)bezierPathWithCGPath:(CGPathRef)cgPath;
 - (CGMutablePathRef)newQuartzPath; // +1
+- (CGMutablePathRef)newOpenQuartzPath; // +1
 @end
