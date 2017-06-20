@@ -78,7 +78,7 @@
 }
 
 
-- (CGMutablePathRef)newQuartzPath {
+- (CGMutablePathRef)newClosedQuartzPath {
     // Need to begin a path here.
     CGMutablePathRef path = NULL;
     
@@ -117,7 +117,7 @@
         
         // Be sure the path is closed or Quartz may not do valid hit detection.
         if (!didClosePath) {
-            //CGPathCloseSubpath(path);
+            CGPathCloseSubpath(path);
         }
     }
     
@@ -153,7 +153,8 @@
                     break;
                     
                 case NSClosePathBezierPathElement:
-                    CGPathCloseSubpath(path);
+                    // noop
+                    //CGPathCloseSubpath(path);
                     break;
             }
         }
