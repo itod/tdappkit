@@ -78,7 +78,7 @@
 }
 
 
-- (CGMutablePathRef)newClosedQuartzPath {
+- (CGMutablePathRef)newQuartzPath {
     // Need to begin a path here.
     CGMutablePathRef path = NULL;
     
