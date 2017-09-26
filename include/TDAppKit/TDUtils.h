@@ -54,13 +54,13 @@ CGPoint TDDeviceFloorAlign(CGContextRef ctx, CGPoint p);
 
 NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle);
 
-BOOL TDIsSierraOrLater();
-BOOL TDIsElCapOrLater();
-BOOL TDIsYozOrLater();
-BOOL TDIsMavsOrLater();
-BOOL TDIsMtnLionOrLater();
-BOOL TDIsLionOrLater();
-BOOL TDIsSnowLeopardOrLater();
+BOOL TDIsSierraOrLater(void);
+BOOL TDIsElCapOrLater(void);
+BOOL TDIsYozOrLater(void);
+BOOL TDIsMavsOrLater(void);
+BOOL TDIsMtnLionOrLater(void);
+BOOL TDIsLionOrLater(void);
+BOOL TDIsSnowLeopardOrLater(void);
 void TDGetSystemVersion(NSUInteger *major, NSUInteger *minor, NSUInteger *bugfix);
 
 NSStringEncoding TDNSStringEncodingFromTextEncodingName(NSString *encName);
