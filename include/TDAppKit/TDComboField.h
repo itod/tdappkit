@@ -75,6 +75,6 @@
 @property (nonatomic, readonly, retain) NSArray *buttons;
 
 // progress
-@property (nonatomic) CGFloat progress;
+@property (nonatomic, assign) double progress;
 @property (nonatomic, retain) NSImage *progressImage;
 @end

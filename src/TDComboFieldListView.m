@@ -7,7 +7,6 @@
 //
 
 #import "TDComboFieldListView.h"
-#import "NSBezierPath+TDAdditions.h"
 
 #define RADIUS 3.0
 
@@ -38,7 +37,7 @@
     [[NSColor clearColor] setFill];
     NSRectFill(bounds);
     
-    NSBezierPath *path = [NSBezierPath bezierPathWithRoundRect:bounds xRadius:RADIUS yRadius:RADIUS corners:TDCornersAll];
+    NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:bounds xRadius:RADIUS yRadius:RADIUS];
     [[NSColor colorWithDeviceWhite:1.0 alpha:0.8] setFill];
     [path fill];
 }

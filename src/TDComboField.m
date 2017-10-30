@@ -45,12 +45,20 @@
 
 
 - (void)dealloc {
+#ifndef NDEBUG
+    NSLog(@"%s %@", __PRETTY_FUNCTION__, self);
+#endif
+
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self removeListWindow];
+    
+    TDAssert(listView);
+    listView.dataSource = nil;
+    listView.delegate = nil;
+    self.listView = nil;
 
     self.dataSource = nil;
     self.scrollView = nil;
-    self.listView = nil;
     self.listWindow = nil;
     self.fieldEditor = nil;
     self.image = nil;
@@ -63,7 +71,7 @@
 - (void)awakeFromNib {
     self.buttons = [NSMutableArray array];
     
-    NSString *imgName = self.isRounded ? @"location_field_progress_indicator_rounded" : @"combo_field_progress_indicator";
+    NSString *imgName = self.isRounded ? @"location_field_progress_indicator_rounded" : @"location_field_progress_indicator";
     NSImage *img = [NSImage imageNamed:imgName];
 
     self.progressImage = img;
@@ -137,7 +145,7 @@
 
         [progressImage drawStretchableInRect:pRect
                                   edgeInsets:TDEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
-                                   operation:NSCompositePlusDarker
+                                   operation:NSCompositingOperationPlusDarker
                                     fraction:1.0];
         
         //    [progressImage drawInRect:pRect
@@ -165,7 +173,11 @@
 
 
 - (NSUInteger)indexOfSelectedItem {
-    return [self.listView.selectionIndexes firstIndex];
+    NSUInteger i = NSNotFound;
+    if ([self isListVisible]) {
+        i = [self.listView.selectionIndexes firstIndex];
+    }
+    return i;
 }
 
 
