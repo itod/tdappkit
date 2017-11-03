@@ -33,11 +33,12 @@
 
 
 - (void)viewWillMoveToSuperview:(NSView *)v {
+    NSDictionary *info = nil;
     if (v) {
-        NSDictionary *info = @{@"superview": v};
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:TDViewControllerViewWillMoveToSuperviewNotification object:self userInfo:info];
+        info = @{@"superview": v};
     }
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:TDViewControllerViewWillMoveToSuperviewNotification object:self userInfo:info];
 }
 
 
@@ -48,11 +49,12 @@
 
 
 - (void)viewWillMoveToWindow:(NSWindow *)win {
+    NSDictionary *info = nil;
     if (win) {
-        NSDictionary *info = @{@"window": win};
-        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:TDViewControllerViewWillMoveToWindowNotification object:self userInfo:info];
+        info = @{@"window": win};
     }
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc postNotificationName:TDViewControllerViewWillMoveToWindowNotification object:self userInfo:info];
 }
 
 

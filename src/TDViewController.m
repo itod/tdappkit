@@ -68,7 +68,7 @@ NSString * const TDViewControllerViewDidMoveToWindowNotification = @"TDViewContr
     TDAssert([n object] == [self view]);
     
     NSView *sv = [[n userInfo] objectForKey:@"superview"];
-    TDAssert([sv isKindOfClass:[NSView class]]);
+    TDAssert(!sv || [sv isKindOfClass:[NSView class]]);
     [self viewWillMoveToSuperview:sv];
 }
 
@@ -87,7 +87,7 @@ NSString * const TDViewControllerViewDidMoveToWindowNotification = @"TDViewContr
     TDAssert([n object] == [self view]);
 
     NSWindow *win = [[n userInfo] objectForKey:@"window"];
-    TDAssert([win isKindOfClass:[NSWindow class]]);
+    TDAssert(!win || [win isKindOfClass:[NSWindow class]]);
     [self viewWillMoveToWindow:win];
 }
 
