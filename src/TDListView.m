@@ -80,7 +80,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 
 
 - (void)dealloc {
-#ifndef NDEBUG
+#if DEALLOC_DEBUG
     NSLog(@"%s %@", __PRETTY_FUNCTION__, self);
 #endif
 
