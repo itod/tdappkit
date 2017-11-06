@@ -607,11 +607,10 @@
     }
     
     // Start dragging
-    CGPoint locInView = CGPointZero;
-    if ([self isFlipped]) {
-        locInView.y = [self bounds].size.height;
-    }
-
+    CGPoint locInView = [self convertPoint:[evt locationInWindow] fromView:nil];
+    locInView.x -= 8.0;
+    locInView.y -= 16.0;
+    
     TDAssert(dragImg);
     TDAssert(!CGSizeEqualToSize([dragImg size], CGSizeZero));
     NSDraggingItem *dragItem = [[[NSDraggingItem alloc] initWithPasteboardWriter:self] autorelease];
