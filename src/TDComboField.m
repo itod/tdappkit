@@ -586,31 +586,70 @@
         return;
     }
     
-    // Write data to pasteboard
-    NSPasteboard *pboard = [NSPasteboard pasteboardWithName:NSDragPboard];
-    id delegate = [self delegate];
-    
-    if (![delegate respondsToSelector:@selector(comboField:writeDataToPasteboard:)]) {
-        return;
-    }
+    id <TDComboFieldDelegate>del = (id)self.delegate;
+    TDAssert([del conformsToProtocol:@protocol(TDComboFieldDelegate)]);
 
-    if (![delegate comboField:self writeDataToPasteboard:pboard]) {
+    if (![del comboFieldCanWriteToPasteboard:self]) {
         return;
     }
-    
+        
     // Get drag image
-    NSImage *img = [[self cell] imageForDraggingWithFrame:[self bounds] inView:self]; 
-    if (!img) {
+    NSImage *dragImg = [[self cell] imageForDraggingWithFrame:[self bounds] inView:self];
+    if (!dragImg) {
         return;
     }
     
     // Start dragging
-    NSPoint p = NSZeroPoint;
+    CGPoint locInView = CGPointZero;
     if ([self isFlipped]) {
-        p.y = [self bounds].size.height;
+        locInView.y = [self bounds].size.height;
     }
 
-    [self dragImage:img at:p offset:NSZeroSize event:evt pasteboard:pboard source:self slideBack:YES];
+    TDAssert(dragImg);
+    TDAssert(!CGSizeEqualToSize([dragImg size], CGSizeZero));
+    NSDraggingItem *dragItem = [[[NSDraggingItem alloc] initWithPasteboardWriter:self] autorelease];
+    
+    CGRect dragFrame = CGRectMake(locInView.x, locInView.y, dragImg.size.width, dragImg.size.height);
+    [dragItem setDraggingFrame:dragFrame contents:dragImg];
+    
+    [self beginDraggingSessionWithItems:@[dragItem] event:evt source:self];
+}
+
+
+
+#pragma mark -
+#pragma mark NSPasteboardWriting
+
+- (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard {
+    return @[WebURLsWithTitlesPboardType]; //@[(id)kUTTypeURL]; //@[NSPasteboardTypeURL];
+}
+
+
+- (id)pasteboardPropertyListForType:(NSString *)type {
+    id <TDComboFieldDelegate>del = (id)self.delegate;
+    TDAssert([del conformsToProtocol:@protocol(TDComboFieldDelegate)]);
+    
+    NSString *URLString = [del pasteboardURLStringForComboField:self];
+    TDAssert([URLString length]);
+
+    NSString *title = [del pasteboardTitleForComboField:self];
+    TDAssert([title length]);
+    
+    // The format of WebURLsWithTitlesPboardType is array of arrays: URLStrings, then titles
+    return @[@[URLString], @[title]];
+}
+
+
+#pragma mark -
+#pragma mark NSDraggingSource
+
+- (NSDragOperation)draggingSession:(NSDraggingSession *)session sourceOperationMaskForDraggingContext:(NSDraggingContext)ctx {
+    return NSDragOperationLink;
+}
+
+
+- (BOOL)ignoreModifierKeysForDraggingSession:(NSDraggingSession *)session {
+    return YES;
 }
 
 

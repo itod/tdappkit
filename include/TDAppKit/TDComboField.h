@@ -23,13 +23,16 @@
 
 @protocol TDComboFieldDelegate <NSObject>
 @required
-- (BOOL)comboField:(TDComboField *)cf writeDataToPasteboard:(NSPasteboard *)pboard;
+- (BOOL)comboFieldCanWriteToPasteboard:(TDComboField *)cf;
+- (NSString *)pasteboardURLStringForComboField:(TDComboField *)cf;
+- (NSString *)pasteboardTitleForComboField:(TDComboField *)cf;
+
 @optional
 - (void)comboFieldWillDismissPopUp:(TDComboField *)cf;
 - (void)comboFieldDidEscape:(TDComboField *)cf;
 @end
 
-@interface TDComboField : NSTextField <TDListViewDataSource, TDListViewDelegate> {
+@interface TDComboField : NSTextField <NSDraggingSource, NSPasteboardWriting, TDListViewDataSource, TDListViewDelegate> {
     id <TDComboFieldDataSource>dataSource;
     NSScrollView *scrollView;
     TDListView *listView;
