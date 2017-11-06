@@ -24,6 +24,9 @@
 @protocol TDComboFieldDelegate <NSObject>
 @required
 - (BOOL)comboFieldCanWriteToPasteboard:(TDComboField *)cf;
+- (NSArray *)comboField:(TDComboField *)cf writableTypesForPasteboard:(NSPasteboard *)pasteboard;
+- (id)comboField:(TDComboField *)cf pasteboardPropertyListForType:(NSString *)type;
+
 - (NSString *)pasteboardURLStringForComboField:(TDComboField *)cf;
 - (NSString *)pasteboardTitleForComboField:(TDComboField *)cf;
 

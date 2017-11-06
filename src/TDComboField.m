@@ -620,8 +620,11 @@
 #pragma mark -
 #pragma mark NSPasteboardWriting
 
-- (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard {
-    return @[WebURLsWithTitlesPboardType]; //@[(id)kUTTypeURL]; //@[NSPasteboardTypeURL];
+- (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pboard {
+    id <TDComboFieldDelegate>del = (id)self.delegate;
+    TDAssert([del conformsToProtocol:@protocol(TDComboFieldDelegate)]);
+
+    return [del comboField:self writableTypesForPasteboard:pboard];
 }
 
 
@@ -629,14 +632,7 @@
     id <TDComboFieldDelegate>del = (id)self.delegate;
     TDAssert([del conformsToProtocol:@protocol(TDComboFieldDelegate)]);
     
-    NSString *URLString = [del pasteboardURLStringForComboField:self];
-    TDAssert([URLString length]);
-
-    NSString *title = [del pasteboardTitleForComboField:self];
-    TDAssert([title length]);
-    
-    // The format of WebURLsWithTitlesPboardType is array of arrays: URLStrings, then titles
-    return @[@[URLString], @[title]];
+    return [del comboField:self pasteboardPropertyListForType:type];
 }
 
 
