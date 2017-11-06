@@ -785,7 +785,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     CGFloat y = 0;
     for (NSImage *img in [images reverseObjectEnumerator]) {
         CGSize imgSize = [img size];
-        [img drawInRect:NSMakeRect(0.0, y, imgSize.width, imgSize.height) fromRect:CGRectMake(0.0, 0.0, imgSize.width, imgSize.height) operation:NSCompositeSourceOver fraction:0.5];
+        [img drawInRect:NSMakeRect(0.0, y, imgSize.width, imgSize.height) fromRect:CGRectMake(0.0, 0.0, imgSize.width, imgSize.height) operation:NSCompositingOperationSourceOver fraction:0.5];
         y += imgSize.height;
     }
     

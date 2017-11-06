@@ -33,12 +33,12 @@
 @implementation NSEvent (TDAdditions)
 
 - (BOOL)isMouseDown {
-    return (NSLeftMouseDown == [self type]);
+    return (NSEventTypeLeftMouseDown == [self type]);
 }
 
 
 - (BOOL)isMouseMoved {
-    return (NSMouseMoved == [self type]);
+    return (NSEventTypeMouseMoved == [self type]);
 }
 
 
@@ -53,12 +53,12 @@
 
 
 - (BOOL)isKeyUp {
-    return (NSKeyUp == [self type]);
+    return (NSEventTypeKeyUp == [self type]);
 }
 
 
 - (BOOL)isKeyDown {
-    return (NSKeyDown == [self type]);
+    return (NSEventTypeKeyDown == [self type]);
 }
 
 
@@ -73,7 +73,7 @@
 
 
 - (BOOL)isScrollWheel {
-    return (NSScrollWheel == [self type]);
+    return (NSEventTypeScrollWheel == [self type]);
 }
 
 

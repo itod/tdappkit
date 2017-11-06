@@ -658,7 +658,7 @@
 - (NSWindow *)listWindow {
     if (!listWindow) {
         NSRect r = [self listWindowRectForBounds:[self bounds]];
-        self.listWindow = [[[NSWindow alloc] initWithContentRect:r styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:YES] autorelease];
+        self.listWindow = [[[NSWindow alloc] initWithContentRect:r styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES] autorelease];
         [listWindow setOpaque:NO];
         [listWindow setHasShadow:YES];
         [listWindow setBackgroundColor:[NSColor clearColor]];

@@ -28,7 +28,7 @@ static NSDictionary *sHighlightedLabelAttributes = nil;
 //        [shadow setShadowBlurRadius:0];
         
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-        [paraStyle setAlignment:NSLeftTextAlignment];
+        [paraStyle setAlignment:NSTextAlignmentLeft];
         [paraStyle setLineBreakMode:NSLineBreakByTruncatingTail];
         
         sLabelAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:

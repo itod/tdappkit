@@ -172,8 +172,8 @@
         }
         
         NSRect fromRect = NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height);
-        [image drawInRect:NSOffsetRect(imageFrame, 0.0, -imageSize.height) fromRect:fromRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        //[image compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
+        [image drawInRect:NSOffsetRect(imageFrame, 0.0, -imageSize.height) fromRect:fromRect operation:NSCompositingOperationSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+        //[image compositeToPoint:imageFrame.origin operation:NSCompositingOperationSourceOver];
     }
     
     // Draw text
@@ -217,8 +217,8 @@
         }
         
         NSRect fromRect = NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height);
-        [image drawInRect:NSOffsetRect(imageFrame, 0.0, -imageSize.height) fromRect:fromRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        //[image compositeToPoint:imageFrame.origin operation:NSCompositeSourceOver];
+        [image drawInRect:NSOffsetRect(imageFrame, 0.0, -imageSize.height) fromRect:fromRect operation:NSCompositingOperationSourceOver fraction:1.0 respectFlipped:YES hints:nil];
+        //[image compositeToPoint:imageFrame.origin operation:NSCompositingOperationSourceOver];
     }
     
     // Draw text
@@ -266,12 +266,12 @@
     
     // Draw cell
     [result lockFocus];
-    [result drawAtPoint:NSZeroPoint fromRect:cellFrame operation:NSCompositeSourceOver fraction:1.0];
+    [result drawAtPoint:NSZeroPoint fromRect:cellFrame operation:NSCompositingOperationSourceOver fraction:1.0];
     NSImage *favicon = self.image;
     NSSize faviconSize = favicon.size;
     NSRect srcRect = NSMakeRect(0.0, 0.0, faviconSize.width, faviconSize.height);
     NSPoint destPoint = NSZeroPoint;
-    [favicon drawAtPoint:destPoint fromRect:srcRect operation:NSCompositeSourceOver fraction:alpha];
+    [favicon drawAtPoint:destPoint fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha];
     
     NSPoint p = NSMakePoint(faviconSize.width + IMAGE_MARGIN, 0.0);
     [attrStr drawAtPoint:p];
