@@ -679,7 +679,6 @@
         CGSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size horizontalScrollerClass:nil verticalScrollerClass:nil borderType:NSNoBorder controlSize:NSControlSizeRegular scrollerStyle:NSScrollerStyleOverlay];
         //CGSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size hasHorizontalScroller:NO hasVerticalScroller:YES borderType:NSNoBorder];
         [self.listView setFrame:CGRectMake(0, 0, s.width, s.height)]; //[[_scrollView contentView] frame]];
-    
     }
     return _scrollView;
 }
