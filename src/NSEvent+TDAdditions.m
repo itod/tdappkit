@@ -43,12 +43,12 @@
 
 
 - (BOOL)isMouseDragged {
-    return (NSLeftMouseDragged == [self type]);
+    return (NSEventTypeLeftMouseDragged == [self type]);
 }
 
 
 - (BOOL)isMouseUp {
-    return (NSLeftMouseUp == [self type]);
+    return (NSEventTypeLeftMouseUp == [self type]);
 }
 
 

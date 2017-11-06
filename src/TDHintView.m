@@ -33,7 +33,7 @@ static NSDictionary *sHintAttrs = nil;
         sHintBgColor = [[NSColor colorWithDeviceWhite:0.68 alpha:1.0] retain];
         
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-        [paraStyle setAlignment:NSCenterTextAlignment];
+        [paraStyle setAlignment:NSTextAlignmentCenter];
         [paraStyle setLineBreakMode:NSLineBreakByWordWrapping];
         
         NSShadow *shadow = [[[NSShadow alloc] init] autorelease];

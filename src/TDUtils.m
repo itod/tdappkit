@@ -229,25 +229,25 @@ void TDAddRoundRect(CGContextRef ctx, CGRect rect, CGFloat radius) {
 
 
 BOOL TDIsCommandKeyPressed(NSInteger modifierFlags) {
-    NSInteger commandKeyWasPressed = (NSCommandKeyMask & modifierFlags);
+    NSInteger commandKeyWasPressed = (NSEventModifierFlagCommand & modifierFlags);
     return [[NSNumber numberWithInteger:commandKeyWasPressed] boolValue];
 }
 
 
 BOOL TDIsControlKeyPressed(NSInteger modifierFlags) {
-    NSInteger controlKeyWasPressed = (NSControlKeyMask & modifierFlags);
+    NSInteger controlKeyWasPressed = (NSEventModifierFlagControl & modifierFlags);
     return [[NSNumber numberWithInteger:controlKeyWasPressed] boolValue];
 }
 
 
 BOOL TDIsShiftKeyPressed(NSInteger modifierFlags) {
-    NSInteger commandKeyWasPressed = (NSShiftKeyMask & modifierFlags);
+    NSInteger commandKeyWasPressed = (NSEventModifierFlagShift & modifierFlags);
     return [[NSNumber numberWithInteger:commandKeyWasPressed] boolValue];
 }
 
 
 BOOL TDIsOptionKeyPressed(NSInteger modifierFlags) {
-    NSInteger commandKeyWasPressed = (NSAlternateKeyMask & modifierFlags);
+    NSInteger commandKeyWasPressed = (NSEventModifierFlagOption & modifierFlags);
     return [[NSNumber numberWithInteger:commandKeyWasPressed] boolValue];         
 }
 

@@ -426,10 +426,10 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     NSRect r = NSMakeRect(locInWin.x - radius, locInWin.y - radius, radius * 2, radius * 2);
     
     while (withinDragRadius) {
-        evt = [[self window] nextEventMatchingMask:NSLeftMouseUpMask|NSLeftMouseDraggedMask|NSPeriodicMask];
+        evt = [[self window] nextEventMatchingMask:NSEventMaskLeftMouseUp|NSEventMaskLeftMouseDragged|NSEventMaskPeriodic];
         
         switch ([evt type]) {
-            case NSLeftMouseDragged:
+            case NSEventTypeLeftMouseDragged:
                 if (NSPointInRect([evt locationInWindow], r)) {
                     // still within drag radius tolerance. dont drag yet
                     break;
@@ -455,8 +455,8 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
                 [self mouseDragged:evt];
                 withinDragRadius = NO;
                 break;
-            case NSLeftMouseUp:
-            case NSPeriodic:
+            case NSEventTypeLeftMouseUp:
+            case NSEventTypePeriodic:
                 withinDragRadius = NO;
                 if (!hasUpdatedSelection) {
                     [self updateSelectionWithEvent:evt index:i];
