@@ -666,7 +666,6 @@
 //        [[scrollView contentView] setFrameSize:r.size];
         [_scrollView setAutoresizingMask:NSViewWidthSizable];
 
-        
         [[_scrollView contentView] setAutoresizingMask:NSViewWidthSizable];
         [[_scrollView contentView] setAutoresizesSubviews:YES];
 
@@ -676,7 +675,9 @@
         [_scrollView setAutohidesScrollers:NO];
         
         [_scrollView setDocumentView:self.listView];
-        CGSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size hasHorizontalScroller:NO hasVerticalScroller:YES borderType:NSNoBorder];
+        
+        CGSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size horizontalScrollerClass:nil verticalScrollerClass:nil borderType:NSNoBorder controlSize:NSControlSizeRegular scrollerStyle:NSScrollerStyleOverlay];
+        //CGSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size hasHorizontalScroller:NO hasVerticalScroller:YES borderType:NSNoBorder];
         [self.listView setFrame:CGRectMake(0, 0, s.width, s.height)]; //[[_scrollView contentView] frame]];
     
     }
