@@ -27,26 +27,12 @@
 - (NSArray *)comboField:(TDComboField *)cf writableTypesForPasteboard:(NSPasteboard *)pasteboard;
 - (id)comboField:(TDComboField *)cf pasteboardPropertyListForType:(NSString *)type;
 
-- (NSString *)pasteboardURLStringForComboField:(TDComboField *)cf;
-- (NSString *)pasteboardTitleForComboField:(TDComboField *)cf;
-
 @optional
 - (void)comboFieldWillDismissPopUp:(TDComboField *)cf;
 - (void)comboFieldDidEscape:(TDComboField *)cf;
 @end
 
-@interface TDComboField : NSTextField <NSDraggingSource, NSPasteboardWriting, TDListViewDataSource, TDListViewDelegate> {
-    id <TDComboFieldDataSource>dataSource;
-    NSScrollView *scrollView;
-    TDListView *listView;
-    NSWindow *listWindow;
-    TDComboFieldTextView *fieldEditor;
-    NSMutableArray *buttons;
-    BOOL shouldDrag;
-    NSImage *progressImage;
-    CGFloat progress;
-    BOOL isRounded;
-}
+@interface TDComboField : NSTextField <NSDraggingSource, NSPasteboardWriting, TDListViewDataSource, TDListViewDelegate>
 
 - (void)escape:(id)sender;
 
@@ -78,7 +64,7 @@
 - (void)removeButton:(NSButton *)b;
 - (NSRect)buttonFrame;
 
-@property (nonatomic, readonly, retain) NSArray *buttons;
+@property (nonatomic, retain, readonly) NSArray *buttons;
 
 // progress
 @property (nonatomic, assign) double progress;

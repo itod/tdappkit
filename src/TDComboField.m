@@ -26,17 +26,19 @@
 - (void)addTextFieldSelectionFromListSelection;
 - (void)movedToIndex:(NSUInteger)i;
 
-@property (nonatomic, readwrite, retain) NSArray *buttons;
+@property (nonatomic, retain, readwrite) NSMutableArray *buttons;
 @end
 
-@implementation TDComboField
+@implementation TDComboField {
+    BOOL _shouldDrag;
+}
 
 + (Class)cellClass {
     return [TDComboFieldCell class];
 }
 
 
-- (id)initWithFrame:(NSRect)frame {
+- (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 
     }
@@ -52,9 +54,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self removeListWindow];
     
-    TDAssert(listView);
-    listView.dataSource = nil;
-    listView.delegate = nil;
+    TDAssert(_listView);
+    _listView.dataSource = nil;
+    _listView.delegate = nil;
     self.listView = nil;
 
     self.dataSource = nil;
@@ -75,7 +77,7 @@
     NSImage *img = [NSImage imageNamed:imgName];
 
     self.progressImage = img;
-    TDAssert(progressImage);
+    TDAssert(_progressImage);
 
     self.font = [NSFont controlContentFontOfSize:12.0];
 }
@@ -94,11 +96,11 @@
 }
 
 
-- (void)drawRect:(NSRect)dirtyRect {
+- (void)drawRect:(CGRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    NSRect bounds = [self bounds];
-    NSSize size = bounds.size;
+    CGRect bounds = [self bounds];
+    CGSize size = bounds.size;
     
     // progress rect
     CGFloat x;
@@ -109,32 +111,31 @@
     if (TDIsYozOrLater()) {
         x = bounds.origin.x;
         y = bounds.origin.y;
-        w = size.width * progress;
+        w = size.width * _progress;
         h = size.height - 1.0;
         clipWidth = size.width;
     } else if (TDIsLionOrLater()) {
         x = bounds.origin.x + 1.0;
         y = bounds.origin.y;
-        w = size.width * progress - 2.0;
-        h = size.height - (isRounded ? 2.0 : 1.0);
+        w = size.width * _progress - 2.0;
+        h = size.height - (_isRounded ? 2.0 : 1.0);
         clipWidth = size.width - 2.0;
     } else {
         x = bounds.origin.x + 1.0;
         y = bounds.origin.y + 2.0;
-        w = size.width * progress - 2.0;
-        h = size.height - (isRounded ? 2.0 : 1.0);
+        w = size.width * _progress - 2.0;
+        h = size.height - (_isRounded ? 2.0 : 1.0);
         clipWidth = size.width - 2.0;
     }
     
-    if (progress > 0.1) {
-        NSSize pSize = NSMakeSize(w, h);
-        NSRect pRect = NSMakeRect(x, y, pSize.width, pSize.height);
+    if (_progress > 0.1) {
+        CGSize pSize = CGSizeMake(w, h);
+        CGRect pRect = CGRectMake(x, y, pSize.width, pSize.height);
         
-        NSRect imageRect = NSZeroRect;
-        imageRect.size = [progressImage size];
+        TDAssert(_progressImage);
+        CGRect imageRect = CGRectZero;
+        imageRect.size = [_progressImage size];
         imageRect.origin = NSZeroPoint;
-        
-        TDAssert(progressImage);
         
         CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
         
@@ -143,19 +144,15 @@
         CGContextClip(ctx);
         CGContextSaveGState(ctx);
 
-        [progressImage drawStretchableInRect:pRect
+        [_progressImage drawStretchableInRect:pRect
                                   edgeInsets:TDEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
                                    operation:NSCompositingOperationPlusDarker
                                     fraction:1.0];
         
-        //    [progressImage drawInRect:pRect
-        //                     fromRect:imageRect
-        //                    operation:NSCompositePlusDarker
-        //                     fraction:1.0];
         CGContextSaveGState(ctx);
     }
     
-    NSRect cellRect = [[self cell] drawingRectForBounds:bounds];
+    CGRect cellRect = [[self cell] drawingRectForBounds:bounds];
     cellRect.origin.x -= 2.0;
     cellRect.origin.y -= 1.0;
     [[self cell] drawInteriorImageOnlyWithFrame:cellRect inView:self];
@@ -199,7 +196,7 @@
 }
 
 
-- (void)resizeSubviewsWithOldSize:(NSSize)oldSize {
+- (void)resizeSubviewsWithOldSize:(CGSize)oldSize {
     [self removeListWindow];
     [super resizeSubviewsWithOldSize:oldSize];
 }
@@ -234,7 +231,7 @@
         [self removeListWindow];
     } else {
         [self addListWindow];
-        NSRect bounds = [self bounds];
+        CGRect bounds = [self bounds];
         [self.listView setFrame:[self listViewRectForBounds:bounds]];
 //        [self.scrollView setFrame:[self scrollViewRectForBounds:bounds]];
         [self.listWindow setFrame:[self listWindowRectForBounds:bounds] display:YES];
@@ -243,8 +240,8 @@
 }
 
 
-- (NSRect)scrollViewRectForBounds:(NSRect)bounds {
-    NSRect scrollRect = [self listViewRectForBounds:bounds];
+- (CGRect)scrollViewRectForBounds:(CGRect)bounds {
+    CGRect scrollRect = [self listViewRectForBounds:bounds];
     if (scrollRect.size.height > MAX_SCROLL_HEIGHT) {
         scrollRect.size.height = MAX_SCROLL_HEIGHT;
     }
@@ -252,24 +249,24 @@
 }
 
 
-- (NSRect)listWindowRectForBounds:(NSRect)bounds {
-    NSRect listRect = [self listViewRectForBounds:bounds];
+- (CGRect)listWindowRectForBounds:(CGRect)bounds {
+    CGRect listRect = [self listViewRectForBounds:bounds];
 
-    NSRect textFrame = [self frame];
-    NSRect locInWin = [self convertRect:textFrame toView:nil];
-    NSRect locInScreen = [[self window] convertRectToScreen:locInWin];
+    CGRect textFrame = [self frame];
+    CGRect locInWin = [self convertRect:textFrame toView:nil];
+    CGRect locInScreen = [[self window] convertRectToScreen:locInWin];
     
 #define SPACING 2.0
     locInScreen.origin.y += (textFrame.origin.y - (listRect.size.height + SPACING));
     locInScreen.origin.x -= textFrame.origin.x;
     
-    return NSMakeRect(locInScreen.origin.x, locInScreen.origin.y, listRect.size.width, listRect.size.height);
+    return CGRectMake(locInScreen.origin.x, locInScreen.origin.y, listRect.size.width, listRect.size.height);
 }
 
 
-- (NSRect)listViewRectForBounds:(NSRect)bounds {
-    CGFloat listHeight = [TDComboFieldListItem defaultHeight] * [self numberOfItemsInListView:listView];
-    return NSMakeRect(0.0, 0.0, bounds.size.width, listHeight);
+- (CGRect)listViewRectForBounds:(CGRect)bounds {
+    CGFloat listHeight = [TDComboFieldListItem defaultHeight] * [self numberOfItemsInListView:_listView];
+    return CGRectMake(0.0, 0.0, bounds.size.width, listHeight);
 }
 
 
@@ -289,10 +286,10 @@
 - (void)moveUp:(id)sender {
     [self removeTextFieldSelection];
     if (![self isListVisible]) {
-        listView.selectionIndexes = nil;
+        _listView.selectionIndexes = nil;
     }
 
-    NSUInteger i = [listView.selectionIndexes firstIndex];
+    NSUInteger i = [_listView.selectionIndexes firstIndex];
     if (i <= 0 || NSNotFound == i) {
         i = 0;
     } else {
@@ -305,12 +302,12 @@
 - (void)moveDown:(id)sender {
     [self removeTextFieldSelection];
     if (![self isListVisible]) {
-        listView.selectionIndexes = nil;
+        _listView.selectionIndexes = nil;
     }
     
     NSUInteger i = NSNotFound;
-    if ([listView.selectionIndexes count]) {
-        i = [listView.selectionIndexes firstIndex];
+    if ([_listView.selectionIndexes count]) {
+        i = [_listView.selectionIndexes firstIndex];
     }
     NSUInteger last = [self numberOfItems] - 1;
     if (i < last) {
@@ -323,8 +320,8 @@
 
 
 - (void)movedToIndex:(NSUInteger)i {
-    listView.selectionIndexes = [NSIndexSet indexSetWithIndex:i];
-    [listView reloadData];
+    _listView.selectionIndexes = [NSIndexSet indexSetWithIndex:i];
+    [_listView reloadData];
     
     NSUInteger c = [self numberOfItems];
     if (c > 0) {
@@ -411,10 +408,10 @@
 #pragma mark Private
 
 - (void)textWasInserted:(id)insertString {
-    if (dataSource && [dataSource respondsToSelector:@selector(comboField:completedString:)]) {
+    if (_dataSource && [_dataSource respondsToSelector:@selector(comboField:completedString:)]) {
         NSString *s = [self stringValue];
         NSUInteger loc = [s length];
-        s = [dataSource comboField:self completedString:s];
+        s = [_dataSource comboField:self completedString:s];
         
         if (s) {
             NSRange range = NSMakeRange(loc, [s length] - loc);
@@ -433,7 +430,7 @@
 
 
 - (void)addTextFieldSelectionFromListSelection {
-    NSString *s = [dataSource comboField:self objectAtIndex:[listView.selectionIndexes firstIndex]];
+    NSString *s = [_dataSource comboField:self objectAtIndex:[_listView.selectionIndexes firstIndex]];
     if (![s length]) return;
     
     NSUInteger loc = [[self stringValue] length];
@@ -447,15 +444,15 @@
 #pragma mark TDListViewDataSource
 
 - (NSUInteger)numberOfItemsInListView:(TDListView *)lv {
-    //NSAssert(dataSource, @"must provide a FooBarDataSource");
-    return [dataSource numberOfItemsInComboField:self];
+    //NSAssert(_dataSource, @"must provide a FooBarDataSource");
+    return [_dataSource numberOfItemsInComboField:self];
 }
 
 
 - (TDListItem *)listView:(TDListView *)lv itemAtIndex:(NSUInteger)i {
-    //NSAssert(dataSource, @"must provide a FooBarDataSource");
+    //NSAssert(_dataSource, @"must provide a FooBarDataSource");
     
-    TDComboFieldListItem *item = (TDComboFieldListItem *)[listView dequeueReusableItemWithIdentifier:[TDComboFieldListItem reuseIdentifier]];
+    TDComboFieldListItem *item = (TDComboFieldListItem *)[_listView dequeueReusableItemWithIdentifier:[TDComboFieldListItem reuseIdentifier]];
     if (!item) {
         item = [[[TDComboFieldListItem alloc] init] autorelease];
         if ([self image]) {
@@ -465,8 +462,8 @@
     
     item.first = (0 == i);
     item.last = (i == [self numberOfItems] - 1);
-    item.selected = ([listView.selectionIndexes containsIndex:i]);
-    item.labelText = [dataSource comboField:self objectAtIndex:i];
+    item.selected = ([_listView.selectionIndexes containsIndex:i]);
+    item.labelText = [_dataSource comboField:self objectAtIndex:i];
     [item setNeedsDisplay:YES];
     
     return item;
@@ -484,15 +481,17 @@
 #pragma mark -
 #pragma mark Buttons
 
-- (NSButton *)addButtonWithSize:(NSSize)size {
+- (NSButton *)addButtonWithSize:(CGSize)size {
+    TDAssertMainThread();
+
     // Get button frame;
-    NSRect  buttonFrame = [self buttonFrame];
+    CGRect  buttonFrame = [self buttonFrame];
     if (NSIsEmptyRect(buttonFrame)) {
         buttonFrame.origin.x = NSMinX([self frame]) + NSWidth([self frame]) - 24;
     }
     
     // Create button
-    NSRect frame = NSZeroRect;
+    CGRect frame = CGRectZero;
     frame.origin.x = buttonFrame.origin.x - size.width - 1;
     frame.origin.y = ([self frame].size.height - size.height) / 2;
     frame.size = size;
@@ -502,14 +501,17 @@
     
     // Add button
     [self addSubview:b];
-    [buttons addObject:b];
+    TDAssert(_buttons);
+    [_buttons addObject:b];
     
     return b;
 }
 
 
 - (NSButton *)buttonWithTag:(int)tag {
-    for (NSButton *b in buttons) {
+    TDAssertMainThread();
+    TDAssert(_buttons);
+    for (NSButton *b in _buttons) {
         if ([b tag] == tag) {
             return b;
         }
@@ -519,16 +521,21 @@
 
 
 - (void)removeButton:(NSButton *)b {
+    TDAssertMainThread();
+    TDAssert(_buttons);
     [b removeFromSuperview];
-    [buttons removeObject:b];
+    [_buttons removeObject:b];
 }
 
 
-- (NSRect)buttonFrame {
+- (CGRect)buttonFrame {
+    TDAssertMainThread();
+    TDAssert(_buttons);
+
     // Get union rect of existed buttons
-    NSRect unionRect = NSZeroRect;
-    for (NSButton *b in buttons) {
-        unionRect = NSUnionRect(unionRect, [b frame]);
+    CGRect unionRect = CGRectZero;
+    for (NSButton *b in _buttons) {
+        unionRect = CGRectUnion(unionRect, [b frame]);
     }
     
     return unionRect;
@@ -544,7 +551,7 @@
 
 
 - (void)setProgress:(CGFloat)p {
-    progress = p;
+    _progress = p;
     [self setNeedsDisplay:YES];
 }
 
@@ -566,11 +573,11 @@
 
 - (void)mouseDown:(NSEvent *)evt {
     NSPoint p = [self convertPoint:[evt locationInWindow] fromView:nil];
-    NSRect frame = [[self cell] imageFrameForCellFrame:[self bounds]];
+    CGRect frame = [[self cell] imageFrameForCellFrame:[self bounds]];
     
     // Decide to start dragging
-    shouldDrag = NSPointInRect(p, frame);
-    if (!shouldDrag) {
+    _shouldDrag = CGRectContainsPoint(frame, p);
+    if (!_shouldDrag) {
         [super mouseDown:evt];
         return;
     }
@@ -581,7 +588,7 @@
 
 
 - (void)mouseDragged:(NSEvent*)evt {
-    if (!shouldDrag) {
+    if (!_shouldDrag) {
         [super mouseDragged:evt];
         return;
     }
@@ -653,62 +660,62 @@
 #pragma mark Properties
 
 - (NSScrollView *)scrollView {
-    if (!scrollView) {
-        NSRect scrollFrame = [self listViewRectForBounds:[self bounds]];
+    if (!_scrollView) {
+        CGRect scrollFrame = [self listViewRectForBounds:[self bounds]];
         self.scrollView = [[[NSScrollView alloc] initWithFrame:scrollFrame] autorelease];
 //        [[scrollView contentView] setFrameSize:r.size];
-        [scrollView setAutoresizingMask:NSViewWidthSizable];
+        [_scrollView setAutoresizingMask:NSViewWidthSizable];
 
         
-        [[scrollView contentView] setAutoresizingMask:NSViewWidthSizable];
-        [[scrollView contentView] setAutoresizesSubviews:YES];
+        [[_scrollView contentView] setAutoresizingMask:NSViewWidthSizable];
+        [[_scrollView contentView] setAutoresizesSubviews:YES];
 
-        [scrollView setHasHorizontalScroller:NO];
-        [scrollView setHasVerticalScroller:NO];
-        [scrollView setBorderType:NSNoBorder];
-        [scrollView setAutohidesScrollers:NO];
+        [_scrollView setHasHorizontalScroller:NO];
+        [_scrollView setHasVerticalScroller:NO];
+        [_scrollView setBorderType:NSNoBorder];
+        [_scrollView setAutohidesScrollers:NO];
         
-        [scrollView setDocumentView:self.listView];
-        NSSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size hasHorizontalScroller:NO hasVerticalScroller:YES borderType:NSNoBorder];
-        [self.listView setFrame:NSMakeRect(0, 0, s.width, s.height)]; //[[scrollView contentView] frame]];
+        [_scrollView setDocumentView:self.listView];
+        CGSize s = [NSScrollView contentSizeForFrameSize:scrollFrame.size hasHorizontalScroller:NO hasVerticalScroller:YES borderType:NSNoBorder];
+        [self.listView setFrame:CGRectMake(0, 0, s.width, s.height)]; //[[_scrollView contentView] frame]];
     
     }
-    return scrollView;
+    return _scrollView;
 }
 
 
 - (TDListView *)listView {
-    if (!listView) {
-        NSRect r = [self listViewRectForBounds:[self bounds]];
+    if (!_listView) {
+        CGRect r = [self listViewRectForBounds:[self bounds]];
         self.listView = [[[TDComboFieldListView alloc] initWithFrame:r] autorelease];
-        [listView setAutoresizingMask:NSViewWidthSizable];
-        listView.dataSource = self;
-        listView.delegate = self;
-        listView.allowsMultipleSelection = NO;
+        [_listView setAutoresizingMask:NSViewWidthSizable];
+        _listView.dataSource = self;
+        _listView.delegate = self;
+        _listView.allowsMultipleSelection = NO;
     }
-    return listView;
+    return _listView;
 }
 
 
 - (NSWindow *)listWindow {
-    if (!listWindow) {
-        NSRect r = [self listWindowRectForBounds:[self bounds]];
+    if (!_listWindow) {
+        CGRect r = [self listWindowRectForBounds:[self bounds]];
         self.listWindow = [[[NSWindow alloc] initWithContentRect:r styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:YES] autorelease];
-        [listWindow setOpaque:NO];
-        [listWindow setHasShadow:YES];
-        [listWindow setBackgroundColor:[NSColor clearColor]];
-        [[listWindow contentView] addSubview:self.listView];
+        [_listWindow setOpaque:NO];
+        [_listWindow setHasShadow:YES];
+        [_listWindow setBackgroundColor:[NSColor clearColor]];
+        [[_listWindow contentView] addSubview:self.listView];
     }
-    return listWindow;
+    return _listWindow;
 }
 
 
 - (NSTextView *)fieldEditor {
-    if (!fieldEditor) {
+    if (!_fieldEditor) {
         self.fieldEditor = [[[TDComboFieldTextView alloc] initWithFrame:[self bounds]] autorelease];
-        fieldEditor.comboField = self;
+        _fieldEditor.comboField = self;
     }
-    return fieldEditor;    
+    return _fieldEditor;
 }
 
 
@@ -721,13 +728,4 @@
     [[self cell] setImage:img];
 }
 
-@synthesize dataSource;
-@synthesize scrollView;
-@synthesize listView;
-@synthesize listWindow;
-@synthesize fieldEditor;
-@synthesize buttons;
-@synthesize progress;
-@synthesize progressImage;
-@synthesize isRounded;
 @end
