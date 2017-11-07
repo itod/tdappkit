@@ -395,6 +395,8 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 
 
 - (void)mouseDown:(NSEvent *)evt {
+    [super mouseDown:evt];
+    
     NSPoint locInWin = [evt locationInWindow];
     NSPoint p = [self convertPoint:locInWin fromView:nil];
     NSUInteger i = [self indexForItemAtPoint:p];
@@ -462,7 +464,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
                     [self updateSelectionWithEvent:evt index:i];
                 }
                 [self draggingSourceDragDidEnd];
-                [self mouseUp:evt];
+                [[self window] sendEvent:evt];
                 break;
             default:
                 break;

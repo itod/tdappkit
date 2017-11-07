@@ -24,6 +24,8 @@
 NSGradient *TDVertGradient(NSUInteger topHex, NSUInteger botHex);
 NSColor *TDHexColor(NSUInteger x);
 NSColor *TDHexaColor(NSUInteger x);
+NSColor *TDGrayColor(CGFloat f);
+NSColor *TDGrayaColor(CGFloat f, CGFloat a);
 id TDCGHexColor(NSUInteger x);
 id TDCGHexaColor(NSUInteger x);
 NSString *TDHexStringFromColor(NSColor *c);

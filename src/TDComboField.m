@@ -100,35 +100,37 @@
     [super drawRect:dirtyRect];
     
     CGRect bounds = [self bounds];
-    CGSize size = bounds.size;
     
-    // progress rect
-    CGFloat x;
-    CGFloat y;
-    CGFloat w;
-    CGFloat h;
-    CGFloat clipWidth;
-    if (TDIsYozOrLater()) {
-        x = bounds.origin.x;
-        y = bounds.origin.y;
-        w = size.width * _progress;
-        h = size.height - 1.0;
-        clipWidth = size.width;
-    } else if (TDIsLionOrLater()) {
-        x = bounds.origin.x + 1.0;
-        y = bounds.origin.y;
-        w = size.width * _progress - 2.0;
-        h = size.height - (_isRounded ? 2.0 : 1.0);
-        clipWidth = size.width - 2.0;
-    } else {
-        x = bounds.origin.x + 1.0;
-        y = bounds.origin.y + 2.0;
-        w = size.width * _progress - 2.0;
-        h = size.height - (_isRounded ? 2.0 : 1.0);
-        clipWidth = size.width - 2.0;
-    }
-    
-    if (_progress > 0.1) {
+    if (_progress > 0.01) {
+        CGFloat prog = MAX(0.1, _progress);
+        CGSize size = bounds.size;
+
+        // progress rect
+        CGFloat x;
+        CGFloat y;
+        CGFloat w;
+        CGFloat h;
+        CGFloat clipWidth;
+        if (TDIsYozOrLater()) {
+            x = bounds.origin.x;
+            y = bounds.origin.y;
+            w = size.width * prog;
+            h = size.height - 1.0;
+            clipWidth = size.width;
+        } else if (TDIsLionOrLater()) {
+            x = bounds.origin.x + 1.0;
+            y = bounds.origin.y;
+            w = size.width * prog - 2.0;
+            h = size.height - (_isRounded ? 2.0 : 1.0);
+            clipWidth = size.width - 2.0;
+        } else {
+            x = bounds.origin.x + 1.0;
+            y = bounds.origin.y + 2.0;
+            w = size.width * prog - 2.0;
+            h = size.height - (_isRounded ? 2.0 : 1.0);
+            clipWidth = size.width - 2.0;
+        }
+        
         CGSize pSize = CGSizeMake(w, h);
         CGRect pRect = CGRectMake(x, y, pSize.width, pSize.height);
         

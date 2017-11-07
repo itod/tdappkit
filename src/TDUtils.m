@@ -44,6 +44,16 @@ NSColor *TDHexaColor(NSUInteger x) {
 }
 
 
+NSColor *TDGrayColor(CGFloat f) {
+    return [NSColor colorWithWhite:f alpha:1.0];
+}
+
+
+NSColor *TDGrayaColor(CGFloat f, CGFloat a) {
+    return [NSColor colorWithWhite:f alpha:a];
+}
+
+
 id TDCGHexColor(NSUInteger x) {
     return (id)[TDHexColor(x) CGColor];
 }
