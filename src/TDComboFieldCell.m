@@ -147,7 +147,7 @@
         NSDivideRect(cellFrame, &imgFrame, &txtFrame, IMAGE_MARGIN+imgSize.width, NSMinXEdge);
         txtFrame.origin.y -= FUDGE_Y;
         
-        CGRect iconRect = CGRectMake(NSMinX(cellFrame)+IMAGE_MARGIN, floor(NSMidY(cellFrame) - imgSize.height*0.5), imgSize.width, imgSize.height);
+        CGRect iconRect = CGRectMake(NSMinX(cellFrame)+IMAGE_MARGIN+1.0, floor(NSMidY(cellFrame) - imgSize.height*0.5), imgSize.width, imgSize.height);
         CGRect srcRect = CGRectMake(0.0, 0.0, imgSize.width, imgSize.height);
         TDAssert(controlView);
         CGFloat alpha = [[controlView window] isMainWindow] ? 1.0 : 0.65;

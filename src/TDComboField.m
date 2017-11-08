@@ -28,186 +28,186 @@
 }
 
 
-+ (NSImage *)defaultIcon {
-    static NSImage *sImg = nil;
-    if (!sImg) {
-        sImg = [[NSImage imageWithSize:CGSizeMake(17.0, 17.0) flipped:YES drawingHandler:^BOOL(NSRect dstRect) {
-            
-            CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
-            
-            // FLIP GRAPHICS CONTEXT
-            BOOL flipped = [[NSGraphicsContext currentContext] isFlipped];
-            if (!flipped) {
-                CGContextTranslateCTM(ctx, 0.0, 17.0);
-                CGContextScaleCTM(ctx, 1.0, -1.0);
-            }
-            
-            // COLOR SPACE
-            static CGColorSpaceRef colorSpace = NULL;
-            if (!colorSpace) {
-                colorSpace = CGColorSpaceCreateDeviceRGB();
-            }
-            
-            /** Ellipse *****************/
-            CGContextSaveGState(ctx); {
-                
-                // PATH
-                CGContextSetLineCap(ctx, kCGLineCapRound);
-                CGContextSetLineJoin(ctx, kCGLineJoinRound);
-                static CGMutablePathRef path = NULL;
-                if (!path) {
-                    path = CGPathCreateMutable();
-                    CGPathMoveToPoint(path, NULL, 13.45, 3.55);
-                    CGPathAddCurveToPoint(path, NULL, 16.18, 6.28, 16.18, 10.72, 13.45, 13.45);
-                    CGPathAddCurveToPoint(path, NULL, 10.72, 16.18, 6.28, 16.18, 3.55, 13.45);
-                    CGPathAddCurveToPoint(path, NULL, 0.82, 10.72, 0.82, 6.28, 3.55, 3.55);
-                    CGPathAddCurveToPoint(path, NULL, 6.28, 0.82, 10.72, 0.82, 13.45, 3.55);
-                    CGPathCloseSubpath(path);
-                }
-                
-                // FILL
-                CGContextSaveGState(ctx); {
-                    
-                    // FILL GRADIENT
-                    static CGGradientRef fillGradient = NULL;
-                    if (!fillGradient) {
-                        const CGFloat components [8] = {
-                            0.68, 1.00, 0.99, 1.00,
-                            0.00, 0.07, 1.00, 1.00,
-                        };
-                        const CGFloat locations [2] = {
-                            0.00,
-                            1.00,
-                        };
-                        fillGradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, 2);
-                    }
-                    CGContextBeginTransparencyLayer(ctx, NULL); {
-                        CGContextAddPath(ctx, path);
-                        CGContextClip(ctx);
-                        
-                        CGPoint center = CGPointMake(8.50, 12.00);
-                        CGFloat startRadius = 0.00;
-                        CGFloat endRadius = 12.0;
-                        CGContextDrawRadialGradient(ctx, fillGradient, center, startRadius, center, endRadius, kCGGradientDrawsBeforeStartLocation|kCGGradientDrawsAfterEndLocation);
-                    } CGContextEndTransparencyLayer(ctx);
-                    
-                } CGContextRestoreGState(ctx);
-                
-                // STROKE
-                CGContextSaveGState(ctx); {
-                    
-                    // STROKE COLOR
-                    CGContextSetRGBStrokeColor(ctx, 0.05, 0.44, 1.00, 1.00);
-                    
-                    // STROKE LINE WIDTH
-                    CGContextSetLineWidth(ctx, 1.00);
-                    CGContextAddPath(ctx, path);
-                    CGContextStrokePath(ctx);
-                    
-                } CGContextRestoreGState(ctx);
-                
-            } CGContextRestoreGState(ctx);
-            
-            /** Bezier Shape *****************/
-            CGContextSaveGState(ctx); {
-                
-                // PATH
-                CGContextSetLineCap(ctx, kCGLineCapRound);
-                CGContextSetLineJoin(ctx, kCGLineJoinRound);
-                static CGMutablePathRef path = NULL;
-                if (!path) {
-                    path = CGPathCreateMutable();
-                    CGPathMoveToPoint(path, NULL, 4.18, 3.73);
-                    CGPathAddLineToPoint(path, NULL, 4.18, 4.69);
-                    CGPathAddLineToPoint(path, NULL, 4.16, 5.57);
-                    CGPathAddLineToPoint(path, NULL, 4.41, 6.40);
-                    CGPathAddLineToPoint(path, NULL, 4.77, 6.99);
-                    CGPathAddLineToPoint(path, NULL, 5.32, 7.35);
-                    CGPathAddLineToPoint(path, NULL, 4.78, 6.65);
-                    CGPathAddLineToPoint(path, NULL, 4.95, 6.37);
-                    CGPathAddLineToPoint(path, NULL, 5.44, 6.98);
-                    CGPathAddLineToPoint(path, NULL, 6.37, 7.79);
-                    CGPathAddLineToPoint(path, NULL, 7.07, 7.88);
-                    CGPathAddLineToPoint(path, NULL, 8.04, 8.28);
-                    CGPathAddLineToPoint(path, NULL, 8.84, 8.58);
-                    CGPathAddLineToPoint(path, NULL, 8.70, 9.34);
-                    CGPathAddLineToPoint(path, NULL, 8.28, 9.74);
-                    CGPathAddLineToPoint(path, NULL, 8.52, 10.59);
-                    CGPathAddLineToPoint(path, NULL, 8.96, 10.82);
-                    CGPathAddLineToPoint(path, NULL, 9.48, 11.19);
-                    CGPathAddLineToPoint(path, NULL, 9.85, 11.60);
-                    CGPathAddLineToPoint(path, NULL, 9.63, 12.09);
-                    CGPathAddLineToPoint(path, NULL, 9.53, 12.98);
-                    CGPathAddLineToPoint(path, NULL, 9.22, 13.95);
-                    CGPathAddLineToPoint(path, NULL, 9.38, 14.33);
-                    CGPathAddLineToPoint(path, NULL, 9.99, 13.74);
-                    CGPathAddLineToPoint(path, NULL, 10.42, 13.09);
-                    CGPathAddLineToPoint(path, NULL, 11.27, 12.60);
-                    CGPathAddLineToPoint(path, NULL, 11.86, 11.92);
-                    CGPathAddLineToPoint(path, NULL, 12.38, 11.76);
-                    CGPathAddLineToPoint(path, NULL, 12.55, 11.17);
-                    CGPathAddLineToPoint(path, NULL, 12.73, 10.71);
-                    CGPathAddLineToPoint(path, NULL, 12.98, 10.50);
-                    CGPathAddLineToPoint(path, NULL, 13.00, 9.67);
-                    CGPathAddLineToPoint(path, NULL, 12.55, 9.69);
-                    CGPathAddLineToPoint(path, NULL, 11.88, 9.42);
-                    CGPathAddLineToPoint(path, NULL, 11.81, 8.71);
-                    CGPathAddLineToPoint(path, NULL, 10.95, 8.68);
-                    CGPathAddLineToPoint(path, NULL, 10.45, 8.32);
-                    CGPathAddLineToPoint(path, NULL, 9.17, 8.43);
-                    CGPathAddLineToPoint(path, NULL, 8.62, 8.23);
-                    CGPathAddLineToPoint(path, NULL, 8.28, 8.04);
-                    CGPathAddLineToPoint(path, NULL, 7.91, 7.55);
-                    CGPathAddLineToPoint(path, NULL, 7.49, 7.28);
-                    CGPathAddLineToPoint(path, NULL, 6.99, 7.38);
-                    CGPathAddLineToPoint(path, NULL, 6.94, 6.92);
-                    CGPathAddLineToPoint(path, NULL, 7.28, 6.49);
-                    CGPathAddLineToPoint(path, NULL, 8.09, 6.42);
-                    CGPathAddLineToPoint(path, NULL, 8.41, 7.00);
-                    CGPathAddLineToPoint(path, NULL, 8.67, 7.01);
-                    CGPathAddLineToPoint(path, NULL, 8.48, 6.48);
-                    CGPathAddLineToPoint(path, NULL, 8.54, 6.14);
-                    CGPathAddLineToPoint(path, NULL, 9.24, 5.76);
-                    CGPathAddLineToPoint(path, NULL, 9.22, 5.43);
-                    CGPathAddLineToPoint(path, NULL, 9.69, 5.38);
-                    CGPathAddLineToPoint(path, NULL, 10.08, 4.97);
-                    CGPathAddLineToPoint(path, NULL, 10.28, 5.01);
-                    CGPathAddLineToPoint(path, NULL, 10.57, 4.55);
-                    CGPathAddLineToPoint(path, NULL, 11.27, 4.33);
-                    CGPathAddLineToPoint(path, NULL, 11.55, 4.16);
-                    CGPathAddLineToPoint(path, NULL, 11.54, 3.65);
-                    CGPathAddLineToPoint(path, NULL, 11.04, 3.68);
-                    CGPathAddLineToPoint(path, NULL, 10.86, 3.54);
-                    CGPathAddLineToPoint(path, NULL, 10.53, 2.99);
-                    CGPathAddLineToPoint(path, NULL, 9.99, 3.13);
-                    CGPathAddLineToPoint(path, NULL, 9.93, 3.91);
-                    CGPathAddLineToPoint(path, NULL, 9.36, 3.64);
-                    CGPathAddLineToPoint(path, NULL, 9.34, 3.02);
-                    CGPathAddLineToPoint(path, NULL, 9.84, 2.20);
-                    CGPathAddCurveToPoint(path, NULL, 9.84, 2.20, 9.14, 1.99, 8.50, 2.00);
-                    CGPathAddCurveToPoint(path, NULL, 5.54, 1.99, 4.18, 3.73, 4.18, 3.73);
-                    CGPathCloseSubpath(path);
-                }
-                
-                // FILL
-                CGContextSaveGState(ctx); {
-                    
-                    // FILL COLOR
-                    CGContextSetRGBFillColor(ctx, 1.00, 1.00, 1.00, 0.80);
-                    CGContextAddPath(ctx, path);
-                    CGContextFillPath(ctx);
-                    
-                } CGContextRestoreGState(ctx);
-                
-            } CGContextRestoreGState(ctx);
-            
-            
-            return YES;
-        }] retain];
-    }
-    
-    return sImg;
-}
+//+ (NSImage *)defaultIcon {
+//    static NSImage *sImg = nil;
+//    if (!sImg) {
+//        sImg = [[NSImage imageWithSize:CGSizeMake(17.0, 17.0) flipped:YES drawingHandler:^BOOL(NSRect dstRect) {
+//
+//            CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+//
+//            // FLIP GRAPHICS CONTEXT
+//            BOOL flipped = [[NSGraphicsContext currentContext] isFlipped];
+//            if (!flipped) {
+//                CGContextTranslateCTM(ctx, 0.0, 17.0);
+//                CGContextScaleCTM(ctx, 1.0, -1.0);
+//            }
+//
+//            // COLOR SPACE
+//            static CGColorSpaceRef colorSpace = NULL;
+//            if (!colorSpace) {
+//                colorSpace = CGColorSpaceCreateDeviceRGB();
+//            }
+//
+//            /** Ellipse *****************/
+//            CGContextSaveGState(ctx); {
+//
+//                // PATH
+//                CGContextSetLineCap(ctx, kCGLineCapRound);
+//                CGContextSetLineJoin(ctx, kCGLineJoinRound);
+//                static CGMutablePathRef path = NULL;
+//                if (!path) {
+//                    path = CGPathCreateMutable();
+//                    CGPathMoveToPoint(path, NULL, 13.45, 3.55);
+//                    CGPathAddCurveToPoint(path, NULL, 16.18, 6.28, 16.18, 10.72, 13.45, 13.45);
+//                    CGPathAddCurveToPoint(path, NULL, 10.72, 16.18, 6.28, 16.18, 3.55, 13.45);
+//                    CGPathAddCurveToPoint(path, NULL, 0.82, 10.72, 0.82, 6.28, 3.55, 3.55);
+//                    CGPathAddCurveToPoint(path, NULL, 6.28, 0.82, 10.72, 0.82, 13.45, 3.55);
+//                    CGPathCloseSubpath(path);
+//                }
+//
+//                // FILL
+//                CGContextSaveGState(ctx); {
+//
+//                    // FILL GRADIENT
+//                    static CGGradientRef fillGradient = NULL;
+//                    if (!fillGradient) {
+//                        const CGFloat components [8] = {
+//                            0.68, 1.00, 0.99, 1.00,
+//                            0.00, 0.07, 1.00, 1.00,
+//                        };
+//                        const CGFloat locations [2] = {
+//                            0.00,
+//                            1.00,
+//                        };
+//                        fillGradient = CGGradientCreateWithColorComponents(colorSpace, components, locations, 2);
+//                    }
+//                    CGContextBeginTransparencyLayer(ctx, NULL); {
+//                        CGContextAddPath(ctx, path);
+//                        CGContextClip(ctx);
+//
+//                        CGPoint center = CGPointMake(8.50, 12.00);
+//                        CGFloat startRadius = 0.00;
+//                        CGFloat endRadius = 12.0;
+//                        CGContextDrawRadialGradient(ctx, fillGradient, center, startRadius, center, endRadius, kCGGradientDrawsBeforeStartLocation|kCGGradientDrawsAfterEndLocation);
+//                    } CGContextEndTransparencyLayer(ctx);
+//
+//                } CGContextRestoreGState(ctx);
+//
+//                // STROKE
+//                CGContextSaveGState(ctx); {
+//
+//                    // STROKE COLOR
+//                    CGContextSetRGBStrokeColor(ctx, 0.05, 0.44, 1.00, 1.00);
+//
+//                    // STROKE LINE WIDTH
+//                    CGContextSetLineWidth(ctx, 1.00);
+//                    CGContextAddPath(ctx, path);
+//                    CGContextStrokePath(ctx);
+//
+//                } CGContextRestoreGState(ctx);
+//
+//            } CGContextRestoreGState(ctx);
+//
+//            /** Bezier Shape *****************/
+//            CGContextSaveGState(ctx); {
+//
+//                // PATH
+//                CGContextSetLineCap(ctx, kCGLineCapRound);
+//                CGContextSetLineJoin(ctx, kCGLineJoinRound);
+//                static CGMutablePathRef path = NULL;
+//                if (!path) {
+//                    path = CGPathCreateMutable();
+//                    CGPathMoveToPoint(path, NULL, 4.18, 3.73);
+//                    CGPathAddLineToPoint(path, NULL, 4.18, 4.69);
+//                    CGPathAddLineToPoint(path, NULL, 4.16, 5.57);
+//                    CGPathAddLineToPoint(path, NULL, 4.41, 6.40);
+//                    CGPathAddLineToPoint(path, NULL, 4.77, 6.99);
+//                    CGPathAddLineToPoint(path, NULL, 5.32, 7.35);
+//                    CGPathAddLineToPoint(path, NULL, 4.78, 6.65);
+//                    CGPathAddLineToPoint(path, NULL, 4.95, 6.37);
+//                    CGPathAddLineToPoint(path, NULL, 5.44, 6.98);
+//                    CGPathAddLineToPoint(path, NULL, 6.37, 7.79);
+//                    CGPathAddLineToPoint(path, NULL, 7.07, 7.88);
+//                    CGPathAddLineToPoint(path, NULL, 8.04, 8.28);
+//                    CGPathAddLineToPoint(path, NULL, 8.84, 8.58);
+//                    CGPathAddLineToPoint(path, NULL, 8.70, 9.34);
+//                    CGPathAddLineToPoint(path, NULL, 8.28, 9.74);
+//                    CGPathAddLineToPoint(path, NULL, 8.52, 10.59);
+//                    CGPathAddLineToPoint(path, NULL, 8.96, 10.82);
+//                    CGPathAddLineToPoint(path, NULL, 9.48, 11.19);
+//                    CGPathAddLineToPoint(path, NULL, 9.85, 11.60);
+//                    CGPathAddLineToPoint(path, NULL, 9.63, 12.09);
+//                    CGPathAddLineToPoint(path, NULL, 9.53, 12.98);
+//                    CGPathAddLineToPoint(path, NULL, 9.22, 13.95);
+//                    CGPathAddLineToPoint(path, NULL, 9.38, 14.33);
+//                    CGPathAddLineToPoint(path, NULL, 9.99, 13.74);
+//                    CGPathAddLineToPoint(path, NULL, 10.42, 13.09);
+//                    CGPathAddLineToPoint(path, NULL, 11.27, 12.60);
+//                    CGPathAddLineToPoint(path, NULL, 11.86, 11.92);
+//                    CGPathAddLineToPoint(path, NULL, 12.38, 11.76);
+//                    CGPathAddLineToPoint(path, NULL, 12.55, 11.17);
+//                    CGPathAddLineToPoint(path, NULL, 12.73, 10.71);
+//                    CGPathAddLineToPoint(path, NULL, 12.98, 10.50);
+//                    CGPathAddLineToPoint(path, NULL, 13.00, 9.67);
+//                    CGPathAddLineToPoint(path, NULL, 12.55, 9.69);
+//                    CGPathAddLineToPoint(path, NULL, 11.88, 9.42);
+//                    CGPathAddLineToPoint(path, NULL, 11.81, 8.71);
+//                    CGPathAddLineToPoint(path, NULL, 10.95, 8.68);
+//                    CGPathAddLineToPoint(path, NULL, 10.45, 8.32);
+//                    CGPathAddLineToPoint(path, NULL, 9.17, 8.43);
+//                    CGPathAddLineToPoint(path, NULL, 8.62, 8.23);
+//                    CGPathAddLineToPoint(path, NULL, 8.28, 8.04);
+//                    CGPathAddLineToPoint(path, NULL, 7.91, 7.55);
+//                    CGPathAddLineToPoint(path, NULL, 7.49, 7.28);
+//                    CGPathAddLineToPoint(path, NULL, 6.99, 7.38);
+//                    CGPathAddLineToPoint(path, NULL, 6.94, 6.92);
+//                    CGPathAddLineToPoint(path, NULL, 7.28, 6.49);
+//                    CGPathAddLineToPoint(path, NULL, 8.09, 6.42);
+//                    CGPathAddLineToPoint(path, NULL, 8.41, 7.00);
+//                    CGPathAddLineToPoint(path, NULL, 8.67, 7.01);
+//                    CGPathAddLineToPoint(path, NULL, 8.48, 6.48);
+//                    CGPathAddLineToPoint(path, NULL, 8.54, 6.14);
+//                    CGPathAddLineToPoint(path, NULL, 9.24, 5.76);
+//                    CGPathAddLineToPoint(path, NULL, 9.22, 5.43);
+//                    CGPathAddLineToPoint(path, NULL, 9.69, 5.38);
+//                    CGPathAddLineToPoint(path, NULL, 10.08, 4.97);
+//                    CGPathAddLineToPoint(path, NULL, 10.28, 5.01);
+//                    CGPathAddLineToPoint(path, NULL, 10.57, 4.55);
+//                    CGPathAddLineToPoint(path, NULL, 11.27, 4.33);
+//                    CGPathAddLineToPoint(path, NULL, 11.55, 4.16);
+//                    CGPathAddLineToPoint(path, NULL, 11.54, 3.65);
+//                    CGPathAddLineToPoint(path, NULL, 11.04, 3.68);
+//                    CGPathAddLineToPoint(path, NULL, 10.86, 3.54);
+//                    CGPathAddLineToPoint(path, NULL, 10.53, 2.99);
+//                    CGPathAddLineToPoint(path, NULL, 9.99, 3.13);
+//                    CGPathAddLineToPoint(path, NULL, 9.93, 3.91);
+//                    CGPathAddLineToPoint(path, NULL, 9.36, 3.64);
+//                    CGPathAddLineToPoint(path, NULL, 9.34, 3.02);
+//                    CGPathAddLineToPoint(path, NULL, 9.84, 2.20);
+//                    CGPathAddCurveToPoint(path, NULL, 9.84, 2.20, 9.14, 1.99, 8.50, 2.00);
+//                    CGPathAddCurveToPoint(path, NULL, 5.54, 1.99, 4.18, 3.73, 4.18, 3.73);
+//                    CGPathCloseSubpath(path);
+//                }
+//
+//                // FILL
+//                CGContextSaveGState(ctx); {
+//
+//                    // FILL COLOR
+//                    CGContextSetRGBFillColor(ctx, 1.00, 1.00, 1.00, 0.80);
+//                    CGContextAddPath(ctx, path);
+//                    CGContextFillPath(ctx);
+//
+//                } CGContextRestoreGState(ctx);
+//
+//            } CGContextRestoreGState(ctx);
+//
+//
+//            return YES;
+//        }] retain];
+//    }
+//
+//    return sImg;
+//}
 
 
 + (Class)cellClass {
@@ -685,7 +685,7 @@
 #pragma mark Progress
 
 - (void)showDefaultIcon {
-    [self setImage:[[self class] defaultIcon]];
+    [self setImage:[[FaviconController instance] defaultFavicon]];
 }
 
 
@@ -863,9 +863,9 @@
 
 
 - (void)setImage:(NSImage *)img {
-    if (img == [[FaviconController instance] defaultFavicon]) {
-        img = [[self class] defaultIcon];
-    }
+//    if (img == [[FaviconController instance] defaultFavicon]) {
+//        img = [[self class] defaultIcon];
+//    }
     [[self cell] setImage:img];
 }
 
