@@ -66,20 +66,14 @@
     self.fieldEditor = nil;
     self.image = nil;
     self.buttons = nil;
-    self.progressImage = nil;
     [super dealloc];
 }
 
 
 - (void)awakeFromNib {
-    self.buttons = [NSMutableArray array];
+    [super awakeFromNib];
     
-    NSString *imgName = self.isRounded ? @"location_field_progress_indicator_rounded" : @"location_field_progress_indicator";
-    NSImage *img = [NSImage imageNamed:imgName];
-
-    self.progressImage = img;
-    TDAssert(_progressImage);
-
+    self.buttons = [NSMutableArray array];
     self.font = [NSFont controlContentFontOfSize:12.0];
 }
 
@@ -103,56 +97,27 @@
     CGRect bounds = [self bounds];
     
     if (_progress > 0.01) {
-        CGFloat prog = MAX(0.1, _progress);
-        CGSize size = bounds.size;
-
-        // progress rect
-        CGFloat x;
-        CGFloat y;
-        CGFloat w;
-        CGFloat h;
-        CGFloat clipWidth;
-        if (TDIsYozOrLater()) {
-            x = bounds.origin.x;
-            y = bounds.origin.y;
-            w = size.width * prog;
-            h = size.height - 1.0;
-            clipWidth = size.width;
-        } else if (TDIsLionOrLater()) {
-            x = bounds.origin.x + 1.0;
-            y = bounds.origin.y;
-            w = size.width * prog - 2.0;
-            h = size.height - (_isRounded ? 2.0 : 1.0);
-            clipWidth = size.width - 2.0;
-        } else {
-            x = bounds.origin.x + 1.0;
-            y = bounds.origin.y + 2.0;
-            w = size.width * prog - 2.0;
-            h = size.height - (_isRounded ? 2.0 : 1.0);
-            clipWidth = size.width - 2.0;
-        }
-        
-        CGSize pSize = CGSizeMake(w, h);
-        CGRect pRect = CGRectMake(x, y, pSize.width, pSize.height);
-        
-        TDAssert(_progressImage);
-        CGRect imageRect = CGRectZero;
-        imageRect.size = [_progressImage size];
-        imageRect.origin = NSZeroPoint;
-        
         CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
-        
-        CGRect clipRect = CGRectMake(x, y, clipWidth, h);
-        TDAddRoundRect(ctx, clipRect, 4.0);
-        CGContextClip(ctx);
-        CGContextSaveGState(ctx);
 
-        [_progressImage drawStretchableInRect:pRect
-                                  edgeInsets:TDEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
-                                   operation:NSCompositingOperationPlusDarker
-                                    fraction:1.0];
-        
-        CGContextSaveGState(ctx);
+        CGContextSaveGState(ctx); {
+            CGFloat prog = MAX(0.1, _progress);
+            
+            CGRect clipRect = CGRectInset(bounds, 1.0, 1.0);
+            clipRect.size.height -= 1.0;
+            TDAddRoundRect(ctx, clipRect, 4.0);
+            CGContextEOClip(ctx);
+            CGContextSaveGState(ctx);
+            
+            CGRect gradRect = bounds;
+            gradRect.size.width = round(NSWidth(bounds) * prog);
+            
+            static NSGradient *grad = nil;
+            if (!grad) {
+                grad = [[NSGradient alloc] initWithStartingColor:TDHexaColor(0x118EFE55) endingColor:TDHexaColor(0x77F9FE55)];
+            }
+            [grad drawInRect:gradRect angle:90.0];
+            
+        } CGContextRestoreGState(ctx);
     }
     
     CGRect cellRect = [[self cell] drawingRectForBounds:bounds];

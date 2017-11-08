@@ -68,5 +68,4 @@
 
 // progress
 @property (nonatomic, assign) double progress;
-@property (nonatomic, retain) NSImage *progressImage;
 @end
