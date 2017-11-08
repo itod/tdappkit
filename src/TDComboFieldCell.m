@@ -12,6 +12,7 @@
 #import <TDAppKit/TDUtils.h>
 
 #define IMAGE_MARGIN 2.0
+#define FUDGE_Y 1.0
 
 @implementation TDComboFieldCell
 
@@ -97,15 +98,8 @@
     
     buttonFrame = [(TDComboField*)controlView buttonFrame];
     textFrame.size.width -= buttonFrame.size.width + 2;
+    textFrame.origin.y -= FUDGE_Y;
 
-    if (![(TDComboField *)controlView isRounded]) {
-        textFrame.origin.y += 1.0;
-    }
-
-    if (TDIsElCapOrLater()) {
-        textFrame.origin.y -= 1.0;
-    }
-    
     [super selectWithFrame:textFrame
                     inView:controlView 
                     editor:textObj 
@@ -127,11 +121,8 @@
     
     buttonFrame = [(TDComboField *)controlView buttonFrame];
     textFrame.size.width -= buttonFrame.size.width + 2;
+    textFrame.origin.y -= FUDGE_Y;
     
-    if (![(TDComboField *)controlView isRounded]) {
-        textFrame.origin.y += 1.0;
-    }
-
     [super editWithFrame:textFrame
                   inView:controlView 
                   editor:textObj 
@@ -143,90 +134,26 @@
 #pragma mark -- Drawing --
 //--------------------------------------------------------------//
 
-- (void)drawInteriorWithFrame:(NSRect)cellFrame 
+- (void)drawInteriorWithFrame:(NSRect)cellFrame
                        inView:(NSView*)controlView
 {
+    CGRect txtFrame = cellFrame;
+
     TDAssert(image);
     // Draw image
     if (image) {
-        NSSize    imageSize;
-        NSRect    imageFrame;
+        CGRect imgFrame;
+        CGSize imgSize = [image size];
+        NSDivideRect(cellFrame, &imgFrame, &txtFrame, IMAGE_MARGIN+imgSize.width, NSMinXEdge);
+        txtFrame.origin.y -= FUDGE_Y;
         
-        imageSize = [image size];
-        NSDivideRect(cellFrame, &imageFrame, &cellFrame, 
-                     IMAGE_MARGIN + imageSize.width, NSMinXEdge);
-        imageFrame.origin.x += 3;
-        imageFrame.size = imageSize;
-        imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
-        if ([self drawsBackground]) {
-            [[self backgroundColor] set];
-            NSRectFill(imageFrame);
-        }
-        
-        imageFrame.origin.y = cellFrame.origin.y;
-        if ([controlView isFlipped]) {
-            imageFrame.origin.y += ceil((cellFrame.size.height + imageFrame.size.height) / 2);
-        }
-        else {
-            imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
-        }
-        
-        CGRect iconRect = NSOffsetRect(imageFrame, 0.0, -imageSize.height);
-        CGRect srcRect = CGRectMake(0.0, 0.0, imageSize.width, imageSize.height);
+        CGRect iconRect = CGRectMake(NSMinX(cellFrame)+IMAGE_MARGIN, floor(NSMidY(cellFrame) - imgSize.height*0.5), imgSize.width, imgSize.height);
+        CGRect srcRect = CGRectMake(0.0, 0.0, imgSize.width, imgSize.height);
         TDAssert(controlView);
         CGFloat alpha = [[controlView window] isMainWindow] ? 1.0 : 0.65;
         [image drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
     }
-    
-    // Draw text
-    if (![(TDComboField *)controlView isRounded]) {
-        cellFrame.origin.y += 1.0;
-    }
-
-    if (TDIsElCapOrLater()) {
-        cellFrame.origin.y -= 1.0;
-    }
-    [super drawInteriorWithFrame:cellFrame inView:controlView];
-}
-
-- (void)drawInteriorImageOnlyWithFrame:(NSRect)cellFrame 
-                                inView:(NSView*)controlView
-{
-    TDAssert(image);
-    // Draw image
-    if (image) {
-        NSSize    imageSize;
-        NSRect    imageFrame;
-        
-        imageSize = [image size];
-        NSDivideRect(cellFrame, &imageFrame, &cellFrame, 
-                     IMAGE_MARGIN + imageSize.width, NSMinXEdge);
-        imageFrame.origin.x += 3;
-        imageFrame.size = imageSize;
-        imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
-        // TODD removing this
-        //        if ([self drawsBackground]) {
-        //            [[self backgroundColor] set];
-        //            NSRectFill(imageFrame);
-        //        }
-        
-        imageFrame.origin.y = cellFrame.origin.y;
-        if ([controlView isFlipped]) {
-            imageFrame.origin.y += ceil((cellFrame.size.height + imageFrame.size.height) / 2);
-        }
-        else {
-            imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
-        }
-        
-        CGRect iconRect = NSOffsetRect(imageFrame, 0.0, -imageSize.height);
-        CGRect srcRect = CGRectMake(0.0, 0.0, imageSize.width, imageSize.height);
-        TDAssert(controlView);
-        CGFloat alpha = [[controlView window] isMainWindow] ? 1.0 : 0.65;
-        [image drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
-    }
-    
-    // Draw text
-    //    [super drawInteriorWithFrame:cellFrame inView:controlView];
+    [super drawInteriorWithFrame:txtFrame inView:controlView];
 }
 
 - (NSSize)cellSize
