@@ -54,6 +54,11 @@ NSColor *TDGrayaColor(CGFloat f, CGFloat a) {
 }
 
 
+NSColor *TDGrayColorDiff(NSColor *inColor, CGFloat diff) {
+    return [NSColor colorWithWhite:([[inColor colorUsingColorSpace:[NSColorSpace genericGrayColorSpace]] whiteComponent]+diff) alpha:1.0];
+}
+
+
 id TDCGHexColor(NSUInteger x) {
     return (id)[TDHexColor(x) CGColor];
 }

@@ -14,6 +14,7 @@
 #import "TDComboFieldListView.h"
 #import "TDComboFieldListItem.h"
 #import "TDComboFieldTextView.h"
+#import "FaviconController.h"
 
 #define LIST_MARGIN_Y 5.0
 #define MAX_SCROLL_HEIGHT 40
@@ -548,7 +549,7 @@
 #pragma mark Progress
 
 - (void)showDefaultIcon {
-    [self setImage:[NSImage imageNamed:@"default_favicon"]];
+    [self setImage:[[FaviconController instance] defaultFavicon]];
 }
 
 

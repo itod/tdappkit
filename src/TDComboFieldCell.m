@@ -171,9 +171,11 @@
             imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
         }
         
-        NSRect fromRect = NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height);
-        [image drawInRect:NSOffsetRect(imageFrame, 0.0, -imageSize.height) fromRect:fromRect operation:NSCompositingOperationSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        //[image compositeToPoint:imageFrame.origin operation:NSCompositingOperationSourceOver];
+        CGRect iconRect = NSOffsetRect(imageFrame, 0.0, -imageSize.height);
+        CGRect srcRect = CGRectMake(0.0, 0.0, imageSize.width, imageSize.height);
+        TDAssert(controlView);
+        CGFloat alpha = [[controlView window] isMainWindow] ? 1.0 : 0.65;
+        [image drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
     }
     
     // Draw text
@@ -216,9 +218,11 @@
             imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
         }
         
-        NSRect fromRect = NSMakeRect(0.0, 0.0, imageSize.width, imageSize.height);
-        [image drawInRect:NSOffsetRect(imageFrame, 0.0, -imageSize.height) fromRect:fromRect operation:NSCompositingOperationSourceOver fraction:1.0 respectFlipped:YES hints:nil];
-        //[image compositeToPoint:imageFrame.origin operation:NSCompositingOperationSourceOver];
+        CGRect iconRect = NSOffsetRect(imageFrame, 0.0, -imageSize.height);
+        CGRect srcRect = CGRectMake(0.0, 0.0, imageSize.width, imageSize.height);
+        TDAssert(controlView);
+        CGFloat alpha = [[controlView window] isMainWindow] ? 1.0 : 0.65;
+        [image drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
     }
     
     // Draw text
