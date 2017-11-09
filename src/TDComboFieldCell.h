@@ -16,7 +16,6 @@
 
 // Dragging
 - (NSImage *)imageForDraggingWithFrame:(NSRect)cellFrame inView:(NSView *)cv;
-- (void)drawInteriorImageOnlyWithFrame:(NSRect)cellFrame inView:(NSView *)cv;
 
 @property (atomic, retain) NSImage *image;
 @end
