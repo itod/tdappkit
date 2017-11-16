@@ -11,8 +11,8 @@
 #import <TDAppKit/TDComboField.h>
 #import <TDAppKit/TDUtils.h>
 
-#define IMAGE_MARGIN 2.0
-#define FUDGE_Y 1.0
+#define IMAGE_MARGIN 4.0
+#define FUDGE_Y 0.0
 
 @implementation TDComboFieldCell
 
@@ -48,31 +48,32 @@
 #pragma mark -
 #pragma mark Image
 
-- (NSRect)imageFrameForCellFrame:(NSRect)cellFrame {
+- (CGRect)imageFrameForCellFrame:(CGRect)cellFrame {
+    CGRect r = CGRectZero;
+    
     if (self.favicon) {
-        NSRect imageFrame;
-        imageFrame.size = [self.favicon size];
-        imageFrame.origin = cellFrame.origin;
-        imageFrame.origin.x += 3;
-        imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
-        return imageFrame;
-    } else {
-        return NSZeroRect;
+        CGSize imgSize = [self.favicon size];
+        CGFloat x = NSMinX(cellFrame) + IMAGE_MARGIN;
+        CGFloat y = floor(NSMidY(cellFrame) - imgSize.height*0.5);
+        
+        r = CGRectMake(x, y, imgSize.width, imgSize.height);
     }
+    
+    return r;
 }
 
 
 #pragma mark -
 #pragma mark Editing
 
-- (void)selectWithFrame:(NSRect)rect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)object start:(NSInteger)selStart length:(NSInteger)selLength {
+- (void)selectWithFrame:(CGRect)rect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)object start:(NSInteger)selStart length:(NSInteger)selLength {
     // Divide frame
-    NSRect textFrame, imageFrame, buttonFrame;
+    CGRect textFrame, imageFrame, buttonFrame;
     if (self.favicon) {
         NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [self.favicon size].width, NSMinXEdge);
     } else {
         textFrame = rect;
-        imageFrame = NSZeroRect;
+        imageFrame = CGRectZero;
     }
     
     buttonFrame = [(TDComboField*)controlView buttonFrame];
@@ -88,34 +89,29 @@
 }
 
 
-- (void)editWithFrame:(NSRect)rect inView:(NSView *)controlView editor:(NSText*)textObj delegate:(id)object event:(NSEvent *)event {
+- (void)editWithFrame:(CGRect)rect inView:(NSView *)cv editor:(NSText *)text delegate:(id)del event:(NSEvent *)evt {
+    
     // Divide frame
-    NSRect  textFrame, imageFrame, buttonFrame;
+    CGRect  textFrame, imageFrame, buttonFrame;
     if (self.favicon) {
         NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [self.favicon size].width, NSMinXEdge);
     } else {
         textFrame = rect;
-        imageFrame = NSZeroRect;
+        imageFrame = CGRectZero;
     }
     
-    buttonFrame = [(TDComboField *)controlView buttonFrame];
+    buttonFrame = [(id)cv buttonFrame];
     textFrame.size.width -= buttonFrame.size.width + 2;
     textFrame.origin.y -= FUDGE_Y;
     
-    [super editWithFrame:textFrame
-                  inView:controlView 
-                  editor:textObj 
-                delegate:object 
-                   event:event];
+    [super editWithFrame:textFrame inView:cv editor:text delegate:del event:evt];
 }
 
-//--------------------------------------------------------------//
-#pragma mark -- Drawing --
-//--------------------------------------------------------------//
 
-- (void)drawInteriorWithFrame:(NSRect)cellFrame
-                       inView:(NSView*)controlView
-{
+#pragma mark -
+#pragma mark Drawing
+
+- (void)drawInteriorWithFrame:(CGRect)cellFrame inView:(NSView *)cv {
     CGRect txtFrame = cellFrame;
 
     TDAssert(self.favicon);
@@ -126,44 +122,45 @@
         NSDivideRect(cellFrame, &imgFrame, &txtFrame, IMAGE_MARGIN+imgSize.width, NSMinXEdge);
         txtFrame.origin.y -= FUDGE_Y;
         
-        CGRect iconRect = CGRectMake(NSMinX(cellFrame)+IMAGE_MARGIN+1.0, floor(NSMidY(cellFrame) - imgSize.height*0.5), imgSize.width, imgSize.height);
+        CGRect iconRect = [self imageFrameForCellFrame:cellFrame];
         CGRect srcRect = CGRectMake(0.0, 0.0, imgSize.width, imgSize.height);
-        TDAssert(controlView);
-        CGFloat alpha = [[controlView window] isMainWindow] ? 1.0 : 0.65;
+        TDAssert(cv);
+        CGFloat alpha = [[cv window] isMainWindow] ? 1.0 : 0.65;
         [self.favicon drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
     }
-    [super drawInteriorWithFrame:txtFrame inView:controlView];
+    [super drawInteriorWithFrame:txtFrame inView:cv];
 }
 
-- (NSSize)cellSize
-{
-    NSSize cellSize = [super cellSize];
+
+- (CGSize)cellSize {
+    CGSize cellSize = [super cellSize];
     cellSize.width += (self.favicon ? [self.favicon size].width : 0) + IMAGE_MARGIN;
     return cellSize;
 }
 
-- (void)_drawFocusRingWithFrame:(NSRect)rect
-{
-    if (self.favicon) {
-        rect.origin.x -= [self.favicon size].width + IMAGE_MARGIN;
-        rect.size.width += [self.favicon size].width + IMAGE_MARGIN;
-    }
-    
-    NSRect  buttonFrame;
-    buttonFrame = [(TDComboField*)[self controlView] buttonFrame];
-    if (buttonFrame.size.width > 0) {
-        rect.size.width += buttonFrame.size.width + 2;
-    }
-    
-//    rect = NSInsetRect(rect, 1.0, 1.0);
-//    [super _drawFocusRingWithFrame:rect];
-}
+
+//- (void)_drawFocusRingWithFrame:(CGRect)rect
+//{
+//    if (self.favicon) {
+//        rect.origin.x -= [self.favicon size].width + IMAGE_MARGIN;
+//        rect.size.width += [self.favicon size].width + IMAGE_MARGIN;
+//    }
+//
+//    CGRect  buttonFrame;
+//    buttonFrame = [(TDComboField*)[self controlView] buttonFrame];
+//    if (buttonFrame.size.width > 0) {
+//        rect.size.width += buttonFrame.size.width + 2;
+//    }
+//
+////    rect = NSInsetRect(rect, 1.0, 1.0);
+////    [super _drawFocusRingWithFrame:rect];
+//}
 
 
 #pragma mark -
 #pragma mark Dragging
 
-- (NSImage *)imageForDraggingWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
+- (NSImage *)imageForDraggingWithFrame:(CGRect)cellFrame inView:(NSView *)controlView {
     // Create image
     NSImage *result = [[[NSImage alloc] initWithSize:cellFrame.size] autorelease];
     
@@ -176,11 +173,11 @@
     
     // Draw cell
     [result lockFocus];
-    [result drawAtPoint:NSZeroPoint fromRect:cellFrame operation:NSCompositingOperationSourceOver fraction:1.0];
+    [result drawAtPoint:CGPointZero fromRect:cellFrame operation:NSCompositingOperationSourceOver fraction:1.0];
     NSImage *favicon = self.favicon;
-    NSSize faviconSize = favicon.size;
-    NSRect srcRect = NSMakeRect(0.0, 0.0, faviconSize.width, faviconSize.height);
-    NSPoint destPoint = NSZeroPoint;
+    CGSize faviconSize = favicon.size;
+    CGRect srcRect = NSMakeRect(0.0, 0.0, faviconSize.width, faviconSize.height);
+    NSPoint destPoint = CGPointZero;
     [favicon drawAtPoint:destPoint fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha];
     
     NSPoint p = NSMakePoint(faviconSize.width + IMAGE_MARGIN, 0.0);
@@ -192,11 +189,11 @@
 
 
 - (BOOL)imageTrackMouse:(NSEvent*)event 
-                 inRect:(NSRect)cellFrame 
+                 inRect:(CGRect)cellFrame
                  ofView:(NSView*)controlView 
 {
     // Check mouse is in image or not
-    NSRect  imageFrame;
+    CGRect  imageFrame;
     NSPoint point;
     
     imageFrame = [self imageFrameForCellFrame:cellFrame];
@@ -210,11 +207,11 @@
     return NO;
 }
 
-- (void)resetCursorRect:(NSRect)cellFrame 
+- (void)resetCursorRect:(CGRect)cellFrame
                  inView:(NSView*)controlView
 {
-    NSRect  textFrame;
-    NSRect  imageFrame;
+    CGRect  textFrame;
+    CGRect  imageFrame;
     NSDivideRect(
                  cellFrame, &imageFrame, &textFrame, IMAGE_MARGIN + [self.favicon size].width, NSMinXEdge);
     [super resetCursorRect:textFrame inView:controlView];
