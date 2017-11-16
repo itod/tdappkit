@@ -15,8 +15,9 @@
 
 @implementation TDComboFieldTextView
 
-- (id)initWithFrame:(NSRect)r {
-    if (self = [super initWithFrame:r]) {
+- (id)initWithFrame:(CGRect)r {
+    self = [super initWithFrame:r];
+    if (self) {
 
     }
     return self;
@@ -34,42 +35,52 @@
 }
 
 
+// <esc> was pressed
+- (void)complete:(id)sender {
+    TDAssert(_comboField);
+    [_comboField escape:self];
+}
+
+
 // <esc> was pressed. suppresses system-provided completions UI
 - (NSArray *)completionsForPartialWordRange:(NSRange)charRange indexOfSelectedItem:(NSInteger *)index {
-    [comboField escape:self];
+    TDAssert(_comboField);
+    [_comboField escape:self];
     return nil;
 }
 
 
-- (void)moveRight:(id)sender { [comboField removeListWindow]; [super moveRight:sender]; }
-- (void)moveLeft:(id)sender { [comboField removeListWindow]; [super moveLeft:sender]; }
-- (void)moveWordForward:(id)sender { [comboField removeListWindow]; [super moveWordForward:sender]; }
-- (void)moveWordBackward:(id)sender { [comboField removeListWindow]; [super moveWordBackward:sender]; }
-- (void)moveToBeginningOfLine:(id)sender { [comboField removeListWindow]; [super moveToBeginningOfLine:sender]; }
-- (void)moveToEndOfLine:(id)sender { [comboField removeListWindow]; [super moveToEndOfLine:sender]; }
-- (void)moveToBeginningOfParagraph:(id)sender { [comboField removeListWindow]; [super moveToBeginningOfParagraph:sender]; }
-- (void)moveToEndOfParagraph:(id)sender { [comboField removeListWindow]; [super moveToEndOfParagraph:sender]; }
-- (void)moveToEndOfDocument:(id)sender { [comboField removeListWindow]; [super moveToEndOfDocument:sender]; }
-- (void)moveToBeginningOfDocument:(id)sender { [comboField removeListWindow]; [super moveToBeginningOfDocument:sender]; }
-- (void)pageDown:(id)sender { [comboField removeListWindow]; [super pageDown:sender]; }
-- (void)pageUp:(id)sender { [comboField removeListWindow]; [super pageUp:sender]; }
-- (void)centerSelectionInVisibleArea:(id)sender { [comboField removeListWindow]; [super centerSelectionInVisibleArea:sender]; }
+- (void)moveRight:(id)sender { [_comboField removeListWindow]; [super moveRight:sender]; }
+- (void)moveLeft:(id)sender { [_comboField removeListWindow]; [super moveLeft:sender]; }
+- (void)moveWordForward:(id)sender { [_comboField removeListWindow]; [super moveWordForward:sender]; }
+- (void)moveWordBackward:(id)sender { [_comboField removeListWindow]; [super moveWordBackward:sender]; }
+- (void)moveToBeginningOfLine:(id)sender { [_comboField removeListWindow]; [super moveToBeginningOfLine:sender]; }
+- (void)moveToEndOfLine:(id)sender { [_comboField removeListWindow]; [super moveToEndOfLine:sender]; }
+- (void)moveToBeginningOfParagraph:(id)sender { [_comboField removeListWindow]; [super moveToBeginningOfParagraph:sender]; }
+- (void)moveToEndOfParagraph:(id)sender { [_comboField removeListWindow]; [super moveToEndOfParagraph:sender]; }
+- (void)moveToEndOfDocument:(id)sender { [_comboField removeListWindow]; [super moveToEndOfDocument:sender]; }
+- (void)moveToBeginningOfDocument:(id)sender { [_comboField removeListWindow]; [super moveToBeginningOfDocument:sender]; }
+- (void)pageDown:(id)sender { [_comboField removeListWindow]; [super pageDown:sender]; }
+- (void)pageUp:(id)sender { [_comboField removeListWindow]; [super pageUp:sender]; }
+- (void)centerSelectionInVisibleArea:(id)sender { [_comboField removeListWindow]; [super centerSelectionInVisibleArea:sender]; }
 
 
 - (void)moveUp:(id)sender {
-    [comboField moveUp:sender];
+    TDAssert(_comboField);
+    [_comboField moveUp:sender];
 }
 
 
 - (void)moveDown:(id)sender {
-    [comboField moveDown:sender];
+    TDAssert(_comboField);
+    [_comboField moveDown:sender];
 }
 
 
 - (void)insertText:(id)insertString {
+    TDAssert(_comboField);
     [super insertText:insertString];
-    [comboField textWasInserted:insertString];
+    [_comboField textWasInserted:insertString];
 }
 
-@synthesize comboField;
 @end

@@ -8,14 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TDComboFieldCell : NSTextFieldCell {
-    NSImage *image;
-}
+@interface TDComboFieldCell : NSTextFieldCell
 
 - (NSRect)imageFrameForCellFrame:(NSRect)cellFrame;
 
 // Dragging
 - (NSImage *)imageForDraggingWithFrame:(NSRect)cellFrame inView:(NSView *)cv;
 
-@property (atomic, retain) NSImage *image;
 @end
