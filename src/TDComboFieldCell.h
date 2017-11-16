@@ -15,4 +15,5 @@
 // Dragging
 - (NSImage *)imageForDraggingWithFrame:(NSRect)cellFrame inView:(NSView *)cv;
 
+@property (nonatomic, retain) NSImage *image;
 @end

@@ -48,16 +48,16 @@
 #pragma mark -
 #pragma mark Image
 
-- (CGRect)imageFrameForCellFrame:(CGRect)cellFrame {
-    if (self.image) {
-        CGRect imageFrame;
-        imageFrame.size = [self.image size];
+- (NSRect)imageFrameForCellFrame:(NSRect)cellFrame {
+    if (image) {
+        NSRect imageFrame;
+        imageFrame.size = [image size];
         imageFrame.origin = cellFrame.origin;
         imageFrame.origin.x += 3;
         imageFrame.origin.y += ceil((cellFrame.size.height - imageFrame.size.height) / 2);
         return imageFrame;
     } else {
-        return CGRectZero;
+        return NSZeroRect;
     }
 }
 
@@ -65,14 +65,14 @@
 #pragma mark -
 #pragma mark Editing
 
-- (void)selectWithFrame:(CGRect)rect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)object start:(NSInteger)selStart length:(NSInteger)selLength {
+- (void)selectWithFrame:(NSRect)rect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)object start:(NSInteger)selStart length:(NSInteger)selLength {
     // Divide frame
-    CGRect textFrame, imageFrame, buttonFrame;
-    if (self.image) {
-        NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [self.image size].width, NSMinXEdge);
+    NSRect textFrame, imageFrame, buttonFrame;
+    if (image) {
+        NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [image size].width, NSMinXEdge);
     } else {
         textFrame = rect;
-        imageFrame = CGRectZero;
+        imageFrame = NSZeroRect;
     }
     
     buttonFrame = [(TDComboField*)controlView buttonFrame];
@@ -88,14 +88,14 @@
 }
 
 
-- (void)editWithFrame:(CGRect)rect inView:(NSView *)controlView editor:(NSText*)textObj delegate:(id)object event:(NSEvent *)event {
+- (void)editWithFrame:(NSRect)rect inView:(NSView *)controlView editor:(NSText*)textObj delegate:(id)object event:(NSEvent *)event {
     // Divide frame
-    CGRect  textFrame, imageFrame, buttonFrame;
-    if (self.image) {
-        NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [self.image size].width, NSMinXEdge);
+    NSRect  textFrame, imageFrame, buttonFrame;
+    if (image) {
+        NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [image size].width, NSMinXEdge);
     } else {
         textFrame = rect;
-        imageFrame = CGRectZero;
+        imageFrame = NSZeroRect;
     }
     
     buttonFrame = [(TDComboField *)controlView buttonFrame];
@@ -113,16 +113,16 @@
 #pragma mark -- Drawing --
 //--------------------------------------------------------------//
 
-- (void)drawInteriorWithFrame:(CGRect)cellFrame
+- (void)drawInteriorWithFrame:(NSRect)cellFrame
                        inView:(NSView*)controlView
 {
     CGRect txtFrame = cellFrame;
 
-    TDAssert(self.image);
+    TDAssert(image);
     // Draw image
-    if (self.image) {
+    if (image) {
         CGRect imgFrame;
-        CGSize imgSize = [self.image size];
+        CGSize imgSize = [image size];
         NSDivideRect(cellFrame, &imgFrame, &txtFrame, IMAGE_MARGIN+imgSize.width, NSMinXEdge);
         txtFrame.origin.y -= FUDGE_Y;
         
@@ -130,7 +130,7 @@
         CGRect srcRect = CGRectMake(0.0, 0.0, imgSize.width, imgSize.height);
         TDAssert(controlView);
         CGFloat alpha = [[controlView window] isMainWindow] ? 1.0 : 0.65;
-        [self.image drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
+        [image drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
     }
     [super drawInteriorWithFrame:txtFrame inView:controlView];
 }
@@ -138,18 +138,18 @@
 - (NSSize)cellSize
 {
     NSSize cellSize = [super cellSize];
-    cellSize.width += (self.image ? [self.image size].width : 0) + IMAGE_MARGIN;
+    cellSize.width += (image ? [image size].width : 0) + IMAGE_MARGIN;
     return cellSize;
 }
 
-- (void)_drawFocusRingWithFrame:(CGRect)rect
+- (void)_drawFocusRingWithFrame:(NSRect)rect
 {
-    if (self.image) {
-        rect.origin.x -= [self.image size].width + IMAGE_MARGIN;
-        rect.size.width += [self.image size].width + IMAGE_MARGIN;
+    if (image) {
+        rect.origin.x -= [image size].width + IMAGE_MARGIN;
+        rect.size.width += [image size].width + IMAGE_MARGIN;
     }
     
-    CGRect  buttonFrame;
+    NSRect  buttonFrame;
     buttonFrame = [(TDComboField*)[self controlView] buttonFrame];
     if (buttonFrame.size.width > 0) {
         rect.size.width += buttonFrame.size.width + 2;
@@ -163,7 +163,7 @@
 #pragma mark -
 #pragma mark Dragging
 
-- (NSImage *)imageForDraggingWithFrame:(CGRect)cellFrame inView:(NSView *)controlView {
+- (NSImage *)imageForDraggingWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
     // Create image
     NSImage *result = [[[NSImage alloc] initWithSize:cellFrame.size] autorelease];
     
@@ -179,7 +179,7 @@
     [result drawAtPoint:NSZeroPoint fromRect:cellFrame operation:NSCompositingOperationSourceOver fraction:1.0];
     NSImage *favicon = self.image;
     NSSize faviconSize = favicon.size;
-    CGRect srcRect = NSMakeRect(0.0, 0.0, faviconSize.width, faviconSize.height);
+    NSRect srcRect = NSMakeRect(0.0, 0.0, faviconSize.width, faviconSize.height);
     NSPoint destPoint = NSZeroPoint;
     [favicon drawAtPoint:destPoint fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha];
     
@@ -192,11 +192,11 @@
 
 
 - (BOOL)imageTrackMouse:(NSEvent*)event 
-                 inRect:(CGRect)cellFrame
+                 inRect:(NSRect)cellFrame 
                  ofView:(NSView*)controlView 
 {
     // Check mouse is in image or not
-    CGRect  imageFrame;
+    NSRect  imageFrame;
     NSPoint point;
     
     imageFrame = [self imageFrameForCellFrame:cellFrame];
@@ -210,14 +210,17 @@
     return NO;
 }
 
-- (void)resetCursorRect:(CGRect)cellFrame
+- (void)resetCursorRect:(NSRect)cellFrame 
                  inView:(NSView*)controlView
 {
-    CGRect  textFrame;
-    CGRect  imageFrame;
+    NSRect  textFrame;
+    NSRect  imageFrame;
     NSDivideRect(
-                 cellFrame, &imageFrame, &textFrame, IMAGE_MARGIN + [self.image size].width, NSMinXEdge);
+                 cellFrame, &imageFrame, &textFrame, IMAGE_MARGIN + [image size].width, NSMinXEdge);
     [super resetCursorRect:textFrame inView:controlView];
 }
 
+
+
+@synthesize image;
 @end
