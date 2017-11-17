@@ -15,7 +15,18 @@
 #define FUDGE_Y 0.0
 #define BORDER_RADIUS 5.0
 
+static NSColor *sStrokeColor = nil;
+static NSColor *sNonMainStrokeColor = nil;
+
 @implementation TDComboFieldCell
+
++ (void)initialize {
+    if ([TDComboFieldCell class] == self) {
+        sStrokeColor = [[NSColor colorWithWhite:0.65 alpha:1.0] retain];
+        sNonMainStrokeColor = [[NSColor colorWithWhite:0.85 alpha:1.0] retain];
+    }
+}
+
 
 - (id)initImageCell:(NSImage *)img {
     self = [super init];
@@ -121,7 +132,10 @@
 //    [[NSColor redColor] setFill];
 //    NSRectFill(cellFrame);
 //
-    [[NSColor colorWithWhite:0.65 alpha:1.0] setStroke];
+    
+    BOOL isMain = [[cv window] isMainWindow];
+    NSColor *strokeColor = isMain ? sStrokeColor : sNonMainStrokeColor;
+    [strokeColor setStroke];
     [[NSColor whiteColor] setFill];
     
     CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
