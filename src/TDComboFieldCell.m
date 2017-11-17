@@ -11,7 +11,7 @@
 #import <TDAppKit/TDComboField.h>
 #import <TDAppKit/TDUtils.h>
 
-#define IMAGE_MARGIN 4.0
+#define IMAGE_MARGIN 5.0
 #define FUDGE_Y 0.0
 #define BORDER_RADIUS 5.0
 
