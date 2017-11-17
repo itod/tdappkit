@@ -680,7 +680,7 @@
 
 
 - (NSImage *)image {
-    return [[self cell] favicon];
+    return [[self cell] image];
 }
 
 
@@ -688,7 +688,7 @@
 //    if (img == [[FaviconController instance] defaultFavicon]) {
 //        img = [[self class] defaultIcon];
 //    }
-    [[self cell] setFavicon:img];
+    [[self cell] setImage:img];
 }
 
 @end

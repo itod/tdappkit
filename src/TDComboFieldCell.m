@@ -47,7 +47,7 @@ static NSColor *sNonMainStrokeColor = nil;
 
 
 - (void)dealloc {
-    self.favicon = nil;
+    self.image = nil;
     [super dealloc];
 }
 
@@ -63,8 +63,8 @@ static NSColor *sNonMainStrokeColor = nil;
 - (CGRect)imageFrameForCellFrame:(CGRect)cellFrame {
     CGRect r = CGRectZero;
     
-    if (self.favicon) {
-        CGSize imgSize = [self.favicon size];
+    if (self.image) {
+        CGSize imgSize = [self.image size];
         CGFloat x = NSMinX(cellFrame) + IMAGE_MARGIN;
         CGFloat y = floor(NSMidY(cellFrame) - imgSize.height*0.5);
         
@@ -86,8 +86,8 @@ static NSColor *sNonMainStrokeColor = nil;
 - (void)selectWithFrame:(CGRect)rect inView:(NSView *)controlView editor:(NSText *)textObj delegate:(id)object start:(NSInteger)selStart length:(NSInteger)selLength {
     // Divide frame
     CGRect textFrame, imageFrame, buttonFrame;
-    if (self.favicon) {
-        NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [self.favicon size].width, NSMinXEdge);
+    if (self.image) {
+        NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [self.image size].width, NSMinXEdge);
     } else {
         textFrame = rect;
         imageFrame = CGRectZero;
@@ -110,8 +110,8 @@ static NSColor *sNonMainStrokeColor = nil;
     
     // Divide frame
     CGRect  textFrame, imageFrame, buttonFrame;
-    if (self.favicon) {
-        NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [self.favicon size].width, NSMinXEdge);
+    if (self.image) {
+        NSDivideRect(rect, &imageFrame, &textFrame, IMAGE_MARGIN + [self.image size].width, NSMinXEdge);
     } else {
         textFrame = rect;
         imageFrame = CGRectZero;
@@ -153,11 +153,11 @@ static NSColor *sNonMainStrokeColor = nil;
 - (void)drawInteriorWithFrame:(CGRect)cellFrame inView:(NSView *)cv {
     CGRect txtFrame = cellFrame;
 
-    TDAssert(self.favicon);
+    TDAssert(self.image);
     // Draw image
-    if (self.favicon) {
+    if (self.image) {
         CGRect imgFrame;
-        CGSize imgSize = [self.favicon size];
+        CGSize imgSize = [self.image size];
         NSDivideRect(cellFrame, &imgFrame, &txtFrame, IMAGE_MARGIN+imgSize.width, NSMinXEdge);
         txtFrame.origin.y -= FUDGE_Y;
         
@@ -167,7 +167,7 @@ static NSColor *sNonMainStrokeColor = nil;
         CGFloat alpha = [[cv window] isMainWindow] ? 1.0 : 0.65;
         
 //        [[NSColor blackColor] setFill]; NSRectFill(iconRect);
-        [self.favicon drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
+        [self.image drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
     }
     [super drawInteriorWithFrame:txtFrame inView:cv];
 }
@@ -175,7 +175,7 @@ static NSColor *sNonMainStrokeColor = nil;
 
 - (CGSize)cellSize {
     CGSize cellSize = [super cellSize];
-    cellSize.width += (self.favicon ? [self.favicon size].width : 0) + IMAGE_MARGIN;
+    cellSize.width += (self.image ? [self.image size].width : 0) + IMAGE_MARGIN;
     return cellSize;
 }
 
@@ -193,9 +193,9 @@ static NSColor *sNonMainStrokeColor = nil;
 
 //- (void)_drawFocusRingWithFrame:(CGRect)rect
 //{
-//    if (self.favicon) {
-//        rect.origin.x -= [self.favicon size].width + IMAGE_MARGIN;
-//        rect.size.width += [self.favicon size].width + IMAGE_MARGIN;
+//    if (self.image) {
+//        rect.origin.x -= [self.image size].width + IMAGE_MARGIN;
+//        rect.size.width += [self.image size].width + IMAGE_MARGIN;
 //    }
 //
 //    CGRect  buttonFrame;
@@ -226,7 +226,7 @@ static NSColor *sNonMainStrokeColor = nil;
     // Draw cell
     [result lockFocus];
     [result drawAtPoint:CGPointZero fromRect:cellFrame operation:NSCompositingOperationSourceOver fraction:1.0];
-    NSImage *favicon = self.favicon;
+    NSImage *favicon = self.image;
     CGSize faviconSize = favicon.size;
     CGRect srcRect = NSMakeRect(0.0, 0.0, faviconSize.width, faviconSize.height);
     NSPoint destPoint = CGPointZero;
@@ -265,8 +265,9 @@ static NSColor *sNonMainStrokeColor = nil;
     CGRect  textFrame;
     CGRect  imageFrame;
     NSDivideRect(
-                 cellFrame, &imageFrame, &textFrame, IMAGE_MARGIN + [self.favicon size].width, NSMinXEdge);
+                 cellFrame, &imageFrame, &textFrame, IMAGE_MARGIN + [self.image size].width, NSMinXEdge);
     [super resetCursorRect:textFrame inView:controlView];
 }
 
+@synthesize image = _image;
 @end
