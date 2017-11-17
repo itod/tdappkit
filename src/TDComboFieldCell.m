@@ -54,7 +54,7 @@
     if (self.favicon) {
         CGSize imgSize = [self.favicon size];
         CGFloat x = NSMinX(cellFrame) + IMAGE_MARGIN;
-        CGFloat y = floor(NSMidY(cellFrame) - imgSize.height*0.5);
+        CGFloat y = floor(NSMidY(cellFrame) - imgSize.height*0.5) + 1.0;
         
         r = CGRectMake(x, y, imgSize.width, imgSize.height);
     }
@@ -111,6 +111,25 @@
 #pragma mark -
 #pragma mark Drawing
 
+- (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)cv {
+//    [[NSColor redColor] setFill];
+//    NSRectFill(cellFrame);
+//
+    [[NSColor colorWithWhite:0.65 alpha:1.0] setStroke];
+    [[NSColor whiteColor] setFill];
+    
+    CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+
+    CGRect bgRect = CGRectMake(TDRoundAlign(cellFrame.origin.x), TDRoundAlign(cellFrame.origin.y), cellFrame.size.width -= 1.0, cellFrame.size.height -= 1.0);
+    TDAddRoundRect(ctx, bgRect, 5.0);
+    
+    CGContextSetLineWidth(ctx, 1.0);
+    CGContextDrawPath(ctx, kCGPathFillStroke);
+
+    [self drawInteriorWithFrame:cellFrame inView:cv];
+}
+
+
 - (void)drawInteriorWithFrame:(CGRect)cellFrame inView:(NSView *)cv {
     CGRect txtFrame = cellFrame;
 
@@ -126,6 +145,8 @@
         CGRect srcRect = CGRectMake(0.0, 0.0, imgSize.width, imgSize.height);
         TDAssert(cv);
         CGFloat alpha = [[cv window] isMainWindow] ? 1.0 : 0.65;
+        
+//        [[NSColor blackColor] setFill]; NSRectFill(iconRect);
         [self.favicon drawInRect:iconRect fromRect:srcRect operation:NSCompositingOperationSourceOver fraction:alpha respectFlipped:YES hints:@{NSImageHintInterpolation: @(NSImageInterpolationHigh)}];
     }
     [super drawInteriorWithFrame:txtFrame inView:cv];
