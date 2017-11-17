@@ -13,6 +13,7 @@
 
 #define IMAGE_MARGIN 4.0
 #define FUDGE_Y 0.0
+#define BORDER_RADIUS 5.0
 
 @implementation TDComboFieldCell
 
@@ -54,12 +55,17 @@
     if (self.favicon) {
         CGSize imgSize = [self.favicon size];
         CGFloat x = NSMinX(cellFrame) + IMAGE_MARGIN;
-        CGFloat y = floor(NSMidY(cellFrame) - imgSize.height*0.5) + 1.0;
+        CGFloat y = floor(NSMidY(cellFrame) - imgSize.height*0.5);
         
         r = CGRectMake(x, y, imgSize.width, imgSize.height);
     }
     
     return r;
+}
+
+
+- (CGRect)borderRectForCellFrame:(CGRect)cellFrame {
+    return CGRectMake(TDRoundAlign(cellFrame.origin.x), TDRoundAlign(cellFrame.origin.y), cellFrame.size.width -= 1.0, cellFrame.size.height -= 1.0);
 }
 
 
@@ -120,8 +126,8 @@
     
     CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
 
-    CGRect bgRect = CGRectMake(TDRoundAlign(cellFrame.origin.x), TDRoundAlign(cellFrame.origin.y), cellFrame.size.width -= 1.0, cellFrame.size.height -= 1.0);
-    TDAddRoundRect(ctx, bgRect, 5.0);
+    CGRect borderRect = [self borderRectForCellFrame:cellFrame];
+    TDAddRoundRect(ctx, borderRect, BORDER_RADIUS);
     
     CGContextSetLineWidth(ctx, 1.0);
     CGContextDrawPath(ctx, kCGPathFillStroke);
@@ -157,6 +163,17 @@
     CGSize cellSize = [super cellSize];
     cellSize.width += (self.favicon ? [self.favicon size].width : 0) + IMAGE_MARGIN;
     return cellSize;
+}
+
+
+- (void)drawFocusRingMaskWithFrame:(NSRect)cellFrame inView:(NSView *)cv {
+    CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+
+    CGRect borderRect = [self borderRectForCellFrame:cellFrame];
+    borderRect = CGRectInset(borderRect, -0.5, -0.5);
+    TDAddRoundRect(ctx, borderRect, BORDER_RADIUS);
+    
+    CGContextFillPath(ctx);
 }
 
 

@@ -97,7 +97,6 @@
             CGFloat prog = MAX(0.1, _progress);
             
             CGRect clipRect = CGRectInset(bounds, 1.0, 1.0);
-            clipRect.size.height -= 1.0;
             TDAddRoundRect(ctx, clipRect, 4.0);
             CGContextEOClip(ctx);
             CGContextSaveGState(ctx);
