@@ -35,13 +35,6 @@
 }
 
 
-// <esc> was pressed
-- (void)complete:(id)sender {
-    TDAssert(_comboField);
-    [_comboField escape:self];
-}
-
-
 // <esc> was pressed. suppresses system-provided completions UI
 - (NSArray *)completionsForPartialWordRange:(NSRange)charRange indexOfSelectedItem:(NSInteger *)index {
     TDAssert(_comboField);
