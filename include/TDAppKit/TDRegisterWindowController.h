@@ -12,7 +12,7 @@
 
 @interface TDRegisterWindowController : NSWindowController
 
-- (id)initWithAppName:(NSString *)s licenseFileExtension:(NSString *)ext;
+- (instancetype)initWithAppName:(NSString *)s licenseFileExtension:(NSString *)ext;
 
 - (IBAction)browse:(id)sender;
 

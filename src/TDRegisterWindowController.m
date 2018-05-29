@@ -22,8 +22,9 @@
 
 @implementation TDRegisterWindowController
 
-- (id)initWithAppName:(NSString *)s licenseFileExtension:(NSString *)ext {
-    if (self = [super initWithWindowNibName:@"TDRegisterWindow"]) {
+- (instancetype)initWithAppName:(NSString *)s licenseFileExtension:(NSString *)ext {
+    self = [super initWithWindowNibName:@"TDRegisterWindow"];
+    if (self) {
         self.appName = s;
 
         NSMutableSet *set = [NSMutableSet setWithObject:ext];
@@ -145,9 +146,12 @@
     TDPerformOnMainThreadAfterDelay(0.0, ^{
         NSString *filename = filePaths[0];
         if ([_licenseFileExtensions containsObject:[filename pathExtension]]) {
-            id appDelegate = [NSApp delegate];
-            if (appDelegate && [appDelegate respondsToSelector:@selector(registerWithLicenseAtPath:)]) {
-                [appDelegate registerWithLicenseAtPath:filename];
+            id target = NSApp;
+            if (![target respondsToSelector:@selector(registerWithLicenseAtPath:)]) {
+                target = [NSApp delegate];
+            }
+            if (target && [target respondsToSelector:@selector(registerWithLicenseAtPath:)]) {
+                [target registerWithLicenseAtPath:filename];
             } else {
                 TDAssert(0);
             }
