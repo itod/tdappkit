@@ -28,13 +28,14 @@ static NSColor *sNonMainStrokeColor = nil;
 }
 
 
-- (id)initImageCell:(NSImage *)img {
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
+// NS_UNAVAILABLE in 10.13
+//- (id)initImageCell:(NSImage *)img {
+//    self = [super init];
+//    if (self) {
+//        
+//    }
+//    return self;
+//}
 
 
 - (id)initTextCell:(NSString *)s {

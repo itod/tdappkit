@@ -70,10 +70,11 @@
 }
 
 
-- (void)insertText:(id)insertString {
+//- (void)insertText:(id)string {
+- (void)insertText:(id)string replacementRange:(NSRange)replacementRange {
     TDAssert(_comboField);
-    [super insertText:insertString];
-    [_comboField textWasInserted:insertString];
+    [super insertText:string replacementRange:replacementRange];
+    [_comboField textWasInserted:string];
 }
 
 @end
