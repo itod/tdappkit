@@ -78,3 +78,7 @@ TDEdgeInsets TDEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat
 void TDDumpAppleEvent(NSAppleEventDescriptor *aevtDesc);
 
 CGRect TDCombineRects(CGRect r1, CGRect r2);
+
+NSArray *TDPlistFromData(NSData *data);
+NSData *TDDataFromPlist(NSArray *plist);
+
