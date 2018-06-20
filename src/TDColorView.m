@@ -23,10 +23,28 @@
 
 
 - (void)drawRect:(NSRect)dirtyRect {
-    [[NSGraphicsContext currentContext] saveGraphicsState]; {
-        [self.color setFill];
-        NSRectFill(dirtyRect);
-    } [[NSGraphicsContext currentContext] restoreGraphicsState];
+    NSColor *color = self.color;
+    
+    if (color) {
+        CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+        
+        CGContextSaveGState(ctx); {
+            
+            [color setFill];
+            NSRectFill(dirtyRect);
+
+        } CGContextRestoreGState(ctx);
+    }
+}
+
+
+- (void)setColor:(NSColor *)color {
+    if (_color != color) {
+        [_color autorelease];
+        _color = [color retain];
+        
+        [self setNeedsDisplay:YES];
+    }
 }
 
 @end
