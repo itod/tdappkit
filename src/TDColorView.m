@@ -23,8 +23,10 @@
 
 
 - (void)drawRect:(NSRect)dirtyRect {
-    [self.color setFill];
-    NSRectFill(dirtyRect);
+    [[NSGraphicsContext currentContext] saveGraphicsState]; {
+        [self.color setFill];
+        NSRectFill(dirtyRect);
+    } [[NSGraphicsContext currentContext] restoreGraphicsState];
 }
 
 @end
