@@ -597,7 +597,7 @@
 
 - (id)pasteboardPropertyListForType:(NSString *)type {
     id <TDComboFieldDelegate>del = (id)self.delegate;
-    TDAssert([del conformsToProtocol:@protocol(TDComboFieldDelegate)]);
+    TDAssert(!del || [del conformsToProtocol:@protocol(TDComboFieldDelegate)]);
     
     return [del comboField:self pasteboardPropertyListForType:type];
 }

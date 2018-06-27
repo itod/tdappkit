@@ -79,6 +79,6 @@ void TDDumpAppleEvent(NSAppleEventDescriptor *aevtDesc);
 
 CGRect TDCombineRects(CGRect r1, CGRect r2);
 
-NSArray *TDPlistFromData(NSData *data);
-NSData *TDDataFromPlist(NSArray *plist);
+NSArray *TDPlistFromData(NSData *data, NSError **outErr);
+NSData *TDDataFromPlist(NSArray *plist, NSError **outErr);
 

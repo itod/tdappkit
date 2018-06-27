@@ -492,28 +492,26 @@ CGRect TDCombineRects(CGRect r1, CGRect r2) {
 }
 
 
-NSData *TDDataFromPlist(NSArray *plist) {
+NSData *TDDataFromPlist(NSArray *plist, NSError **outErr) {
     if (![plist count]) return nil;
     
-    NSError *err = nil;
-    NSData *data = [NSPropertyListSerialization dataWithPropertyList:plist format:NSPropertyListXMLFormat_v1_0 options:0 error:&err];
+    NSData *data = [NSPropertyListSerialization dataWithPropertyList:plist format:NSPropertyListXMLFormat_v1_0 options:0 error:outErr];
     if (!data) {
-        if (err) {
-            NSLog(@"could not serialize cookies plist %@", err);
+        if (*outErr) {
+            NSLog(@"could not serialize plist %@", (*outErr));
         }
     }
     return data;
 }
 
 
-NSArray *TDPlistFromData(NSData *data) {
+NSArray *TDPlistFromData(NSData *data, NSError **outErr) {
     if (![data length]) return nil;
     
-    NSError *err = nil;
-    NSArray *plist = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:&err];
+    NSArray *plist = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:outErr];
     if (!plist) {
-        if (err) {
-            NSLog(@"could not deserialize cookies plist %@", err);
+        if (*outErr) {
+            NSLog(@"could not deserialize plist %@", (*outErr));
         }
     }
     return plist;
