@@ -375,7 +375,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 }
 
 
-- (void)otherMouseDown:(NSEvent *)evt {
+- (void)otherMouseUp:(NSEvent *)evt {
     BOOL handled = NO;
     BOOL isMiddleClick = 2 == [evt buttonNumber];
     
