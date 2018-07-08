@@ -75,7 +75,13 @@
 - (void)viewDidMoveToWindow {
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(applicationDidResignActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
-    [nc addObserver:self selector:@selector(windowDidResize:) name:NSWindowDidResizeNotification object:[self window]];
+    
+    NSWindow *win = self.window;
+    if (win) {
+        [nc addObserver:self selector:@selector(windowDidResize:) name:NSWindowDidResizeNotification object:win];
+        [nc addObserver:self selector:@selector(windowMainDidChange:) name:NSWindowDidBecomeMainNotification object:win];
+        [nc addObserver:self selector:@selector(windowMainDidChange:) name:NSWindowDidResignMainNotification object:win];
+    }
     
     [self resizeSubviewsWithOldSize:NSZeroSize];
     
@@ -307,6 +313,11 @@
     if ([n object] == [self window]) {
         [self removeListWindow];
     }
+}
+
+
+- (void)windowMainDidChange:(NSNotification *)n {
+    [self setNeedsDisplay:YES];
 }
 
 
