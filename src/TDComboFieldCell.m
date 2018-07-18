@@ -38,7 +38,7 @@ static NSColor *sNonMainStrokeColor = nil;
 //}
 
 
-- (id)initTextCell:(NSString *)s {
+- (instancetype)initTextCell:(NSString *)s {
     self = [super initTextCell:s];
     if (self) {
         
