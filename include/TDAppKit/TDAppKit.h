@@ -42,6 +42,11 @@
 #import <TDAppKit/TDStatusBarButton.h>
 #import <TDAppKit/TDStatusBarPopUpView.h>
 
+// Preferences stuff
+#import <TDAppKit/TDPreferenceModel.h>
+#import <TDAppKit/TDPreferenceWindowController.h>
+#import <TDAppKit/TDPreferenceViewController.h>
+
 // Multiprocess stuff
 #import <TDAppKit/TDSemaphore.h>
 

@@ -35,6 +35,12 @@
 		D31CC02410EFC6BB0013347D /* TDAppKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D31CC02310EFC6BB0013347D /* TDAppKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D31CC05E10EFC80B0013347D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D31CC05D10EFC80B0013347D /* main.m */; };
 		D31CC0B010EFC9750013347D /* ListViewDemoMainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31CC0AF10EFC9750013347D /* ListViewDemoMainMenu.xib */; };
+		D31FA88B2124774F00490F4E /* TDPreferenceWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = D31FA8852124774F00490F4E /* TDPreferenceWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31FA88C2124774F00490F4E /* TDPreferenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FA8862124774F00490F4E /* TDPreferenceModel.m */; };
+		D31FA88D2124774F00490F4E /* TDPreferenceWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FA8872124774F00490F4E /* TDPreferenceWindowController.m */; };
+		D31FA88E2124774F00490F4E /* TDPreferenceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D31FA8882124774F00490F4E /* TDPreferenceViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31FA88F2124774F00490F4E /* TDPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FA8892124774F00490F4E /* TDPreferenceViewController.m */; };
+		D31FA8902124774F00490F4E /* TDPreferenceModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D31FA88A2124774F00490F4E /* TDPreferenceModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D32F3D9A166020AD00EF8284 /* TDStatusBarButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D32F3D98166020AD00EF8284 /* TDStatusBarButtonCell.m */; };
 		D33767D01833DA290054E464 /* TDTabListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D33767CF1833DA290054E464 /* TDTabListItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D33B19F111168A3300F754AD /* TDScroller.h in Headers */ = {isa = PBXBuildFile; fileRef = D33B19EF11168A3300F754AD /* TDScroller.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -223,6 +229,12 @@
 		D31CC02310EFC6BB0013347D /* TDAppKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDAppKit.h; path = include/TDAppKit/TDAppKit.h; sourceTree = "<group>"; };
 		D31CC05D10EFC80B0013347D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = demo/listview/main.m; sourceTree = "<group>"; };
 		D31CC0AF10EFC9750013347D /* ListViewDemoMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListViewDemoMainMenu.xib; path = demo/listview/ListViewDemoMainMenu.xib; sourceTree = "<group>"; };
+		D31FA8852124774F00490F4E /* TDPreferenceWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDPreferenceWindowController.h; path = include/TDAppKit/TDPreferenceWindowController.h; sourceTree = "<group>"; };
+		D31FA8862124774F00490F4E /* TDPreferenceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDPreferenceModel.m; path = src/TDPreferenceModel.m; sourceTree = "<group>"; };
+		D31FA8872124774F00490F4E /* TDPreferenceWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDPreferenceWindowController.m; path = src/TDPreferenceWindowController.m; sourceTree = "<group>"; };
+		D31FA8882124774F00490F4E /* TDPreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDPreferenceViewController.h; path = include/TDAppKit/TDPreferenceViewController.h; sourceTree = "<group>"; };
+		D31FA8892124774F00490F4E /* TDPreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDPreferenceViewController.m; path = src/TDPreferenceViewController.m; sourceTree = "<group>"; };
+		D31FA88A2124774F00490F4E /* TDPreferenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDPreferenceModel.h; path = include/TDAppKit/TDPreferenceModel.h; sourceTree = "<group>"; };
 		D32F3D98166020AD00EF8284 /* TDStatusBarButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDStatusBarButtonCell.m; path = src/TDStatusBarButtonCell.m; sourceTree = "<group>"; };
 		D33767CF1833DA290054E464 /* TDTabListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabListItem.h; path = include/TDAppKit/TDTabListItem.h; sourceTree = "<group>"; };
 		D33B19EF11168A3300F754AD /* TDScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDScroller.h; path = include/TDAppKit/TDScroller.h; sourceTree = "<group>"; };
@@ -446,6 +458,7 @@
 				D31CC02310EFC6BB0013347D /* TDAppKit.h */,
 				D3EB2341110163F700633715 /* TDUtils.h */,
 				D3EB2342110163F700633715 /* TDUtils.m */,
+				D31FA8842124774300490F4E /* Preferences */,
 				D323C7D5180DDF000075FA56 /* MultiProcess */,
 				D3B10EFB17B03C7E00B9AAF1 /* TabBar */,
 				D38F3D21128B8B9400DC5FDB /* ViewController */,
@@ -539,6 +552,19 @@
 				D31CC0AF10EFC9750013347D /* ListViewDemoMainMenu.xib */,
 			);
 			name = "ListView Demo App";
+			sourceTree = "<group>";
+		};
+		D31FA8842124774300490F4E /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				D31FA88A2124774F00490F4E /* TDPreferenceModel.h */,
+				D31FA8862124774F00490F4E /* TDPreferenceModel.m */,
+				D31FA8852124774F00490F4E /* TDPreferenceWindowController.h */,
+				D31FA8872124774F00490F4E /* TDPreferenceWindowController.m */,
+				D31FA8882124774F00490F4E /* TDPreferenceViewController.h */,
+				D31FA8892124774F00490F4E /* TDPreferenceViewController.m */,
+			);
+			name = Preferences;
 			sourceTree = "<group>";
 		};
 		D323C7D5180DDF000075FA56 /* MultiProcess */ = {
@@ -813,6 +839,7 @@
 				D31CBFB410EFB7010013347D /* TDListView.h in Headers */,
 				D31CBFB010EFB7010013347D /* TDListItem.h in Headers */,
 				D371244710F0520300D7107B /* TDUberViewSplitView.h in Headers */,
+				D31FA8902124774F00490F4E /* TDPreferenceModel.h in Headers */,
 				D371245410F0522700D7107B /* TDBar.h in Headers */,
 				D371245510F0522700D7107B /* TDLine.h in Headers */,
 				D318A05010F8570E00B6AA21 /* TDGutterView.h in Headers */,
@@ -848,6 +875,7 @@
 				D3FFC4D81204B9C8008E4948 /* TDJSUtils.h in Headers */,
 				D34A54D5120BBFD10059D145 /* NSDate+TDAdditions.h in Headers */,
 				D3F0B7821241155B0081838C /* DOMNode+TDAdditions.h in Headers */,
+				D31FA88B2124774F00490F4E /* TDPreferenceWindowController.h in Headers */,
 				D3F0B982124273BC0081838C /* WebScriptObject+TDAdditions.h in Headers */,
 				D38984D3124E53DB00EBEFBA /* NSArray+TDAdditions.h in Headers */,
 				D3106ED0126F421B00F9E37D /* TDFlippedColorView.h in Headers */,
@@ -871,6 +899,7 @@
 				D37E6C8917821F21001BBF05 /* TDStatusBarButton.h in Headers */,
 				D37E6C8B17821F37001BBF05 /* TDStatusBarButtonCell.h in Headers */,
 				D3B10F0817B03C8900B9AAF1 /* TDBarItem.h in Headers */,
+				D31FA88E2124774F00490F4E /* TDPreferenceViewController.h in Headers */,
 				D3C2213A193BB45E005EF4B2 /* TDDropTargetView.h in Headers */,
 				D3B10F0A17B03C8900B9AAF1 /* TDTabBar.h in Headers */,
 				D3B10F0C17B03C8900B9AAF1 /* TDTabBarController.h in Headers */,
@@ -1028,6 +1057,7 @@
 				D33B19F511168A3A00F754AD /* TDScroller.m in Sources */,
 				D33B19F611168A3A00F754AD /* TDScrollView.m in Sources */,
 				D3D8023E111E2D810025650C /* NSURLRequest+TDAdditions.m in Sources */,
+				D31FA88D2124774F00490F4E /* TDPreferenceWindowController.m in Sources */,
 				D3D804FF111F485D0025650C /* TDDraggableBar.m in Sources */,
 				D366C1BA1128FF3800547FD6 /* NSAppleEventDescriptor+TDAdditions.m in Sources */,
 				D366C1EC112902DC00547FD6 /* NSAppleEventDescriptor+NDAppleScriptObject.m in Sources */,
@@ -1064,10 +1094,12 @@
 				D38F4A15128CDAF800DC5FDB /* TDHintView.m in Sources */,
 				D3F677D0128E57E900FB4EB5 /* TDTabbedWindow.m in Sources */,
 				D3C2213F193BB47F005EF4B2 /* TDHintButton.m in Sources */,
+				D31FA88C2124774F00490F4E /* TDPreferenceModel.m in Sources */,
 				D36713AB136C57AC0043A644 /* TDRegisterWindowController.m in Sources */,
 				D3740A091553544A0057FBEF /* TDTabListItemStyle.m in Sources */,
 				D3740A0F155355DF0057FBEF /* TDTabListItemStyleBrowser.m in Sources */,
 				D38ED9DB15583D8E0004F9AE /* TDTabsListView.m in Sources */,
+				D31FA88F2124774F00490F4E /* TDPreferenceViewController.m in Sources */,
 				D30121C816324AEA002E2EAB /* TDViewControllerView.m in Sources */,
 				D30121D016324BB1002E2EAB /* TDView.m in Sources */,
 				D30098491656FB7E009D25D8 /* TDStatusBarPopUpView.m in Sources */,
