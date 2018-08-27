@@ -41,6 +41,7 @@
 		D31FA88E2124774F00490F4E /* TDPreferenceViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D31FA8882124774F00490F4E /* TDPreferenceViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D31FA88F2124774F00490F4E /* TDPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31FA8892124774F00490F4E /* TDPreferenceViewController.m */; };
 		D31FA8902124774F00490F4E /* TDPreferenceModel.h in Headers */ = {isa = PBXBuildFile; fileRef = D31FA88A2124774F00490F4E /* TDPreferenceModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D31FA93B212482A800490F4E /* TDPreferenceWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31FA939212482A700490F4E /* TDPreferenceWindowController.xib */; };
 		D32F3D9A166020AD00EF8284 /* TDStatusBarButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D32F3D98166020AD00EF8284 /* TDStatusBarButtonCell.m */; };
 		D33767D01833DA290054E464 /* TDTabListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D33767CF1833DA290054E464 /* TDTabListItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D33B19F111168A3300F754AD /* TDScroller.h in Headers */ = {isa = PBXBuildFile; fileRef = D33B19EF11168A3300F754AD /* TDScroller.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -235,6 +236,7 @@
 		D31FA8882124774F00490F4E /* TDPreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDPreferenceViewController.h; path = include/TDAppKit/TDPreferenceViewController.h; sourceTree = "<group>"; };
 		D31FA8892124774F00490F4E /* TDPreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDPreferenceViewController.m; path = src/TDPreferenceViewController.m; sourceTree = "<group>"; };
 		D31FA88A2124774F00490F4E /* TDPreferenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDPreferenceModel.h; path = include/TDAppKit/TDPreferenceModel.h; sourceTree = "<group>"; };
+		D31FA93A212482A700490F4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TDPreferenceWindowController.xib; sourceTree = "<group>"; };
 		D32F3D98166020AD00EF8284 /* TDStatusBarButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TDStatusBarButtonCell.m; path = src/TDStatusBarButtonCell.m; sourceTree = "<group>"; };
 		D33767CF1833DA290054E464 /* TDTabListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDTabListItem.h; path = include/TDAppKit/TDTabListItem.h; sourceTree = "<group>"; };
 		D33B19EF11168A3300F754AD /* TDScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDScroller.h; path = include/TDAppKit/TDScroller.h; sourceTree = "<group>"; };
@@ -557,12 +559,13 @@
 		D31FA8842124774300490F4E /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				D31FA88A2124774F00490F4E /* TDPreferenceModel.h */,
-				D31FA8862124774F00490F4E /* TDPreferenceModel.m */,
 				D31FA8852124774F00490F4E /* TDPreferenceWindowController.h */,
 				D31FA8872124774F00490F4E /* TDPreferenceWindowController.m */,
+				D31FA939212482A700490F4E /* TDPreferenceWindowController.xib */,
 				D31FA8882124774F00490F4E /* TDPreferenceViewController.h */,
 				D31FA8892124774F00490F4E /* TDPreferenceViewController.m */,
+				D31FA88A2124774F00490F4E /* TDPreferenceModel.h */,
+				D31FA8862124774F00490F4E /* TDPreferenceModel.m */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -991,6 +994,7 @@
 				French,
 				German,
 				en,
+				Base,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* TDAppKit */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
@@ -1013,6 +1017,7 @@
 				D7E0751D183FC1A200B21413 /* TDTabsListView.xib in Resources */,
 				D7E07517183FC19C00B21413 /* TDTabView.xib in Resources */,
 				D7E0751C183FC1A200B21413 /* TDRegisterWindow.xib in Resources */,
+				D31FA93B212482A800490F4E /* TDPreferenceWindowController.xib in Resources */,
 				D36714EA136C670F0043A644 /* register_drop.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1151,6 +1156,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D31FA939212482A700490F4E /* TDPreferenceWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D31FA93A212482A700490F4E /* Base */,
+			);
+			name = TDPreferenceWindowController.xib;
+			sourceTree = "<group>";
+		};
 		D7E07515183FC19C00B21413 /* TDTabView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

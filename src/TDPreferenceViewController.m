@@ -6,8 +6,7 @@
 //  Copyright © 2018 Celestial Teapot. All rights reserved.
 //
 
-#import "TDPreferenceViewController.h"
-
+#import <TDAppKit/TDPreferenceViewController.h>
 #import <TDAppKit/TDUtils.h>
 
 @interface TDPreferenceViewController ()

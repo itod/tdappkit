@@ -6,7 +6,7 @@
 //  Copyright © 2018 Celestial Teapot. All rights reserved.
 //
 
-#import "TDPreferenceModel.h"
+#import <TDAppKit/TDPreferenceModel.h>
 
 @interface TDPreferenceModel ()
 @property (nonatomic, retain) NSImage *iconImage;

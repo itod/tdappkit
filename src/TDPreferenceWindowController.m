@@ -6,9 +6,9 @@
 //  Copyright © 2018 Celestial Teapot. All rights reserved.
 //
 
-#import "TDPreferenceWindowController.h"
-#import "TDPreferenceModel.h"
-#import "TDPreferenceViewController.h"
+#import <TDAppKit/TDPreferenceWindowController.h>
+#import <TDAppKit/TDPreferenceModel.h>
+#import <TDAppKit/TDPreferenceViewController.h>
 
 @interface TDPreferenceWindowController ()
 @property (nonatomic, retain) TDPreferenceViewController *selectedViewController;
