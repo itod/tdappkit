@@ -17,7 +17,9 @@
 static NSColor *sBorderColor = nil;
 static NSColor *sNonMainBorderColor = nil;
 static NSGradient *sTitleBarGradient = nil;
+static NSGradient *sNonMainTitleBarGradient = nil;
 static NSDictionary *sTitleAttrs = nil;
+static NSDictionary *sNonMainTitleAttrs = nil;
 
 @implementation TDTitleBorderView
 
@@ -28,7 +30,8 @@ static NSDictionary *sTitleAttrs = nil;
         sNonMainBorderColor = [TDHexColor(0xaaaaaa) retain];
         
         sTitleBarGradient = [TDVertGradient(0xdddddd, 0xffffff) retain];
-        
+        sNonMainTitleBarGradient = [TDVertGradient(0xeeeeee, 0xffffff) retain];
+
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
         [paraStyle setAlignment:NSTextAlignmentLeft];
         [paraStyle setLineBreakMode:NSLineBreakByTruncatingTail];
@@ -39,9 +42,16 @@ static NSDictionary *sTitleAttrs = nil;
         [shadow setShadowBlurRadius:1.0];
         
         sTitleAttrs = [[NSDictionary alloc] initWithObjectsAndKeys:
-                       [NSFont boldSystemFontOfSize:11.0], NSFontAttributeName,
+                       [NSFont systemFontOfSize:11.0], NSFontAttributeName,
                        [NSColor controlTextColor], NSForegroundColorAttributeName,
-                       shadow, NSShadowAttributeName,
+                       //shadow, NSShadowAttributeName,
+                       paraStyle, NSParagraphStyleAttributeName,
+                       nil];
+
+        sNonMainTitleAttrs = [[NSDictionary alloc] initWithObjectsAndKeys:
+                       [NSFont systemFontOfSize:11.0], NSFontAttributeName,
+                       TDGrayColor(0.65), NSForegroundColorAttributeName,
+                       //shadow, NSShadowAttributeName,
                        paraStyle, NSParagraphStyleAttributeName,
                        nil];
     }
@@ -78,13 +88,16 @@ static NSDictionary *sTitleAttrs = nil;
     
     NSColor *borderColor = nil;
     NSGradient *grad = nil;
+    id titleAttrs = nil;
 
     if ([[self window] isMainWindow]) {
         borderColor = sBorderColor;
         grad = sTitleBarGradient;
+        titleAttrs = sTitleAttrs;
     } else {
         borderColor = sNonMainBorderColor;
-        grad = sTitleBarGradient;
+        grad = sNonMainTitleBarGradient;
+        titleAttrs = sNonMainTitleAttrs;
     }
     [borderColor set];
 
@@ -97,7 +110,7 @@ static NSDictionary *sTitleAttrs = nil;
     CGRect titleRect = [self titleTextRectForBounds:bounds];
  
     TDAssert([_title length]);
-    [_title drawInRect:titleRect withAttributes:sTitleAttrs];
+    [_title drawInRect:titleRect withAttributes:titleAttrs];
 }
 
 
@@ -115,7 +128,7 @@ static NSDictionary *sTitleAttrs = nil;
 
 - (CGRect)titleTextRectForBounds:(CGRect)bounds {
     CGFloat x = round(CGRectGetMinX(bounds) + TITLE_MARGIN_X);
-    CGFloat y = round(CGRectGetMaxY(bounds) - (TITLE_BAR_HEIGHT+TITLE_MARGIN_Y));
+    CGFloat y = round(CGRectGetMaxY(bounds) - (TITLE_BAR_HEIGHT+1.0));
     CGFloat w = round(CGRectGetWidth(bounds) - TITLE_MARGIN_X*2.0);
     CGFloat h = TITLE_BAR_HEIGHT;
     
