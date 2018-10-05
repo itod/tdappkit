@@ -517,3 +517,13 @@ NSArray *TDPlistFromData(NSData *data, NSError **outErr) {
     return plist;
 }
 
+
+BOOL TDIsDarkMode() {
+    NSAppearance *appearance = [NSAppearance currentAppearance];
+    if (@available(macOS 10.14, *)) {
+        NSAppearanceName name = [appearance bestMatchFromAppearancesWithNames:@[NSAppearanceNameAqua, NSAppearanceNameDarkAqua]];
+        return [name isEqualToString:NSAppearanceNameDarkAqua];
+    } else {
+        return NO;
+    }
+}

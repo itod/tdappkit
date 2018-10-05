@@ -82,3 +82,4 @@ CGRect TDCombineRects(CGRect r1, CGRect r2);
 NSArray *TDPlistFromData(NSData *data, NSError **outErr);
 NSData *TDDataFromPlist(NSArray *plist, NSError **outErr);
 
+BOOL TDIsDarkMode(void);

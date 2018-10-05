@@ -135,9 +135,15 @@ static NSColor *sNonMainStrokeColor = nil;
 //
     
     BOOL isMain = [[cv window] isMainWindow];
-    NSColor *strokeColor = isMain ? sStrokeColor : sNonMainStrokeColor;
+    NSColor *strokeColor = nil;
+    if (TDIsDarkMode()) {
+        strokeColor = [NSColor controlLightHighlightColor]; //separatorColor
+    } else {
+        strokeColor = isMain ? sStrokeColor : sNonMainStrokeColor;
+    }
+    
     [strokeColor setStroke];
-    [[NSColor whiteColor] setFill];
+    [[NSColor textBackgroundColor] setFill];
     
     CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
 
