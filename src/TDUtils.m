@@ -522,6 +522,7 @@ BOOL TDIsDarkMode() {
     NSAppearance *appearance = [NSAppearance currentAppearance];
     if (@available(macOS 10.14, *)) {
         NSAppearanceName name = [appearance bestMatchFromAppearancesWithNames:@[NSAppearanceNameAqua, NSAppearanceNameDarkAqua]];
+        //NSAppearanceName name = [appearance name];
         return [name isEqualToString:NSAppearanceNameDarkAqua];
     } else {
         return NO;
