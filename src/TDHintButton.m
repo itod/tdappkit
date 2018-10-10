@@ -19,9 +19,13 @@
 
 #define HINT_VERT_FUDGE 0.0
 
+static NSDictionary *sHintAttrs = nil;
+
 static NSColor *sHintBgColor = nil;
 static NSColor *sHintHiBgColor = nil;
-static NSDictionary *sHintAttrs = nil;
+
+static NSColor *sHintBgColorDark = nil;
+static NSColor *sHintHiBgColorDark = nil;
 
 @implementation TDHintButton
 
@@ -33,6 +37,9 @@ static NSDictionary *sHintAttrs = nil;
         
         sHintBgColor = [[NSColor colorWithDeviceWhite:0.68 alpha:1.0] retain];
         sHintHiBgColor = [[NSColor colorWithDeviceWhite:0.58 alpha:1.0] retain];
+        
+        sHintBgColorDark = [[NSColor colorWithDeviceWhite:0.15 alpha:1.0] retain];
+        sHintHiBgColorDark = [[NSColor colorWithDeviceWhite:0.1 alpha:1.0] retain];
         
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
         [paraStyle setAlignment:NSTextAlignmentCenter];
@@ -117,7 +124,12 @@ static NSDictionary *sHintAttrs = nil;
         hintRect.size.height = floor(hintRect.size.height);
         CGFloat radius = hintRect.size.height / 2 - 2;
         
-        NSColor *bgColor = isHi ? sHintHiBgColor : sHintBgColor;
+        NSColor *bgColor = nil;
+        if (TDIsDarkMode()) {
+            bgColor = isHi ? sHintHiBgColorDark : sHintBgColorDark;
+        } else {
+            bgColor = isHi ? sHintHiBgColor : sHintBgColor;
+        }
         [bgColor setFill];
         
         CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
