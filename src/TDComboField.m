@@ -19,6 +19,9 @@
 #define LIST_MARGIN_Y 5.0
 #define MAX_SCROLL_HEIGHT 40
 
+static NSGradient *sProgressGradient = nil;
+//static NSGradient *sProgressGradientDark = nil;
+
 @interface TDComboField ()
 @property (nonatomic, retain, readwrite) NSMutableArray *buttons;
 @end
@@ -27,6 +30,12 @@
     BOOL _shouldDrag;
 }
 
++ (void)initialize {
+    if ([TDComboField class] == self) {
+        sProgressGradient = [[NSGradient alloc] initWithStartingColor:TDHexaColor(0x118EFE55) endingColor:TDHexaColor(0x77F9FE55)];
+//        sProgressGradientDark = [[NSGradient alloc] initWithStartingColor:TDGrayColor(0.0) endingColor:TDHexaColor(0.1)];
+    }
+}
 
 + (Class)cellClass {
     return [TDComboFieldCell class];
@@ -115,12 +124,8 @@
             CGRect gradRect = bounds;
             gradRect.size.width = round(NSWidth(bounds) * prog);
             
-            static NSGradient *grad = nil;
-            if (!grad) {
-                grad = [[NSGradient alloc] initWithStartingColor:TDHexaColor(0x118EFE55) endingColor:TDHexaColor(0x77F9FE55)];
-            }
-            [grad drawInRect:gradRect angle:90.0];
-            
+            //NSGradient *grad = TDIsDarkMode() ? sProgressGradientDark : sProgressGradient;
+            [sProgressGradient drawInRect:gradRect angle:90.0];
         } CGContextRestoreGState(ctx);
     }
 }
