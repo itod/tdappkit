@@ -19,6 +19,8 @@
 #define TDCeilAlign(x) (ceil((x)) + 0.5)
 #define TDNoop(x) (x)
 
+#define TDRectInfinite (CGRectMake(-(UINT16_MAX>>1), -(UINT16_MAX>>1), UINT16_MAX, UINT16_MAX))
+
 #define TD_BIG_FLOAT 1000000.0
 
 NSGradient *TDVertGradient(NSUInteger topHex, NSUInteger botHex);
