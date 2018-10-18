@@ -14,17 +14,7 @@
 
 #import <TDAppKit/TDView.h>
 
-@interface TDBar : TDView {
-    NSGradient *mainBgGradient;
-    NSGradient *nonMainBgGradient;
-    NSGradient *hiBgGradient;
-    NSColor *mainTopBorderColor;
-    NSColor *nonMainTopBorderColor;
-    NSColor *mainTopBevelColor;
-    NSColor *nonMainTopBevelColor;
-    NSColor *mainBottomBevelColor;
-    NSColor *nonMainBottomBevelColor;
-}
+@interface TDBar : TDView
 
 - (BOOL)shouldDrawTopBorder;
 - (BOOL)isHighlighted;

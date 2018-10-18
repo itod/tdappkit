@@ -84,18 +84,18 @@
     
     if (isMain) {
         if (isHi) {
-            bgGradient = hiBgGradient;
+            bgGradient = _hiBgGradient;
         } else {
-            bgGradient = mainBgGradient;
+            bgGradient = _mainBgGradient;
         }
-        topBorderColor = mainTopBorderColor;
-        topBevelColor = mainTopBevelColor;
-        bottomBevelColor = mainBottomBevelColor;
+        topBorderColor = _mainTopBorderColor;
+        topBevelColor = _mainTopBevelColor;
+        bottomBevelColor = _mainBottomBevelColor;
     } else {
-        bgGradient = nonMainBgGradient;
-        topBorderColor = nonMainTopBorderColor;
-        topBevelColor = nonMainTopBevelColor;
-        bottomBevelColor = nonMainBottomBevelColor;
+        bgGradient = _nonMainBgGradient;
+        topBorderColor = _nonMainTopBorderColor;
+        topBevelColor = _nonMainTopBevelColor;
+        bottomBevelColor = _nonMainBottomBevelColor;
     }
 
     // background
@@ -148,13 +148,4 @@
     return NO;
 }
 
-@synthesize mainBgGradient;
-@synthesize nonMainBgGradient;
-@synthesize hiBgGradient;
-@synthesize mainTopBorderColor;
-@synthesize nonMainTopBorderColor;
-@synthesize mainTopBevelColor;
-@synthesize nonMainTopBevelColor;
-@synthesize mainBottomBevelColor;
-@synthesize nonMainBottomBevelColor;
 @end
