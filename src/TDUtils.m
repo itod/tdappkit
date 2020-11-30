@@ -321,7 +321,7 @@ BOOL TDIsSierraOrLater() {
         
         NSUInteger major, minor, bugfix;
         TDGetSystemVersion(&major, &minor, &bugfix);
-        sResult = minor > 11;
+        sResult = major > 10 || minor > 11;
     }
     
     return sResult;
@@ -338,7 +338,7 @@ BOOL TDIsElCapOrLater() {
         
         NSUInteger major, minor, bugfix;
         TDGetSystemVersion(&major, &minor, &bugfix);
-        sResult = minor > 10;
+        sResult = major > 10 || minor > 10;
     }
     
     return sResult;
@@ -355,7 +355,7 @@ BOOL TDIsYozOrLater() {
         
         NSUInteger major, minor, bugfix;
         TDGetSystemVersion(&major, &minor, &bugfix);
-        sResult = minor > 9;
+        sResult = major > 10 || minor > 9;
     }
     
     return sResult;
@@ -372,7 +372,7 @@ BOOL TDIsMavsOrLater() {
         
         NSUInteger major, minor, bugfix;
         TDGetSystemVersion(&major, &minor, &bugfix);
-        sResult = minor > 8;
+        sResult = major > 10 || minor > 8;
     }
     
     return sResult;
@@ -389,7 +389,7 @@ BOOL TDIsMtnLionOrLater() {
         
         NSUInteger major, minor, bugfix;
         TDGetSystemVersion(&major, &minor, &bugfix);
-        sResult = minor > 7;
+        sResult = major > 10 || minor > 7;
     }
     
     return sResult;
@@ -406,7 +406,7 @@ BOOL TDIsLionOrLater() {
         
         NSUInteger major, minor, bugfix;
         TDGetSystemVersion(&major, &minor, &bugfix);
-        sResult = minor > 6;
+        sResult = major > 10 || minor > 6;
     }
     
     return sResult;
@@ -423,7 +423,7 @@ BOOL TDIsSnowLeopardOrLater() {
         
         NSUInteger major, minor, bugfix;
         TDGetSystemVersion(&major, &minor, &bugfix);
-        sResult = minor > 5;
+        sResult = major > 10 || minor > 5;
     }
     
     return sResult;
