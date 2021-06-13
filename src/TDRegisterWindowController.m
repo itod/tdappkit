@@ -38,9 +38,9 @@
 
 
 - (void)dealloc {
-    [_dropTargetView release], _dropTargetView = nil;
-    [_appName release], _appName = nil;
-    [_licenseFileExtensions release], _licenseFileExtensions = nil;
+    [_dropTargetView release]; _dropTargetView = nil;
+    [_appName release]; _appName = nil;
+    [_licenseFileExtensions release]; _licenseFileExtensions = nil;
     [super dealloc];
 }
 

@@ -53,7 +53,7 @@ static NSDictionary *sHintAttrs = nil;
 
 
 - (void)dealloc {
-    [_hintText release], _hintText = nil;
+    [_hintText release]; _hintText = nil;
     [super dealloc];
 }
 

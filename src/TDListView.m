@@ -95,7 +95,7 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     self.queue = nil;
     self.lastMouseDownEvent = nil;
     self.itemFrames = nil;
-    [selectionIndexes release], selectionIndexes = nil;
+    [selectionIndexes release]; selectionIndexes = nil;
     self.draggingIndexes = nil;
     self.draggingVisibleIndexes = nil;
     [super dealloc];

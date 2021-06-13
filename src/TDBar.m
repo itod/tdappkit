@@ -20,15 +20,15 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    [_mainBgGradient release], _mainBgGradient = nil;
-    [_nonMainBgGradient release], _nonMainBgGradient = nil;
-    [_hiBgGradient release], _hiBgGradient = nil;
-    [_mainTopBorderColor release], _mainTopBorderColor = nil;
-    [_nonMainTopBorderColor release], _nonMainTopBorderColor = nil;
-    [_mainTopBevelColor release], _mainTopBevelColor = nil;
-    [_nonMainTopBevelColor release], _nonMainTopBevelColor = nil;
-    [_mainBottomBevelColor release], _mainBottomBevelColor = nil;
-    [_nonMainBottomBevelColor release], _nonMainBottomBevelColor = nil;
+    [_mainBgGradient release]; _mainBgGradient = nil;
+    [_nonMainBgGradient release]; _nonMainBgGradient = nil;
+    [_hiBgGradient release]; _hiBgGradient = nil;
+    [_mainTopBorderColor release]; _mainTopBorderColor = nil;
+    [_nonMainTopBorderColor release]; _nonMainTopBorderColor = nil;
+    [_mainTopBevelColor release]; _mainTopBevelColor = nil;
+    [_nonMainTopBevelColor release]; _nonMainTopBevelColor = nil;
+    [_mainBottomBevelColor release]; _mainBottomBevelColor = nil;
+    [_nonMainBottomBevelColor release]; _nonMainBottomBevelColor = nil;
     [super dealloc];
 }
 
