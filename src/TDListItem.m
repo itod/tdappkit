@@ -63,7 +63,7 @@
 //    NSGraphicsContext *currentContext = [NSGraphicsContext currentContext];
 //    NSImageInterpolation savedInterpolation = [currentContext imageInterpolation];
 //    [currentContext setImageInterpolation:NSImageInterpolationHigh];
-//    [img drawInRect:NSMakeRect(0.0, 0.0, imgSize.width, imgSize.height) fromRect:NSMakeRect(0.0, 0.0, imgSize.width, imgSize.height) operation:NSCompositeSourceOver fraction:0.5];
+//    [img drawInRect:NSMakeRect(0.0, 0.0, imgSize.width, imgSize.height) fromRect:NSMakeRect(0.0, 0.0, imgSize.width, imgSize.height) operation:NSCompositingOperationSourceOver fraction:0.5];
 //    [currentContext setImageInterpolation:savedInterpolation];
 //    [result unlockFocus];
 //

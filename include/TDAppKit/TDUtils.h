@@ -81,3 +81,5 @@ TDEdgeInsets TDEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat
 BOOL TDEdgeInsetsIsEmpty(TDEdgeInsets e);
 
 void TDDumpAppleEvent(NSAppleEventDescriptor *aevtDesc);
+
+BOOL TDIsDarkMode(void);

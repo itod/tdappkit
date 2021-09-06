@@ -34,7 +34,7 @@ static NSDictionary *sHintAttrs = nil;
         }
         
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-        [paraStyle setAlignment:NSCenterTextAlignment];
+        [paraStyle setAlignment:NSTextAlignmentCenter];
         [paraStyle setLineBreakMode:NSLineBreakByWordWrapping];
         
         NSShadow *shadow = [[[NSShadow alloc] init] autorelease];

@@ -141,7 +141,7 @@
 #pragma mark Metrics
 
 - (NSRect)titleRectForBounds:(NSRect)bounds {
-    BOOL centered = NSCenterTextAlignment == [self alignment];
+    BOOL centered = NSTextAlignmentCenter == [self alignment];
     CGFloat x = LABEL_MARGIN_X;
     CGFloat y = TDRoundAlign(NSMidY(bounds) - _titleTextSize.height / 2.0);
     CGFloat w = centered ? round(CGRectGetWidth(bounds) - LABEL_MARGIN_X*2.0) : TDRoundAlign(_titleTextSize.width);

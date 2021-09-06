@@ -36,9 +36,9 @@
     BOOL keepDragging = YES;
     
     while (keepDragging) {
-        evt = [[self window] nextEventMatchingMask:NSLeftMouseUpMask|NSLeftMouseDraggedMask|NSPeriodicMask];
+        evt = [[self window] nextEventMatchingMask:NSEventMaskLeftMouseUp|NSEventMaskLeftMouseDragged|NSEventMaskPeriodic];
         
-        if ([evt type] == NSLeftMouseUp) {
+        if ([evt type] == NSEventTypeLeftMouseUp) {
             keepDragging = NO;
         }
 		

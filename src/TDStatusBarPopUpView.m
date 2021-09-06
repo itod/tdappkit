@@ -37,7 +37,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 + (void)initialize {
     if ([TDStatusBarPopUpView class] == self) {
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-        [paraStyle setAlignment:NSCenterTextAlignment];
+        [paraStyle setAlignment:NSTextAlignmentCenter];
         [paraStyle setLineBreakMode:NSLineBreakByClipping];
         
         //        NSShadow *shadow = [[[NSShadow alloc] init] autorelease];

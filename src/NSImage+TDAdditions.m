@@ -76,7 +76,7 @@
     
     // draw image
     NSSize fromSize = [self size];
-    [self drawInRect:NSMakeRect(0, 0, size.width, size.height) fromRect:NSMakeRect(0, 0, fromSize.width, fromSize.height) operation:NSCompositeSourceOver fraction:alpha];
+    [self drawInRect:NSMakeRect(0, 0, size.width, size.height) fromRect:NSMakeRect(0, 0, fromSize.width, fromSize.height) operation:NSCompositingOperationSourceOver fraction:alpha];
     
     // restore state
     [currentContext setShouldAntialias:savedAntialias];

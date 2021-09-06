@@ -78,7 +78,7 @@
     [panel setAllowsMultipleSelection:NO];
     
     [panel beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result) {
-        if (NSOKButton == result) {
+        if (NSModalResponseOK == result) {
             NSString *filePath = [[panel URL] relativePath];
             
             [self handleDroppedFilePaths:@[filePath]];

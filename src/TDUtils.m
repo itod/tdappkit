@@ -254,25 +254,25 @@ void TDAddRoundRect(CGContextRef ctx, CGRect rect, CGFloat radius) {
 
 
 BOOL TDIsCommandKeyPressed(NSInteger modifierFlags) {
-    BOOL yn = 0 != (NSCommandKeyMask & modifierFlags);
+    BOOL yn = 0 != (NSEventModifierFlagCommand & modifierFlags);
     return yn;
 }
 
 
 BOOL TDIsControlKeyPressed(NSInteger modifierFlags) {
-    BOOL yn = 0 != (NSControlKeyMask & modifierFlags);
+    BOOL yn = 0 != (NSEventModifierFlagControl & modifierFlags);
     return yn;
 }
 
 
 BOOL TDIsShiftKeyPressed(NSInteger modifierFlags) {
-    BOOL yn = 0 != (NSShiftKeyMask & modifierFlags);
+    BOOL yn = 0 != (NSEventModifierFlagShift & modifierFlags);
     return yn;
 }
 
 
 BOOL TDIsOptionKeyPressed(NSInteger modifierFlags) {
-    BOOL yn = 0 != (NSAlternateKeyMask & modifierFlags);
+    BOOL yn = 0 != (NSEventModifierFlagOption & modifierFlags);
     return yn;
 }
 
@@ -556,4 +556,16 @@ void TDDumpAppleEvent(NSAppleEventDescriptor *aevt) {
     NSLog(@"targetSpect %@", targetSpec);
     NSLog(@"target %@", target);
 
+}
+
+
+BOOL TDIsDarkMode() {
+    NSAppearance *appearance = [NSAppearance currentAppearance];
+    if (@available(macOS 10.14, *)) {
+        NSAppearanceName name = [appearance bestMatchFromAppearancesWithNames:@[NSAppearanceNameAqua, NSAppearanceNameDarkAqua]];
+        //NSAppearanceName name = [appearance name];
+        return [name isEqualToString:NSAppearanceNameDarkAqua];
+    } else {
+        return NO;
+    }
 }
