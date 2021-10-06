@@ -12,8 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#import "TDBar.h"
-#import "TDUtils.h"
+#import <TDAppKit/TDBar.h>
+#import <TDAppKit/TDUtils.h>
 
 @implementation TDBar
 
@@ -34,41 +34,35 @@
 
 
 - (void)awakeFromNib {
-    if (TDIsYozOrLater()) {
-        NSColor *topColor = TDHexColor(0xE1DFDF);
-        NSColor *botColor = TDHexColor(0xC2C1C2);
-        self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
-        
-        topColor = TDHexColor(0xF4F4F4);
-        botColor = TDHexColor(0xF4F4F4);
-        self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
-        
-        self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceWhite:0.75 alpha:1.0] endingColor:[NSColor colorWithDeviceWhite:0.55 alpha:1.0]] autorelease];
-        
-        self.mainTopBorderColor = TDHexColor(0x9E9E9E);
-        self.nonMainTopBorderColor = TDHexColor(0xBBBBBB);
-        
-        self.mainTopBevelColor = nil;
-        self.nonMainTopBevelColor = nil;
-        
-        self.mainBottomBevelColor = nil;
-        self.nonMainBottomBevelColor = nil;
-    } else {
-        NSColor *bgColor = [NSColor colorWithDeviceWhite:0.77 alpha:1.0];
-        self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
-        
-        bgColor = [NSColor colorWithDeviceWhite:0.93 alpha:1.0];
-        self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:[bgColor colorWithAlphaComponent:0.7] endingColor:bgColor] autorelease];
-        
-        self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceWhite:0.75 alpha:1.0] endingColor:[NSColor colorWithDeviceWhite:0.55 alpha:1.0]] autorelease];
-        
-        self.mainTopBorderColor = [NSColor colorWithDeviceWhite:0.53 alpha:1.0];
-        self.nonMainTopBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
-        self.mainTopBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
-        self.nonMainTopBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
-        self.mainBottomBevelColor = [NSColor lightGrayColor];
-        self.nonMainBottomBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
-    }
+    [self setUpColors];
+}
+
+
+- (void)viewDidChangeEffectiveAppearance {
+    [self setUpColors];
+    [self setNeedsDisplay:YES];
+}
+
+
+- (void)setUpColors {
+    NSColor *topColor = [NSColor colorNamed:@"statusBarMainBackgroundTopColor"]; //TDHexColor(0xE1DFDF);
+    NSColor *botColor = [NSColor colorNamed:@"statusBarMainBackgroundBotColor"]; //TDHexColor(0xC2C1C2);
+    self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
+    
+    topColor = [NSColor colorNamed:@"statusBarNonMainBackgroundTopColor"]; //TDHexColor(0xF4F4F4);
+    botColor = [NSColor colorNamed:@"statusBarNonMainBackgroundBotColor"]; //TDHexColor(0xF4F4F4);
+    self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
+    
+    self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:[NSColor colorWithDeviceWhite:0.75 alpha:1.0] endingColor:[NSColor colorWithDeviceWhite:0.55 alpha:1.0]] autorelease];
+    
+    self.mainTopBorderColor = [NSColor colorNamed:@"statusBarMainTopBorderColor"]; //TDHexColor(0x9E9E9E);
+    self.nonMainTopBorderColor = [NSColor colorNamed:@"statusBarNonMainTopBorderColor"]; //TDHexColor(0xBBBBBB);
+    
+    self.mainTopBevelColor = nil;
+    self.nonMainTopBevelColor = nil;
+    
+    self.mainBottomBevelColor = nil;
+    self.nonMainBottomBevelColor = nil;
 }
 
 

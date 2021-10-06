@@ -25,7 +25,6 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 
 @interface TDStatusBarPopUpView ()
 - (void)setUpSubviews;
-- (void)updateGradientsForMenuVisible;
 - (void)drawArrowsInRect:(CGRect)arrowsRect dirtyRect:(CGRect)dirtyRect;
 @property (nonatomic, assign) CGSize labelTextSize;
 @property (nonatomic, assign) CGSize valueTextSize;
@@ -121,8 +120,15 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    [self setUpColors];
     [self setUpSubviews];
     [self updateValue];
+}
+
+
+- (void)viewDidChangeEffectiveAppearance {
+    [self setUpColors];
+    [self setNeedsDisplay:YES];
 }
 
 
@@ -219,7 +225,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
     // begin
     CGContextSaveGState(ctx);
 
-    [[NSColor colorWithDeviceWhite:0.2 alpha:1.0] setFill];
+    [[NSColor colorNamed:@"statusBarPopupButtonArrowsColor"] setFill];
     
     // translate to center of arrows rect
     CGContextTranslateCTM(ctx, arrowsMidPoint.x, arrowsMidPoint.y);
@@ -321,9 +327,7 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 #pragma mark -
 #pragma mark Private
 
-- (void)setUpSubviews {
-    [self updateGradientsForMenuVisible];
-
+- (void)setUpColors {
     NSColor *topBorderColor = nil;
     NSColor *topBevelColor = nil;
     NSColor *topColor = nil;
@@ -331,59 +335,41 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
     
     // MAIN
     {
-        if (TDIsYozOrLater()) {
-            topBorderColor = TDHexColor(0x9E9E9E);
-            topBevelColor = nil;
-            topColor = TDHexColor(0xdddddd);
-            botColor = TDHexColor(0xbbbbbb);
-        } else {
-            topBorderColor = [NSColor colorWithDeviceWhite:0.53 alpha:1.0];
-            topBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
-            topColor = TDHexColor(0xcfcfcf);
-            botColor = TDHexColor(0x9f9f9f);
-        }
+        topBorderColor = [NSColor colorNamed:@"statusBarButtonMainTopBorderColor"]; //TDHexColor(0x9E9E9E);
+        topBevelColor = nil;
+        topColor = [NSColor colorNamed:@"statusBarButtonMainBackgroundTopColor"]; //TDHexColor(0xdddddd);
+        botColor = [NSColor colorNamed:@"statusBarButtonMainBackgroundBotColor"]; //TDHexColor(0xbbbbbb);
         
         self.mainTopBorderColor = topBorderColor;
         self.mainTopBevelColor = topBevelColor;
         self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
         self.mainBottomBevelColor = nil;
     }
-    
+
     // HI
     {
-        if (TDIsYozOrLater()) {
-            topBevelColor = nil;
-            topColor = TDHexColor(0xd0d0d0);
-            botColor = TDHexColor(0xb0b0b0);
-        } else {
-            topBevelColor = nil;
-            topColor = [NSColor colorWithDeviceWhite:0.75 alpha:1.0];
-            botColor = [NSColor colorWithDeviceWhite:0.55 alpha:1.0];
-        }
+        topColor = [NSColor colorNamed:@"statusBarButtonHiBackgroundTopColor"]; //TDHexColor(0xd0d0d0);
+        botColor = [NSColor colorNamed:@"statusBarButtonHiBackgroundBotColor"]; //TDHexColor(0xb0b0b0);
         
         self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
     }
     
     // NON MAIN
     {
-        if (TDIsYozOrLater()) {
-            topBorderColor = TDHexColor(0xBBBBBB);
-            topBevelColor = nil;
-            topColor = TDHexColor(0xF4F4F4);
-            botColor = TDHexColor(0xF4F4F4);
-        } else {
-            topBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
-            topBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
-            topColor = [NSColor colorWithDeviceWhite:0.95 alpha:1.0];
-            botColor = [NSColor colorWithDeviceWhite:0.85 alpha:1.0];
-        }
-        
+        topBorderColor = [NSColor colorNamed:@"statusBarButtonNonMainBorderColor"]; //TDHexColor(0x9E9E9E);
+        topBevelColor = nil;
+        topColor = [NSColor colorNamed:@"statusBarButtonNonMainBackgroundTopColor"]; //TDHexColor(0xdddddd);
+        botColor = [NSColor colorNamed:@"statusBarButtonNonMainBackgroundBotColor"]; //TDHexColor(0xbbbbbb);
+
         self.nonMainTopBorderColor = topBorderColor;
         self.nonMainTopBevelColor = topBevelColor;
         self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
         self.nonMainBottomBevelColor = nil;
     }
-    
+}
+
+
+- (void)setUpSubviews {
     [_popUpButton setHidden:YES];
     
     NSMenu *menu = [_popUpButton menu];
@@ -391,25 +377,6 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
 
     NSFont *font = [[[self class] defaultValueTextAttributes] objectForKey:NSFontAttributeName];
     [menu setFont:font];
-}
-
-
-- (void)updateGradientsForMenuVisible {
-    if (TDIsYozOrLater()) {
-        
-    } else {
-        NSColor *topBevelColor = nil;
-        
-        if (_menuVisible) {
-            topBevelColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
-        } else {
-            topBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
-        }
-        
-        self.mainTopBevelColor = topBevelColor;
-    }
-
-    [self setNeedsDisplayInRect:[self bounds]];
 }
 
 
@@ -470,15 +437,6 @@ static NSDictionary *sNonMainValueTextAttrs = nil;
         self.valueTextSize = [self.valueText sizeWithAttributes:[[self class] defaultValueTextAttributes]];
         
         [self setNeedsDisplay:YES];
-    }
-}
-
-
-- (void)setMenuVisible:(BOOL)yn {
-    if (yn != _menuVisible) {
-        _menuVisible = yn;
-        
-        [self updateGradientsForMenuVisible];
     }
 }
 

@@ -27,12 +27,8 @@ static NSDictionary *sHintAttrs = nil;
 + (void)initialize {
     if ([TDHintView class] == self) {
         
-        if (TDIsYozOrLater()) {
-            sHintBgColor = [[NSColor colorWithDeviceWhite:0.75 alpha:1.0] retain];
-        } else {
-            sHintBgColor = [[NSColor colorWithDeviceWhite:0.68 alpha:1.0] retain];
-        }
-        
+        sHintBgColor = [[NSColor colorNamed:@"hintBackgroundColor"] retain];
+
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
         [paraStyle setAlignment:NSTextAlignmentCenter];
         [paraStyle setLineBreakMode:NSLineBreakByWordWrapping];
@@ -44,7 +40,7 @@ static NSDictionary *sHintAttrs = nil;
         
         sHintAttrs = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [NSFont boldSystemFontOfSize:12.0], NSFontAttributeName,
-                      [NSColor whiteColor], NSForegroundColorAttributeName,
+                      [NSColor colorNamed:@"hintTextColor"], NSForegroundColorAttributeName,
                       shadow, NSShadowAttributeName,
                       paraStyle, NSParagraphStyleAttributeName,
                       nil];

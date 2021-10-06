@@ -47,63 +47,44 @@
 
 
 - (void)awakeFromNib {
-    NSColor *topBorderColor = nil;
-    NSColor *topBevelColor = nil;
-    NSColor *topColor = nil;
-    NSColor *botColor = nil;
-    
+    [self setUpColors];
+}
+
+
+- (void)viewDidChangeEffectiveAppearance {
+    [self setUpColors];
+    [self setNeedsDisplay:YES];
+}
+
+
+- (void)setUpColors {
     // MAIN
     {
-        if (TDIsYozOrLater()) {
-            topBorderColor = TDHexColor(0x9E9E9E);
-            topBevelColor = nil;
-            topColor = TDHexColor(0xdddddd);
-            botColor = TDHexColor(0xbbbbbb);
-        } else {
-            topBorderColor = [NSColor colorWithDeviceWhite:0.53 alpha:1.0];
-            topBevelColor = [NSColor colorWithDeviceWhite:0.88 alpha:1.0];
-            topColor = TDHexColor(0xcfcfcf);
-            botColor = TDHexColor(0x9f9f9f);
-        }
+        NSColor *topColor = [NSColor colorNamed:@"statusBarButtonMainBackgroundTopColor"]; //TDHexColor(0xdddddd);
+        NSColor *botColor = [NSColor colorNamed:@"statusBarButtonMainBackgroundBotColor"]; //TDHexColor(0xbbbbbb);
         
-        self.mainTopBorderColor = topBorderColor;
-        self.mainTopBevelColor = topBevelColor;
+        self.mainTopBorderColor = [NSColor colorNamed:@"statusBarButtonMainTopBorderColor"]; //TDHexColor(0x9E9E9E);
+        self.mainTopBevelColor = nil;
         self.mainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
         self.mainBottomBevelColor = nil;
     }
 
     // HI
     {
-        if (TDIsYozOrLater()) {
-            topBevelColor = nil;
-            topColor = TDHexColor(0xd0d0d0);
-            botColor = TDHexColor(0xb0b0b0);
-        } else {
-            topBevelColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
-            topColor = [NSColor colorWithDeviceWhite:0.75 alpha:1.0];
-            botColor = [NSColor colorWithDeviceWhite:0.55 alpha:1.0];
-        }
+        NSColor *topColor = [NSColor colorNamed:@"statusBarButtonHiBackgroundTopColor"]; //TDHexColor(0xd0d0d0);
+        NSColor *botColor = [NSColor colorNamed:@"statusBarButtonHiBackgroundBotColor"]; //TDHexColor(0xb0b0b0);
         
-        self.hiTopBevelColor = topBevelColor;
+        self.hiTopBevelColor = nil;
         self.hiBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
     }
     
     // NON MAIN
     {
-        if (TDIsYozOrLater()) {
-            topBorderColor = TDHexColor(0xBBBBBB);
-            topBevelColor = nil;
-            topColor = TDHexColor(0xF4F4F4);
-            botColor = TDHexColor(0xF4F4F4);
-        } else {
-            topBorderColor = [NSColor colorWithDeviceWhite:0.78 alpha:1.0];
-            topBevelColor = [NSColor colorWithDeviceWhite:0.99 alpha:1.0];
-            topColor = [NSColor colorWithDeviceWhite:0.95 alpha:1.0];
-            botColor = [NSColor colorWithDeviceWhite:0.85 alpha:1.0];
-        }
-        
-        self.nonMainTopBorderColor = topBorderColor;
-        self.nonMainTopBevelColor = topBevelColor;
+        NSColor *topColor = [NSColor colorNamed:@"statusBarButtonNonMainBackgroundTopColor"]; //TDHexColor(0xdddddd);
+        NSColor *botColor = [NSColor colorNamed:@"statusBarButtonNonMainBackgroundBotColor"]; //TDHexColor(0xbbbbbb);
+
+        self.nonMainTopBorderColor = [NSColor colorNamed:@"statusBarButtonNonMainBorderColor"]; //TDHexColor(0x9E9E9E);;
+        self.nonMainTopBevelColor = nil;
         self.nonMainBgGradient = [[[NSGradient alloc] initWithStartingColor:topColor endingColor:botColor] autorelease];
         self.nonMainBottomBevelColor = nil;
     }

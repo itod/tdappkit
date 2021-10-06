@@ -28,8 +28,8 @@ static NSDictionary *sHintAttrs = nil;
 + (void)initialize {
     if ([TDHintButton class] == self) {
         
-        sHintBgColor = [[NSColor colorWithDeviceWhite:0.68 alpha:1.0] retain];
-        sHintHiBgColor = [[NSColor colorWithDeviceWhite:0.58 alpha:1.0] retain];
+        sHintBgColor = [[NSColor colorNamed:@"hintBackgroundColor"] retain];
+        sHintHiBgColor = [[NSColor colorNamed:@"hintBackgroundHiColor"] retain];
         
         NSMutableParagraphStyle *paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
         [paraStyle setAlignment:NSTextAlignmentCenter];
@@ -42,7 +42,7 @@ static NSDictionary *sHintAttrs = nil;
         
         sHintAttrs = [[NSDictionary alloc] initWithObjectsAndKeys:
                       [NSFont boldSystemFontOfSize:14.0], NSFontAttributeName,
-                      [NSColor whiteColor], NSForegroundColorAttributeName,
+                      [NSColor colorNamed:@"hintTextColor"], NSForegroundColorAttributeName,
                       shadow, NSShadowAttributeName,
                       paraStyle, NSParagraphStyleAttributeName,
                       nil];
