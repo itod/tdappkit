@@ -35,7 +35,7 @@
 
 - (JSValueRef)valueForEvaluatingScript:(NSString *)script error:(NSString **)outErrMsg inContext:(JSGlobalContextRef)ctx {
     if (!ctx) {
-        ctx = [self javaScriptContext];    
+        ctx = [self javaScriptContext];
     }
     
     NSString *sourceURLString = [self mainFrameURL];

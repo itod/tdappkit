@@ -16,6 +16,7 @@
 
 @interface DOMNode (TDAdditions)
 - (DOMElement *)firstAncestorOrSelfByTagName:(NSString *)tagName;
+- (DOMElement *)firstAncestorOrSelfByClassName:(NSString *)className;
 - (CGFloat)totalOffsetTop;
 - (CGFloat)totalOffsetLeft;
 @end

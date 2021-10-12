@@ -35,6 +35,21 @@
 }
 
 
+- (DOMElement *)firstAncestorOrSelfByClassName:(NSString *)className {
+    DOMNode *curr = self;
+    BOOL isStar = [className isEqualToString:@"*"];
+    do {
+        if (DOM_ELEMENT_NODE == [curr nodeType]) {
+            if ((isStar && [curr isKindOfClass:[DOMElement class]]) || [[(DOMElement *)curr getAttribute:@"class"] rangeOfString:className].length) {
+                return (DOMElement *)curr;
+            }
+        }
+    } while ((curr = [curr parentNode]));
+    
+    return nil;
+}
+
+
 - (CGFloat)totalOffsetTop {
     DOMElement *curr = (DOMElement *)self;
     CGFloat result = 0;
