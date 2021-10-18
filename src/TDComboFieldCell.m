@@ -67,7 +67,7 @@ static NSColor *sNonMainStrokeColor = nil;
     if (self.image) {
         CGSize imgSize = [self.image size];
         CGFloat x = NSMinX(cellFrame) + IMAGE_MARGIN;
-        CGFloat y = floor(NSMidY(cellFrame) - imgSize.height*0.5);
+        CGFloat y = round(NSMidY(cellFrame) - imgSize.height*0.5);
         
         r = CGRectMake(x, y, imgSize.width, imgSize.height);
     }

@@ -578,7 +578,7 @@ static NSGradient *sProgressGradient = nil;
     }
         
     // Get drag image
-    NSImage *dragImg = [[self cell] imageForDraggingWithFrame:[self bounds] inView:self];
+    NSImage *dragImg = self.image; //[[self cell] imageForDraggingWithFrame:[self bounds] inView:self];
     if (!dragImg) {
         return;
     }
