@@ -350,16 +350,14 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     if (isMain) {
         if (backgroundGradient) {
             [backgroundGradient drawInRect:bounds angle:90.0];
-        } else {
-            TDAssert(backgroundColor);
+        } else if (backgroundColor) {
             [backgroundColor set];
             NSRectFill(bounds);
         }
     } else {
         if (nonMainBackgroundGradient) {
             [nonMainBackgroundGradient drawInRect:bounds angle:90.0];
-        } else {
-            TDAssert(nonMainBackgroundColor);
+        } else if (nonMainBackgroundColor) {
             [nonMainBackgroundColor set];
             NSRectFill(bounds);
         }

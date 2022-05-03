@@ -19,7 +19,7 @@ extern NSString * const TDViewControllerViewDidMoveToWindowNotification;
 
 @property (nonatomic, retain) TDTabBarItem *tabBarItem;
 
-- (BOOL)isViewLoaded;
+//- (BOOL)isViewLoaded;
 
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;

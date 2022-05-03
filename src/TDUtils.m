@@ -197,7 +197,7 @@ NSBezierPath *TDGetRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth) {
 
 
 NSBezierPath *TDDrawRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth, NSGradient *fillGradient, NSColor *strokeColor) {
-    //    CGContextRef c = [[NSGraphicsContext currentContext] graphicsPort];
+    //    CGContextRef c = [[NSGraphicsContext currentContext] CGContext];
     //
     //    CGContextSetLineWidth(c, lineWidth);
     

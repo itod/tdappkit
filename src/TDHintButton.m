@@ -132,7 +132,7 @@ static NSColor *sHintHiBgColorDark = nil;
         }
         [bgColor setFill];
         
-        CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+        CGContextRef ctx = [[NSGraphicsContext currentContext] CGContext];
         TDAddRoundRect(ctx, hintRect, radius);
         CGContextFillPath(ctx);
         

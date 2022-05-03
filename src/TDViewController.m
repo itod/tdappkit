@@ -16,7 +16,7 @@ NSString * const TDViewControllerViewWillMoveToWindowNotification = @"TDViewCont
 NSString * const TDViewControllerViewDidMoveToWindowNotification = @"TDViewControllerViewDidMoveToWindowNotification";
 
 @implementation TDViewController {
-    BOOL _TD_isViewLoaded;
+//    BOOL _TD_isViewLoaded;
 }
 
 - (void)dealloc {
@@ -31,24 +31,24 @@ NSString * const TDViewControllerViewDidMoveToWindowNotification = @"TDViewContr
 }
 
 
-- (void)loadView {
-    TDAssertMainThread();
-    [super loadView];
-    _TD_isViewLoaded = YES;
-    TDAssert([[self view] isKindOfClass:[TDViewControllerView class]]);
-    [self registerForNotifications];
-    //[self viewDidLoad];
-}
-
-
-- (void)setView:(NSView *)v {
-    [super setView:v];
-    if (v) {
-        TDAssert([v isKindOfClass:[TDViewControllerView class]]);
-    } else {
-        _TD_isViewLoaded = NO;
-    }
-}
+//- (void)loadView {
+//    TDAssertMainThread();
+//    [super loadView];
+//    _TD_isViewLoaded = YES;
+//    TDAssert([[self view] isKindOfClass:[TDViewControllerView class]]);
+//    [self registerForNotifications];
+//    //[self viewDidLoad];
+//}
+//
+//
+//- (void)setView:(NSView *)v {
+//    [super setView:v];
+//    if (v) {
+//        TDAssert([v isKindOfClass:[TDViewControllerView class]]);
+//    } else {
+//        _TD_isViewLoaded = NO;
+//    }
+//}
 
 
 - (void)registerForNotifications {
@@ -102,9 +102,9 @@ NSString * const TDViewControllerViewDidMoveToWindowNotification = @"TDViewContr
 }
 
 
-- (BOOL)isViewLoaded {
-    return _TD_isViewLoaded;
-}
+//- (BOOL)isViewLoaded {
+//    return _TD_isViewLoaded;
+//}
 
 
 - (void)viewDidLoad {

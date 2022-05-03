@@ -104,7 +104,7 @@ static NSDictionary *sHintAttrs = nil;
         
         [sHintBgColor setFill];
         
-        CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+        CGContextRef ctx = [[NSGraphicsContext currentContext] CGContext];
         TDAddRoundRect(ctx, NSRectToCGRect(hintRect), radius);
         CGContextFillPath(ctx);
         
