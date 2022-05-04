@@ -86,7 +86,7 @@
 #pragma mark NSView
 
 - (void)drawRect:(NSRect)dirtyRect {
-    CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextRef ctx = [[NSGraphicsContext currentContext] CGContext];
     
     CGRect bounds = [self bounds];
 

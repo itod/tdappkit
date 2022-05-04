@@ -17,7 +17,7 @@
 @interface TDRegisterWindowController ()
 - (void)setUpTitle;
 - (void)setUpHint;
-- (void)handleDroppedFilePaths:(NSArray *)filePaths;
+- (void)handleLicenseFilePath:(NSString *)filePath;
 @end
 
 @implementation TDRegisterWindowController
@@ -53,7 +53,7 @@
     TDAssert(_dropTargetView);
     [[self window] center];
     
-    NSArray *types = [NSArray arrayWithObject:NSFilenamesPboardType];
+    NSArray *types = [NSArray arrayWithObject:NSPasteboardTypeFileURL];
     [_dropTargetView registerForDraggedTypes:types];
     
     [self setUpTitle];
@@ -79,7 +79,7 @@
         if (NSModalResponseOK == result) {
             NSString *filePath = [[panel URL] relativePath];
             
-            [self handleDroppedFilePaths:@[filePath]];
+            [self handleLicenseFilePath:filePath];
         }
     }];
 }
@@ -94,10 +94,10 @@
     NSPasteboard *pboard = [dragInfo draggingPasteboard];
     NSDragOperation mask = [dragInfo draggingSourceOperationMask];
     
-    if ([[pboard types] containsObject:NSFilenamesPboardType]) {
+    if ([[pboard types] containsObject:NSPasteboardTypeFileURL]) {
         if (mask & NSDragOperationGeneric) {
-            NSArray *filePaths = [pboard propertyListForType:NSFilenamesPboardType];
-            if ([filePaths count] && [_licenseFileExtensions containsObject:[filePaths[0] pathExtension]]) {
+            NSString *filePath = [[NSURL URLFromPasteboard:pboard] path];
+            if ([_licenseFileExtensions containsObject:[filePath pathExtension]]) {
                 return NSDragOperationCopy;
             }
         }
@@ -110,9 +110,9 @@
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)dragInfo {
     NSPasteboard *pboard = [dragInfo draggingPasteboard];
     
-    if ([[pboard types] containsObject:NSFilenamesPboardType]) {
-        NSArray *filePaths = [pboard propertyListForType:NSFilenamesPboardType];
-        [self handleDroppedFilePaths:filePaths];
+    if ([[pboard types] containsObject:NSPasteboardTypeFileURL]) {
+        NSString *filePath = [[NSURL URLFromPasteboard:pboard] path];
+        [self handleLicenseFilePath:filePath];
         return YES;
     } else {
         return NO;
@@ -140,18 +140,17 @@
 }
 
 
-- (void)handleDroppedFilePaths:(NSArray *)filePaths {
-    if (![filePaths count]) return;
+- (void)handleLicenseFilePath:(NSString *)filePath {
+    if (![filePath length]) return;
         
     TDPerformOnMainThreadAfterDelay(0.0, ^{
-        NSString *filename = filePaths[0];
-        if ([_licenseFileExtensions containsObject:[filename pathExtension]]) {
+        if ([_licenseFileExtensions containsObject:[filePath pathExtension]]) {
             id target = NSApp;
             if (![target respondsToSelector:@selector(registerWithLicenseAtPath:)]) {
                 target = [NSApp delegate];
             }
             if (target && [target respondsToSelector:@selector(registerWithLicenseAtPath:)]) {
-                [target registerWithLicenseAtPath:filename];
+                [target registerWithLicenseAtPath:filePath];
             } else {
                 TDAssert(0);
             }
