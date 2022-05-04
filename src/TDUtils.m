@@ -74,7 +74,7 @@ NSString *TDHexStringFromColor(NSColor *c) {
     
     NSString *result = nil;
     
-    NSColor *convertedColor = [c colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+    NSColor *convertedColor = [c colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
     
     if (convertedColor) {
         result = [NSString stringWithFormat:@"%02X%02X%02X%02X",

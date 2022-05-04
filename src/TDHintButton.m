@@ -63,7 +63,7 @@ static NSColor *sHintHiBgColorDark = nil;
 - (instancetype)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setButtonType:NSMomentaryChangeButton];
+        [self setButtonType:NSButtonTypeMomentaryChange];
         [self setFocusRingType:NSFocusRingTypeNone];
         [self setTag:0];
     }
