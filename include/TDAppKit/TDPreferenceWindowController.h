@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface TDPreferenceWindowController : NSWindowController <NSToolbarDelegate>
+@interface TDPreferenceWindowController : NSWindowController <NSToolbarDelegate, NSFontChanging>
 
 + (instancetype)instance;
 

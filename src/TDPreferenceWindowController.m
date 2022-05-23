@@ -153,7 +153,6 @@
     vc.view.frame = CGRectMake(round(NSMidX(containerFrame)-NSWidth(viewBounds)*0.5), 0.0, NSWidth(viewBounds), NSHeight(viewBounds));
 }
 
-
 #pragma mark -
 #pragma mark NSToolbarDelegate
 
@@ -202,6 +201,16 @@
     NSString *identifier = sender.itemIdentifier;
     
     [self showPreferencePaneWithIdentifier:identifier];
+}
+
+
+#pragma mark -
+#pragma mark NSFontChanging
+
+- (void)changeFont:(NSFontManager *)sender {
+    if ([self.selectedViewController respondsToSelector:@selector(changeFont:)]) {
+        [self.selectedViewController changeFont:sender];
+    }
 }
 
 @end
