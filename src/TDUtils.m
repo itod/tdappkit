@@ -103,20 +103,31 @@ NSString *TDStringFromColor(NSColor *c) {
 
 
 NSColor *TDColorFromString(NSString *s) {
+    NSColor *result = nil;
     NSArray *chunks = [s componentsSeparatedByString:@":"];
-    
     if ([chunks count] != 4) {
-        return nil;
+        unsigned colorCode = 0;
+        unsigned char redByte, greenByte, blueByte;
+        if (s) {
+             NSScanner *scanner = [NSScanner scannerWithString:s];
+             (void)[scanner scanHexInt:&colorCode]; // ignore error
+        }
+        redByte = (unsigned char)(colorCode >> 16);
+        greenByte = (unsigned char)(colorCode >> 8);
+        blueByte = (unsigned char)(colorCode); // masks off high bits
+
+        result = [NSColor colorWithCalibratedRed:(CGFloat)redByte / 0xff green:(CGFloat)greenByte / 0xff blue:(CGFloat)blueByte / 0xff alpha:1.0];
     } else {
         CGFloat components[4];
         for (NSUInteger i = 0; i < 4; i++) {
             components[i] = [[chunks objectAtIndex:i] floatValue];
         }
-        return [NSColor colorWithDeviceRed:components[0]
-                                     green:components[1]
-                                      blue:components[2]
-                                     alpha:components[3]];
+        result = [NSColor colorWithDeviceRed:components[0]
+                                       green:components[1]
+                                        blue:components[2]
+                                       alpha:components[3]];
     }
+    return result;
 }
 
 
@@ -528,3 +539,6 @@ BOOL TDIsDarkMode() {
         return NO;
     }
 }
+
+
+
