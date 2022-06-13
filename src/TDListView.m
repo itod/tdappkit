@@ -1144,6 +1144,8 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
     [[NSAnimationContext currentContext] setDuration:.05];
     
     NSRect startFrame = [[self itemAtVisibleIndex:0] frame];
+    startFrame.origin = CGPointZero;
+                    
     CGFloat extent = self.isPortrait ? NSMinY(startFrame) : NSMinX(startFrame);
     
     CGFloat offset = self.isPortrait ? NSMinY([self visibleRect]) : NSMinX([self visibleRect]);
