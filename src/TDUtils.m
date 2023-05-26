@@ -312,42 +312,42 @@ NSNib *TDLoadNib(id owner, NSString *nibName, NSBundle *bundle) {
 }
 
 
-BOOL TDIsSierraOrLater() {
+BOOL TDIsSierraOrLater(void) {
     NSUInteger major, minor, bugfix;
     TDGetSystemVersion(&major, &minor, &bugfix);
     return minor > 11;
 }
 
 
-BOOL TDIsElCapOrLater() {
+BOOL TDIsElCapOrLater(void) {
     NSUInteger major, minor, bugfix;
     TDGetSystemVersion(&major, &minor, &bugfix);
     return minor > 10;
 }
 
 
-BOOL TDIsYozOrLater() {
+BOOL TDIsYozOrLater(void) {
     NSUInteger major, minor, bugfix;
     TDGetSystemVersion(&major, &minor, &bugfix);
     return minor > 9;
 }
 
 
-BOOL TDIsMtnLionOrLater() {
+BOOL TDIsMtnLionOrLater(void) {
     NSUInteger major, minor, bugfix;
     TDGetSystemVersion(&major, &minor, &bugfix);
     return minor > 7;
 }
 
 
-BOOL TDIsLionOrLater() {
+BOOL TDIsLionOrLater(void) {
     NSUInteger major, minor, bugfix;
     TDGetSystemVersion(&major, &minor, &bugfix);
     return minor > 6;
 }
 
 
-BOOL TDIsSnowLeopardOrLater() {
+BOOL TDIsSnowLeopardOrLater(void) {
     NSUInteger major, minor, bugfix;
     TDGetSystemVersion(&major, &minor, &bugfix);
     return minor > 5;
@@ -529,7 +529,7 @@ NSArray *TDPlistFromData(NSData *data, NSError **outErr) {
 }
 
 
-BOOL TDIsDarkMode() {
+BOOL TDIsDarkMode(void) {
     NSAppearance *appearance = [NSAppearance currentAppearance];
     if (@available(macOS 10.14, *)) {
         NSAppearanceName name = [appearance bestMatchFromAppearancesWithNames:@[NSAppearanceNameAqua, NSAppearanceNameDarkAqua]];
