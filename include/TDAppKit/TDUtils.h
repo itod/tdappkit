@@ -23,34 +23,34 @@
 
 #define TD_BIG_FLOAT 1000000.0
 
-NSGradient *TDVertGradient(NSUInteger topHex, NSUInteger botHex);
-NSColor *TDHexColor(NSUInteger x);
-NSColor *TDHexaColor(NSUInteger x);
-NSColor *TDGrayColor(CGFloat f);
-NSColor *TDGrayaColor(CGFloat f, CGFloat a);
-NSColor *TDGrayColorDiff(NSColor *inColor, CGFloat diff);
-id TDCGHexColor(NSUInteger x);
-id TDCGHexaColor(NSUInteger x);
-NSString *TDHexStringFromColor(NSColor *c);
+FOUNDATION_EXTERN NSGradient *TDVertGradient(NSUInteger topHex, NSUInteger botHex);
+FOUNDATION_EXTERN NSColor *TDHexColor(NSUInteger x);
+FOUNDATION_EXTERN NSColor *TDHexaColor(NSUInteger x);
+FOUNDATION_EXTERN NSColor *TDGrayColor(CGFloat f);
+FOUNDATION_EXTERN NSColor *TDGrayaColor(CGFloat f, CGFloat a);
+FOUNDATION_EXTERN NSColor *TDGrayColorDiff(NSColor *inColor, CGFloat diff);
+FOUNDATION_EXTERN id TDCGHexColor(NSUInteger x);
+FOUNDATION_EXTERN id TDCGHexaColor(NSUInteger x);
+FOUNDATION_EXTERN NSString *TDHexStringFromColor(NSColor *c);
 
-NSString *TDStringFromColor(NSColor *c);
-NSColor *TDColorFromString(NSString *s);
+FOUNDATION_EXTERN NSString *TDStringFromColor(NSColor *c);
+FOUNDATION_EXTERN NSColor *TDColorFromString(NSString *s);
 
-void TDPerformOnMainThread(void (^block)(void));
-void TDPerformOnBackgroundThread(void (^block)(void));
-void TDPerformOnMainThreadAfterDelay(double delay, void (^block)(void));
-void TDPerformOnBackgroundThreadAfterDelay(double delay, void (^block)(void));
+FOUNDATION_EXTERN void TDPerformOnMainThread(void (^block)(void));
+FOUNDATION_EXTERN void TDPerformOnBackgroundThread(void (^block)(void));
+FOUNDATION_EXTERN void TDPerformOnMainThreadAfterDelay(double delay, void (^block)(void));
+FOUNDATION_EXTERN void TDPerformOnBackgroundThreadAfterDelay(double delay, void (^block)(void));
 
 //CGRect TDRectOutset(CGRect r, CGFloat dx, CGFloat dy);
-NSRect TDNSRectOutset(NSRect r, CGFloat dx, CGFloat dy);
-NSBezierPath *TDGetRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth);
-NSBezierPath *TDDrawRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth, NSGradient *fillGradient, NSColor *strokeColor);
-void TDAddRoundRect(CGContextRef ctx, CGRect rect, CGFloat radius);
+FOUNDATION_EXTERN NSRect TDNSRectOutset(NSRect r, CGFloat dx, CGFloat dy);
+FOUNDATION_EXTERN NSBezierPath *TDGetRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth);
+FOUNDATION_EXTERN NSBezierPath *TDDrawRoundRect(NSRect r, CGFloat radius, CGFloat lineWidth, NSGradient *fillGradient, NSColor *strokeColor);
+FOUNDATION_EXTERN void TDAddRoundRect(CGContextRef ctx, CGRect rect, CGFloat radius);
 
-BOOL TDIsCommandKeyPressed(NSInteger modifierFlags);
-BOOL TDIsControlKeyPressed(NSInteger modifierFlags);
-BOOL TDIsShiftKeyPressed(NSInteger modifierFlags);
-BOOL TDIsOptionKeyPressed(NSInteger modifierFlags);
+FOUNDATION_EXTERN BOOL TDIsCommandKeyPressed(NSInteger modifierFlags);
+FOUNDATION_EXTERN BOOL TDIsControlKeyPressed(NSInteger modifierFlags);
+FOUNDATION_EXTERN BOOL TDIsShiftKeyPressed(NSInteger modifierFlags);
+FOUNDATION_EXTERN BOOL TDIsOptionKeyPressed(NSInteger modifierFlags);
 
 NSPoint TDAlignPointToDeviceSpace(CGContextRef ctx, NSPoint p);
 CGPoint TDDeviceFloorAlign(CGContextRef ctx, CGPoint p);
@@ -84,4 +84,4 @@ CGRect TDCombineRects(CGRect r1, CGRect r2);
 NSArray *TDPlistFromData(NSData *data, NSError **outErr);
 NSData *TDDataFromPlist(NSArray *plist, NSError **outErr);
 
-BOOL TDIsDarkMode(void);
+FOUNDATION_EXTERN BOOL TDIsDarkMode(void);
