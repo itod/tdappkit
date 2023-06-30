@@ -830,6 +830,13 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 #pragma mark NSDraggingDestination
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)dragInfo {
+    // disallow dragging to another window for now.
+    //NSLog(@"%@ vs %@", self, dragInfo.draggingSource);
+    if (self != dragInfo.draggingSource) {
+        TDAssert(!isDragSource);
+        return NSDragOperationNone;
+    }
+
     delegateRespondsToValidateDrop = delegate && [delegate respondsToSelector:@selector(listView:validateDrop:proposedIndex:dropOperation:)];
     
     if (!itemFrames) {
@@ -858,6 +865,13 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 
 /* TODO if the destination responded to draggingEntered: but not to draggingUpdated: the return value from draggingEntered: should be used */
 - (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)dragInfo {
+    // disallow dragging to another window for now.
+    //NSLog(@"%@ vs %@", self, dragInfo.draggingSource);
+    if (self != dragInfo.draggingSource) {
+        TDAssert(!isDragSource);
+        return NSDragOperationNone;
+    }
+
     if (!delegateRespondsToValidateDrop) {
         return NSDragOperationNone;
     }
@@ -943,9 +957,9 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 
 - (void)draggingExited:(id <NSDraggingInfo>)dragInfo {
     [super draggingExited:dragInfo];
-    if (!isDragSource) {
-        [self performSelector:@selector(reloadData) withObject:nil afterDelay:.3];
-    }
+//    if (!isDragSource) {
+//        [self performSelector:@selector(reloadData) withObject:nil afterDelay:.3];
+//    }
 }
 
 
@@ -956,6 +970,13 @@ NSString *const TDListItemPboardType = @"TDListItemPboardType";
 
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)dragInfo {
+    // disallow dragging to another window for now.
+    //NSLog(@"%@ vs %@", self, dragInfo.draggingSource);
+    if (self != dragInfo.draggingSource) {
+        TDAssert(!isDragSource);
+        return NSDragOperationNone;
+    }
+
     //if (dropIndex > draggingIndexes) {
     NSUInteger lastDraggingIndex = [draggingIndexes lastIndex];
     
