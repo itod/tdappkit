@@ -102,32 +102,103 @@ NSString *TDStringFromColor(NSColor *c) {
 }
 
 
-NSColor *TDColorFromString(NSString *s) {
-    NSColor *result = nil;
-    NSArray *chunks = [s componentsSeparatedByString:@":"];
-    if ([chunks count] != 4) {
-        unsigned colorCode = 0;
-        unsigned char redByte, greenByte, blueByte;
-        if (s) {
-             NSScanner *scanner = [NSScanner scannerWithString:s];
-             (void)[scanner scanHexInt:&colorCode]; // ignore error
-        }
-        redByte = (unsigned char)(colorCode >> 16);
-        greenByte = (unsigned char)(colorCode >> 8);
-        blueByte = (unsigned char)(colorCode); // masks off high bits
+//NSColor *TDColorFromString(NSString *s) {
+//    NSColor *result = nil;
+//    NSArray *chunks = [s componentsSeparatedByString:@":"];
+//    if ([chunks count] != 4) {
+//        unsigned colorCode = 0;
+//        unsigned char redByte, greenByte, blueByte;
+//        if (s) {
+//             NSScanner *scanner = [NSScanner scannerWithString:s];
+//             (void)[scanner scanHexInt:&colorCode]; // ignore error
+//        }
+//        redByte = (unsigned char)(colorCode >> 16);
+//        greenByte = (unsigned char)(colorCode >> 8);
+//        blueByte = (unsigned char)(colorCode); // masks off high bits
+//
+//        result = [NSColor colorWithCalibratedRed:(CGFloat)redByte / 0xff green:(CGFloat)greenByte / 0xff blue:(CGFloat)blueByte / 0xff alpha:1.0];
+//    } else {
+//        CGFloat components[4];
+//        for (NSUInteger i = 0; i < 4; i++) {
+//            components[i] = [[chunks objectAtIndex:i] floatValue];
+//        }
+//        result = [NSColor colorWithDeviceRed:components[0]
+//                                       green:components[1]
+//                                        blue:components[2]
+//                                       alpha:components[3]];
+//    }
+//    return result;
+//}
 
-        result = [NSColor colorWithCalibratedRed:(CGFloat)redByte / 0xff green:(CGFloat)greenByte / 0xff blue:(CGFloat)blueByte / 0xff alpha:1.0];
-    } else {
-        CGFloat components[4];
-        for (NSUInteger i = 0; i < 4; i++) {
-            components[i] = [[chunks objectAtIndex:i] floatValue];
-        }
-        result = [NSColor colorWithDeviceRed:components[0]
-                                       green:components[1]
-                                        blue:components[2]
-                                       alpha:components[3]];
+
+NSColor *TDColorFromString(NSString *str) {
+    NSColor *color = nil;
+    
+    NSUInteger strLen = str.length;
+    unichar zstr[strLen];
+    [str getCharacters:zstr range:NSMakeRange(0, strLen)];
+    
+    NSUInteger numBytes = 0;
+    NSUInteger numChars = 0;
+    switch (strLen) {
+        case 3:
+            numBytes = 3;
+            numChars = 1;
+            break;
+        case 4:
+            numBytes = 4;
+            numChars = 1;
+            break;
+        case 6:
+            numBytes = 3;
+            numChars = 2;
+            break;
+        case 8:
+            numBytes = 4;
+            numChars = 2;
+            break;
+        default:
+            TDCAssert(0);
+            break;
     }
-    return result;
+    
+    static unsigned short factors[2] = { 16, 1 };
+    
+    if (numBytes) {
+        unsigned short bytes[numBytes];
+        for (NSUInteger outer = 0; outer < numBytes; ++outer) {
+            unsigned short byte = 0;
+            for (NSUInteger inner = 0; inner < numChars; ++inner) {
+                NSUInteger idx = (outer << (numChars - 1)) + inner;
+                unichar c = zstr[idx];
+                TDCAssert(ishexnumber(c));
+                unsigned short nybble;
+                if (isdigit(c)) {
+                    nybble = c - '0';
+                } else if (isupper(c)) {
+                    nybble = 10 + (c - 'A');
+                } else {
+                    nybble = 10 + (c - 'a');
+                }
+                unsigned short val = nybble * factors[inner];
+                byte += val;
+                
+                if (1 == numChars) {
+                    val = nybble * factors[++inner];
+                    byte += val;
+                }
+            }
+            bytes[outer] = byte;
+        }
+        
+        CGFloat alpha = 1.0;
+        if (numBytes == 4) {
+            alpha = (CGFloat)bytes[3] / 0xff;
+        }
+        color = [NSColor colorWithCalibratedRed:(CGFloat)bytes[0] / 0xff green:(CGFloat)bytes[1] / 0xff blue:(CGFloat)bytes[2] / 0xff alpha:alpha];
+    }
+    
+    return color;
 }
 
 
