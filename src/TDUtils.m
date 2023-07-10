@@ -158,7 +158,7 @@ NSColor *TDColorFromString(NSString *str) {
             numChars = 2;
             break;
         default:
-            TDCAssert(0);
+            //TDCAssert(0);
             break;
     }
     
@@ -196,6 +196,8 @@ NSColor *TDColorFromString(NSString *str) {
             alpha = (CGFloat)bytes[3] / 0xff;
         }
         color = [NSColor colorWithCalibratedRed:(CGFloat)bytes[0] / 0xff green:(CGFloat)bytes[1] / 0xff blue:(CGFloat)bytes[2] / 0xff alpha:alpha];
+    } else {
+        color = [NSColor blackColor];
     }
     
     return color;
