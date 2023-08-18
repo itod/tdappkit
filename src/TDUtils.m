@@ -603,7 +603,7 @@ NSArray *TDPlistFromData(NSData *data, NSError **outErr) {
 
 
 BOOL TDIsDarkMode(void) {
-    NSAppearance *appearance = [NSAppearance currentAppearance];
+    NSAppearance *appearance = [NSAppearance currentDrawingAppearance];
     if (@available(macOS 10.14, *)) {
         NSAppearanceName name = [appearance bestMatchFromAppearancesWithNames:@[NSAppearanceNameAqua, NSAppearanceNameDarkAqua]];
         //NSAppearanceName name = [appearance name];

@@ -10,6 +10,8 @@
 #import <TDAppKit/TDHintButton.h>
 #import <TDAppKit/TDUtils.h>
 
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
+
 @interface NSObject ()
 - (BOOL)registerWithLicenseAtPath:(NSString *)path;
 @end
@@ -70,7 +72,15 @@
     
 	NSOpenPanel *panel = [NSOpenPanel openPanel];
     
+#if 0
     [panel setAllowedFileTypes:_licenseFileExtensions];
+#else
+    NSMutableArray *exts = [NSMutableArray arrayWithCapacity:_licenseFileExtensions.count];
+    for (NSString *ext in _licenseFileExtensions) {
+        [exts addObject:[UTType typeWithFilenameExtension:ext]];
+    }
+    [panel setAllowedContentTypes:exts];
+#endif
     [panel setCanChooseDirectories:NO];
     [panel setCanChooseFiles:YES];
     [panel setAllowsMultipleSelection:NO];
