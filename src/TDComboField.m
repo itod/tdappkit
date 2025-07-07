@@ -106,7 +106,7 @@ static NSGradient *sProgressGradient = nil;
     CGRect bounds = [self bounds];
     
     if (_progress > 0.01) {
-        CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+        CGContextRef ctx = [[NSGraphicsContext currentContext] CGContext];
 
         CGContextSaveGState(ctx); {
             BOOL isMain = [[self window] isMainWindow];

@@ -85,7 +85,7 @@ static NSDictionary *sHighlightedLabelAttributes = nil;
     NSDictionary *attrs = nil;
     if (selected) {
         attrs = sHighlightedLabelAttributes;
-        bgColor = [NSColor selectedMenuItemColor];
+        bgColor = [NSColor selectedContentBackgroundColor];
     } else {
         attrs = sLabelAttributes;
         bgColor = [NSColor clearColor];

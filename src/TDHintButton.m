@@ -104,7 +104,7 @@ static NSColor *sHintHiBgColorDark = nil;
 //    [[NSColor redColor] setFill];
 //    NSRectFill(bounds);
     
-    BOOL isHi = [[self cell] isHighlighted]; //NSOnState == [self state];
+    BOOL isHi = [[self cell] isHighlighted]; //NSControlStateValueOn == [self state];
     
     BOOL showHint = ([_hintText length]);
     if (showHint) {

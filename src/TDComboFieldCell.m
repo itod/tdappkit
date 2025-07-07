@@ -137,7 +137,8 @@ static NSColor *sNonMainStrokeColor = nil;
     BOOL isMain = [[cv window] isMainWindow];
     NSColor *strokeColor = nil;
     if (TDIsDarkMode()) {
-        strokeColor = [NSColor controlLightHighlightColor]; //separatorColor
+//        strokeColor = [NSColor controlLightHighlightColor]; //controlLightHighlightColor
+        strokeColor = [NSColor separatorColor]; //controlLightHighlightColor
     } else {
         strokeColor = isMain ? sStrokeColor : sNonMainStrokeColor;
     }
@@ -145,7 +146,7 @@ static NSColor *sNonMainStrokeColor = nil;
     [strokeColor setStroke];
     [[NSColor textBackgroundColor] setFill];
     
-    CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextRef ctx = [[NSGraphicsContext currentContext] CGContext];
 
     CGRect borderRect = [self borderRectForCellFrame:cellFrame];
     TDAddRoundRect(ctx, borderRect, BORDER_RADIUS);
@@ -188,7 +189,7 @@ static NSColor *sNonMainStrokeColor = nil;
 
 
 - (void)drawFocusRingMaskWithFrame:(NSRect)cellFrame inView:(NSView *)cv {
-    CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextRef ctx = [[NSGraphicsContext currentContext] CGContext];
 
     CGRect borderRect = [self borderRectForCellFrame:cellFrame];
     borderRect = CGRectInset(borderRect, -0.5, -0.5);
